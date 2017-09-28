@@ -92,7 +92,9 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias devv='cd /mnt/d/Documents/Development'
+export DEV="/mnt/d/Documents/Development"
+export DRIVE="/mnt/d/Documents/JVD Docs/Documents/"
+export SCHOOL="$DRIVE/School/UVIC/2017"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
