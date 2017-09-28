@@ -1,0 +1,7 @@
+call plug#begin('~/.config/nvim/plugins')
+
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+call plug#end()
+
+let g:deoplete#enable_at_startup = 1
