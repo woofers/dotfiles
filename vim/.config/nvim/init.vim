@@ -6,6 +6,27 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" Toggles Between Relative Line Numbers and Abosulte
+function! ToggleNumber()
+    if(&relativenumber == 1)
+        set norelativenumber
+        set number
+    else
+        set relativenumber
+    endif
+endfunction
+
+" Trims Trailing Whitespace
+function! <SID>StripTrailingWhitespaces()
+    " save last search & cursor position
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
 function! BuildComposer(info)
   if a:info.status != 'unchanged' || a:info.force
 	if has('nvim')
@@ -26,6 +47,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'sjl/gundo.vim'
 Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 
 call plug#end()
@@ -56,11 +78,20 @@ set so=7
 nnoremap ; :
 nnoremap : ;
 
-" Map Key to Show Tabs
-nnoremap	<F2> :<C-U>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
+" Map F2 Key to Show Tabs
+nnoremap <F2> :<C-U>setlocal lcs=tab:/·,trail:· list! list? <CR>
 
-" Trim Trailing Spaces
-map <F5> :%s/\s\+$//e.<CR>
+" Clear Hightling With Space
+nnoremap <leader><space> :nohlsearch<CR>
+
+" Map Super Undo on \U
+nnoremap <leader>u :GundoToggle<CR>
+
+" Highlight Last Inserted Text
+nnoremap gV `[v`]
+
+" Toggle Line Numbers on \F
+nnoremap <leader>f :call ToggleNumber()<cr>
 
 " Disable Arrow keys in Escape mode
 map <up> <nop>
@@ -83,6 +114,16 @@ syntax enable
 colorscheme dracula
 let g:airline_theme='light'
 
+" Allow File Specific
+filetype indent on
+
+" Better Searching
+set incsearch
+set hlsearch
+
+" Minimize Redraw
+set lazyredraw
+
 " Airline Settings
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -104,6 +145,9 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.markdown setlocal spell
 autocmd BufRead,BufNewFile *.sh setf sh
 autocmd BufRead,BufNewFile *.bash setf sh
+
+" Not Working
+autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md,*.vim \:call <SID>StripTrailingWhitespaces()
 
 " Enable Deoplete
 call deoplete#enable()
