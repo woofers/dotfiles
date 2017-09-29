@@ -21,7 +21,6 @@ call plug#begin('~/.config/nvim/plugins')
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
 Plug 'dracula/vim'
-Plug 'mhartington/oceanic-next'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
@@ -45,13 +44,13 @@ set shiftwidth=4
 set ai
 
 " Display Line Numbers
-set number
+set relativenumber
 
 " Enable Mouse
 set mouse=a
 
-" Ignored Filetypes
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*,*/platforms/*,*/plugins/*,*/coverage/*,*/.nyc_output/*
+" Scrolling
+set so=7
 
 " Remap Colon
 nnoremap ; :
@@ -59,6 +58,9 @@ nnoremap : ;
 
 " Map Key to Show Tabs
 nnoremap	<F2> :<C-U>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
+
+" Trim Trailing Spaces
+map <F5> :%s/\s\+$//e.<CR>
 
 " Disable Arrow keys in Escape mode
 map <up> <nop>
@@ -86,7 +88,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
 
-" Auto Open NERDTree Upon Starting VIM 
+" Auto Open NERDTree Upon Starting VIM
 autocmd vimenter * NERDTree
 
 " Close VIM when only NERDTree is Open
@@ -98,8 +100,10 @@ autocmd WinLeave * setlocal nocursorline
 
 " Set up English Spellchecking
 set spelllang=en
-au BufRead *.md setlocal spell
-au BufRead *.markdown setlocal spell
+autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile *.markdown setlocal spell
+autocmd BufRead,BufNewFile *.sh setf sh
+autocmd BufRead,BufNewFile *.bash setf sh
 
 " Enable Deoplete
 call deoplete#enable()

@@ -92,8 +92,11 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-export DEV="/mnt/d/Documents/Development"
-export DRIVE="/mnt/d/Documents/JVD Docs/Documents/"
+
+# settings paths
+export HOME_DRIVE="/mnt/d/"
+export DEV="$HOME_DRIVE/Documents/Development"
+export DRIVE="$HOME_DRIVE/Documents/JVD Docs/Documents/"
 export SCHOOL="$DRIVE/School/UVIC/2017"
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -120,15 +123,17 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# enables powerline
 function _update_ps1() {
     PS1="$(powerline-shell $?)"
 }
 
+# enables powerline
 if [ "$TERM" != "linux" ]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
-
+# enables powerline theme
 export THEME=$HOME/.bash/themes/wagnoster-bash/wagnoster.bash
 if [[ -f $THEME ]]; then
     export DEFAULT_USER=`whoami`
