@@ -103,3 +103,4 @@ au BufRead *.markdown setlocal spell
 
 " Enable Deoplete
 call deoplete#enable()
+
