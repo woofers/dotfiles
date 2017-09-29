@@ -87,6 +87,12 @@ nnoremap <leader><space> :nohlsearch<CR>
 " Map Super Undo on \U
 nnoremap <leader>u :GundoToggle<CR>
 
+" Undo Less
+inoremap . .<c-g>u
+inoremap ? ?<c-g>u
+inoremap ! !<c-g>u
+inoremap , ,<c-g>u
+
 " Highlight Last Inserted Text
 nnoremap gV `[v`]
 
