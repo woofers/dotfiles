@@ -8,33 +8,17 @@ endif
 
 " Toggles Between Relative Line Numbers and Abosulte
 function! ToggleNumber()
-    if(&relativenumber == 1)
-        set norelativenumber
-        set number
-    else
-        set relativenumber
-    endif
-endfunction
-
-" Trims Trailing Whitespace
-function! <SID>StripTrailingWhitespaces()
-    " save last search & cursor position
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    let @/=_s
-    call cursor(l, c)
-endfunction
-
-function! BuildComposer(info)
-  if a:info.status != 'unchanged' || a:info.force
-	if has('nvim')
-	  !cargo build --release
+	if(&relativenumber == 1)
+		set norelativenumber
+		set number
 	else
-	  !cargo build --release --no-default-features --features json-rpc
+		set relativenumber
 	endif
-  endif
+endfunction
+
+" Toggles Visible Tabs
+function! ToggleShowTabs()
+	setlocal lcs=tab:/·,trail:· list! list?
 endfunction
 
 " Add Plug-Ins
@@ -47,8 +31,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'sjl/gundo.vim'
-Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+Plug 'terryma/vim-smooth-scroll'
 
 call plug#end()
 
@@ -62,6 +45,9 @@ set tabstop=4
 set softtabstop=0 noexpandtab
 set shiftwidth=4
 
+" Show Tabs
+call ToggleShowTabs()
+
 " Disable Auto-Indent
 set ai
 
@@ -72,20 +58,17 @@ set relativenumber
 set mouse=a
 
 " Scrolling
-set so=7
+set so=8
 
 " Remap Colon
 nnoremap ; :
 nnoremap : ;
 
-" Map F2 Key to Show Tabs
-nnoremap <F2> :<C-U>setlocal lcs=tab:/·,trail:· list! list? <CR>
+" Map /T to Show Tabs
+nnoremap <leader>t :call ToggleShowTabs()<CR>
 
 " Clear Hightling With Space
 nnoremap <leader><space> :nohlsearch<CR>
-
-" Map Super Undo on \U
-nnoremap <leader>u :GundoToggle<CR>
 
 " Undo Less
 inoremap . .<c-g>u
@@ -98,6 +81,9 @@ nnoremap gV `[v`]
 
 " Toggle Line Numbers on \F
 nnoremap <leader>f :call ToggleNumber()<cr>
+
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 
 " Disable Arrow keys in Escape mode
 map <up> <nop>
@@ -147,13 +133,25 @@ autocmd WinLeave * setlocal nocursorline
 
 " Set up English Spellchecking
 set spelllang=en
-autocmd BufRead,BufNewFile *.md setlocal spell
-autocmd BufRead,BufNewFile *.markdown setlocal spell
-autocmd BufRead,BufNewFile *.sh setf sh
-autocmd BufRead,BufNewFile *.bash setf sh
 
-" Not Working
-autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md,*.vim \:call <SID>StripTrailingWhitespaces()
+" Excuted Upon Open
+augroup preread
+	autocmd!
+		autocmd BufReadPre,FileReadPre *.md setlocal spell
+		autocmd BufReadPre,FileReadPre *.markdown setlocal spell
+		autocmd BufReadPre,FileReadPre *.sh :setf sh
+		autocmd BufReadPre,FileReadPre *.bash :setf sh
+		autocmd BufReadPre,FileReadPre *.bashrc :setf sh
+augroup END
+
+" Excuted On Save
+augroup prewrite
+	autocmd!
+		" Remove Trailing Spaces
+		autocmd BufWritePre,FileWritePre * :%s/\s\+$//e | %s/\r$//e
+		" Converts Spaces to Tabs
+		autocmd BufWritePre,FileWritePre * :%retab!
+augroup END
 
 " Enable Deoplete
 call deoplete#enable()
