@@ -18,7 +18,7 @@ endfunction
 
 " Toggles Visible Tabs
 function! ToggleShowTabs()
-	setlocal lcs=tab:/·,trail:· list! list?
+	setlocal lcs=tab:/-,trail:· list! list?
 endfunction
 
 " Add Plug-Ins

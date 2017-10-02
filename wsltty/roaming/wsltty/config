@@ -21,3 +21,4 @@ CursorBlinks=yes
 CopyAsRTF=no
 AllowBlinking=yes
 Locale=C
+BellType=0
