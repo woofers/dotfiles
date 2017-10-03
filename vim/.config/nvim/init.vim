@@ -70,6 +70,9 @@ nnoremap <leader>t :call ToggleShowTabs()<CR>
 " Clear Hightling With Space
 nnoremap <leader><space> :nohlsearch<CR>
 
+" Toggle File Expoler
+map <C-n> :NERDTreeToggle<CR>
+
 " Undo Less
 inoremap . .<c-g>u
 inoremap ? ?<c-g>u
@@ -137,11 +140,18 @@ set spelllang=en
 " Excuted Upon Open
 augroup preread
 	autocmd!
+		" Enable Spellchecking for Markdown
 		autocmd BufReadPre,FileReadPre *.md setlocal spell
 		autocmd BufReadPre,FileReadPre *.markdown setlocal spell
+		" Enable Shell Highlighting
 		autocmd BufReadPre,FileReadPre *.sh :setf sh
 		autocmd BufReadPre,FileReadPre *.bash :setf sh
 		autocmd BufReadPre,FileReadPre *.bashrc :setf sh
+		" Remove Trailing Spaces
+		autocmd BufWritePre,FileWritePre * :%s/\s\+$//e | %s/\r$//e
+		" Converts Spaces to Tabs
+		autocmd BufWritePre,FileWritePre * :%retab!
+
 augroup END
 
 " Excuted On Save
