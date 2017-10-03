@@ -191,7 +191,7 @@ prompt_dir() {
 }
 
 prompt_time() {
-	prompt_segment 209 255 '%t'
+	prompt_segment 209 231 '%t'
 }
 
 # Virtualenv: current working virtualenv
