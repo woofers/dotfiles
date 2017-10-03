@@ -1,9 +1,9 @@
 
 " Install vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
 	\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " Toggles Between Relative Line Numbers and Abosulte
@@ -18,7 +18,7 @@ endfunction
 
 " Toggles Visible Tabs
 function! ToggleShowTabs()
-	setlocal lcs=tab:/-,trail:· list! list?
+	setlocal lcs=tab:/>,trail:· list! list?
 endfunction
 
 " Add Plug-Ins
@@ -46,7 +46,7 @@ set softtabstop=0 noexpandtab
 set shiftwidth=4
 
 " Show Tabs
-call ToggleShowTabs()
+silent exec "call ToggleShowTabs()"
 
 " Disable Auto-Indent
 set ai
@@ -71,7 +71,8 @@ nnoremap <leader>t :call ToggleShowTabs()<CR>
 nnoremap <leader><space> :nohlsearch<CR>
 
 " Toggle File Expoler
-map <C-n> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
+inoremap <C-n> <C-c>:NERDTreeToggle<CR>
 
 " Undo Less
 inoremap . .<c-g>u
@@ -79,12 +80,30 @@ inoremap ? ?<c-g>u
 inoremap ! !<c-g>u
 inoremap , ,<c-g>u
 
+" Navigate Tabs
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" Exit With Crtl W
+"nnoremap <c-w> :q!<cr>
+"inoremap <c-w> <C-c>:q!<cr>
+
+" Save With Crtl S
+nnoremap <c-s> :w<cr>
+inoremap <c-s> <C-c>:w<cr>
+
+nnoremap <c-x> :x<cr>
+inoremap <c-x> <C-c>:x<cr>
+
 " Highlight Last Inserted Text
 nnoremap gV `[v`]
 
 " Toggle Line Numbers on \F
 nnoremap <leader>f :call ToggleNumber()<cr>
 
+" Scroll Up and Down
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 
@@ -116,9 +135,6 @@ filetype indent on
 set incsearch
 set hlsearch
 
-" Minimize Redraw
-set lazyredraw
-
 " Airline Settings
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -143,6 +159,7 @@ augroup preread
 		" Enable Spellchecking for Markdown
 		autocmd BufReadPre,FileReadPre *.md setlocal spell
 		autocmd BufReadPre,FileReadPre *.markdown setlocal spell
+		autocmd BufReadPre,FileReadPre *.txt setlocal spell
 		" Enable Shell Highlighting
 		autocmd BufReadPre,FileReadPre *.sh :setf sh
 		autocmd BufReadPre,FileReadPre *.bash :setf sh
