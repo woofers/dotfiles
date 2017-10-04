@@ -13,6 +13,7 @@ Custom Config and Theme files for:
 ![alt text][screenshot2]
 
 Neovim config uses [dracula-vim](https://github.com/dracula/vim)
+Airline theme is **light** from [airline-themes](https://github.com/vim-airline/vim-airline-themes)
 
 ## wsl-terminal
 
