@@ -80,7 +80,7 @@ prompt_end() {
 # Context: user@hostname (who am I and where am I)
 prompt_context() {
 	if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-		prompt_segment red black $USER
+		prompt_segment 209 231 " $USER @%t "
 	fi
 }
 
@@ -187,7 +187,7 @@ prompt_hg() {
 
 # Dir: current working directory
 prompt_dir() {
-	prompt_segment red black '%3~'
+	prompt_segment red black "%$(( $COLUMNS - 61 ))<...<%3~%<<"
 }
 
 prompt_time() {
@@ -222,7 +222,7 @@ build_prompt() {
 	prompt_status
 	prompt_virtualenv
 	prompt_context
-	prompt_time
+#	prompt_time
 	prompt_dir
 	prompt_git
 	prompt_bzr
