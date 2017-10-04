@@ -80,6 +80,10 @@ inoremap ? ?<c-g>u
 inoremap ! !<c-g>u
 inoremap , ,<c-g>u
 
+" Visual Indent
+vnoremap > >gv
+vnoremap < <gv
+
 " Navigate Tabs
 map <C-h> <C-w>h
 map <C-j> <C-w>j
