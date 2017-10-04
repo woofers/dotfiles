@@ -86,6 +86,10 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" Jump To Next Row Rather Than Line
+nnoremap j gj
+nnoremap k gk
+
 " Exit With Crtl W
 "nnoremap <c-w> :q!<cr>
 "inoremap <c-w> <C-c>:q!<cr>
@@ -134,6 +138,12 @@ filetype indent on
 " Better Searching
 set incsearch
 set hlsearch
+
+" Ignore Non-Text File Types
+set wildignore=*.swp,*.bak,*.pyc,*.class
+
+" Change Terminal's Title
+set title
 
 " Airline Settings
 let g:airline_powerline_fonts = 1
