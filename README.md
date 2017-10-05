@@ -31,3 +31,4 @@ LS Color are tweaker version of **dircolors.ansi-dark** from [Solarized Color Th
 [screenshot1]: https://i.imgur.com/35PbDfi.png "Dotfiles"
 [screenshot2]: https://i.imgur.com/XUmhvmd.png "Dotfiles"
 [screenshot3]: https://i.imgur.com/feNNd4O.png "Dotfiles"
+

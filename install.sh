@@ -26,3 +26,4 @@ rm -rf "$HOME/.oh-my-zsh/themes"
 ln -s "$DEV/src/Dotfiles/shell/.oh-my-zsh/themes" "$HOME/.oh-my-zsh/"
 rm -rf "$HOME/.config/"
 ln -s "$DEV/src/Dotfiles/vim/.config/" "$HOME"
+

@@ -1,7 +1,7 @@
 
 " Install vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
-	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dir
 	\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
@@ -44,6 +44,8 @@ let g:airline_symbols.space = "\ua0"
 set tabstop=4
 set softtabstop=0 noexpandtab
 set shiftwidth=4
+set breakindent
+set showbreak=\\\\\
 
 " Show Tabs
 silent exec "call ToggleShowTabs()"
@@ -60,6 +62,17 @@ set mouse=a
 " Scrolling
 set so=8
 
+" Less Case Sensitivity
+set infercase
+
+" Remove Swap File
+set nobackup
+set noswapfile
+
+" Hightlight First 200 Characters
+" of a Line
+set synmaxcol=200
+
 " Remap Colon
 nnoremap ; :
 nnoremap : ;
@@ -75,47 +88,60 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 inoremap <C-n> <C-c>:NERDTreeToggle<CR>
 
 " Undo Less
-inoremap . .<c-g>u
-inoremap ? ?<c-g>u
-inoremap ! !<c-g>u
-inoremap , ,<c-g>u
+inoremap . .<C-g>u
+inoremap ? ?<C-g>u
+inoremap ! !<C-g>u
+inoremap , ,<C-g>u
 
 " Visual Indent
-vnoremap > >gv
-vnoremap < <gv
+nnoremap = >>
+nnoremap - <<
+"inoremap <C-+> <C-d>
+"inoremap <C-_> <C-t>
+vnoremap = >gv
+vnoremap - <gv
 
+" Visual Dot Repeat
+xnoremap . :norm.<CR>
+
+" Toggle Between File Expoler and File
 nnoremap <C-e> <C-w><C-w>
 
 " Navigate Tabs
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 
 " Jump To Next Row Rather Than Line
-nnoremap j gj
-nnoremap k gk
+nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
+nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
 " Exit With Crtl W
-nnoremap <c-w> :q!<cr>
-inoremap <c-w> <C-c>:q!<cr>
+nnoremap <C-w> :q!<CR>
+inoremap <C-w> <C-c>:q!<CR>
 
 " Save With Crtl S
-nnoremap <c-s> :w<cr>
-inoremap <c-s> <C-c>:w<cr>
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <C-c>:w<CR>
 
-nnoremap <c-x> :x<cr>
-inoremap <c-x> <C-c>:x<cr>
+"Save and Quit With Crtl
+nnoremap <C-x> :x<CR>
+inoremap <C-x> <C-c>:x<CR>
+
+nnoremap c* *Ncgn
+nnoremap c# #NcgN
+inoremap <C-l> <C-x><C-l>
 
 " Highlight Last Inserted Text
 nnoremap gV `[v`]
 
 " Toggle Line Numbers on \F
-nnoremap <leader>f :call ToggleNumber()<cr>
+nnoremap <leader>f :call ToggleNumber()<CR>
 
 " Scroll Up and Down
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <C-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <C-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 
 " Disable Arrow keys in Escape mode
 map <up> <nop>
@@ -157,10 +183,15 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
 
 " Auto Open NERDTree Upon Starting VIM
-autocmd vimenter * NERDTree
+" Without a File
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Close VIM when only NERDTree is Open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Equalize Splits On Resize
+autocmd VimResized * wincmd =
 
 " Highlight Current Line in Current File
 autocmd WinEnter * setlocal cursorline
@@ -184,7 +215,6 @@ augroup preread
 		autocmd BufWritePre,FileWritePre * :%s/\s\+$//e | %s/\r$//e
 		" Converts Spaces to Tabs
 		autocmd BufWritePre,FileWritePre * :%retab!
-
 augroup END
 
 " Excuted On Save
