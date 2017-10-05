@@ -84,6 +84,8 @@ inoremap , ,<c-g>u
 vnoremap > >gv
 vnoremap < <gv
 
+nnoremap <C-e> <C-w><C-w>
+
 " Navigate Tabs
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -95,8 +97,8 @@ nnoremap j gj
 nnoremap k gk
 
 " Exit With Crtl W
-"nnoremap <c-w> :q!<cr>
-"inoremap <c-w> <C-c>:q!<cr>
+nnoremap <c-w> :q!<cr>
+inoremap <c-w> <C-c>:q!<cr>
 
 " Save With Crtl S
 nnoremap <c-s> :w<cr>
