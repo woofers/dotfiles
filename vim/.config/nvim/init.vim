@@ -1,7 +1,7 @@
 
 " Install vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
-	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dir
+	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
 	\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
@@ -19,6 +19,36 @@ endfunction
 " Toggles Visible Tabs
 function! ToggleShowTabs()
 	setlocal lcs=tab:│ ,trail:· list! list?
+endfunction
+
+" Swap Line Toggle
+function! s:swap_lines(n1, n2)
+	let line1 = getline(a:n1)
+	let line2 = getline(a:n2)
+	call setline(a:n1, line2)
+	call setline(a:n2, line1)
+endfunction
+
+" Swap Line Up
+function! s:swap_up()
+	let n = line('.')
+	if n == 1
+		return
+	endif
+
+	call s:swap_lines(n, n - 1)
+	exec n - 1
+endfunction
+
+" Swap Line Down
+function! s:swap_down()
+	let n = line('.')
+	if n == line('$')
+		return
+	endif
+
+	call s:swap_lines(n, n + 1)
+	exec n + 1
 endfunction
 
 " Add Plug-Ins
@@ -132,6 +162,9 @@ inoremap <C-x> <C-c>:x<CR>
 nnoremap c* *Ncgn
 nnoremap c# #NcgN
 inoremap <C-l> <C-x><C-l>
+
+noremap <silent> <C-s-up> :call <SID>swap_up()<CR>
+noremap <silent> <C-s-down> :call <SID>swap_down()<CR>
 
 " Highlight Last Inserted Text
 nnoremap gV `[v`]
