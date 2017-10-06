@@ -12,12 +12,13 @@ Custom Config and Theme files for:
 
 ![alt text][screenshot2]
 
-Neovim config uses [dracula-vim](https://github.com/dracula/vim)
-Airline theme is **light** from [airline-themes](https://github.com/vim-airline/vim-airline-themes)
+Neovim config uses [dracula-vim](https://github.com/dracula/vim).
+
+Airline theme is **light** from [airline-themes](https://github.com/vim-airline/vim-airline-themes).
 
 ## wsl-terminal
 
-wsl-terminal uses [dracula-mintty](https://github.com/dracula/mintty)
+wsl-terminal uses [dracula-mintty](https://github.com/dracula/mintty).
 
 ## BASH and ZSH
 
@@ -25,7 +26,7 @@ wsl-terminal uses [dracula-mintty](https://github.com/dracula/mintty)
 
 This config contains a modified versions of both [agnoster-zsh-theme](https://github.com/agnoster/agnoster-zsh-theme) and [agnoster-bash](https://gist.github.com/kruton/8345450) dubbed **wagnoster** for *BASH* and *ZSH*.
 
-LS Color are tweaker version of **dircolors.ansi-dark** from [Solarized Color Theme for GNU](https://github.com/seebi/dircolors-solarized)
+LS Color are tweaked version of **dircolors.ansi-dark** from [Solarized Color Theme for GNU](https://github.com/seebi/dircolors-solarized).
 
 
 [screenshot1]: https://i.imgur.com/35PbDfi.png "Dotfiles"
