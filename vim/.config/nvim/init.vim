@@ -54,7 +54,7 @@ endfunction
 " Add Plug-Ins
 call plug#begin('~/.config/nvim/plugins')
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
 Plug 'dracula/vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree'
@@ -64,6 +64,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
+"Plug 'artur-shaik/vim-javacomplete2'
 
 call plug#end()
 
@@ -76,6 +77,8 @@ let g:airline_symbols.space = "\ua0"
 set tabstop=4
 set softtabstop=0 noexpandtab
 set shiftwidth=4
+
+" Line Wrap
 set breakindent
 set showbreak=\\\\\
 
@@ -128,10 +131,10 @@ inoremap , ,<C-g>u
 " Visual Indent
 nnoremap = >>
 nnoremap - <<
-"inoremap <C-+> <C-d>
-"inoremap <C-_> <C-t>
 vnoremap = >gv
 vnoremap - <gv
+imap <C-=> <C-o>=
+imap <F3> <C-o>-
 
 " Visual Dot Repeat
 xnoremap . :norm.<CR>
@@ -164,10 +167,16 @@ inoremap <C-s> <C-c>:w<CR>
 nnoremap <C-x> :x<CR>
 inoremap <C-x> <C-c>:x<CR>
 
+" Change World Under Cursor
 nnoremap c* *Ncgn
-nnoremap c# #NcgN
+nnoremap c# #NcgNi
+
 inoremap <C-l> <C-x><C-l>
 
+" Close Root Files
+cmap w!! w !sudo tee % >/dev/null
+
+" Swap Lines
 noremap <silent> <C-s-up> :call <SID>swap_up()<CR>
 noremap <silent> <C-s-down> :call <SID>swap_down()<CR>
 
@@ -223,6 +232,9 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
 
+" Java Auto Complete
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
 " Auto Open NERDTree Upon Starting VIM
 " Without a File
 autocmd StdinReadPre * let s:std_in=1
@@ -268,5 +280,5 @@ augroup prewrite
 augroup END
 
 " Enable Deoplete
-call deoplete#enable()
+"call deoplete#enable()
 
