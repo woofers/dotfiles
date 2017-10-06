@@ -1,5 +1,4 @@
 
-
 " Install vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
 	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
@@ -140,6 +139,9 @@ xnoremap . :norm.<CR>
 " Toggle Between File Expoler and File
 nnoremap <C-e> <C-w><C-w>
 
+" Opens File Under Cursor
+nnoremap gf :vertical wincmd f<CR>
+
 " Navigate Tabs
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
@@ -209,6 +211,9 @@ set hlsearch
 
 " Ignore Non-Text File Types
 set wildignore=*.swp,*.bak,*.pyc,*.class
+set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico
+set wildignore+=*.pdf,*.psd
+set wildignore+=node_modules/*,bower_components/*
 
 " Change Terminal's Title
 set title
