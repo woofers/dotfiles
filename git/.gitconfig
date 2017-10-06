@@ -14,3 +14,5 @@
 	tool = vimdiff
 [mergetool]
 	path = nvim
+[credential]
+	helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring

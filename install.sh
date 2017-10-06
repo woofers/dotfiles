@@ -7,6 +7,7 @@ sudo apt-get install neovim
 sudo apt-get install python-pip
 sudo pip install powerline-shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sudo apt-get install libgnome-keyring-dev
 
 cd $HOME
 git clone https://github.com/powerline/fonts.git --depth=1
