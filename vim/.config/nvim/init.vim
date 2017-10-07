@@ -64,7 +64,6 @@ call plug#begin('~/.config/nvim/plugins')
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
 Plug 'dracula/vim'
-Plug 'shinokada/dragvisuals.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -235,8 +234,8 @@ nnoremap gV `[v`]
 nnoremap <leader>f :call ToggleNumber()<CR>
 
 " Scroll Up and Down
-noremap <silent> <C-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <C-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <C-u> :call smooth_scroll#up(&scroll / 5, 6, 1)<CR>
+noremap <silent> <C-d> :call smooth_scroll#down(&scroll / 5, 6, 1)<CR>
 
 " Disable Arrow keys in Escape mode
 map <up> <nop>
@@ -249,6 +248,9 @@ imap <up> <nop>
 imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
+
+nmap <ScrollWheelUp> <C-U>
+nmap <ScrollWheelDown> <C-D>
 
 if (has("termguicolors"))
 	set termguicolors
