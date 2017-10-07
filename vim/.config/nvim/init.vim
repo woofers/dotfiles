@@ -166,13 +166,13 @@ inoremap , ,<C-g>u
 nnoremap <silent> , :bp<CR>
 nnoremap <silent> . :bn<CR>
 
-" visual indent
-nnoremap = >>
-nnoremap - <<
-vnoremap = >gv
-vnoremap - <gv
-imap <F10> <C-o>=
-imap <F9> <C-o>-
+" Visual indent
+nnoremap <C-l> >>
+nnoremap <C-h> <<
+vnoremap <C-l> >gv
+vnoremap <C-h> <gv
+imap <C-l> <C-o><C-l>
+imap <C-h> <C-o><C-h>
 
 " Visual Dot Repeat
 xnoremap . :norm.<CR>
@@ -184,10 +184,10 @@ nnoremap <C-e> <C-w><C-w>
 nnoremap gf :vertical wincmd f<CR>
 
 " Navigate Tabs
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
+noremap <leader>h <C-w>h
+noremap <leader>k <C-w>k
+noremap <leader>j <C-w>j
+noremap <leader>l <C-w>l
 
 " Jump To Next Row Rather Than Line
 nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
@@ -221,8 +221,12 @@ nnoremap c# #NcgNi
 cmap w!! w !sudo tee % >/dev/null
 
 " Swap Lines
-noremap <silent> l :call <SID>swap_up()<CR>
-noremap <silent> m :call <SID>swap_down()<CR>
+noremap <silent> <C-k> :call <SID>swap_up()<CR>
+noremap <silent> <C-j> :call <SID>swap_down()<CR>
+imap <C-k> <C-o><C-k>
+imap <C-j> <C-o><C-j>
+vmap <C-k> <C-o><C-k>
+vmap <C-j> <C-o><C-j>
 
 " Highlight Last Inserted Text
 nnoremap gV `[v`]
