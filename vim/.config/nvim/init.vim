@@ -6,6 +6,10 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+"
+" Functions
+"
+
 " Toggles Between Relative Line Numbers and Abosulte
 function! ToggleNumber()
 	if(&relativenumber == 1)
@@ -51,10 +55,14 @@ function! s:swap_down()
 	exec n + 1
 endfunction
 
+"
+" Plug-Ins
+"
+
 " Add Plug-Ins
 call plug#begin('~/.config/nvim/plugins')
 
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
 Plug 'dracula/vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree'
@@ -68,10 +76,18 @@ Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
+" Airline Symbols
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
+
+"
+" Behavoir
+"
+
+" Show Tabs
+silent exec "call ToggleShowTabs()"
 
 " Set to Tabs With 4 Spaces
 set tabstop=4
@@ -82,8 +98,8 @@ set shiftwidth=4
 set breakindent
 set showbreak=\\\\\
 
-" Show Tabs
-silent exec "call ToggleShowTabs()"
+" Auto Indent
+set cindent
 
 " Disable Auto-Indent
 set ai
@@ -104,13 +120,32 @@ set infercase
 set nobackup
 set noswapfile
 
-" Hightlight First 200 Characters
+" Hightlight First 100 Characters
 " of a Line
-set synmaxcol=200
+set synmaxcol=100
+
+" Change Terminal's Title
+set title
+
+" Better Searching
+set incsearch
+set hlsearch
+
+" Set up English Spellchecking
+set spelllang=en
+
+"
+" Key Mapings
+"
 
 " Remap Colon
 nnoremap ; :
 nnoremap : ;
+
+" Insert New Line on I
+nnoremap o i
+nnoremap i a
+nnoremap a o
 
 " Map /T to Show Tabs
 nnoremap <leader>t :call ToggleShowTabs()<CR>
@@ -120,7 +155,6 @@ nnoremap <leader><space> :nohlsearch<CR>
 
 " Toggle File Expoler
 nnoremap <C-n> :NERDTreeToggle<CR>
-inoremap <C-n> <C-c>:NERDTreeToggle<CR>
 
 " Undo Less
 inoremap . .<C-g>u
@@ -128,13 +162,17 @@ inoremap ? ?<C-g>u
 inoremap ! !<C-g>u
 inoremap , ,<C-g>u
 
-" Visual Indent
+" Switch Buffers With ,, And ,.
+nnoremap <silent> , :bp<CR>
+nnoremap <silent> . :bn<CR>
+
+" visual indent
 nnoremap = >>
 nnoremap - <<
 vnoremap = >gv
 vnoremap - <gv
-imap <C-=> <C-o>=
-imap <F3> <C-o>-
+imap <F10> <C-o>=
+imap <F9> <C-o>-
 
 " Visual Dot Repeat
 xnoremap . :norm.<CR>
@@ -155,6 +193,10 @@ noremap <C-l> <C-w>l
 nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
 nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
+" New Line With Crtl Enter
+" Without Moving Carret
+inoremap <C-CR> <C-o>o
+
 " Exit With Crtl W
 nnoremap <C-w> :q!<CR>
 inoremap <C-w> <C-c>:q!<CR>
@@ -163,22 +205,24 @@ inoremap <C-w> <C-c>:q!<CR>
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <C-c>:w<CR>
 
-"Save and Quit With Crtl
+" Save and Quit With Crtl X
 nnoremap <C-x> :x<CR>
 inoremap <C-x> <C-c>:x<CR>
+
+" Select All With Crtl A
+nnoremap <C-a> ggVG
+inoremap <C-a> ggVG
 
 " Change World Under Cursor
 nnoremap c* *Ncgn
 nnoremap c# #NcgNi
 
-inoremap <C-l> <C-x><C-l>
-
 " Close Root Files
 cmap w!! w !sudo tee % >/dev/null
 
 " Swap Lines
-noremap <silent> <C-s-up> :call <SID>swap_up()<CR>
-noremap <silent> <C-s-down> :call <SID>swap_down()<CR>
+noremap <silent> l :call <SID>swap_up()<CR>
+noremap <silent> m :call <SID>swap_down()<CR>
 
 " Highlight Last Inserted Text
 nnoremap gV `[v`]
@@ -214,18 +258,11 @@ let g:airline_theme='light'
 " Allow File Specific
 filetype indent on
 
-" Better Searching
-set incsearch
-set hlsearch
-
 " Ignore Non-Text File Types
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico
 set wildignore+=*.pdf,*.psd
 set wildignore+=node_modules/*,bower_components/*
-
-" Change Terminal's Title
-set title
 
 " Airline Settings
 let g:airline_powerline_fonts = 1
@@ -237,8 +274,9 @@ autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 " Auto Open NERDTree Upon Starting VIM
 " Without a File
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd vimenter * NERDTree
 
 " Close VIM when only NERDTree is Open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -249,9 +287,6 @@ autocmd VimResized * wincmd =
 " Highlight Current Line in Current File
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
-
-" Set up English Spellchecking
-set spelllang=en
 
 " Excuted Upon Open
 augroup preread
