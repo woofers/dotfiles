@@ -2,7 +2,7 @@
 " Install vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
 	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-	\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -64,7 +64,7 @@ call plug#begin('~/.config/nvim/plugins')
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
 Plug 'dracula/vim'
-Plug 'jiangmiao/auto-pairs'
+Plug 'shinokada/dragvisuals.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -225,8 +225,8 @@ noremap <silent> <C-k> :call <SID>swap_up()<CR>
 noremap <silent> <C-j> :call <SID>swap_down()<CR>
 imap <C-k> <C-o><C-k>
 imap <C-j> <C-o><C-j>
-vmap <C-k> <C-o><C-k>
-vmap <C-j> <C-o><C-j>
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gvhhh
 
 " Highlight Last Inserted Text
 nnoremap gV `[v`]
