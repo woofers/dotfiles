@@ -213,7 +213,7 @@ prompt_status() {
 	[[ $UID -eq 0 ]] && symbols+="%{%F{black}%}⚡"
 	[[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{black}%}⚙"
 
-	[[ -n "$symbols" ]] && prompt_segment red 255 "$symbols"
+	[[ -n "$symbols" ]] && prompt_segment red 231 "$symbols"
 }
 
 ## Main prompt

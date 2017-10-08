@@ -7,7 +7,9 @@ sudo apt-get install neovim
 sudo apt-get install python-pip
 sudo pip install powerline-shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-sudo apt-get install libgnome-keyring-dev
+sudo apt-get install tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 
 cd $HOME
 git clone https://github.com/powerline/fonts.git --depth=1
@@ -15,6 +17,10 @@ cd fonts
 ./install.sh
 cd ..
 rm -rf fonts
+
+tmux
+tmux show -g | cat > ~/.tmux.conf
+exit
 
 export DEV="/mnt/d/Documents/Development"
 rm "$HOME/.bashrc"
@@ -25,6 +31,10 @@ rm "$HOME/.zshrc"
 ln -s "$DEV/src/Dotfiles/shell/.zshrc" "$HOME/.zshrc"
 rm -rf "$HOME/.oh-my-zsh/themes"
 ln -s "$DEV/src/Dotfiles/shell/.oh-my-zsh/themes" "$HOME/.oh-my-zsh/"
+rm "$HOME/.tmux.conf"
+rm -rf "$HOME/.tmux"
+ln -s "$DEV/src/Dotfiles/tmux/.tmux" "$HOME"
+ln -s "$DEV/src/Dotfiles/tmux/.tmux.conf" "$HOME/.tmux.conf"
 rm -rf "$HOME/.config/"
 ln -s "$DEV/src/Dotfiles/vim/.config/" "$HOME"
 

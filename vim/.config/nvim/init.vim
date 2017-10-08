@@ -9,7 +9,6 @@ endif
 "
 " Functions
 "
-
 " Toggles Between Relative Line Numbers and Abosulte
 function! ToggleNumber()
 	if(&relativenumber == 1)
@@ -64,12 +63,13 @@ call plug#begin('~/.config/nvim/plugins')
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
 Plug 'dracula/vim'
+Plug 'sjl/vitality.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'terryma/vim-smooth-scroll'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+"Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
 "Plug 'artur-shaik/vim-javacomplete2'
 
@@ -87,7 +87,7 @@ let g:airline_symbols.space = "\ua0"
 
 " Show Tabs
 silent exec "call ToggleShowTabs()"
-
+silent !echo -ne "\033]12;red\007"
 " Set to Tabs With 4 Spaces
 set tabstop=4
 set softtabstop=0 noexpandtab
@@ -111,6 +111,8 @@ set mouse=a
 
 " Scrolling
 set so=8
+
+set shell=/bin/zsh
 
 " Less Case Sensitivity
 set infercase
