@@ -7,6 +7,7 @@ Custom Config and Theme files for:
 - BASH (With [Powerline-Shell](https://github.com/banga/powerline-shell)),
 - ZSH (With [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh))
 - [wsl-terminal](https://github.com/goreliu/wsl-terminal)
+- [tmux](https://github.com/tmux/tmux)
 
 ## Neovim
 
@@ -19,6 +20,9 @@ Airline theme is **light** from [airline-themes](https://github.com/vim-airline/
 ## wsl-terminal
 
 wsl-terminal uses [dracula-mintty](https://github.com/dracula/mintty).
+
+## tmux
+tmux uses a modified version[tmux-airline-dracula](https://github.com/sei40kr/tmux-airline-dracula) named **wracula**.
 
 ## BASH and ZSH
 

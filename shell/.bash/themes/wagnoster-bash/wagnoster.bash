@@ -2,7 +2,7 @@
 # vim: ft=bash ts=2 sw=2 sts=2
 #
 #
-# Wagnoster Powerline Theme // Fork of agnoster.bash
+# Wagnoster Powerline Theme // Modified version of agnoster.bash
 #
 # agnoster's Theme - https://gist.github.com/3712874
 # A Powerline-inspired theme for BASH
