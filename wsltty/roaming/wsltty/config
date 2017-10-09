@@ -24,3 +24,6 @@ Locale=C
 BellType=0
 ZoomShortcuts=no
 CursorColour=253,191,130
+AltFnShortcuts=no
+WindowShortcuts=no
+SwitchShortcuts=no

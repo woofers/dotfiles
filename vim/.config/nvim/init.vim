@@ -69,8 +69,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'terryma/vim-smooth-scroll'
+Plug 'airblade/vim-gitgutter'
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
+Plug 'christoomey/vim-tmux-navigator'
 "Plug 'artur-shaik/vim-javacomplete2'
 
 call plug#end()
@@ -251,8 +253,16 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
+" Scrollwheel
 nmap <ScrollWheelUp> <C-U>
 nmap <ScrollWheelDown> <C-D>
+
+set winaltkeys=no
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
 
 if (has("termguicolors"))
 	set termguicolors
@@ -277,14 +287,15 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
 
+
 " Java Auto Complete
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
-" Auto Open NERDTree Upon Starting VIM
 " Without a File
 "autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd vimenter * NERDTree
+" Auto Open NERDTree Upon Starting VIM
 
 " Close VIM when only NERDTree is Open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

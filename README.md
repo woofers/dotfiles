@@ -22,7 +22,7 @@ Airline theme is **light** from [airline-themes](https://github.com/vim-airline/
 wsl-terminal uses [dracula-mintty](https://github.com/dracula/mintty).
 
 ## tmux
-tmux uses a modified version[tmux-airline-dracula](https://github.com/sei40kr/tmux-airline-dracula) named **wracula**.
+tmux uses a modified version of [tmux-airline-dracula](https://github.com/sei40kr/tmux-airline-dracula) named **wracula**.
 
 ## BASH and ZSH
 
@@ -31,7 +31,6 @@ tmux uses a modified version[tmux-airline-dracula](https://github.com/sei40kr/tm
 This config contains a modified versions of both [agnoster-zsh-theme](https://github.com/agnoster/agnoster-zsh-theme) and [agnoster-bash](https://gist.github.com/kruton/8345450) dubbed **wagnoster** for *BASH* and *ZSH*.
 
 LS Color are tweaked version of **dircolors.ansi-dark** from [Solarized Color Theme for GNU](https://github.com/seebi/dircolors-solarized).
-
 
 [screenshot1]: https://i.imgur.com/35PbDfi.png "Dotfiles"
 [screenshot2]: https://i.imgur.com/XUmhvmd.png "Dotfiles"

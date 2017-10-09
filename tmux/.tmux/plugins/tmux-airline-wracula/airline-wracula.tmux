@@ -21,9 +21,9 @@ main() {
   tmux set-option -g status-bg "${orange}"
   tmux set-option -g pane-active-border-fg "${green}"
   tmux set-option -g pane-border-fg "${gray}"
-  tmux set-option -g message-bg "${gray}"
-  tmux set-option -g message-fg "${black}"
-  tmux set-option -g message-command-bg "${gray}"
+  tmux set-option -g message-bg "${orange}"
+  tmux set-option -g message-fg "${white}"
+  tmux set-option -g message-command-bg "${orange}"
   tmux set-option -g message-command-fg "${black}"
   tmux set-option -g status-left " #I  "
   tmux set-option -g status-left-style "fg=${white},bg=${orange},bold"
@@ -34,7 +34,7 @@ main() {
   tmux set-window-option -g window-status-format ' #I #W '
   tmux set-window-option -g window-status-style "fg=${white},bg=${orange}"
   tmux set-window-option -g window-status-current-format \
-    "${right_sep}#[fg=${black}] #I ${right_alt_sep} #W #[fg=${orange},reverse]${right_sep}"
+	"${right_sep}#[fg=${black}] #I ${right_alt_sep} #W #[fg=${orange},reverse]${right_sep}"
   tmux set-window-option -g window-status-current-style "fg=${orange},bg=${red}"
 }
 
