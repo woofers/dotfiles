@@ -113,11 +113,14 @@ set mouse=a
 
 " Scrolling
 set so=8
-
-set shell=/bin/zsh
-
 " Less Case Sensitivity
 set infercase
+
+" Set Term to ZSH
+set shell=/bin/zsh
+
+" Enable Term Colors
+set termguicolors
 
 " Remove Swap File
 set nobackup
@@ -186,12 +189,6 @@ nnoremap <C-e> <C-w><C-w>
 " Opens File Under Cursor
 nnoremap gf :vertical wincmd f<CR>
 
-" Navigate Tabs
-noremap <leader>h <C-w>h
-noremap <leader>k <C-w>k
-noremap <leader>j <C-w>j
-noremap <leader>l <C-w>l
-
 " Jump To Next Row Rather Than Line
 nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
 nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
@@ -257,9 +254,10 @@ imap <right> <nop>
 nmap <ScrollWheelUp> <C-U>
 nmap <ScrollWheelDown> <C-D>
 
+" Navigate Tabs
 set winaltkeys=no
 let g:tmux_navigator_no_mappings = 1
-nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
@@ -286,7 +284,6 @@ set wildignore+=node_modules/*,bower_components/*
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
-
 
 " Java Auto Complete
 autocmd FileType java setlocal omnifunc=javacomplete#Complete

@@ -90,6 +90,11 @@ export DEV="$HOME_DRIVE/Documents/Development"
 export DRIVE="$HOME_DRIVE/Documents/JVD Docs/Documents/"
 export SCHOOL="$DRIVE/School/UVIC/2017"
 
+# Enable Term Colors
+export NVIM_TUI_ENABLE_TRUE_COLOR=1
+export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+# Aliases
 alias vi=nvim
 alias vim=nvim
 alias tmux='tmux -2 -u'
