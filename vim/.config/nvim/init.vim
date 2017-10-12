@@ -70,10 +70,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'airblade/vim-gitgutter'
-"Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
 Plug 'christoomey/vim-tmux-navigator'
-"Plug 'artur-shaik/vim-javacomplete2'
 
 call plug#end()
 
@@ -89,7 +87,7 @@ let g:airline_symbols.space = "\ua0"
 
 " Show Tabs
 silent exec "call ToggleShowTabs()"
-silent !echo -ne "\033]12;red\007"
+
 " Set to Tabs With 4 Spaces
 set tabstop=4
 set softtabstop=0 noexpandtab
@@ -148,7 +146,7 @@ set spelllang=en
 nnoremap ; :
 nnoremap : ;
 
-" Insert New Line on I
+" Remap of Insert Keys
 nnoremap o i
 nnoremap i a
 nnoremap a o
@@ -193,10 +191,6 @@ nnoremap gf :vertical wincmd f<CR>
 nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
 nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
-" New Line With Crtl Enter
-" Without Moving Carret
-inoremap <C-CR> <C-o>o
-
 " Exit With Crtl W
 nnoremap <C-w> :q!<CR>
 inoremap <C-w> <C-c>:q!<CR>
@@ -206,8 +200,8 @@ nnoremap <C-s> :w<CR>
 inoremap <C-s> <C-c>:w<CR>
 
 " Save and Quit With Crtl X
-nnoremap <C-x> :x<CR>
-inoremap <C-x> <C-c>:x<CR>
+nnoremap <C-x> :w\|bd<CR>
+inoremap <C-x> <C-c>:w\|bd<CR>
 
 " Select All With Crtl A
 nnoremap <C-a> ggVG
@@ -262,6 +256,7 @@ nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
 
+" Enable Term Colors
 if (has("termguicolors"))
 	set termguicolors
 endif
@@ -288,14 +283,14 @@ let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linen
 " Java Auto Complete
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
-" Without a File
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd vimenter * NERDTree
 " Auto Open NERDTree Upon Starting VIM
+" Without a File
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd vimenter * NERDTree
 
 " Close VIM when only NERDTree is Open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Equalize Splits On Resize
 autocmd VimResized * wincmd =
@@ -331,5 +326,5 @@ augroup prewrite
 augroup END
 
 " Enable Deoplete
-"call deoplete#enable()
+call deoplete#enable()
 
