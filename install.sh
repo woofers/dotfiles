@@ -31,18 +31,28 @@ tmux show -g | cat > ~/.tmux.conf
 exit
 
 export DEV="/mnt/d/Documents/Development"
+
 rm "$HOME/.bashrc"
 ln -s "$DEV/src/Dotfiles/shell/.bashrc" "$HOME/.bashrc"
+
 rm -rf "$HOME/.bash"
 ln -s "$DEV/src/Dotfiles/shell/.bash" "$HOME"
+
 rm "$HOME/.zshrc"
 ln -s "$DEV/src/Dotfiles/shell/.zshrc" "$HOME/.zshrc"
+
 rm -rf "$HOME/.oh-my-zsh/themes"
 ln -s "$DEV/src/Dotfiles/shell/.oh-my-zsh/themes" "$HOME/.oh-my-zsh/"
+
 rm -rf "$HOME/.tmux"
 ln -s "$DEV/src/Dotfiles/tmux/.tmux" "$HOME"
+
+rm "$HOME/dircolors.ansi-darkorange"
+ln -s "$DEV/src/Dotfiles/shell/dircolors.ansi-darkorange" "$HOME"
+
 rm "$HOME/.tmux.conf"
 ln -s "$DEV/src/Dotfiles/tmux/.tmux.conf" "$HOME/.tmux.conf"
+
 rm -rf "$HOME/.config/"
 ln -s "$DEV/src/Dotfiles/vim/.config/" "$HOME"
 
