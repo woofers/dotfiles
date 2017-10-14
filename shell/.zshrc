@@ -85,7 +85,8 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Aliases
-alias PC="export HOME_DRIVE"
+alias cb="cd .."
+alias cr="cd /"
 
 # Sets Enviroment Paths
 export HOME_DRIVE="/mnt/d/"
@@ -111,4 +112,5 @@ fi
 
 # Sets LS Colors
 eval `dircolors ~/dircolors.ansi-darkorange`
-
+zstyle ':completion:*:default' list-colors \
+	   ${(s.:.)LS_COLORS}

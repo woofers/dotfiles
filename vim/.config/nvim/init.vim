@@ -111,6 +111,7 @@ set mouse=a
 
 " Scrolling
 set so=8
+
 " Less Case Sensitivity
 set infercase
 
@@ -123,6 +124,9 @@ set termguicolors
 " Remove Swap File
 set nobackup
 set noswapfile
+
+" Use System Clipboard
+set clipboard=unnamed
 
 " Hightlight First 100 Characters
 " of a Line
