@@ -1,0 +1,1 @@
+%LOCALAPPDATA%\wsltty\bin\mintty.exe --wsl -h err --configdir="%APPDATA%\wsltty" -o Locale=C -o Charset=UTF-8 /bin/wslbridge -t  /bin/zsh

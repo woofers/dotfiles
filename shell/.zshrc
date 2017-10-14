@@ -107,7 +107,10 @@ alias tmuxw='tmux new-window -n'
 # Start in Tmux
 if [ -z "$TMUX" ]
 then
-	tmux new -s Workspace -n ZSH
+	tmux start-server
+	tmux new-session -d -s Workspace -n ZSH
+	tmuxw NVIM
+	tmux attach-session -t Workspace
 fi
 
 # Sets LS Colors
