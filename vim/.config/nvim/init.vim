@@ -303,6 +303,12 @@ autocmd VimResized * wincmd =
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
 
+" Rename TMUX Tab to File Name
+if exists('$TMUX')
+	autocmd BufEnter * call system("tmux rename-window 'NVIM: " . expand("%:t") . "'")
+	autocmd VimLeave * call system("tmux setw automatic-rename")
+endif
+
 " Excuted Upon Open
 augroup preread
 	autocmd!
