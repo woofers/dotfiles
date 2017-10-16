@@ -1,11 +1,11 @@
 # To use common configuration in %APPDATA%\mintty, simply remove this file
 BoldAsFont=no
-Font=Ubuntu Mono derivative Powerlin
-FontHeight=14
+Font=Meslo LG M Regular for Powerline
+FontHeight=12
 Term=xterm-256color
 ForegroundColour=253,74,105
 BackgroundColour=4,62,81
-Transparency=medium
+Transparency=low
 OpaqueWhenFocused=yes
 CursorType=line
 BoldAsColour=no

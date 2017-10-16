@@ -1,0 +1,44 @@
+(require 'package)
+
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (add-to-list
+   'package-archives
+   '("melpa" . "http://melpa.milkbox.net/packages/")
+   t))
+
+(package-initialize)
+
+(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/challenger-deep")
+(load-theme 'challenger-deep t)
+
+(require 'evil)
+(evil-mode 1)
+
+(require 'powerline)
+(powerline-default-theme)
+
+;;(require 'telephone-line-config)
+;;(telephone-line-evil-config)
+
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+
+(setq inhibit-startup-message t
+inhibit-startup-echo-area-message t)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(blink-cursor-delay 1.5)
+ '(package-selected-packages
+   (quote
+    (powerline-evil airline-themes evil-org telephone-line evil org))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(bold ((t (:weight bold :family "Meslo LG M Regular for Powerline")))))

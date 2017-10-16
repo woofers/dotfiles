@@ -9,6 +9,7 @@ endif
 "
 " Functions
 "
+
 " Toggles Between Relative Line Numbers and Abosulte
 function! ToggleNumber()
 	if(&relativenumber == 1)
@@ -72,6 +73,8 @@ Plug 'terryma/vim-smooth-scroll'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'majutsushi/tagbar'
+Plug 'tacahiroy/ctrlp-funky'
 
 call plug#end()
 
@@ -84,9 +87,6 @@ let g:airline_symbols.space = "\ua0"
 "
 " Behavoir
 "
-
-" Show Tabs
-silent exec "call ToggleShowTabs()"
 
 " Set to Tabs With 4 Spaces
 set tabstop=4
@@ -130,7 +130,7 @@ set clipboard=unnamed
 
 " Hightlight First 100 Characters
 " of a Line
-set synmaxcol=100
+set synmaxcol=135
 
 " Change Terminal's Title
 set title
@@ -141,6 +141,7 @@ set hlsearch
 
 " Set up English Spellchecking
 set spelllang=en
+setlocal spell
 
 "
 " Key Mapings
@@ -154,6 +155,9 @@ nnoremap : ;
 nnoremap o i
 nnoremap i a
 nnoremap a o
+
+" Remap Redo
+nnoremap r <C-r>
 
 " Map /T to Show Tabs
 nnoremap <leader>t :call ToggleShowTabs()<CR>
@@ -248,9 +252,14 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
-" Scrollwheel
+" Scroll Wheel
 nmap <ScrollWheelUp> <C-U>
 nmap <ScrollWheelDown> <C-D>
+
+" Ctrl P Funky
+nnoremap <C-r> :CtrlPFunky<Cr>
+
+nnoremap <C-m> :TagbarToggle<CR>
 
 " Navigate Tabs
 set winaltkeys=no
@@ -262,7 +271,7 @@ nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
 
 " Enable Term Colors
 if (has("termguicolors"))
-	set termguicolors
+set termguicolors
 endif
 
 " Set Theme
@@ -296,6 +305,9 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Close VIM when only NERDTree is Open
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" Ctrl P Funky Syntax
+let g:ctrlp_funky_syntax_highlight = 1
+
 " Equalize Splits On Resize
 autocmd VimResized * wincmd =
 
@@ -312,25 +324,23 @@ endif
 " Excuted Upon Open
 augroup preread
 	autocmd!
-		" Enable Spellchecking for Markdown
-		autocmd BufReadPre,FileReadPre *.md setlocal spell
-		autocmd BufReadPre,FileReadPre *.markdown setlocal spell
-		autocmd BufReadPre,FileReadPre *.txt setlocal spell
+
 		" Enable Shell Highlighting
-		autocmd BufReadPre,FileReadPre *.sh :setf sh
-		autocmd BufReadPre,FileReadPre *.bash :setf sh
-		autocmd BufReadPre,FileReadPre *.bashrc :setf sh
-		" Remove Trailing Spaces
-		autocmd BufWritePre,FileWritePre * :%s/\s\+$//e | %s/\r$//e
-		" Converts Spaces to Tabs
-		autocmd BufWritePre,FileWritePre * :%retab!
+		autocmd BufRead,BufNewFile *.sh :setf sh
+		autocmd BufRead,BufNewFile *.bash :setf sh
+		autocmd BufRead,BufNewFile *.bashrc :setf sh
+
+		" Show Tabs
+		autocmd BufRead,BufNewFile * silent exec "call ToggleShowTabs()"
 augroup END
 
 " Excuted On Save
 augroup prewrite
 	autocmd!
+
 		" Remove Trailing Spaces
 		autocmd BufWritePre,FileWritePre * :%s/\s\+$//e | %s/\r$//e
+
 		" Converts Spaces to Tabs
 		autocmd BufWritePre,FileWritePre * :%retab!
 augroup END

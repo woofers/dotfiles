@@ -10,6 +10,7 @@ sudo pip install powerline-shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 sudo apt-get install libevent-dev
 sudo apt-get install libncurses5-dev libncursesw5-dev
+sudo apt-get install exuberant-ctags
 
 cd $HOME
 wget https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz
