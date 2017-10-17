@@ -16,15 +16,16 @@
 ;; Initialize Packages
 (package-initialize)
 
-;; Function to Load and Initialize Packages from Package.el
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(eval-when-compile
-  (require 'use-package))
+;; Custom File
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file 'noerror)
 
-(use-package evil
+(use-package load-dir
   :ensure t)
+
+;; Evil Packages
+(load-file "~/.emacs.d/lisp/init-evil.el")
+(require 'init-evil)
 
 (use-package telephone-line
   :ensure t)
@@ -38,6 +39,9 @@
 (use-package magit
   :ensure t)
 
+(use-package neotree
+  :ensure t)
+
 (use-package org
   :ensure t)
 
@@ -47,19 +51,35 @@
 (use-package helm
   :ensure t)
 
+(use-package which-key
+  :ensure t)
+
+(use-package highlight-symbol
+  :ensure t)
+
 ;; Load Theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/challenger-deep")
 (load-theme 'challenger-deep t)
 
-;; Enable Emulated VIM Mode
-(evil-mode 1)
-
 ;; Enable Powerline in VIM Mode
 (telephone-line-evil-config)
 
+;; Org Mode
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
+
+;; Neotree Toggle
+(global-set-key (kbd "M-n") 'neotree-toggle)
+
+;; Enable Which Key
+(which-key-mode)
+
+;; Highlight
+(global-set-key [(control f3)] 'highlight-symbol)
+(global-set-key [f3] 'highlight-symbol-next)
+(global-set-key [(shift f3)] 'highlight-symbol-prev)
+(global-set-key [(meta f3)] 'highlight-symbol-query-replace)
 
 ;; Disable Splash Screen and Startup Message
 (setq inhibit-splash-screen t
@@ -74,7 +94,10 @@
 (when (boundp 'scroll-bar-mode)
   (scroll-bar-mode -1))
 
+;; Show Matching Pairs of Parentheses
 (show-paren-mode 1)
+
+;; Wrapped Lines?
 (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
 (setq-default left-fringe-width nil)
 (setq-default indicate-empty-lines t)
@@ -89,30 +112,36 @@
 ;; Allows Symlinks
 (setq vc-follow-symlinks t)
 
+;; Default Split is Vertical
 (setq split-width-threshold nil)
+
+;; Allow Custom Themes
 (setq custom-safe-themes t)
 
 ;; Show Line Numbers
 (column-number-mode t)
+(global-linum-mode t)
 
 ;; Set Tab Width
 (setq tab-width 4)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(blink-cursor-delay 100)
- '(package-hidden-regexps (quote ("\\`0blayoutelm")))
- '(package-selected-packages
-   (quote
-	(helm evil-magit powerline-evil airline-themes evil-org telephone-line evil org))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(bold ((t (:weight bold :family "Meslo LG M Regular for Powerline")))))
-(global-linum-mode t)
-(global-hl-line-mode +1)
+;; Set Font
+(set-frame-font "Meslo LG M Regular for Powerline 12" nil t)
+
+;; Unbind Arrow Keys
+(global-unset-key (kbd "<left>"))
+(global-unset-key (kbd "<right>"))
+(global-unset-key (kbd "<up>"))
+(global-unset-key (kbd "<down>"))
+(global-unset-key (kbd "<C-left>"))
+(global-unset-key (kbd "<C-right>"))
+(global-unset-key (kbd "<C-up>"))
+(global-unset-key (kbd "<C-down>"))
+(global-unset-key (kbd "<M-left>"))
+(global-unset-key (kbd "<M-right>"))
+(global-unset-key (kbd "<M-up>"))
+(global-unset-key (kbd "<M-down>"))
+
+(local-set-key
+ (kbd "C-j")
+nil)
