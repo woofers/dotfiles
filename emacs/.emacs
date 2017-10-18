@@ -118,11 +118,24 @@
 ;; Allow Custom Themes
 (setq custom-safe-themes t)
 
+;; Disable Auto-Save and Auto-Backup
+(setq auto-save-default nil)
+(setq make-backup-files nil)
+
+;; Set Title Bar
+(setq frame-title-format "%b - emacs")
+;; Show Tabulators
+;; (setq whitespace-style '(trailing tabs newline tab-mark newline-mark))
+;; (let ((d (make-display-table)))
+;;  (aset d 9 (vector ?| ?|))
+;;  (set-window-display-table nil d))
+
 ;; Show Line Numbers
 (column-number-mode t)
 (global-linum-mode t)
 
 ;; Set Tab Width
+(setq-default tab-width 4)
 (setq tab-width 4)
 
 ;; Set Font
@@ -142,6 +155,11 @@
 (global-unset-key (kbd "<M-up>"))
 (global-unset-key (kbd "<M-down>"))
 
-(local-set-key
- (kbd "C-j")
-nil)
+(local-set-key (kbd "C-j") nil)
+
+(defun my-insert-tab-char ()
+  "Insert a tab char. (ASCII 9, \t)"
+  (interactive)
+  (insert "\t"))
+
+(global-set-key (kbd "TAB") 'my-insert-tab-char)

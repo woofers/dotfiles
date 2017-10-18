@@ -20,6 +20,11 @@
   :config
   (global-evil-surround-mode))
 
+  (use-package evil-tabs
+  :ensure t
+  :config
+  (global-evil-tabs-mode t))
+  
   (use-package evil-indent-textobject
   :ensure t)
 )
@@ -67,10 +72,9 @@
    (interactive "*p")
    (move-text-internal (- arg)))
 
-
+;; Move Text Up and Down
 (define-key evil-normal-state-map (kbd "C-k") 'move-text-up)
 (define-key evil-normal-state-map (kbd "C-j") 'move-text-down)
-
 
 ;; Key Bindings
 (with-eval-after-load 'evil-maps
@@ -95,9 +99,11 @@
   (define-key evil-motion-state-map [up] nil)
   (define-key evil-motion-state-map [down] nil)
 
+  ;; Indent Bloack Left or Right
   (define-key evil-normal-state-map "\C-h" 'evil-shift-left-line)
   (define-key evil-normal-state-map "\C-l" 'evil-shift-right-line)
 
+  (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
   ;; (define-key evil-operator-state-map "a" evil-outer-text-objects-map)
   ;; (define-key evil-operator-state-map "i" evil-inner-text-objects-map)
   ;; (define-key evil-visual-state-map "i" evil-inner-text-objects-map)
