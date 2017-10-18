@@ -1,4 +1,9 @@
 
+;;
+;; init-evil.el
+;; Config File to Enable VIM like Behavior
+;;
+
 ;; Install Evil Related Plug-Ins
 (use-package evil
   :ensure t
@@ -24,21 +29,23 @@
   :ensure t
   :config
   (global-evil-tabs-mode t))
-  
+
   (use-package evil-indent-textobject
   :ensure t)
 )
 
-;; Enable Emulated VIM Mode
+;; Enable Emulated VIM Search
 (evil-mode 1)
 (evil-add-hjkl-bindings occur-mode-map 'emacs
-  (kbd "/")       'evil-search-forward
-  (kbd "n")       'evil-search-next
-  (kbd "N")       'evil-search-previous
-  (kbd "C-d")     'evil-scroll-down
-  (kbd "C-u")     'evil-scroll-up
-  (kbd "C-w C-w") 'other-window)
+    (kbd "/")       'evil-search-forward
+    (kbd "n")       'evil-search-next
+    (kbd "N")       'evil-search-previous
+    (kbd "C-d")     'evil-scroll-down
+    (kbd "C-u")     'evil-scroll-up
+    (kbd "C-w C-w") 'other-window
+)
 
+;; Move Block of Text
 (defun move-text-internal (arg)
    (cond
     ((and mark-active transient-mark-mode)
@@ -58,19 +65,24 @@
        (forward-line)
        (when (or (< arg 0) (not (eobp)))
             (transpose-lines arg))
-       (forward-line -1)))))
+       (forward-line -1))))
+)
 
+;; Move Down Block of Text
 (defun move-text-down (arg)
-   "Move region (transient-mark-mode active) or current line
-  arg lines down."
-   (interactive "*p")
-   (move-text-internal arg))
+    "Move region (transient-mark-mode active) or current line
+     arg lines down."
+    (interactive "*p")
+    (move-text-internal arg)
+)
 
+;; Move Up Block of Text
 (defun move-text-up (arg)
-   "Move region (transient-mark-mode active) or current line
-  arg lines up."
-   (interactive "*p")
-   (move-text-internal (- arg)))
+    "Move region (transient-mark-mode active)
+    or current linearg lines up."
+    (interactive "*p")
+    (move-text-internal (- arg))
+)
 
 ;; Move Text Up and Down
 (define-key evil-normal-state-map (kbd "C-k") 'move-text-up)
@@ -99,14 +111,12 @@
   (define-key evil-motion-state-map [up] nil)
   (define-key evil-motion-state-map [down] nil)
 
-  ;; Indent Bloack Left or Right
+  ;; Indent Block Left or Right
   (define-key evil-normal-state-map "\C-h" 'evil-shift-left-line)
   (define-key evil-normal-state-map "\C-l" 'evil-shift-right-line)
 
+  ;; VIM like Tab Behavoir
   (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
-  ;; (define-key evil-operator-state-map "a" evil-outer-text-objects-map)
-  ;; (define-key evil-operator-state-map "i" evil-inner-text-objects-map)
-  ;; (define-key evil-visual-state-map "i" evil-inner-text-objects-map)
 )
 
 (provide 'init-evil)
