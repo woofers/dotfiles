@@ -3,6 +3,16 @@
 ;; .emacs
 ;; Main emacs Config File
 ;;
+;;          TODO:
+;;          -Sort out Tabs
+;;          -Tabulators
+;;          -Better Auto Complete
+;;          -Fix Weird Auto Indent
+;;          -Fix Block Shift Right and Left
+;;          -Add Ctrl-w and Ctrl-n, Ctrl-r
+;;          -Add Better Neotree Commands
+;;          -Get Term Working
+;;
 
 ;;
 ;; Plug-Ins
@@ -52,6 +62,9 @@
 (use-package neotree
     :ensure t)
 
+(use-package auto-complete
+    :ensure t)
+
 (use-package org
     :ensure t)
 
@@ -80,7 +93,12 @@
 (setq org-log-done t)
 
 ;; Neotree Toggle
-(global-set-key (kbd "M-n") 'neotree-toggle)
+(local-unset-key (kbd "C-n"))
+(global-unset-key (kbd "C-n"))
+(global-set-key (kbd "C-n") 'neotree-toggle)
+
+;; Auto Complete Default Config
+(ac-config-default)
 
 ;; Enable Which Key
 (which-key-mode)
@@ -227,3 +245,5 @@
 
 ;; Backspace in Tabs like Increments
 (global-set-key [backspace] 'backspace-whitespace-to-tab-stop)
+
+(global-set-key (kbd "C-s") 'save-buffer)
