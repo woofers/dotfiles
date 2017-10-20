@@ -1,0 +1,20 @@
+l
+ls
+ls
+cd /
+l
+ls
+ll -la
+ll
+ls
+zsh
+bash
+sudo apt-get install zsh
+apt-get install zsh
+l
+ls
+rm -rf *.class
+ls
+javac *.java
+;q
+exit

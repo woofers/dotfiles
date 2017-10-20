@@ -4,14 +4,11 @@
 ;; Main emacs Config File
 ;;
 ;;          TODO:
-;;          -Sort out Tabs
-;;          -Tabulators
-;;          -Better Auto Complete
-;;          -Fix Weird Auto Indent
+;;          -Sort out Tabs (Fix Weird Auto Indent)
 ;;          -Fix Block Shift Right and Left
-;;          -Add Ctrl-w and Ctrl-n, Ctrl-r
-;;          -Add Better Neotree Commands
-;;          -Get Term Working
+;;          -Add Ctrl-r (Tags)
+;;          -Optimize Loading
+;;          -Magit
 ;;
 
 ;;
@@ -32,6 +29,7 @@
 
 ;; Disable Plug-Ins at Startup
 (setq package-enable-at-startup nil)
+
 
 ;; Initialize Packages
 (package-initialize)
@@ -80,6 +78,9 @@
 (use-package highlight-symbol
     :ensure t)
 
+(use-package highlight-indent-guides
+    :ensure t)
+
 ;; Load Theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/challenger-deep")
 (load-theme 'challenger-deep t)
@@ -90,7 +91,12 @@
 ;; Org Mode
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
-(setq org-log-done t)
+(setq org-blank-before-new-entry (quote ((heading) (plain-list-item))))
+(setq org-log-done (quote time))
+(setq org-log-redeadline (quote time))
+(setq org-log-reschedule (quote time))
+(setq org-todo-keywords
+      '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE" "CANCELED")))
 
 ;; Neotree Toggle
 (local-unset-key (kbd "C-n"))
@@ -103,11 +109,14 @@
 ;; Enable Which Key
 (which-key-mode)
 
-;; Highlight?
-(global-set-key [(control f3)] 'highlight-symbol)
-(global-set-key [f3] 'highlight-symbol-next)
-(global-set-key [(shift f3)] 'highlight-symbol-prev)
-(global-set-key [(meta f3)] 'highlight-symbol-query-replace)
+;; Show Tabs
+(setq highlight-indent-guides-method 'character)
+
+;; Find Next Occurance
+;; (global-set-key [(control f3)] 'highlight-symbol)
+;; (global-set-key [(meta f3)] 'highlight-symbol-query-replace)
+;; (global-set-key [f3] 'highlight-symbol-next)
+;; (global-set-key [(shift f3)] 'highlight-symbol-prev)
 
 ;;
 ;; Behavior
@@ -126,17 +135,15 @@
 (when (boundp 'scroll-bar-mode)
     (scroll-bar-mode -1))
 
-;; Show Matching Pairs of Parentheses
-(show-paren-mode 1)
+;; Disable Blinking of Window
+(setq visible-bell nil
+      ring-bell-function #'ignore)
 
 ;; Wrapped Lines
 (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
 (setq-default left-fringe-width nil)
 (setq-default indicate-empty-lines t)
 (setq-default indent-tabs-mode nil)
-
-;; Disable Sounds
-(setq visible-bell t)
 
 ;; No Warning for Large Files
 (setq large-file-warning-threshold nil)
@@ -156,12 +163,6 @@
 
 ;; Set Title Bar
 (setq frame-title-format "%b - emacs")
-
-;; Show Tabulators
-(setq whitespace-style '(trailing tabs newline tab-mark newline-mark))
-;;(let ((d (make-display-table)))
-;;(aset d 9 (vector ?| ?|))
-;;(set-window-display-table nil d))
 
 ;; Show Line Numbers
 (column-number-mode t)
@@ -184,15 +185,9 @@
 ;; Functions
 ;;
 
-;; Tab Function
-(defun my-insert-tab-char ()
-   "Insert a tab char. (ASCII 9, \t)"
-   (interactive)
-   (insert "\t"))
-
 ;; Backspace Function
 (defvar my-offset 4 "My indentation offset. ")
-(defun backspace-whitespace-to-tab-stop ()
+(defun backspace-whitespace-to-tab-stop()
   "Delete whitespace backwards to the next tab-stop, otherwise delete one character."
   (interactive)
   (if (or indent-tabs-mode
@@ -207,12 +202,12 @@
       (setq movement (min (- p 1) movement))
       (save-match-data
         (if (string-match "[^\t ]*\\([\t ]+\\)$" (buffer-substring-no-properties (- p movement) p))
-            (backward-delete-char (- (match-end 1) (match-beginning 1)))
+            (backward-delete-char (- (match-end 1) (-beginning 1)))
           (call-interactively 'backward-delete-char))))))
 
 ;; Convert to Spaces on Open
 (defvar untabify-this-buffer)
- (defun untabify-all ()
+ (defun untabify-all()
    "Untabify the current buffer, unless `untabify-this-buffer' is nil."
    (and untabify-this-buffer (untabify (point-min) (point-max))))
  (define-minor-mode untabify-mode
@@ -221,6 +216,54 @@
    (setq untabify-this-buffer (not (derived-mode-p 'makefile-mode)))
    (add-hook 'before-save-hook #'untabify-all))
    (add-hook 'prog-mode-hook 'untabify-mode)
+
+;; Java Function Jump
+(defvar java-function-regexp
+  (concat
+   "^[ \t]*"                                   ; leading white space
+   "\\(public\\|private\\|protected\\|"        ; some of these 8 keywords
+   "abstract\\|final\\|static\\|"
+   "synchronized\\|native"
+   "\\|[ \t\n\r]\\)*"                          ; or whitespace
+   "[a-zA-Z0-9_$]+"                            ; return type
+   "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
+   "[ \t\n\r]+"                                ; whitespace
+   "\\([a-zA-Z0-9_$]+\\)"                      ; the name we want!
+   "[ \t\n\r]*"                                ; optional whitespace
+   "("                                         ; open the param list
+   "\\([ \t\n\r]*"                             ; optional whitespace
+   "\\<[a-zA-Z0-9_$]+\\>"                      ; typename
+   "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
+   "[ \t\n\r]+"                                ; whitespace
+   "\\<[a-zA-Z0-9_$]+\\>"                      ; variable name
+   "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
+   "[ \t\n\r]*,?\\)*"                          ; opt whitespace and comma
+   "[ \t\n\r]*"                                ; optional whitespace
+   ")"                                         ; end the param list
+))
+
+(defun my-next-java-method()
+  (interactive)
+  (re-search-forward java-function-regexp nil t)
+)
+
+(defun my-prev-java-method()
+  (interactive)
+  (re-search-backward java-function-regexp nil t)
+)
+
+(defun my-clear-message()
+  (interactive)
+  (message nil))
+
+;; Maximize Window
+(defun maximize-frame()
+  "Maximizes the active frame in Windows"
+  (interactive)
+  ;; Send a `WM_SYSCOMMAND' message to the active frame with the
+  ;; `SC_MAXIMIZE' parameter.
+  (when (eq system-type 'windows-nt)
+    (w32-send-sys-command 61488)))
 
 ;;
 ;; Mappings
@@ -240,10 +283,17 @@
 (global-unset-key (kbd "<M-up>"))
 (global-unset-key (kbd "<M-down>"))
 
-;; Insert Tab on Tab
-;;(global-set-key [tab] 'my-insert-tab-char)
-
 ;; Backspace in Tabs like Increments
 (global-set-key [backspace] 'backspace-whitespace-to-tab-stop)
 
+;; Clear Minibuffer
+(global-set-key (kbd "C-c c") 'my-clear-message)
+
+;; Save on Ctrl S
 (global-set-key (kbd "C-s") 'save-buffer)
+
+;; Maximize Window
+(add-hook 'window-setup-hook 'maximize-frame t)
+
+;; Show Tabs
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
