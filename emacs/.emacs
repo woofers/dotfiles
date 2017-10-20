@@ -173,11 +173,14 @@
 (set-window-display-table nil nil)
 
 ;; Use Spaces
-(setq-default tab-width 4)
-(setq tab-width 4)
+(defvar tab-spaces 4 "Spaces per tab")
+(setq-default tab-width tab-spaces)
+(setq tab-width tab-spaces)
 (setq-default indent-tabs-mode nil)
-;;(setq indent-line-function 'insert-tab)
-;;(setq tab-stop-list (number-sequence 4 200 4))
+
+;; (For Tabs)
+;; (setq indent-line-function 'insert-tab)
+;; (setq tab-stop-list (number-sequence 4 200 4))
 
 ;; Set Font
 (set-frame-font "Meslo LG M Regular for Powerline 12" nil t)
@@ -187,7 +190,6 @@
 ;;
 
 ;; Backspace Function
-(defvar my-offset 4 "My indentation offset. ")
 (defun backspace-whitespace-to-tab-stop ()
   "Delete whitespace backwards to the next tab-stop, otherwise delete one character."
   (interactive)
@@ -197,9 +199,9 @@
             (> (point) (progn (back-to-indentation)
                               (point)))))
       (call-interactively 'backward-delete-char-untabify)
-    (let ((movement (% (current-column) my-offset))
+    (let ((movement (% (current-column) tab-spaces))
           (p (point)))
-      (when (= movement 0) (setq movement my-offset))
+      (when (= movement 0) (setq movement tab-spaces))
       ;; Account for edge case near beginning of buffer
       (setq movement (min (- p 1) movement))
       (save-match-data
@@ -218,41 +220,6 @@
    (setq untabify-this-buffer (not (derived-mode-p 'makefile-mode)))
    (add-hook 'before-save-hook #'untabify-all))
    (add-hook 'prog-mode-hook 'untabify-mode)
-
-;; Java Function Jump
-(defvar java-function-regexp
-  (concat
-   "^[ \t]*"                                   ; leading white space
-   "\\(public\\|private\\|protected\\|"        ; some of these 8 keywords
-   "abstract\\|final\\|static\\|"
-   "synchronized\\|native"
-   "\\|[ \t\n\r]\\)*"                          ; or whitespace
-   "[a-zA-Z0-9_$]+"                            ; return type
-   "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
-   "[ \t\n\r]+"                                ; whitespace
-   "\\([a-zA-Z0-9_$]+\\)"                      ; the name we want!
-   "[ \t\n\r]*"                                ; optional whitespace
-   "("                                         ; open the param list
-   "\\([ \t\n\r]*"                             ; optional whitespace
-   "\\<[a-zA-Z0-9_$]+\\>"                      ; typename
-   "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
-   "[ \t\n\r]+"                                ; whitespace
-   "\\<[a-zA-Z0-9_$]+\\>"                      ; variable name
-   "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
-   "[ \t\n\r]*,?\\)*"                          ; opt whitespace and comma
-   "[ \t\n\r]*"                                ; optional whitespace
-   ")"                                         ; end the param list
-))
-
-(defun my-next-java-method()
-  (interactive)
-  (re-search-forward java-function-regexp nil t)
-)
-
-(defun my-prev-java-method()
-  (interactive)
-  (re-search-backward java-function-regexp nil t)
-)
 
 (defun my-clear-message()
   (interactive)

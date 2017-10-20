@@ -10,7 +10,7 @@
   :config
   (evil-mode 1)
   (setq evil-want-C-u-scroll t)
-  
+
   (use-package evil-leader
   :ensure t
   :config
@@ -25,6 +25,9 @@
   :ensure t
   :config
   (global-evil-surround-mode))
+
+  (use-package evil-magit
+  :ensure t)
 
   (use-package evil-indent-textobject
   :ensure t)
@@ -41,6 +44,41 @@
               (kbd "C-d")     'evil-scroll-down
               (kbd "C-u")     'evil-scroll-up
               (kbd "C-w C-w") 'other-window)))
+
+;; Java Function Jump
+(defvar java-function-regexp
+  (concat
+   "^[ \t]*"                                   ; leading white space
+   "\\(public\\|private\\|protected\\|"        ; some of these 8 keywords
+   "abstract\\|final\\|static\\|"
+   "synchronized\\|native"
+   "\\|[ \t\n\r]\\)*"                          ; or whitespace
+   "[a-zA-Z0-9_$]+"                            ; return type
+   "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
+   "[ \t\n\r]+"                                ; whitespace
+   "\\([a-zA-Z0-9_$]+\\)"                      ; the name we want!
+   "[ \t\n\r]*"                                ; optional whitespace
+   "("                                         ; open the param list
+   "\\([ \t\n\r]*"                             ; optional whitespace
+   "\\<[a-zA-Z0-9_$]+\\>"                      ; typename
+   "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
+   "[ \t\n\r]+"                                ; whitespace
+   "\\<[a-zA-Z0-9_$]+\\>"                      ; variable name
+   "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
+   "[ \t\n\r]*,?\\)*"                          ; opt whitespace and comma
+   "[ \t\n\r]*"                                ; optional whitespace
+   ")"                                         ; end the param list
+))
+
+(defun my-next-java-method()
+  (interactive)
+  (re-search-forward java-function-regexp nil t)
+)
+
+(defun my-prev-java-method()
+  (interactive)
+  (re-search-backward java-function-regexp nil t)
+)
 
 ;; Move Block of Text
 (defun move-text-internal (arg)
@@ -172,4 +210,3 @@
 (evil-define-key 'normal neotree-mode-map (kbd "/C-n") 'neotree-toggle)
 
 (provide 'init-evil)
-
