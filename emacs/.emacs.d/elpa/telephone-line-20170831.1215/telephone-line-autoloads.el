@@ -3,8 +3,8 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "telephone-line" "telephone-line.el" (23012
-;;;;;;  59918 0 0))
+;;;### (autoloads nil "telephone-line" "telephone-line.el" (23018
+;;;;;;  37886 0 0))
 ;;; Generated autoloads from telephone-line.el
 
 (defvar telephone-line-mode nil "\
@@ -25,7 +25,7 @@ Toggle telephone-line on or off.
 ;;;***
 
 ;;;### (autoloads nil "telephone-line-config" "telephone-line-config.el"
-;;;;;;  (23012 59918 0 0))
+;;;;;;  (23018 37886 0 0))
 ;;; Generated autoloads from telephone-line-config.el
 
 (autoload 'telephone-line-evil-config "telephone-line-config" "\
@@ -36,7 +36,7 @@ A simple default for using telephone-line with evil.
 ;;;***
 
 ;;;### (autoloads nil "telephone-line-utils" "telephone-line-utils.el"
-;;;;;;  (23012 59918 0 0))
+;;;;;;  (23018 37886 0 0))
 ;;; Generated autoloads from telephone-line-utils.el
 
 (autoload 'telephone-line-defsegment* "telephone-line-utils" "\
@@ -70,7 +70,7 @@ Return nil for blank/empty strings.
 ;;;***
 
 ;;;### (autoloads nil nil ("telephone-line-pkg.el" "telephone-line-segments.el"
-;;;;;;  "telephone-line-separators.el") (23012 59918 0 0))
+;;;;;;  "telephone-line-separators.el") (23018 37886 0 0))
 
 ;;;***
 
