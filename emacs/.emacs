@@ -15,6 +15,7 @@
 ;; Plug-Ins
 ;;
 
+
 ;; Load Package.el
 (require 'package)
 
@@ -69,6 +70,9 @@
 (use-package auto-complete
     :ensure t)
 
+(use-package flyspell
+    :ensure t)
+
 (use-package org
     :ensure t)
 
@@ -85,6 +89,9 @@
     :ensure t)
 
 (use-package highlight-indent-guides
+    :ensure t)
+
+(use-package recentf
     :ensure t)
 
 ;; Load Theme
@@ -118,6 +125,17 @@
 ;; Show Tabs
 (setq highlight-indent-guides-method 'character)
 
+;; Enable Recent File
+(setq recentf-max-saved-items 200
+      recentf-max-menu-items 15)
+(recentf-mode 1)
+
+;; Spellcheck
+(add-to-list 'exec-path "D:/Program Files/Aspell/bin/")
+(setq ispell-program-name "aspell")
+(setq ispell-personal-dictionary "C:/path/to/your/.ispell")
+(require 'ispell)
+
 ;; Find Next Occurance
 ;; (global-set-key [(control f3)] 'highlight-symbol)
 ;; (global-set-key [(meta f3)] 'highlight-symbol-query-replace)
@@ -141,15 +159,35 @@
 (when (boundp 'scroll-bar-mode)
     (scroll-bar-mode -1))
 
+;; Nicer Scrolling
+(setq scroll-margin 0
+      scroll-conservatively 100000
+      scroll-preserve-screen-position 1)
+
+;; Powerline
+(line-number-mode t)
+(column-number-mode t)
+(size-indication-mode t)
+
+;; Allow Y/N
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; Newline at End of File
+(setq require-final-newline t)
+
 ;; Disable Blinking of Window
 (setq visible-bell nil
-      ring-bell-function #'ignore)
+      ring-bell-function 'ignore)
 
 ;; Wrapped Lines
 (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
 (setq-default left-fringe-width nil)
 (setq-default indicate-empty-lines t)
 (setq-default indent-tabs-mode nil)
+
+;; Width Limit
+(setq whitespace-line-column 80)
+(setq whitespace-style '(face lines-tail))
 
 ;; No Warning for Large Files
 (setq large-file-warning-threshold nil)
@@ -163,9 +201,24 @@
 ;; Allow Custom Themes
 (setq custom-safe-themes t)
 
-;; Disable Auto-Save and Auto-Backup
-(setq auto-save-default nil)
-(setq make-backup-files nil)
+;; Cleaner Auto-Save and Auto-Backup
+(defvar backup-directory (concat user-emacs-directory "backups"))
+(if (not (file-exists-p backup-directory))
+        (make-directory backup-directory t))
+(setq backup-directory-alist `(("." . ,backup-directory)))
+(setq make-backup-files t               ; Backup on Save
+      backup-by-copying t               ; Do not Clutter Symlinks
+      version-control t                 ; Add Version Number
+      delete-old-versions t             ; Delete Old Backup File
+      delete-by-moving-to-trash t       ; Permanat Delete
+      kept-old-versions 6               ; Oldest Versions
+      kept-new-versions 9               ; Newest Versions
+      auto-save-default t               ; Auto-Save on Buffer Switch
+      auto-save-timeout 20              ; Number of Second Between Auto-Saves
+      auto-save-interval 200            ; Number of Characters
+                                        ; Typed Between Auto-Save
+)
+
 
 ;; Set Title Bar
 (setq frame-title-format "%b - emacs")
@@ -177,6 +230,7 @@
 ;; Highlight Current Line
 (global-hl-line-mode 1)
 
+;; Disable Display Table
 (set-window-display-table nil nil)
 
 ;; Use Spaces
@@ -184,6 +238,7 @@
 (setq-default tab-width tab-spaces)
 (setq tab-width tab-spaces)
 (setq-default indent-tabs-mode nil)
+(setq tab-always-indent 'complete)
 
 ;; (For Tabs)
 ;; (setq indent-line-function 'insert-tab)
@@ -195,6 +250,13 @@
 ;;
 ;; Functions
 ;;
+
+(defun recentf-ido-find-file ()
+  "Find a recent file using ido."
+  (interactive)
+  (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
+    (when file
+      (find-file file))))
 
 ;; Backspace Function
 (defun backspace-whitespace-to-tab-stop ()
@@ -263,7 +325,10 @@
 (global-set-key [backspace] 'backspace-whitespace-to-tab-stop)
 
 ;; Clear Minibuffer
-(global-set-key (kbd "C-c c") 'my-clear-message)
+;; (global-set-key (kbd "C-c c") 'my-clear-message)
+
+;; Recent File
+(global-set-key (kbd "C-c C-f") 'recentf-ido-find-file)
 
 ;; Save on Ctrl S
 (global-set-key (kbd "C-s") 'save-buffer)
@@ -276,3 +341,13 @@
 
 ;; Trim Whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; Camel Case
+(add-hook 'prog-mode-hook 'subword-mode)
+
+;; Line Width
+(add-hook 'prog-mode-hook 'whitespace-mode)
+
+;; Better Mini-Buffer Help
+(add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
+(add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)

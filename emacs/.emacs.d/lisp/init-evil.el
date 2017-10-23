@@ -173,11 +173,13 @@
   (define-key evil-motion-state-map [down] nil)
 
   ;; Indent Block Left or Right
-  (define-key evil-normal-state-map "\C-l" (lambda () (interactive) (unindent-dwim -1)))
   (define-key evil-normal-state-map "\C-h" 'unindent-dwim)
+  (define-key evil-normal-state-map "\C-l" (lambda ()
+        (interactive) (unindent-dwim -1)))
 
   ;; VIM like Tab Behavoir
   (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
+  (define-key evil-insert-state-map [?\e delete] (lambda () (interactive) (universal-argument) (delete-forward-char)))
 
   ;; Unmap Ctrl N
   (define-key evil-normal-state-map "\C-n" nil)
