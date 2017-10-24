@@ -1,4 +1,6 @@
-((("flyspell" .
+((("setq" .
+   [1 0 0 0])
+  ("flyspell" .
    [1 0 0 0 0 0 0 0])
   ("universal-argument" .
    [0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
@@ -27,7 +29,7 @@
   ("save-buffer" .
    [0 0 0 0 0 0 0 1 0 0 0])
   ("nil" .
-   [1 0 0])
+   [2 0 0])
   ("evil-window-up" .
    [0 0 0 0 0 0 0 0 0 1 0 0 0 0])
   ("evil-window-increase-height" .
