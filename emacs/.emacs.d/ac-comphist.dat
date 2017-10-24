@@ -1,11 +1,5 @@
-((("flyspell" .
-   [1 0 0 0 0 0 0 0])
-  ("universal-argument" .
-   [0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
-  ("interactive" .
-   [0 0 0 0 0 0 0 0 0 0 1])
-  ("intern" .
-   [0 0 0 0 0 1])
+((("org" .
+   [1 0 0])
   ("tab-spaces" .
    [2 0 0 0 0 0 2 0 0 0])
   ("tab-stop" .

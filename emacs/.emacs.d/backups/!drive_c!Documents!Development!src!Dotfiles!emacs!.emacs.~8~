@@ -88,7 +88,7 @@
 (use-package which-key
     :ensure t)
 
-(use-package nlinum-relative
+(use-package linum-relative
     :ensure t)
 
 (use-package highlight-symbol
@@ -231,6 +231,7 @@
 
 ;; Show Line Numbers
 (global-linum-mode t)
+(linum-on)
 
 ;; Highlight Current Line
 (global-hl-line-mode 1)

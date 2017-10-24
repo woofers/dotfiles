@@ -4,11 +4,8 @@
 ;; Main emacs Config File
 ;;
 ;;          TODO:
-;;          -Spell Check
 ;;          -Navigate by Tabs h l
-;;          -Sort out Org Mode Tabs
-;;          -DEL Removes Tabs
-;;
+;;          -Sort out Tabs (Fix Weird Auto Indent)
 ;;          -Add Ctrl-r (Tags)
 ;;          -Optimize Loading
 ;;          -Magit
@@ -86,9 +83,6 @@
     :ensure t)
 
 (use-package which-key
-    :ensure t)
-
-(use-package nlinum-relative
     :ensure t)
 
 (use-package highlight-symbol
@@ -230,6 +224,7 @@
 (setq frame-title-format "%b - emacs")
 
 ;; Show Line Numbers
+(column-number-mode t)
 (global-linum-mode t)
 
 ;; Highlight Current Line
@@ -343,7 +338,6 @@
 
 ;; Show Tabs
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-(add-hook 'org-mode-hook 'highlight-indent-guides-mode)
 
 ;; Trim Whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

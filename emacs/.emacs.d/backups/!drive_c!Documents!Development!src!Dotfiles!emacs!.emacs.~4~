@@ -88,9 +88,6 @@
 (use-package which-key
     :ensure t)
 
-(use-package nlinum-relative
-    :ensure t)
-
 (use-package highlight-symbol
     :ensure t)
 
@@ -230,7 +227,10 @@
 (setq frame-title-format "%b - emacs")
 
 ;; Show Line Numbers
+(column-number-mode t)
 (global-linum-mode t)
+(linum-mode)
+(linum-relative-global-mode)
 
 ;; Highlight Current Line
 (global-hl-line-mode 1)

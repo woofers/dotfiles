@@ -88,9 +88,6 @@
 (use-package which-key
     :ensure t)
 
-(use-package nlinum-relative
-    :ensure t)
-
 (use-package highlight-symbol
     :ensure t)
 
@@ -156,6 +153,8 @@
 (setq inhibit-splash-screen t
     inhibit-startup-message t
     inhibit-startup-echo-area-message t)
+(setq inhibit-startup-screen t
+      initial-buffer-choice  nil)
 
 ;; Disable Menu and Toolbar
 (menu-bar-mode -1)
@@ -230,6 +229,7 @@
 (setq frame-title-format "%b - emacs")
 
 ;; Show Line Numbers
+(column-number-mode t)
 (global-linum-mode t)
 
 ;; Highlight Current Line
