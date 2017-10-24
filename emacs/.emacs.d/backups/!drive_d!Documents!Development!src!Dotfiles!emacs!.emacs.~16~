@@ -399,5 +399,4 @@
 (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
 (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)
 
-;; Auto Correct on Flyspell
 (add-hook 'flyspell-mode-hook #'flyspell-popup-auto-correct-mode)

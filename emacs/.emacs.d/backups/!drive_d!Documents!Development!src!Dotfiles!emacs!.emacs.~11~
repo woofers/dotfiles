@@ -78,12 +78,6 @@
 (use-package flyspell
     :ensure t)
 
-(use-package flyspell-lazy
-    :ensure t)
-
-(use-package flyspell-popup
-    :ensure t)
-
 (use-package org
     :ensure t)
 
@@ -147,10 +141,11 @@
 ;; Spellcheck
 (add-to-list 'exec-path "D:/Program Files/Aspell/bin/")
 (setq ispell-program-name "aspell")
-;; (setq ispell-personal-dictionary "D:/Program Files/Aspell/bin/dict/")
+(setq ispell-personal-dictionary "D:/Program Files/Aspell/bin/dict/")
 ;; (setq ispell-list-command "--list")
-;; (add-to-list 'ispell-extra-args "--sug-mode=ultra")
-;; (flyspell-lazy-mode 1)
+(add-to-list 'ispell-extra-args "--sug-mode=ultra")
+(global-set-key (kbd "<f8>") 'ispell-word)
+(global-set-key (kbd "C-<f8>") 'flyspell-mode)
 
 ;; Find Next Occurance
 ;; (global-set-key [(control f3)] 'highlight-symbol)
@@ -386,7 +381,7 @@
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 (add-hook 'org-mode-hook 'highlight-indent-guides-mode)
 
-;; Trim Whhitesapce
+;; Trim Whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Camel Case
@@ -398,6 +393,3 @@
 ;; Better Mini-Buffer Help
 (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
 (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)
-
-;; Auto Correct on Flyspell
-(add-hook 'flyspell-mode-hook #'flyspell-popup-auto-correct-mode)
