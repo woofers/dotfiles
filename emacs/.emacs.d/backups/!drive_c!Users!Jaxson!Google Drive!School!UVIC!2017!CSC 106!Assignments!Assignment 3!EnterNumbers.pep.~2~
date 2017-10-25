@@ -1,0 +1,38 @@
+; EnterNumbers.pep
+; CSC 106 - Fall 2017
+;
+; Read two numbers from the user, then print the two numbers and their sum.
+;
+; Author: B. Bird - 10/12/2017
+
+    STRO    PROMPT, d   ; Ask for a number
+    DECI    NUM1, d     ; Read the number into NUM1
+    STRO    PROMPT, d   ; Ask for another number
+    DECI    NUM2, d     ; Read the second number into NUM2
+
+    STRO    ENTERED, d  ; Display 'Numbers Entered: '
+    DECO    NUM1, d     ; Print NUM1
+    CHARO   ' ', i      ; Print a space
+    DECO    NUM2, d     ; Print NUM2
+    CHARO   '\n', i     ; End the line
+
+    LDA     NUM1, d     ; Load the value of NUM1 into register A
+    BR      DETER, i
+
+DETER: CPA NUM2, d
+       BRLT SECOND, i
+       DECO NUM2, d
+       STOP
+
+SECOND: DECO NUM1, d
+        STOP
+
+; Data section
+NUM1:    .WORD 0
+NUM2:    .WORD 0
+SUM:     .WORD 0
+PROMPT:  .ASCII "Enter a number: \x00"
+ENTERED: .ASCII "Numbers entered: \x00"
+SUMSTR:  .ASCII "Sum: \x00"
+
+         .END

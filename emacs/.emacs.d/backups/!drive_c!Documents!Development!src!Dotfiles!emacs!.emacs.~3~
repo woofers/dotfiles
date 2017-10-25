@@ -245,7 +245,7 @@
 (nlinum-relative-setup-evil)                    ;; setup for evil
 (add-hook 'prog-mode-hook 'nlinum-relative-mode)
 (setq nlinum-relative-redisplay-delay 0)      ;; delay
-;;(setq nlinum-relative-current-symbol "->")      ;; or "" for display current line number
+(setq nlinum-relative-current-symbol "->")      ;; or "" for display current line number
 (setq nlinum-relative-offset 0)                 ;; 1 if you want 0, 2, 3...
 
 ;; Highlight Current Line
@@ -361,7 +361,7 @@
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 (add-hook 'org-mode-hook 'highlight-indent-guides-mode)
 
-;; Trim Whitespace
+;; Trim Whitespaceeeeee
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Camel Case

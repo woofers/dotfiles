@@ -18,3 +18,8 @@ ls
 javac *.java
 ;q
 exit
+l
+g++
+l
+ls
+ls

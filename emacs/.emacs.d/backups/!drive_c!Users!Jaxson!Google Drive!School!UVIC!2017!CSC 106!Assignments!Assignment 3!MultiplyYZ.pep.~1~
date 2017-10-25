@@ -1,0 +1,41 @@
+
+;
+; Min2.pep
+; CSC 106 - Fall 2017
+;
+; Read two numbers from the user, then print the minimum
+;
+; Author: Jaxson Van Doorn - 10/24/2017
+; Student Number: V00888864
+;
+       STRO    PROMPT, d        ; Ask for a number
+       DECI    NUM1, d          ; Read the number into NUM1
+       STRO    PROMPT, d        ; Ask for another number
+       DECI    NUM2, d          ; Read the second number into NUM2
+
+       STRO    ENTERED, d       ; Display 'Numbers Entered: '
+       DECO    NUM1, d          ; Print NUM1
+       CHARO   ' ', i           ; Print a space
+       DECO    NUM2, d          ; Print NUM2
+       CHARO   '\n', i          ; End the line
+
+       LDA     NUM1, d          ; Load the value of NUM1 into register A
+
+       STRO    MIN, d           ; State that output will be a minimum
+       CPA     NUM2, d          ; Compare NUM1 with NUM2
+       BRLT    FIRST, i         ; Branch to FIRST when NUM1 is smaller than NUM2
+       DECO    NUM2, d          ; Print NUM2 otherwise
+       STOP                     ; Stop Program
+
+; Branch for when NUM1 is the minimum
+FIRST: DECO    NUM1, d          ; Print NUM1
+       STOP                     ; Stop Program
+
+; Variables
+NUM1:    .WORD 0
+NUM2:    .WORD 0
+PROMPT:  .ASCII "Enter a number: \x00"
+ENTERED: .ASCII "Numbers entered: \x00"
+MIN:     .ASCII "Minimum number: \x00"
+
+.END
