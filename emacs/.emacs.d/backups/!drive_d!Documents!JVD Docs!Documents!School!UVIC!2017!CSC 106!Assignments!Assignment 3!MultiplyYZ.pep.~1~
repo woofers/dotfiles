@@ -1,0 +1,65 @@
+
+;
+; MultiplyYZ.pep
+; CSC 106 - Fall 2017
+;
+; Read two numbers from the user, then print the minimum
+;
+; Author: Jaxson Van Doorn - 10/24/2017
+; Student Number: V00888864
+;
+       STRO    PROMPT, d        ; Ask for a number
+       DECI    NUM1, d          ; Read the number into NUM1
+       STRO    PROMPT, d        ; Ask for another number
+       DECI    NUM2, d          ; Read the second number into NUM2
+
+       STRO    ENTERED, d       ; Display 'Numbers Entered: '
+       DECO    NUM1, d          ; Print NUM1
+       CHARO   ' ', i           ; Print a space
+       DECO    NUM2, d          ; Print NUM2
+       CHARO   '\n', i          ; End the line
+
+       LDA     NUM1, d          ; Load the value of NUM1 into register A
+       STRO    RESULT, d        ; State that output will be a result
+       LDX     0, i             ; Clear register X
+       CPA     0, i             ; Test if number is negative
+       BRLT    NEGI, i          ; Branch to NEGI when NUM1 is negative
+       BR      CLEAR, i         ; Branch to CLEAR
+
+; Branch to convert NUM1 to a postive value
+NEGI:  SUBA    NUM1, d          ; Convert NUM1 to abs(NUM1)
+       SUBA    NUM1, d          ; Convert NUM1 to abs(NUM1)
+       STA     NUM1, d          ; Store ABS(NUM1) into NUM1
+
+       LDA     -1, i            ; Load -1 into register A
+       STA     SIGN, d          ; Store -1 into SIGN
+       BR      CLEAR, i         ; Brach to CLEAR
+
+; Clear register A
+CLEAR: LDA    0, i              ; Clear register A
+       BR     MUL, i            ; Branch to MUL
+
+
+; Multiple expression
+MUL:   ADDA   NUM2, d           ; Add NUM2 to register A
+       ADDX   1, i              ; Add 1 to register X
+       CPX    NUM1, d           ; Compare NUM1 to register X (Amount of times NUM2 has been added)
+       BRLT   MUL, i            ; Run MUL again if the expression is stil being evalulated
+
+       STA    ANSWER, d         ; Sotre Register A into ANSWER
+       DECO   ANSWER, d         ; Print ANSER
+       STOP
+
+FINAL:
+
+
+; Variables
+NUM1:    .WORD 0
+NUM2:    .WORD 0
+SIGN:    .WORD 1
+ANSWER:  .WORD 1
+PROMPT:  .ASCII "Enter a number: \x00"
+ENTERED: .ASCII "Numbers entered: \x00"
+RESULT:     .ASCII "Result: \x00"
+
+.END

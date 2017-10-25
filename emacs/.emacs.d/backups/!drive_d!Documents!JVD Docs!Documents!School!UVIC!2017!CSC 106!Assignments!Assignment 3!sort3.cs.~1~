@@ -1,0 +1,37 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        const int AMOUNT_OF_NUMS = 3;
+        int[] xyz = new int[AMOUNT_OF_NUMS];
+        string input = "";
+        for (int i = 0; i < xyz.Length; i ++)
+        {
+            Console.WriteLine("Enter a number: ");
+            input = Console.ReadLine();
+            if (input == "") break;
+            else int.TryParse(input, out xyz[i]);
+        }
+
+        for (int i = 0; i < xyz.Length; i++)
+        {
+            for (int j = 1; j < xyz.Length - i; j ++)
+            {
+                if (xyz[j - 1] > xyz[j])
+                {
+                    int temp = xyz[j - 1];
+                    xyz[j - 1] = xyz[j];
+                    xyz[j] = temp;
+                }
+            }
+        }
+
+        for (int i = 0; i < xyz.Length; i ++)
+        {
+            Console.WriteLine("\n");
+            Console.WriteLine(xyz[i]);
+        }
+    }
+}

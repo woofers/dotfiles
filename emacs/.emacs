@@ -133,8 +133,18 @@
 ;; Auto Complete Default Config
 (ac-config-default)
 
+(helm-mode 1)
+(setq helm-buffers-fuzzy-matching t)
+(setq helm-autoresize-mode t)
+(setq helm-buffer-max-length 40)
+(define-key helm-map (kbd "S-SPC") 'helm-toggle-visible-mark)
+(define-key helm-find-files-map (kbd "C-k") 'helm-find-files-up-one-level)
+
 ;; Enable Which Key
 (which-key-mode)
+
+;; Enable Relative Line Numbers
+(nlinum-relative-setup-evil)
 
 ;; Show Tabs
 (setq highlight-indent-guides-method 'character)
@@ -205,6 +215,7 @@
 ;; Width Limit
 (setq whitespace-line-column 80)
 (setq whitespace-style '(face lines-tail))
+(setq-default fill-column 80)
 
 ;; No Warning for Large Files
 (setq large-file-warning-threshold nil)
@@ -228,25 +239,21 @@
       version-control t                 ; Add Version Number
       delete-old-versions t             ; Delete Old Backup File
       delete-by-moving-to-trash t       ; Permanat Delete
-      kept-old-versions 6               ; Oldest Versions
-      kept-new-versions 9               ; Newest Versions
+      kept-old-versions 3               ; Oldest Versions
+      kept-new-versions 3               ; Newest Versions
       auto-save-default t               ; Auto-Save on Buffer Switch
-      auto-save-timeout 20              ; Number of Second Between Auto-Saves
+      auto-save-timeout 60              ; Number of Second Between Auto-Saves
       auto-save-interval 200            ; Number of Characters
                                         ; Typed Between Auto-Save
 )
 
-
 ;; Set Title Bar
 (setq frame-title-format "%b - emacs")
 
-;; Show Line Numbers
+;; Show Relative Line Numbers
 ;; (global-linum-mode t)
-(nlinum-relative-setup-evil)                    ;; setup for evil
-(add-hook 'prog-mode-hook 'nlinum-relative-mode)
-(setq nlinum-relative-redisplay-delay 0)      ;; delay
-;;(setq nlinum-relative-current-symbol "->")      ;; or "" for display current line number
-(setq nlinum-relative-offset 0)                 ;; 1 if you want 0, 2, 3...
+(setq nlinum-relative-redisplay-delay 0.018)
+(setq nlinum-relative-offset 0)
 
 ;; Highlight Current Line
 (global-hl-line-mode 1)
@@ -342,6 +349,10 @@
 (global-unset-key (kbd "<M-up>"))
 (global-unset-key (kbd "<M-down>"))
 
+;;
+;; Hooks
+;;
+
 ;; Backspace in Tabs like Increments
 (global-set-key [backspace] 'backspace-whitespace-to-tab-stop)
 
@@ -356,6 +367,10 @@
 
 ;; Maximize Window
 (add-hook 'window-setup-hook 'maximize-frame t)
+
+;; Relative Line Numbers
+(add-hook 'prog-mode-hook 'nlinum-relative-mode)
+(add-hook 'org-mode-hook 'nlinum-relative-mode)
 
 ;; Show Tabs
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)

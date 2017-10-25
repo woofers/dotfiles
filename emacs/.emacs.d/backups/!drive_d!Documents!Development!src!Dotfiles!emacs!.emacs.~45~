@@ -78,6 +78,12 @@
 (use-package flyspell
     :ensure t)
 
+(use-package flyspell-lazy
+    :ensure t)
+
+(use-package speck
+    :ensure t)
+
 (use-package org
     :ensure t)
 
@@ -130,6 +136,9 @@
 ;; Enable Which Key
 (which-key-mode)
 
+;; Enable Relative Line Numbers
+(nlinum-relative-setup-evil)
+
 ;; Show Tabs
 (setq highlight-indent-guides-method 'character)
 
@@ -139,12 +148,13 @@
 (recentf-mode 1)
 
 ;; Spellcheck
-(add-to-list 'exec-path "D:/Program Files/Aspell/bin/")
-(setq ispell-program-name "aspell")
-(setq ispell-personal-dictionary "D:/Program Files/Aspell/bin/dict/")
-(setq ispell-list-command "--list")
-(global-set-key (kbd "<f8>") 'ispell-word)
-(global-set-key (kbd "C-<f8>") 'flyspell-mode)
+(setq ispell-program-name (executable-find "hunspell")
+      ispell-dictionary "en_US")
+(setq ispell-local-dictionary-alist
+      '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil nil nil utf-8)))
+(setq flyspell-issue-message-flag nil)
+;; (flyspell-lazy-mode 1)
+;; (flyspell-mode 1)
 
 ;; Find Next Occurance
 ;; (global-set-key [(control f3)] 'highlight-symbol)
@@ -198,6 +208,7 @@
 ;; Width Limit
 (setq whitespace-line-column 80)
 (setq whitespace-style '(face lines-tail))
+(setq-default fill-column 80)
 
 ;; No Warning for Large Files
 (setq large-file-warning-threshold nil)
@@ -229,12 +240,13 @@
                                         ; Typed Between Auto-Save
 )
 
-
 ;; Set Title Bar
 (setq frame-title-format "%b - emacs")
 
-;; Show Line Numbers
-(global-linum-mode t)
+;; Show Relative Line Numbers
+;; (global-linum-mode t)
+(setq nlinum-relative-redisplay-delay 0.018)
+(setq nlinum-relative-offset 0)
 
 ;; Highlight Current Line
 (global-hl-line-mode 1)
@@ -248,6 +260,7 @@
 (setq tab-width tab-spaces)
 (setq-default indent-tabs-mode nil)
 (setq tab-always-indent 'complete)
+(setq backward-delete-char-untabify-method 'hungry)
 
 ;; (For Tabs)
 ;; (setq indent-line-function 'insert-tab)
@@ -303,37 +316,6 @@
   (interactive)
   (message nil))
 
-(defun flyspell-emacs-popup-textual (event poss word)
-  "A textual flyspell popup menu."
-  (require 'popup)
-  (let* ((corrects (if flyspell-sort-corrections
-                       (sort (car (cdr (cdr poss))) 'string<)
-                     (car (cdr (cdr poss)))))
-         (cor-menu (if (consp corrects)
-                       (mapcar (lambda (correct)
-                                 (list correct correct))
-                               corrects)
-                     '()))
-         (affix (car (cdr (cdr (cdr poss)))))
-         show-affix-info
-         (base-menu  (let ((save (if (and (consp affix) show-affix-info)
-                                     (list
-                                      (list (concat "Save affix: " (car affix))
-                                            'save)
-                                      '("Accept (session)" session)
-                                      '("Accept (buffer)" buffer))
-                                   '(("Save word" save)
-                                     ("Accept (session)" session)
-                                     ("Accept (buffer)" buffer)))))
-                       (if (consp cor-menu)
-                           (append cor-menu (cons "" save))
-                         save)))
-         (menu (mapcar
-                (lambda (arg) (if (consp arg) (car arg) arg))
-                base-menu)))
-    (cadr (assoc (popup-menu* menu :scroll-bar t) base-menu))))
-
-
 ;; Maximize Window
 (defun maximize-frame()
   "Maximizes the active frame in Windows"
@@ -362,7 +344,7 @@
 (global-unset-key (kbd "<M-down>"))
 
 ;; Backspace in Tabs like Increments
-(global-set-key [backspace] 'backspace-whitespace-to-tab-stop)
+;; (global-set-key [backspace] 'backspace-whitespace-to-tab-stop)
 
 ;; Clear Minibuffer
 ;; (global-set-key (kbd "C-c c") 'my-clear-message)
@@ -375,6 +357,9 @@
 
 ;; Maximize Window
 (add-hook 'window-setup-hook 'maximize-frame t)
+
+;; Relative Line Numbers
+(add-hook 'prog-mode-hook 'nlinum-relative-mode)
 
 ;; Show Tabs
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
@@ -390,16 +375,5 @@
 (add-hook 'prog-mode-hook 'whitespace-mode)
 
 ;; Better Mini-Buffer Help
-(add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
-(add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)
-
-;; Spell Check
-(dolist (hook '(text-mode-hook))
-  (add-hook hook (lambda () (flyspell-mode 1))))
-(dolist (hook '(change-log-mode-hook log-edit-mode-hook))
-  (add-hook hook (lambda () (flyspell-mode -1))))
-(add-hook 'prog-mode-hook 'flyspell-mode)
-
-(eval-after-load "flyspell"
-    '(progn
-       (fset 'flyspell-emacs-popup 'flyspell-emacs-popup-textual)))
+;; (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
+;; (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)
