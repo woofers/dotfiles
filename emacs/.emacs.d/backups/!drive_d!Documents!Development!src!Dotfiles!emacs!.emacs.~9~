@@ -89,7 +89,8 @@
   :ensure t
   :commands (wttrin)
   :init
-  (setq wttrin-default-cities '("Victoria"))
+  (setq wttrin-default-cities '("Vancouver")))
+
 (use-package ispell
     :ensure t)
 
@@ -130,6 +131,8 @@
 (define-key helm-find-files-map (kbd "C-k") 'helm-find-files-up-one-level)
 (global-set-key (kbd "M-x") #'helm-M-x)
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
+(global-set-key (kbd "C-x C-b") #'helm-buffers-list)
+(set-face-attribute 'helm-source-header nil :height 2)
 
 ;; Enable Which Key
 (which-key-mode)
@@ -140,7 +143,15 @@
 ;; Show Tabs
 (setq highlight-indent-guides-method 'character)
 
-;; Wheather
+;; Org Mode
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-blank-before-new-entry (quote ((heading) (plain-list-item))))
+(setq org-log-done (quote time))
+(setq org-log-redeadline (quote time))
+(setq org-log-reschedule (quote time))
+(setq org-todo-keywords
+    '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE" "CANCELED")))
 
 ;; Spellcheck
 (setq ispell-program-name (executable-find "hunspell")

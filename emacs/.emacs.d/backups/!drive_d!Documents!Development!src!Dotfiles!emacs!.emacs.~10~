@@ -89,7 +89,8 @@
   :ensure t
   :commands (wttrin)
   :init
-  (setq wttrin-default-cities '("Victoria"))
+  (setq wttrin-default-cities '("Vancouver")))
+
 (use-package ispell
     :ensure t)
 
@@ -130,6 +131,9 @@
 (define-key helm-find-files-map (kbd "C-k") 'helm-find-files-up-one-level)
 (global-set-key (kbd "M-x") #'helm-M-x)
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
+(global-set-key (kbd "C-x C-b") #'helm-buffers-list)
+(set-face-attribute 'helm-source-header nil :height 2)
+(setq helm-split-window-in-side-p t)
 
 ;; Enable Which Key
 (which-key-mode)
@@ -140,7 +144,15 @@
 ;; Show Tabs
 (setq highlight-indent-guides-method 'character)
 
-;; Wheather
+;; Org Mode
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-blank-before-new-entry (quote ((heading) (plain-list-item))))
+(setq org-log-done (quote time))
+(setq org-log-redeadline (quote time))
+(setq org-log-reschedule (quote time))
+(setq org-todo-keywords
+    '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE" "CANCELED")))
 
 ;; Spellcheck
 (setq ispell-program-name (executable-find "hunspell")
@@ -303,6 +315,16 @@
   (interactive)
   (message nil))
 
+(defun visit-term-buffer ()
+  "Create or visit a terminal buffer."
+  (interactive)
+  (if (not (get-buffer "*ansi-term*"))
+      (progn
+        (split-window-sensibly (selected-window))
+        (other-window 1)
+        (ansi-term (getenv "SHELL")))
+    (switch-to-buffer-other-window "*ansi-term*")))
+
 ;; Maximize Window
 (defun maximize-frame()
   "Maximizes the active frame in Windows"
@@ -330,15 +352,18 @@
 (global-unset-key (kbd "<M-up>"))
 (global-unset-key (kbd "<M-down>"))
 
-;;
-;; Hooks
-;;
-
 ;; Backspace in Tabs like Increments
 (global-set-key [backspace] 'backspace-whitespace-to-tab-stop)
 
 ;; Save on Ctrl S
 (global-set-key (kbd "C-s") 'save-buffer)
+
+;; Terminal
+(global-set-key (kbd "C-c t") 'visit-term-buffer)
+
+;;
+;; Hooks
+;;
 
 ;; Maximize Window
 (add-hook 'window-setup-hook 'maximize-frame t)
