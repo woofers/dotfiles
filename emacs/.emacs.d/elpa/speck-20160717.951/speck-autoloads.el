@@ -3,7 +3,7 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "speck" "speck.el" (23022 59428 0 0))
+;;;### (autoloads nil "speck" "speck.el" (23026 42840 0 0))
 ;;; Generated autoloads from speck.el
 
 (autoload 'speck-mode "speck" "\

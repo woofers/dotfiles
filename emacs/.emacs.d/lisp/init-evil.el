@@ -29,6 +29,10 @@
   (use-package evil-magit
   :ensure t)
 
+  (use-package evil-org
+  :ensure t)
+
+
   (use-package evil-indent-textobject
   :ensure t)
 )

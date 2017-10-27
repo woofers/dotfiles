@@ -229,8 +229,6 @@
 ;; Allow Custom Themes
 (setq custom-safe-themes t)
 
-(setq shell-file-name "C:\\Program Files\\Git\\bin\\bash.exe")
-
 ;; Cleaner Auto-Save and Auto-Backup
 (defvar backup-directory (concat user-emacs-directory "backups"))
 (if (not (file-exists-p backup-directory))
@@ -317,6 +315,12 @@
   (interactive)
   (message nil))
 
+(defun run-bash ()
+      (interactive)
+      (let ((shell-file-name "C:\\Program Files\\Git\\bin\\bash.exe"))
+      ;; (let ((shell-file-name "C:\\Users\\Jaxson\\AppData\\Local\\wsltty\\bin\\mintty.exe --wsl -h err --configdir=%APPDATA%\wsltty -o Locale=C -o Charset=UTF-8 /bin/wslbridge -t  /bin/zsh"))
+      (shell "*bash*")))
+
 (defun visit-term-buffer ()
   "Create or visit a terminal buffer."
   (interactive)
@@ -361,7 +365,10 @@
 (global-set-key (kbd "C-s") 'save-buffer)
 
 ;; Terminal
-(global-set-key (kbd "C-c t") 'visit-term-buffer)
+(global-set-key (kbd "C-c t") 'run-bash)
+
+;; Recent Files
+(global-set-key (kbd "C-x C-r") 'helm-recentf)
 
 ;;
 ;; Hooks

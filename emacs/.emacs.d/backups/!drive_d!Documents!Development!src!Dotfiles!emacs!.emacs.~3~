@@ -58,12 +58,6 @@
 (use-package telephone-line
     :ensure t)
 
-(use-package powerline
-    :ensure t)
-
-(use-package powerline-evil
-    :ensure t)
-
 (use-package magit
     :ensure t)
 
@@ -72,6 +66,33 @@
 
 (use-package auto-complete
     :ensure t)
+
+(use-package helm
+    :ensure t)
+
+(use-package which-key
+    :ensure t)
+
+;; (use-package recentf
+;;     :ensure t)
+
+(use-package nlinum-relative
+    :ensure t)
+
+(use-package highlight-indent-guides
+    :ensure t)
+
+(use-package org
+    :ensure t)
+
+(use-package org-plus-contrib
+    :ensure t)
+
+(use-package wttrin
+  :ensure t
+  :commands (wttrin)
+  :init
+  (setq wttrin-default-cities '("Vancouver")))
 
 (use-package ispell
     :ensure t)
@@ -85,29 +106,9 @@
 (use-package speck
     :ensure t)
 
-(use-package org
-    :ensure t)
-
-(use-package org-plus-contrib
-    :ensure t)
-
-(use-package helm
-    :ensure t)
-
-(use-package which-key
-    :ensure t)
-
-(use-package nlinum-relative
-    :ensure t)
-
-(use-package highlight-symbol
-    :ensure t)
-
-(use-package highlight-indent-guides
-    :ensure t)
-
-(use-package recentf
-    :ensure t)
+;; (use-package highlight-symbol
+;;     :ensure t)
+;;
 
 ;; Load Theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/challenger-deep")
@@ -115,16 +116,6 @@
 
 ;; Enable Powerline in VIM Mode
 (telephone-line-evil-config)
-
-;; Org Mode
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
-(setq org-blank-before-new-entry (quote ((heading) (plain-list-item))))
-(setq org-log-done (quote time))
-(setq org-log-redeadline (quote time))
-(setq org-log-reschedule (quote time))
-(setq org-todo-keywords
-    '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE" "CANCELED")))
 
 ;; Neotree Toggle
 (local-unset-key (kbd "C-n"))
@@ -143,6 +134,9 @@
 (define-key helm-find-files-map (kbd "C-k") 'helm-find-files-up-one-level)
 (global-set-key (kbd "M-x") #'helm-M-x)
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
+(global-set-key (kbd "C-x C-b") #'helm-buffers-list)
+(set-face-attribute 'helm-source-header nil :height 2)
+(setq helm-split-window-in-side-p t)
 
 ;; Enable Which Key
 (which-key-mode)
@@ -153,10 +147,15 @@
 ;; Show Tabs
 (setq highlight-indent-guides-method 'character)
 
-;; Enable Recent File
-(setq recentf-max-saved-items 200
-      recentf-max-menu-items 15)
-(recentf-mode 1)
+;; Org Mode
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-blank-before-new-entry (quote ((heading) (plain-list-item))))
+(setq org-log-done (quote time))
+(setq org-log-redeadline (quote time))
+(setq org-log-reschedule (quote time))
+(setq org-todo-keywords
+    '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE" "CANCELED")))
 
 ;; Spellcheck
 (setq ispell-program-name (executable-find "hunspell")
@@ -195,7 +194,7 @@
       scroll-conservatively 100000
       scroll-preserve-screen-position 1)
 
-;; Powerline
+;; Status Bar Info
 (line-number-mode t)
 (column-number-mode t)
 (size-indication-mode t)
@@ -232,6 +231,8 @@
 
 ;; Allow Custom Themes
 (setq custom-safe-themes t)
+
+(setq shell-file-name "C:\\Program Files\\Git\\bin\\bash.exe")
 
 ;; Cleaner Auto-Save and Auto-Backup
 (defvar backup-directory (concat user-emacs-directory "backups"))
@@ -283,13 +284,6 @@
 ;; Functions
 ;;
 
-(defun recentf-ido-find-file ()
-  "Find a recent file using ido."
-  (interactive)
-  (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
-    (when file
-      (find-file file))))
-
 ;; Backspace Function
 (defun backspace-whitespace-to-tab-stop ()
   "Delete whitespace backwards to the next tab-stop, otherwise delete one character."
@@ -322,9 +316,19 @@
    (add-hook 'before-save-hook #'untabify-all))
    (add-hook 'prog-mode-hook 'untabify-mode)
 
-(defun my-clear-message()
+(defun clear-message()
   (interactive)
   (message nil))
+
+(defun visit-term-buffer ()
+  "Create or visit a terminal buffer."
+  (interactive)
+  (if (not (get-buffer "*ansi-term*"))
+      (progn
+        (split-window-sensibly (selected-window))
+        (other-window 1)
+        (ansi-term (getenv "SHELL")))
+    (switch-to-buffer-other-window "*ansi-term*")))
 
 ;; Maximize Window
 (defun maximize-frame()
@@ -353,32 +357,21 @@
 (global-unset-key (kbd "<M-up>"))
 (global-unset-key (kbd "<M-down>"))
 
-;;
-;; Hooks
-;;
-
 ;; Backspace in Tabs like Increments
 (global-set-key [backspace] 'backspace-whitespace-to-tab-stop)
-
-;; Clear Minibuffer
-;; (global-set-key (kbd "C-c c") 'my-clear-message)
-
-;; Recent File
-(global-set-key (kbd "C-c C-f") 'recentf-ido-find-file)
 
 ;; Save on Ctrl S
 (global-set-key (kbd "C-s") 'save-buffer)
 
+;; Terminal
+(global-set-key (kbd "C-c t") 'visit-term-buffer)
+
+;;
+;; Hooks
+;;
+
 ;; Maximize Window
 (add-hook 'window-setup-hook 'maximize-frame t)
-
-;; Relative Line Numbers
-(add-hook 'prog-mode-hook 'nlinum-relative-mode)
-(add-hook 'org-mode-hook 'nlinum-relative-mode)
-
-;; Show Tabs
-(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-(add-hook 'org-mode-hook 'highlight-indent-guides-mode)
 
 ;; Trim Whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -388,6 +381,14 @@
 
 ;; Line Width
 (add-hook 'prog-mode-hook 'whitespace-mode)
+
+;; Relative Line Numbers
+(add-hook 'prog-mode-hook 'nlinum-relative-mode)
+(add-hook 'org-mode-hook 'nlinum-relative-mode)
+
+;; Show Tabs
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+(add-hook 'org-mode-hook 'highlight-indent-guides-mode)
 
 ;; Better Mini-Buffer Help
 ;; (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)

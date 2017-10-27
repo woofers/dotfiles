@@ -1,50 +1,6 @@
-((("set" .
-   [1 0 0])
-  ("helm-buffers" .
-   [1 0 0 0 0 0 0 0 0 0 0 0])
-  ("org" .
-   [2 0 0])
-  ("tab-spaces" .
-   [2 0 0 0 0 0 2 0 0 0])
-  ("tab-stop" .
-   [0 0 0 0 0 0 0 1])
-  ("tan" .
-   [0 0 1])
-  ("private" .
-   [0 0 0 0 0 0 1])
-  ("Not" .
-   [0 0 1])
-  ("Node" .
-   [0 0 0 1])
-  ("head" .
-   [1 0 0 0])
-  ("isEmpty" .
-   [0 0 0 1 0 0 0])
-  ("kbd" .
-   [1 0 0])
-  ("save-buffer" .
-   [0 0 0 0 0 0 0 1 0 0 0])
-  ("nil" .
-   [1 0 0])
-  ("evil-window-up" .
-   [0 0 0 0 0 0 0 0 0 1 0 0 0 0])
-  ("evil-window-increase-height" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0])
-  ("evil-window-increase-" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1])
-  ("evil-window-decrease-width" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 1 1 0 0 0 0 0 0 0 0 0])
-  ("evil-window-decrease-height" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
-  ("unindent-dwim" .
-   [0 0 0 0 0 0 0 0 0 0 1 0 0])
-  ("xyz" .
-   [6 0 0])
-  ("AMOUNT_OF_NUMS" .
-   [0 0 1 1 0 0 0 0 0 0 0 0 0 0])
-  ("setq" .
-   [2 0 0 0])
-  ("helm-find-files" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
-  ("helm-buffer" .
-   [0 0 0 0 0 0 0 0 0 0 1])))
+((("recentf" .
+   [1 0 0 0 0 0 0])
+  ("run-bash" .
+   [2 0 0 0 0 0 0 0])
+  ("helm-recentf" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])))

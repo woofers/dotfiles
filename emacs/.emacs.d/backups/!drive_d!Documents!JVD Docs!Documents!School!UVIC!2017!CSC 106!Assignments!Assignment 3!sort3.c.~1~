@@ -1,0 +1,42 @@
+
+/*
+* Name: Jaxson Van Doorn
+* ID: V00888864
+* Date: October 24, 2017
+* Filename: sort3.c
+* Details: CSC 106 Fall Assignment 3
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#define AMOUNT_OF_NUMS 3
+
+int main(void)
+{
+    int xyz[AMOUNT_OF_NUMS];
+    for (int i = 0; i < 3; i ++)
+    {
+      printf("Enter a number: ");
+       scanf("%d", &xyz[i]);
+    }
+
+    for (int i = 0; i < sizeof(xyz) / sizeof(int); i++)
+    {
+        for (int j = 1; j < sizeof(xyz) / sizeof(int) - i; j ++)
+        {
+            if (xyz[j - 1] > xyz[j])
+            {
+                int temp = xyz[j - 1];
+                xyz[j - 1] = xyz[j];
+                xyz[j] = temp;
+            }
+        }
+    }
+
+    for (int i = 0; i < sizeof(xyz) / sizeof(int); i ++)
+    {
+        printf("\n");
+        printf("%d", xyz[i]);
+    }
+    return EXIT_SUCCESS;
+}
