@@ -1,2 +1,3 @@
 ls
 exit
+exit

@@ -85,9 +85,6 @@
 (use-package org-plus-contrib
     :ensure t)
 
-(use-package omnisharp
-    :ensure t)
-
 (use-package wttrin
   :ensure t
   :commands (wttrin)
@@ -396,9 +393,6 @@
 ;; Show Tabs
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 (add-hook 'org-mode-hook 'highlight-indent-guides-mode)
-
-;; C Sharp
-(add-hook 'csharp-mode-hook 'omnisharp-mode)
 
 ;; Better Mini-Buffer Help
 ;; (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)

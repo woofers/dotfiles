@@ -1,0 +1,26 @@
+
+/*
+* Name: Jaxson Van Doorn
+* ID: V00888864
+* Date: October 25, 2017
+* Filename: Maze.java
+* Details: CSC115 Assignment 4
+*/
+
+public class Maze
+{
+    public Maze(String textMaze, Cell start, Cell finish)
+    {
+
+    }
+
+    public CellDeque solve()
+    {
+        return null;
+    }
+
+    public String toString()
+    {
+        return "";
+    }
+}

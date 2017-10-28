@@ -1,0 +1,61 @@
+
+/*
+* Name: Jaxson Van Doorn
+* ID: V00888864
+* Date: October 25, 2017
+* Filename: CellDeque.java
+* Details: CSC115 Assignment 4
+*/
+
+public class CellDeque
+{
+    public CellDeque()
+    {
+
+    }
+
+    public void insertFirst(Cell p)
+    {
+
+    }
+
+    public void insertLast(Cell p)
+    {
+
+    }
+
+    public Cell removeFirst()
+    {
+
+    }
+
+    public Cell removeLast()
+    {
+
+    }
+
+    public Cell first()
+    {
+
+    }
+
+    public Cell last()
+    {
+
+    }
+
+    public boolean isEmpty()
+    {
+
+    }
+
+    public void makeEmpty()
+    {
+
+    }
+
+    public static void main(String[] args)
+    {
+
+    }
+}

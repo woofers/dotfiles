@@ -1,0 +1,138 @@
+
+/*
+* Name: Jaxson Van Doorn
+* ID: V00888864
+* Date: October 25, 2017
+* Filename: CellDeque.java
+* Details: CSC115 Assignment 4
+*/
+
+public class CellDeque
+{
+    private CellNode head;
+    private CellNode tail;
+
+    public CellDeque()
+    {
+
+    }
+
+
+    public boolean contains(Cell p)
+    {
+        CellNode node = head;
+        while (node != null)
+        {
+            if (node.item.equals(p)) return true;
+            node = node.next;
+        }
+        return false;
+    }
+
+    public void insertFirst(Cell p)
+    {
+        CellNode node = new CellNode(p);
+        node.next = head;
+        if (!isEmpty()) head.prev = node;
+        head = node;
+        if (containsOneElement()) tail = head;
+    }
+
+    public void insertLast(Cell p)
+    {
+        CellNode node = new CellNode(p);
+        node.prev = tail;
+        if (tail != null) tail.next = node;
+        tail = node;
+
+        if (containsOneElement()) head = tail;
+    }
+
+    private void mirrorReferences()
+    {
+        tail = head;
+        if (!isEmpty())
+        {
+            head.prev = null;
+            head.next = null;
+        }
+    }
+
+    public Cell removeFirst() throws DequeEmptyException
+    {
+        if (isEmpty()) throw new DequeEmptyException();
+        Cell cell = head.item;
+        head = head.next;
+        if (head != null) head.prev = null;
+        if (containsOneElement()) tail = head;
+        return cell;
+    }
+
+    public Cell removeLast() throws DequeEmptyException
+    {
+        if (isEmpty()) throw new DequeEmptyException();
+        Cell cell = tail.item;
+        tail = tail.prev;
+        if (containsOneElement()) head = tail;
+        return cell;
+    }
+
+    public Cell first() throws DequeEmptyException
+    {
+        if (isEmpty()) throw new DequeEmptyException();
+        return head.item;
+    }
+
+    public Cell last() throws DequeEmptyException
+    {
+        if (isEmpty()) throw new DequeEmptyException();
+        return tail.item;
+    }
+
+    private boolean containsOneElement()
+    {
+        return (head == null) != (tail == null);
+    }
+
+    public boolean isEmpty()
+    {
+        return head == null && tail == null;
+    }
+
+    public void makeEmpty()
+    {
+        head = null;
+        tail = null;
+    }
+
+    public String toString()
+    {
+        CellNode node = head;
+        String output = "";
+        while (node != null)
+        {
+            output += node.item + "\n";
+            node = node.next;
+        }
+        return output;
+    }
+
+    public static void main(String[] args)
+    {
+        // Create a Deque
+        System.out.println("\nCreated Deque");
+        CellDeque list = new CellDeque();
+        list.insertFirst(new Cell(5, 5));
+        list.insertLast(new Cell(6, 6));
+        list.insertLast(new Cell(7, 7));
+        list.insertLast(new Cell(8, 8));
+        list.insertFirst(new Cell(2, 2));
+        System.out.println(list);
+
+
+        while (!list.isEmpty())
+        {
+            System.out.println(list.removeFirst());
+        }
+    }
+}

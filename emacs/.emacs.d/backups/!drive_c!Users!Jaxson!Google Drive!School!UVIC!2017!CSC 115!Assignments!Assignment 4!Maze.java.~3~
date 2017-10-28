@@ -1,0 +1,90 @@
+
+/*
+* Name: Jaxson Van Doorn
+* ID: V00888864
+* Date: October 25, 2017
+* Filename: Maze.java
+* Details: CSC115 Assignment 4
+*/
+
+public class Maze
+{
+    private char[][] maze;
+    private Cell start;
+    private Cell end;
+
+
+
+    public Maze(String[] textMaze, Cell start, Cell finish)
+    {
+        this.maze = charMaze(textMaze);
+        this.start = start;
+        this.end = finish;
+    }
+
+    public CellDeque solve()
+    {
+        CellDeque correct = new CellDeque();
+        CellDeque incorrect = new CellDeque();
+        for (int y = 0; y < maze.length; y ++)
+        {
+            for (int x = 0; x < maze[y].length; x ++)
+            {
+            }
+        }
+        System.out.println(isBlocked(new Cell(0, 1)));
+        System.out.println(maze[0][1]);
+        System.out.println(findPath(start, end));
+        return null;
+    }
+
+    private boolean isBlocked(Cell cell)
+    {
+        return maze[cell.col][cell.row] == '*';
+    }
+
+    private static char[][] charMaze(String[] maze)
+    {
+        int max = Integer.MIN_VALUE;
+        for (int y = 0; y < maze.length; y ++)
+        {
+            max = Math.max(max, maze[y].length());
+        }
+
+        char[][] charMaze = new char[maze.length][max];
+        for (int y = 0; y < charMaze.length; y ++)
+        {
+            for (int x = 0; x < charMaze[y].length; x ++)
+            {
+                charMaze[y][x] = maze[y].charAt(x);
+            }
+        }
+        return charMaze;
+    }
+
+    private boolean findPath(Cell start, Cell end)
+    {
+        if (isBlocked(end)) return false;
+        if (isBlocked(start)) return false;
+        if (start.equals(end)) return true;
+        return findPath(new Cell(start.row + 1, start.col), start)
+        || findPath(new Cell(start.row - 1, start.col), start)
+        || findPath(new Cell(start.row, start.col + 1), start)
+        || findPath(new Cell(start.row, start.col - 1), start);
+    }
+
+    public String toString()
+    {
+        String output = "";
+
+        for (int y = 0; y < maze.length; y ++)
+        {
+            for (int x = 0; x < maze[y].length; x ++)
+            {
+                output += maze[y][x];
+            }
+            output += "\n";
+        }
+        return output;
+}
+    }

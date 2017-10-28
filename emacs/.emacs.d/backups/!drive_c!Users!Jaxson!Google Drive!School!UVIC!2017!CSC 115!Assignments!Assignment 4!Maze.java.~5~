@@ -1,0 +1,149 @@
+
+/*
+* Name: Jaxson Van Doorn
+* ID: V00888864
+* Date: October 25, 2017
+* Filename: Maze.java
+* Details: CSC115 Assignment 4
+*/
+
+public class Maze
+{
+    private char[][] maze;
+    private boolean[][] visited;
+    private Cell start;
+    private Cell end;
+
+    public Maze(String[] textMaze, Cell start, Cell finish)
+    {
+        this.maze = charMaze(textMaze);
+        this.start = start;
+        this.end = finish;
+        this.visited = new boolean[maze.length][maze[0].length];
+        solvePrint();
+    }
+
+    private static char[][] charMaze(String[] maze)
+    {
+        int max = Integer.MIN_VALUE;
+        for (int y = 0; y < maze.length; y ++)
+        {
+            max = Math.max(max, maze[y].length());
+        }
+
+        char[][] charMaze = new char[maze.length][max];
+        for (int y = 0; y < charMaze.length; y ++)
+        {
+            for (int x = 0; x < charMaze[y].length; x ++)
+            {
+                charMaze[y][x] = maze[y].charAt(x);
+            }
+        }
+        return charMaze;
+    }
+
+    public CellDeque solve()
+    {
+        CellDeque path = new CellDeque();
+        findPath(start, end, path);
+        this.visited = null;
+        this.visited = new boolean[maze.length][maze[0].length];
+        return path;
+    }
+
+    private char valueOf(Cell cell)
+    {
+        return maze[cell.row][cell.col];
+    }
+
+    private boolean isBlocked(Cell cell)
+    {
+        return maze[cell.row][cell.col] == '*';
+    }
+
+    private boolean wasVisited(Cell cell)
+    {
+        return visited[cell.row][cell.col];
+    }
+
+    private void setVisited(Cell cell)
+    {
+        visited[cell.row][cell.col] = true;
+    }
+
+    private boolean exists(Cell cell)
+    {
+        return !(cell.row < 0 || cell.col < 0);
+    }
+
+    private boolean findPath(Cell start, Cell end, CellDeque path)
+    {
+        if (!exists(start) || wasVisited(start)) return false;
+
+        setVisited(start);
+        if (isBlocked(start) || isBlocked(end))
+        {
+            return false;
+        }
+
+        if (start.equals(end))
+        {
+            path.insertFirst(start);
+            return true;
+        }
+
+        final int GROWTH = 4;
+        boolean[] results = new boolean[GROWTH];
+        boolean result = false;
+        results[0] = findPath(new Cell(start.row + 1, start.col), end, path);
+        results[1] = findPath(new Cell(start.row - 1, start.col), end, path);
+        results[2] = findPath(new Cell(start.row, start.col + 1), end, path);
+        results[3] = findPath(new Cell(start.row, start.col - 1), end, path);
+
+        result = results[0] || results[1]
+            || results[2] || results[3];
+        if (!result) return false;
+        path.insertFirst(start);
+        return true;
+    }
+
+    public void print()
+    {
+        System.out.println(this);
+    }
+
+    public void solvePrint()
+    {
+        System.out.println(solveString());
+    }
+
+    public String solveString()
+    {
+        CellDeque path = solve();
+        String output = "";
+        for (int y = 0; y < maze.length; y ++)
+        {
+            for (int x = 0; x < maze[y].length; x ++)
+            {
+                Cell cell = new Cell(y, x);
+                output += path.contains(cell) ? "•" : valueOf(cell);
+            }
+            output += "\n";
+        }
+        return output;
+    }
+
+    public String toString()
+    {
+        String output = "";
+        for (int y = 0; y < maze.length; y ++)
+        {
+            for (int x = 0; x < maze[y].length; x ++)
+            {
+                output += valueOf(new Cell(y, x));
+            }
+            output += "\n";
+        }
+        return output;
+    }
+}
