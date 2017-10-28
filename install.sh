@@ -50,6 +50,10 @@ ln -s "$DEV/src/Dotfiles/shell/.zshrc" "$HOME/.zshrc"
 rm -rf "$HOME/.oh-my-zsh/themes"
 ln -s "$DEV/src/Dotfiles/shell/.oh-my-zsh/themes" "$HOME/.oh-my-zsh/"
 
+# Setup Git Config
+rm "$HOME/.gitconifg"
+ln -s "$DEV/src/Dotfiles/git/.gitconifg" "$HOME/.gitconfig"
+
 # Setup TMUX Config
 rm "$HOME/.tmux.conf"
 ln -s "$DEV/src/Dotfiles/tmux/.tmux.conf" "$HOME/.tmux.conf"
