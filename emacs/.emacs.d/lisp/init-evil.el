@@ -176,6 +176,9 @@
   (define-key evil-motion-state-map [up] nil)
   (define-key evil-motion-state-map [down] nil)
 
+  ;; Spellcheck
+  (define-key evil-normal-state-map "r" 'speck-popup-menu-at-point)
+
   ;; Indent Block Left or Right
   (define-key evil-normal-state-map "\C-h" 'unindent-dwim)
   (define-key evil-normal-state-map "\C-l" (lambda ()

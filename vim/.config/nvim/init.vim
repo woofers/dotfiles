@@ -64,6 +64,7 @@ call plug#begin('~/.config/nvim/plugins')
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
 Plug 'dracula/vim'
+Plug 'MaxSt/FlatColor'
 Plug 'sjl/vitality.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
@@ -276,7 +277,7 @@ endif
 
 " Set Theme
 syntax enable
-colorscheme dracula
+colorscheme flatcolor
 let g:airline_theme='light'
 
 " Allow File Specific

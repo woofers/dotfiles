@@ -4,15 +4,17 @@
 ;; Main emacs Config File
 ;;
 ;;          TO-DO:
-;;          -Spell Check
-;;          -Navigate by Tabs h l
-;;          -Sort out Org Mode Tabs
-;;          -DEL Removes Tabs
 ;;
+;;          -Spell Check
 ;;          -Add Ctrl-r (Tags)
 ;;          -Optimize Loading
 ;;          -Magit
 ;;          -Git Ignore
+;;          -Update Readme
+;;
+;;          -Navigate by Tabs h l
+;;          -Sort out Org Mode Tabs
+;;          -DEL Removes Tabs
 ;;
 
 ;;
@@ -38,6 +40,7 @@
 ;; Initialize Packages
 (package-initialize)
 
+;; Install Packages on Initial Install
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
@@ -158,15 +161,22 @@
     '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE" "CANCELED")))
 
 ;; Spellcheck
-(setq ispell-program-name (executable-find "hunspell")
-      ispell-dictionary "en_US")
-(setq ispell-local-dictionary-alist
-      '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil nil nil utf-8)))
-(setq flyspell-issue-message-flag nil)
-;; (flyspell-lazy-mode 1)
-;; (flyspell-mode 1)
+(setq speck-engine 'Hunspell
+      speck-hunspell-program (executable-find "hunspell")
+      speck-hunspell-library-directory
+      (if (eq system-type 'windows-nt)
+          ""
+        (expand-file-name "share/hunspell/"
+                          (file-name-directory
+                            (directory-file-name
+                            (file-name-directory speck-hunspell-program)))))
+      speck-hunspell-default-dictionary-name "en"
+      speck-hunspell-dictionary-alist '(("en" . "en_US"))
+      speck-hunspell-language-options '(("en" utf-8 nil nil))
+      speck-hunspell-coding-system 'utf-8)
+(speck-mode 1)
 
-;; Find Next Occurance
+;; Find Next Occurrance
 ;; (global-set-key [(control f3)] 'highlight-symbol)
 ;; (global-set-key [(meta f3)] 'highlight-symbol-query-replace)
 ;; (global-set-key [f3] 'highlight-symbol-next)
@@ -223,7 +233,7 @@
 ;; No Warning for Large Files
 (setq large-file-warning-threshold nil)
 
-;; Allows Symlinks
+;; Allows Symlink
 (setq vc-follow-symlinks t)
 
 ;; Default Split is Vertical
@@ -314,6 +324,37 @@
    (add-hook 'before-save-hook #'untabify-all))
    (add-hook 'prog-mode-hook 'untabify-mode)
 
+(defun flyspell-emacs-popup-textual (event poss word)
+  "A textual flyspell popup menu."
+  (require 'popup)
+  (let* ((corrects (if flyspell-sort-corrections
+                       (sort (car (cdr (cdr poss))) 'string<)
+                     (car (cdr (cdr poss)))))
+         (cor-menu (if (consp corrects)
+                       (mapcar (lambda (correct)
+                                 (list correct correct))
+                               corrects)
+                     '()))
+         (affix (car (cdr (cdr (cdr poss)))))
+         show-affix-info
+         (base-menu  (let ((save (if (and (consp affix) show-affix-info)
+                                     (list
+                                      (list (concat "Save affix: " (car affix))
+                                            'save)
+                                      '("Accept (session)" session)
+                                      '("Accept (buffer)" buffer))
+                                   '(("Save word" save)
+                                     ("Accept (session)" session)
+                                     ("Accept (buffer)" buffer)))))
+                       (if (consp cor-menu)
+                           (append cor-menu (cons "" save))
+                         save)))
+         (menu (mapcar
+                (lambda (arg) (if (consp arg) (car arg) arg))
+                base-menu)))
+    (cadr (assoc (popup-menu* menu :scroll-bar t) base-menu))))
+
+
 (defun clear-message()
   (interactive)
   (message nil))
@@ -327,6 +368,7 @@
 (defun visit-term-buffer ()
   "Create or visit a terminal buffer."
   (interactive)
+  (setenv "SHELL", "C:/Program Files/Git/bin/bash.exe")
   (if (not (get-buffer "*ansi-term*"))
       (progn
         (split-window-sensibly (selected-window))
@@ -389,6 +431,10 @@
 ;; Line Width
 (add-hook 'prog-mode-hook 'whitespace-mode)
 
+;; Spellcheck
+(add-hook 'prog-mode-hook 'speck-mode)
+(add-hook 'org-mode-hook 'speck-mode)
+
 ;; Relative Line Numbers
 (add-hook 'prog-mode-hook 'nlinum-relative-mode)
 (add-hook 'org-mode-hook 'nlinum-relative-mode)
@@ -399,6 +445,13 @@
 
 ;; C Sharp
 (add-hook 'csharp-mode-hook 'omnisharp-mode)
+
+;; Assembly Mode
+(defun asm-hook ()
+  (when (string= (file-name-extension buffer-file-name) "pep")
+    (asm-mode))
+)
+(add-hook 'find-file-hook 'asm-hook)
 
 ;; Better Mini-Buffer Help
 ;; (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
