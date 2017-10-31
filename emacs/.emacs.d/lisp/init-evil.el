@@ -184,14 +184,14 @@
   (define-key evil-normal-state-map "\C-l" (lambda ()
         (interactive) (unindent-dwim -1)))
 
-  ;; VIM like Tab Behavoir
+  ;; VIM like Tab Behavior
   (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
   (define-key evil-insert-state-map [?\e delete] (lambda () (interactive) (universal-argument) (delete-forward-char)))
 
   ;; Unmap Ctrl N
   (define-key evil-normal-state-map "\C-n" nil)
 
-  ;; Start at Beginening of Text Rather Than Line
+  ;; Start at Beginning of Text Rather Than Line
   (define-key evil-motion-state-map "j" 'evil-next-line-first-non-blank)
   (define-key evil-motion-state-map "k" 'evil-previous-line-first-non-blank)
 

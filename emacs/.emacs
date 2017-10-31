@@ -5,7 +5,6 @@
 ;;
 ;;          TO-DO:
 ;;
-;;          -Spell Check
 ;;          -Add Ctrl-r (Tags)
 ;;          -Optimize Loading
 ;;          -Magit
@@ -76,7 +75,7 @@
 (use-package which-key
     :ensure t)
 
-(use-package nlinum-relative
+(use-package git-gutter-fringe
     :ensure t)
 
 (use-package highlight-indent-guides
@@ -88,7 +87,13 @@
 (use-package org-plus-contrib
     :ensure t)
 
+(use-package org-bullets
+    :ensure t)
+
 (use-package omnisharp
+    :ensure t)
+
+(use-package markdown-mode
     :ensure t)
 
 (use-package wttrin
@@ -108,10 +113,6 @@
 
 (use-package speck
     :ensure t)
-
-;; (use-package highlight-symbol
-;;     :ensure t)
-;;
 
 ;; Load Theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/challenger-deep")
@@ -133,12 +134,6 @@
 (setq helm-buffers-fuzzy-matching t)
 (setq helm-autoresize-mode t)
 (setq helm-buffer-max-length 40)
-(define-key helm-map (kbd "S-SPC") 'helm-toggle-visible-mark)
-(define-key helm-find-files-map (kbd "C-k") 'helm-find-files-up-one-level)
-(global-set-key (kbd "M-x") #'helm-M-x)
-(global-set-key (kbd "C-x C-f") #'helm-find-files)
-(global-set-key (kbd "C-x C-b") #'helm-buffers-list)
-(set-face-attribute 'helm-source-header nil :height 2)
 (setq helm-split-window-in-side-p t)
 
 ;; Enable Which Key
@@ -147,12 +142,13 @@
 ;; Enable Relative Line Numbers
 (nlinum-relative-setup-evil)
 
+;; Git Gutter
+(setq git-gutter-fr:side 'right-fringe)
+
 ;; Show Tabs
 (setq highlight-indent-guides-method 'character)
 
 ;; Org Mode
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
 (setq org-blank-before-new-entry (quote ((heading) (plain-list-item))))
 (setq org-log-done (quote time))
 (setq org-log-redeadline (quote time))
@@ -176,11 +172,6 @@
       speck-hunspell-coding-system 'utf-8)
 (speck-mode 1)
 
-;; Find Next Occurrance
-;; (global-set-key [(control f3)] 'highlight-symbol)
-;; (global-set-key [(meta f3)] 'highlight-symbol-query-replace)
-;; (global-set-key [f3] 'highlight-symbol-next)
-;; (global-set-key [(shift f3)] 'highlight-symbol-prev)
 
 ;;
 ;; Behavior
@@ -415,6 +406,17 @@
 ;; Recent Files
 (global-set-key (kbd "C-x C-r") 'helm-recentf)
 
+;; Org
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+
+;; Helm
+(define-key helm-map (kbd "S-SPC") 'helm-toggle-visible-mark)
+(define-key helm-find-files-map (kbd "C-k") 'helm-find-files-up-one-level)
+(global-set-key (kbd "M-x") #'helm-M-x)
+(global-set-key (kbd "C-x C-f") #'helm-find-files)
+(global-set-key (kbd "C-x C-b") #'helm-buffers-list)
+
 ;;
 ;; Hooks
 ;;
@@ -432,19 +434,22 @@
 (add-hook 'prog-mode-hook 'whitespace-mode)
 
 ;; Spellcheck
-(add-hook 'prog-mode-hook 'speck-mode)
-(add-hook 'org-mode-hook 'speck-mode)
+(add-hook 'find-file-hook 'speck-mode)
 
 ;; Relative Line Numbers
-(add-hook 'prog-mode-hook 'nlinum-relative-mode)
-(add-hook 'org-mode-hook 'nlinum-relative-mode)
+(add-hook 'find-file-hook 'nlinum-relative-mode)
+
+;; Git Gutter
+(add-hook 'find-file-hook 'git-gutter-mode)
 
 ;; Show Tabs
-(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-(add-hook 'org-mode-hook 'highlight-indent-guides-mode)
+(add-hook 'find-file-hook 'highlight-indent-guides-mode)
 
 ;; C Sharp
 (add-hook 'csharp-mode-hook 'omnisharp-mode)
+
+;; Org
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 ;; Assembly Mode
 (defun asm-hook ()
@@ -452,7 +457,3 @@
     (asm-mode))
 )
 (add-hook 'find-file-hook 'asm-hook)
-
-;; Better Mini-Buffer Help
-;; (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
-;; (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)

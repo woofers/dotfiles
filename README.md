@@ -4,11 +4,18 @@
 ![alt text][screenshot1]
 
 Custom Config and Theme files for:
+- [emacs](https://www.gnu.org/software/emacs/)
 - [Neovim](https://github.com/neovim/neovim)
 - BASH (With [Powerline-Shell](https://github.com/banga/powerline-shell)),
 - ZSH (With [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh))
 - [wsl-terminal](https://github.com/goreliu/wsl-terminal)
 - [tmux](https://github.com/tmux/tmux)
+
+## emacs
+
+![alt text][screenshot4]
+
+emacs uses [challenger-deep](https://github.com/MaxSt/challenger-deep).
 
 ## Neovim
 
@@ -36,3 +43,4 @@ LS Color are tweaked version of **dircolors.ansi-dark** from [Solarized Color Th
 [screenshot1]: https://i.imgur.com/35PbDfi.png "Dotfiles"
 [screenshot2]: https://i.imgur.com/XUmhvmd.png "Dotfiles"
 [screenshot3]: https://i.imgur.com/feNNd4O.png "Dotfiles"
+[screenshot4]: https://i.imgur.com/M5tCKc6.png "Dotfiles"

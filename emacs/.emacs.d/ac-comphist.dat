@@ -1,4 +1,16 @@
-((("speck-popup-menu-at-point" .
+((("git-gutter-mode" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("nlinum-relative-mode" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("nlinum-relative-on" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("nlinum" .
+   [0 0 1 0 0 0])
+  ("highlight-indent-guides-mode" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("highlight" .
+   [0 0 0 0 0 0 0 0 1])
+  ("speck-popup-menu-at-point" .
    [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
   ("evil-motion-state-map" .
    [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
@@ -19,4 +31,4 @@
   ("setq-local" .
    [0 0 0 0 1 0 0 0 0 0])
   ("speck-mode" .
-   [1 0 0 0 0 0 0 0 0 0])))
+   [2 0 0 0 0 0 0 0 0 1])))
