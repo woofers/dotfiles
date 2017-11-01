@@ -148,8 +148,11 @@
 ;; Show Tabs
 (setq highlight-indent-guides-method 'character)
 
-;; Org Mode
+;; Org Modea
+(setq org-agenda-files '("D:/Documents/JVD Docs/Documents/School/UVIC/2017"))
+(setq org-agenda-window-setup (quote current-window))
 (setq org-blank-before-new-entry (quote ((heading) (plain-list-item))))
+(setq org-enforce-todo-dependencies t)
 (setq org-log-done (quote time))
 (setq org-log-redeadline (quote time))
 (setq org-log-reschedule (quote time))
