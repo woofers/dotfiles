@@ -20,7 +20,7 @@ ZSH_THEME="wagnoster"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=7
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -32,7 +32,7 @@ ZSH_THEME="wagnoster"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -42,7 +42,7 @@ ZSH_THEME="wagnoster"
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -64,9 +64,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-	export EDITOR='vim'
+    export EDITOR='vim'
 else
-	export EDITOR='mvim'
+    export EDITOR='mvim'
 fi
 
 # Compilation flags
@@ -84,36 +84,52 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Aliases
-alias cb="cd .."
-alias cr="cd /"
-
-# Sets Enviroment Paths
-export HOME_DRIVE="/mnt/d/"
-export DEV="$HOME_DRIVE/Documents/Development"
-export DRIVE="$HOME_DRIVE/Documents/JVD Docs/Documents/"
-export SCHOOL="$DRIVE/School/UVIC/2017"
-
 # Enable Term Colors
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
+# Sets Environment Paths
+export HOME_DRIVE="/mnt/c/"
+export DRIVE="$HOME_DRIVE/Users/Jaxson/Google Drive/"
+if [[ $(hostname -s) = Jaxson-PC* ]]; then
+    export HOME_DRIVE="/mnt/d/"
+    export DRIVE="$HOME_DRIVE/Documents/JVD Docs/Documents/"
+fi
+export DEV="$HOME_DRIVE/Documents/Development"
+export SCHOOL="$DRIVE/School/UVIC/2017"
+export CSC="$DRIVE/School/UVIC/2017/CSC 115/Assignments"
+
+# Allow Use of Windows Apps
+export PATH=$PATH:/mnt/c/Windows/System32
+alias javac="javac.exe"
+alias java="java.exe"
+alias emacs="emacs.exe"
+# alias gcc="gcc.exe"
+
 # Aliases
 alias vi=nvim
 alias vim=nvim
+alias del=rm
+alias dir=l
+alias cb="cd .."
+alias cl="cd -"
+alias cr="cd /"
+alias ch="cd ~"
 alias tmux='tmux -2 -u'
 alias tmuxw='tmux new-window -n'
 
 # Start in Tmux
 if [ -z "$TMUX" ]
 then
-	tmux start-server
-	tmux new-session -d -s Workspace -n ZSH
-	tmuxw NVIM
-	tmux attach-session -t Workspace
+    tmux start-server
+    tmux new-session -d -s Workspace -n "Dev 1"
+    tmuxw "Dev 2"
+    tmuxw School
+    tmuxw Extra
+    tmux attach-session -t Workspace
 fi
 
 # Sets LS Colors
 eval `dircolors ~/dircolors.ansi-darkorange`
 zstyle ':completion:*:default' list-colors \
-	   ${(s.:.)LS_COLORS}
+       ${(s.:.)LS_COLORS}

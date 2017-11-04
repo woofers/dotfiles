@@ -206,16 +206,20 @@
   (define-key evil-motion-state-map "\M-H" 'evil-window-increase-width)
   (define-key evil-motion-state-map "\M-L" 'evil-window-decrease-width)
 
+  ;; Quick Switch Buffer
+  (define-key evil-normal-state-map "\C-x\b" 'evil-switch-to-windows-last-buffer)
 
   ;; Home Goes to Start of Text
   (define-key evil-motion-state-map (kbd "<home>") 'evil-first-non-blank-of-visual-line)
 )
 
 ;; Neotree Binds
-(evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter-vertical-split)
-(evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
-(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
-(evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
-(evil-define-key 'normal neotree-mode-map (kbd "/C-n") 'neotree-toggle)
+(with-eval-after-load 'neotree
+    (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter-vertical-split)
+    (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+    (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+    (evil-define-key 'normal neotree-mode-map (kbd "/C-n") 'neotree-hide)
+    (evil-define-key 'normal neotree-mode-map (kbd "/C-n") 'neotree-toggle)
+)
 
 (provide 'init-evil)

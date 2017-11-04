@@ -9,10 +9,8 @@
 ;;          -Optimize Loading
 ;;          -Magit
 ;;          -Git Ignore
-;;          -Update Readme
 ;;
 ;;          -Navigate by Tabs h l
-;;          -Sort out Org Mode Tabs
 ;;          -DEL Removes Tabs
 ;;
 
@@ -57,6 +55,9 @@
 (load-file "~/.emacs.d/lisp/init-evil.el")
 (require 'init-evil)
 
+(load-file "~/.emacs.d/lisp/init-org.el")
+(require 'init-org)
+
 (use-package telephone-line
     :ensure t)
 
@@ -79,15 +80,6 @@
     :ensure t)
 
 (use-package highlight-indent-guides
-    :ensure t)
-
-(use-package org
-    :ensure t)
-
-(use-package org-plus-contrib
-    :ensure t)
-
-(use-package org-bullets
     :ensure t)
 
 (use-package omnisharp
@@ -113,6 +105,13 @@
 
 (use-package speck
     :ensure t)
+
+;; Info
+(setq user-full-name "Jaxson Van Doorn"
+      user-mail-address "jaxson.vandoorn@gmail.com"
+      calendar-latitude 48.6
+      calendar-longitude -123.4
+      calendar-location-name "Victoria, BC")
 
 ;; Load Theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/challenger-deep")
@@ -147,17 +146,6 @@
 
 ;; Show Tabs
 (setq highlight-indent-guides-method 'character)
-
-;; Org Modea
-(setq org-agenda-files '("D:/Documents/JVD Docs/Documents/School/UVIC/2017"))
-(setq org-agenda-window-setup (quote current-window))
-(setq org-blank-before-new-entry (quote ((heading) (plain-list-item))))
-(setq org-enforce-todo-dependencies t)
-(setq org-log-done (quote time))
-(setq org-log-redeadline (quote time))
-(setq org-log-reschedule (quote time))
-(setq org-todo-keywords
-    '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE" "CANCELED")))
 
 ;; Spellcheck
 (setq speck-engine 'Hunspell
@@ -205,6 +193,9 @@
 
 ;; Allow Y/N
 (fset 'yes-or-no-p 'y-or-n-p)
+
+;; Better Compilation
+(setq compilation-scroll-output t)
 
 ;; Newline at End of File
 (setq require-final-newline t)
@@ -356,7 +347,6 @@
 (defun run-bash ()
       (interactive)
       (let ((shell-file-name "C:\\Program Files\\Git\\bin\\bash.exe"))
-      ;; (let ((shell-file-name "C:\\Users\\Jaxson\\AppData\\Local\\wsltty\\bin\\mintty.exe --wsl -h err --configdir=%APPDATA%\wsltty -o Locale=C -o Charset=UTF-8 /bin/wslbridge -t  /bin/zsh"))
       (shell "*bash*")))
 
 (defun visit-term-buffer ()
@@ -384,18 +374,18 @@
 ;;
 
 ;; Unbind Arrow Keys
-(global-unset-key (kbd "<left>"))
-(global-unset-key (kbd "<right>"))
-(global-unset-key (kbd "<up>"))
-(global-unset-key (kbd "<down>"))
-(global-unset-key (kbd "<C-left>"))
-(global-unset-key (kbd "<C-right>"))
-(global-unset-key (kbd "<C-up>"))
-(global-unset-key (kbd "<C-down>"))
-(global-unset-key (kbd "<M-left>"))
-(global-unset-key (kbd "<M-right>"))
-(global-unset-key (kbd "<M-up>"))
-(global-unset-key (kbd "<M-down>"))
+;; (global-unset-key (kbd "<left>"))
+;; (global-unset-key (kbd "<right>"))
+;; (global-unset-key (kbd "<up>"))
+;; (global-unset-key (kbd "<down>"))
+;; (global-unset-key (kbd "<C-left>"))
+;; (global-unset-key (kbd "<C-right>"))
+;; (global-unset-key (kbd "<C-up>"))
+;; (global-unset-key (kbd "<C-down>"))
+;; (global-unset-key (kbd "<M-left>"))
+;; (global-unset-key (kbd "<M-right>"))
+;; (global-unset-key (kbd "<M-up>"))
+;; (global-unset-key (kbd "<M-down>"))
 
 ;; Backspace in Tabs like Increments
 (global-set-key [backspace] 'backspace-whitespace-to-tab-stop)
@@ -408,10 +398,6 @@
 
 ;; Recent Files
 (global-set-key (kbd "C-x C-r") 'helm-recentf)
-
-;; Org
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
 
 ;; Helm
 (define-key helm-map (kbd "S-SPC") 'helm-toggle-visible-mark)
@@ -450,9 +436,6 @@
 
 ;; C Sharp
 (add-hook 'csharp-mode-hook 'omnisharp-mode)
-
-;; Org
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 ;; Assembly Mode
 (defun asm-hook ()
