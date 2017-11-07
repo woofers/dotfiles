@@ -1,7 +1,10 @@
 *~
+*.el~
+*.elc
+*.~
 auto-save-list
 backups
 elpa
-*.elc
-.DS_Store
-/recentf
+recentf
+ac-comphist.dat
+tmp10788I7s
