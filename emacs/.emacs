@@ -204,6 +204,9 @@
 (setq visible-bell nil
       ring-bell-function 'ignore)
 
+;; Orange Carret
+(set-cursor-color "#fdbf82")
+
 ;; Wrapped Lines
 (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
 (setq-default left-fringe-width nil)

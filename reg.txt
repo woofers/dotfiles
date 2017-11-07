@@ -1,2 +1,8 @@
-%LOCALAPPDATA%\wsltty\bin\mintty.exe --wsl -h err --configdir="%APPDATA%\wsltty" -o Locale=C -o Charset=UTF-8 /bin/wslbridge -t  /bin/zsh
-%LOCALAPPDATA%\wsltty\bin\mintty.exe --wsl -h err --configdir="%APPDATA%\wsltty" --dir "%1" -o Locale=C -o Charset=UTF-8 /bin/wslbridge -t  /bin/zsh
+
+Computer\HKEY_CLASSES_ROOT\Directory\shell\ZSH Prompt Here\command
+Computer\HKEY_CLASSES_ROOT\LibraryFolder\background\shell\ZSH Prompt Here\command
+C:\Windows\System32\bin\mintty.exe --configdir=C:\Users\Jaxson\AppData\Roaming\wsltty --wsl -h err -o Locale=C -o Charset=UTF-8 /bin/wslbridge -t  /bin/zsh
+
+
+C:\Windows\System32\bin\mintty.exe --configdir=C:\Users\Jaxson\AppData\Roaming\wsltty --wsl -h err --dir "%1" -o Locale=C -o Charset=UTF-8 /bin/wslbridge -t  /bin/zsh
+Computer\HKEY_CLASSES_ROOT\Directory\shell\ZSH Prompt Here\command

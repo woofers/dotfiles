@@ -35,7 +35,7 @@
 ;; Org Keys Words
 (setq org-todo-keywords
       '((sequence "TODO" "IN-PROGRESS" "NEAR-COMPLETION"
-                  "WAITING" "|" "DONE" "CANCELED")))
+                  "WAITING" "REVIEW" "|" "DONE" "CANCELED")))
 
 
 ;; Keymaps for Agenda and Links

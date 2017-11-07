@@ -104,7 +104,10 @@ export PATH=$PATH:/mnt/c/Windows/System32
 alias javac="javac.exe"
 alias java="java.exe"
 alias emacs="emacs.exe"
-# alias gcc="gcc.exe"
+alias cmd="cmd.exe /c"
+alias ipconfig="cmd ipconfig"
+alias tasklist="cmd tasklist"
+alias taskkill="cmd taskkill /F"
 
 # Aliases
 alias vi=nvim
@@ -124,8 +127,8 @@ then
     tmux start-server
     tmux new-session -d -s Workspace -n "Dev 1"
     tmuxw "Dev 2"
-    tmuxw School
-    tmuxw Extra
+    tmuxw "School"
+    tmuxw "Extra"
     tmux attach-session -t Workspace
 fi
 

@@ -1,4 +1,4 @@
-
+#!/bin/bash
 sudo apt-get install software-properties-common
 sudo apt-get install python-dev python-pip python3-dev python3-pip
 sudo add-apt-repository ppa:neovim-ppa/stable
@@ -7,6 +7,7 @@ sudo apt-get install neovim
 
 sudo apt-get install python-pip
 sudo pip install powerline-shell
+sudo apt install zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 sudo apt-get install libevent-dev
 sudo apt-get install libncurses5-dev libncursesw5-dev
@@ -18,6 +19,7 @@ tar -zxvf tmux-2.6.tar.gz
 cd tmux-2.6
 ./configure && make
 sudo make install
+cd ..
 rm -rf tmux-2.6
 rm tmux-2.6.tar.gz
 
