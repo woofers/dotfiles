@@ -16,11 +16,6 @@
   :config
   (global-evil-leader-mode))
 
-  (use-package evil-jumper
-  :ensure t
-  :config
-  (global-evil-jumper-mode))
-
   (use-package evil-surround
   :ensure t
   :config
@@ -31,7 +26,6 @@
 
   (use-package evil-org
   :ensure t)
-
 
   (use-package evil-indent-textobject
   :ensure t)
@@ -153,6 +147,9 @@
 (define-key evil-normal-state-map (kbd "C-k") 'move-text-up)
 (define-key evil-normal-state-map (kbd "C-j") 'move-text-down)
 
+
+(global-set-key (kbd "C-x b") 'evil-switch-to-windows-last-buffer)
+
 ;; Key Bindings
 (with-eval-after-load 'evil-maps
 
@@ -207,7 +204,6 @@
   (define-key evil-motion-state-map "\M-L" 'evil-window-decrease-width)
 
   ;; Quick Switch Buffer
-  (define-key evil-normal-state-map "\C-x\b" 'evil-switch-to-windows-last-buffer)
 
   ;; Home Goes to Start of Text
   (define-key evil-motion-state-map (kbd "<home>") 'evil-first-non-blank-of-visual-line)

@@ -3,15 +3,15 @@
 ;; .emacs
 ;; Main emacs Config File
 ;;
-;;			TO-DO:
+;;          TO-DO:
 ;;
-;;			-Add Ctrl-r (Tags)
-;;			-Optimize Loading
-;;			-Magit
-;;			-Git Ignore
+;;          -Add Ctrl-r (Tags)
+;;          -Optimize Loading
+;;          -Magit
+;;          -Git Ignore
 ;;
-;;			-Navigate by Tabs h l
-;;			-DEL Removes Tabs
+;;          -Navigate by Tabs h l
+;;          -DEL Removes Tabs
 ;;
 
 ;;
@@ -24,12 +24,12 @@
 
 ;; Load MELPA Repository
 (when (>= emacs-major-version 24)
-	(require 'package)
-	(add-to-list
-		'package-archives
-		'("melpa" . "http://melpa.milkbox.net/packages/")
-		t)
-	)
+    (require 'package)
+    (add-to-list
+        'package-archives
+        '("melpa" . "http://melpa.milkbox.net/packages/")
+        t)
+    )
 
 ;; Disable Plug-Ins at Startup
 (setq package-enable-at-startup nil)
@@ -49,72 +49,74 @@
 (load custom-file 'noerror)
 
 (use-package load-dir
-	:ensure t)
+    :ensure t)
 
 ;; Evil Packages
 (load-file "~/.emacs.d/lisp/init-evil.el")
 (require 'init-evil)
 
+;; Org Packages
 (load-file "~/.emacs.d/lisp/init-org.el")
 (require 'init-org)
 
+;; Helm
+(load-file "~/.emacs.d/lisp/init-helm.el")
+(require 'init-helm)
+
 (use-package telephone-line
-	:ensure t)
+    :ensure t)
 
 (use-package magit
-	:ensure t)
+    :ensure t)
 
 (use-package neotree
-	:ensure t)
+    :ensure t)
 
 (use-package auto-complete
-	:ensure t)
-
-(use-package helm
-	:ensure t)
+    :ensure t)
 
 (use-package which-key
-	:ensure t)
+    :ensure t)
 
 (use-package git-gutter-fringe
-	:ensure t)
+    :ensure t)
 
 (use-package nlinum-relative
-	:ensure t)
+    :ensure t)
+
+(use-package highlight
+    :ensure t)
 
 (use-package highlight-indent-guides
-	:ensure t)
+    :ensure t)
 
 (use-package omnisharp
-	:ensure t)
+    :ensure t)
 
 (use-package markdown-mode
-	:ensure t)
+    :ensure t)
 
 (use-package wttrin
-  :ensure t
-  :commands (wttrin)
-  :init
-  (setq wttrin-default-cities '("Vancouver")))
+    :ensure t)
 
 (use-package ispell
-	:ensure t)
+    :ensure t)
 
 (use-package flyspell
-	:ensure t)
+    :ensure t)
 
 (use-package flyspell-lazy
-	:ensure t)
+    :ensure t)
 
 (use-package speck
-	:ensure t)
+    :ensure t)
 
 ;; Info
 (setq user-full-name "Jaxson Van Doorn"
-	  user-mail-address "jaxson.vandoorn@gmail.com"
-	  calendar-latitude 48.6
-	  calendar-longitude -123.4
-	  calendar-location-name "Victoria, BC")
+      user-mail-address "jaxson.vandoorn@gmail.com"
+      calendar-latitude 48.6
+      calendar-longitude -123.4
+      calendar-location-name "Victoria, BC")
 
 ;; Load Theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/challenger-deep")
@@ -131,18 +133,14 @@
 ;; Auto Complete Default Config
 (ac-config-default)
 
-;; Helm
-(helm-mode 1)
-(setq helm-buffers-fuzzy-matching t)
-(setq helm-autoresize-mode t)
-(setq helm-buffer-max-length 40)
-(setq helm-split-window-in-side-p t)
-
 ;; Enable Which Key
 (which-key-mode)
 
 ;; Enable Relative Line Numbers
 (nlinum-relative-setup-evil)
+
+;; Hightlight
+(hlt-highlight-regexp-region nil nil "\\\\." 'success)
 
 ;; Git Gutter
 (setq git-gutter-fr:side 'right-fringe)
@@ -150,20 +148,24 @@
 ;; Show Tabs
 (setq highlight-indent-guides-method 'character)
 
+;; Wheather
+(setq wttrin-default-cities '("Vancouver"))
+(setq wttrin-default-accept-language '("Accept-Language" . "en-US"))
+
 ;; Spellcheck
 (setq speck-engine 'Hunspell
-	  speck-hunspell-program (executable-find "hunspell")
-	  speck-hunspell-library-directory
-	  (if (eq system-type 'windows-nt)
-		  ""
-		(expand-file-name "share/hunspell/"
-						  (file-name-directory
-							(directory-file-name
-							(file-name-directory speck-hunspell-program)))))
-	  speck-hunspell-default-dictionary-name "en"
-	  speck-hunspell-dictionary-alist '(("en" . "en_US"))
-	  speck-hunspell-language-options '(("en" utf-8 nil nil))
-	  speck-hunspell-coding-system 'utf-8)
+      speck-hunspell-program (executable-find "hunspell")
+      speck-hunspell-library-directory
+      (if (eq system-type 'windows-nt)
+          ""
+        (expand-file-name "share/hunspell/"
+                          (file-name-directory
+                            (directory-file-name
+                            (file-name-directory speck-hunspell-program)))))
+      speck-hunspell-default-dictionary-name "en"
+      speck-hunspell-dictionary-alist '(("en" . "en_US"))
+      speck-hunspell-language-options '(("en" utf-8 nil nil))
+      speck-hunspell-coding-system 'utf-8)
 (speck-mode 1)
 
 
@@ -173,8 +175,8 @@
 
 ;; Disable Splash Screen and Startup Message
 (setq inhibit-splash-screen t
-	inhibit-startup-message t
-	inhibit-startup-echo-area-message t)
+    inhibit-startup-message t
+    inhibit-startup-echo-area-message t)
 
 ;; Disable Menu and Toolbar
 (menu-bar-mode -1)
@@ -182,12 +184,12 @@
 
 ;; Hide Scroll Bar
 (when (boundp 'scroll-bar-mode)
-	(scroll-bar-mode -1))
+    (scroll-bar-mode -1))
 
 ;; Nicer Scrolling
 (setq scroll-margin 0
-	  scroll-conservatively 100000
-	  scroll-preserve-screen-position 1)
+      scroll-conservatively 100000
+      scroll-preserve-screen-position 1)
 
 ;; Status Bar Info
 (line-number-mode t)
@@ -205,7 +207,7 @@
 
 ;; Disable Blinking of Window
 (setq visible-bell nil
-	  ring-bell-function 'ignore)
+      ring-bell-function 'ignore)
 
 ;; Orange Carret
 (set-cursor-color "#fdbf82")
@@ -236,19 +238,19 @@
 ;; Cleaner Auto-Save and Auto-Backup
 (defvar backup-directory (concat user-emacs-directory "backups"))
 (if (not (file-exists-p backup-directory))
-		(make-directory backup-directory t))
+        (make-directory backup-directory t))
 (setq backup-directory-alist `(("." . ,backup-directory)))
-(setq make-backup-files t				; Backup on Save
-	  backup-by-copying t				; Do not Clutter Symlinks
-	  version-control t					; Add Version Number
-	  delete-old-versions t				; Delete Old Backup File
-	  delete-by-moving-to-trash t		; Permanat Delete
-	  kept-old-versions 3				; Oldest Versions
-	  kept-new-versions 3				; Newest Versions
-	  auto-save-default t				; Auto-Save on Buffer Switch
-	  auto-save-timeout 60				; Number of Second Between Auto-Saves
-	  auto-save-interval 200			; Number of Characters
-										; Typed Between Auto-Save
+(setq make-backup-files t               ; Backup on Save
+      backup-by-copying t               ; Do not Clutter Symlinks
+      version-control t                 ; Add Version Number
+      delete-old-versions t             ; Delete Old Backup File
+      delete-by-moving-to-trash t       ; Permanat Delete
+      kept-old-versions 3               ; Oldest Versions
+      kept-new-versions 3               ; Newest Versions
+      auto-save-default t               ; Auto-Save on Buffer Switch
+      auto-save-timeout 60              ; Number of Second Between Auto-Saves
+      auto-save-interval 200            ; Number of Characters
+                                        ; Typed Between Auto-Save
 )
 
 ;; Set Title Bar
@@ -288,20 +290,20 @@
   "Delete whitespace backwards to the next tab-stop, otherwise delete one character."
   (interactive)
   (if (or indent-tabs-mode
-		  (region-active-p)
-		  (save-excursion
-			(> (point) (progn (back-to-indentation)
-							  (point)))))
-	  (call-interactively 'backward-delete-char-untabify)
-	(let ((movement (% (current-column) tab-spaces))
-		  (p (point)))
-	  (when (= movement 0) (setq movement tab-spaces))
-	  ;; Account for edge case near beginning of buffer
-	  (setq movement (min (- p 1) movement))
-	  (save-match-data
-		(if (string-match "[^\t ]*\\([\t ]+\\)$" (buffer-substring-no-properties (- p movement) p))
-			(backward-delete-char (- (match-end 1) (match-beginning 1)))
-		  (call-interactively 'backward-delete-char))))))
+          (region-active-p)
+          (save-excursion
+            (> (point) (progn (back-to-indentation)
+                              (point)))))
+      (call-interactively 'backward-delete-char-untabify)
+    (let ((movement (% (current-column) tab-spaces))
+          (p (point)))
+      (when (= movement 0) (setq movement tab-spaces))
+      ;; Account for edge case near beginning of buffer
+      (setq movement (min (- p 1) movement))
+      (save-match-data
+        (if (string-match "[^\t ]*\\([\t ]+\\)$" (buffer-substring-no-properties (- p movement) p))
+            (backward-delete-char (- (match-end 1) (match-beginning 1)))
+          (call-interactively 'backward-delete-char))))))
 
 ;; Convert to Spaces on Open
 (defvar untabify-this-buffer)
@@ -319,31 +321,31 @@
   "A textual flyspell popup menu."
   (require 'popup)
   (let* ((corrects (if flyspell-sort-corrections
-					   (sort (car (cdr (cdr poss))) 'string<)
-					 (car (cdr (cdr poss)))))
-		 (cor-menu (if (consp corrects)
-					   (mapcar (lambda (correct)
-								 (list correct correct))
-							   corrects)
-					 '()))
-		 (affix (car (cdr (cdr (cdr poss)))))
-		 show-affix-info
-		 (base-menu  (let ((save (if (and (consp affix) show-affix-info)
-									 (list
-									  (list (concat "Save affix: " (car affix))
-											'save)
-									  '("Accept (session)" session)
-									  '("Accept (buffer)" buffer))
-								   '(("Save word" save)
-									 ("Accept (session)" session)
-									 ("Accept (buffer)" buffer)))))
-					   (if (consp cor-menu)
-						   (append cor-menu (cons "" save))
-						 save)))
-		 (menu (mapcar
-				(lambda (arg) (if (consp arg) (car arg) arg))
-				base-menu)))
-	(cadr (assoc (popup-menu* menu :scroll-bar t) base-menu))))
+                       (sort (car (cdr (cdr poss))) 'string<)
+                     (car (cdr (cdr poss)))))
+         (cor-menu (if (consp corrects)
+                       (mapcar (lambda (correct)
+                                 (list correct correct))
+                               corrects)
+                     '()))
+         (affix (car (cdr (cdr (cdr poss)))))
+         show-affix-info
+         (base-menu  (let ((save (if (and (consp affix) show-affix-info)
+                                     (list
+                                      (list (concat "Save affix: " (car affix))
+                                            'save)
+                                      '("Accept (session)" session)
+                                      '("Accept (buffer)" buffer))
+                                   '(("Save word" save)
+                                     ("Accept (session)" session)
+                                     ("Accept (buffer)" buffer)))))
+                       (if (consp cor-menu)
+                           (append cor-menu (cons "" save))
+                         save)))
+         (menu (mapcar
+                (lambda (arg) (if (consp arg) (car arg) arg))
+                base-menu)))
+    (cadr (assoc (popup-menu* menu :scroll-bar t) base-menu))))
 
 
 (defun clear-message()
@@ -351,20 +353,20 @@
   (message nil))
 
 (defun run-bash ()
-	  (interactive)
-	  (let ((shell-file-name "C:\\Program Files\\Git\\bin\\bash.exe"))
-	  (shell "*bash*")))
+      (interactive)
+      (let ((shell-file-name "C:\\Program Files\\Git\\bin\\bash.exe"))
+      (shell "*bash*")))
 
 (defun visit-term-buffer ()
   "Create or visit a terminal buffer."
   (interactive)
   (setenv "SHELL", "C:/Program Files/Git/bin/bash.exe")
   (if (not (get-buffer "*ansi-term*"))
-	  (progn
-		(split-window-sensibly (selected-window))
-		(other-window 1)
-		(ansi-term (getenv "SHELL")))
-	(switch-to-buffer-other-window "*ansi-term*")))
+      (progn
+        (split-window-sensibly (selected-window))
+        (other-window 1)
+        (ansi-term (getenv "SHELL")))
+    (switch-to-buffer-other-window "*ansi-term*")))
 
 ;; Maximize Window
 (defun maximize-frame()
@@ -373,7 +375,7 @@
   ;; Send a `WM_SYSCOMMAND' message to the active frame with the
   ;; `SC_MAXIMIZE' parameter.
   (when (eq system-type 'windows-nt)
-	(w32-send-sys-command 61488)))
+    (w32-send-sys-command 61488)))
 
 ;;
 ;; Mappings
@@ -401,16 +403,6 @@
 
 ;; Terminal
 (global-set-key (kbd "C-c t") 'run-bash)
-
-;; Recent Files
-(global-set-key (kbd "C-x C-r") 'helm-recentf)
-
-;; Helm
-(define-key helm-map (kbd "S-SPC") 'helm-toggle-visible-mark)
-(define-key helm-find-files-map (kbd "C-k") 'helm-find-files-up-one-level)
-(global-set-key (kbd "M-x") #'helm-M-x)
-(global-set-key (kbd "C-x C-f") #'helm-find-files)
-(global-set-key (kbd "C-x C-b") #'helm-buffers-list)
 
 ;;
 ;; Hooks
@@ -446,6 +438,6 @@
 ;; Assembly Mode
 (defun asm-hook ()
   (when (string= (file-name-extension buffer-file-name) "pep")
-	(asm-mode))
+    (asm-mode))
 )
 (add-hook 'find-file-hook 'asm-hook)
