@@ -277,7 +277,7 @@ endif
 
 " Set Theme
 syntax enable
-colorscheme flatcolor
+colorscheme dracula
 let g:airline_theme='light'
 
 " Allow File Specific
@@ -348,4 +348,3 @@ augroup END
 
 " Enable Deoplete
 call deoplete#enable()
-
