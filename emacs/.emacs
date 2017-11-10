@@ -5,7 +5,6 @@
 ;;
 ;;          TO-DO:
 ;;
-;;          -Add Ctrl-r (Tags)
 ;;          -Optimize Loading
 ;;          -Magit
 ;;          -Git Ignore
@@ -88,6 +87,9 @@
     :ensure t)
 
 (use-package highlight-indent-guides
+    :ensure t)
+
+(use-package imenu-list
     :ensure t)
 
 (use-package omnisharp
