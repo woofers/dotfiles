@@ -1,0 +1,43 @@
+
+#+TITLE:	Dotfiles
+#+AUTHOR:	Jaxson Van Doorn
+#+EMAIL:	jaxson.vandoorn@gmail.com
+
+https://i.imgur.com/35PbDfi.png
+
+Custom Config and Theme files for:
+- [[https://www.gnu.org/software/emacs/][emacs]]
+- [[https://github.com/neovim/neovim][Neovim]]
+- BASH (With [[https://github.com/banga/powerline-shell][Powerline-Shell]]),
+- ZSH (With [[https://github.com/robbyrussell/oh-my-zsh][Oh My Zsh]])
+- [[https://github.com/goreliu/wsl-terminal][wsl-terminal]] (Mintty)
+- [[https://github.com/tmux/tmux][TMUX]]
+
+* Emacs
+
+https://i.imgur.com/M5tCKc6.png
+
+Emacs uses [[https://github.com/MaxSt/challenger-deep][challenger-deep]].
+
+* Neovim
+
+https://i.imgur.com/XUmhvmd.png
+
+Neovim config uses [[https://github.com/dracula/vim][dracula-vim]].
+
+Airline theme is *light* from [[https://github.com/vim-airline/vim-airline-themes][airline-themes]].
+
+* Mintty
+
+Mintty uses [[https://github.com/dracula/mintty][dracula-mintty]].
+
+* tmux
+tmux uses a modified version of [[https://github.com/sei40kr/tmux-airline-dracula][tmux-airline-dracula]] named *wracula*.
+
+* BASH and ZSH
+
+https://i.imgur.com/feNNd4O.png
+
+This config contains a modified versions of both [[https://github.com/agnoster/agnoster-zsh-theme][agnoster-zsh-theme]] and [[https://gist.github.com/kruton/8345450][agnoster-bash]] dubbed **wagnoster** for *BASH* and *ZSH*.
+
+LS Color are tweaked version of *dircolors.ansi-dark* from [[https://github.com/seebi/dircolors-solarized][Solarized Color Theme for GNU]].
