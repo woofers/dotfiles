@@ -23,5 +23,6 @@
 (global-set-key (kbd "C-x f") 'helm-recentf)
 (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
 (global-set-key (kbd "C-x C-r") 'imenu)
+(global-set-key (kbd "C-x C-d") 'ranger)
 
 (provide 'init-helm)

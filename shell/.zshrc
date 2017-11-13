@@ -51,7 +51,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -64,9 +64,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vim'
+	export EDITOR='vim'
 else
-    export EDITOR='mvim'
+	export EDITOR='mvim'
 fi
 
 # Compilation flags
@@ -92,8 +92,8 @@ export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 export HOME_DRIVE="/mnt/c/"
 export DRIVE="$HOME_DRIVE/Users/Jaxson/Google Drive/"
 if [[ $(hostname -s) = Jaxson-PC* ]]; then
-    export HOME_DRIVE="/mnt/d/"
-    export DRIVE="$HOME_DRIVE/Documents/JVD Docs/Documents/"
+	export HOME_DRIVE="/mnt/d/"
+	export DRIVE="$HOME_DRIVE/Documents/JVD Docs/Documents/"
 fi
 export DEV="$HOME_DRIVE/Documents/Development"
 export SCHOOL="$DRIVE/School/UVIC/2017"
@@ -124,15 +124,15 @@ alias tmuxw='tmux new-window -n'
 # Start in Tmux
 if [ -z "$TMUX" ]
 then
-    tmux start-server
-    tmux new-session -d -s Workspace -n "Dev 1"
-    tmuxw "Dev 2"
-    tmuxw "School"
-    tmuxw "Extra"
-    tmux attach-session -t Workspace
+	tmux start-server
+	tmux new-session -d -s Workspace -n "Dev 1"
+	tmuxw "Dev 2"
+	tmuxw "School"
+	tmuxw "Extra"
+	tmux attach-session -t Workspace
 fi
 
 # Sets LS Colors
 eval `dircolors ~/dircolors.ansi-darkorange`
 zstyle ':completion:*:default' list-colors \
-       ${(s.:.)LS_COLORS}
+	   ${(s.:.)LS_COLORS}

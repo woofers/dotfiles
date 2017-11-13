@@ -34,7 +34,7 @@
 
 ;; Org Keys Words
 (setq org-todo-keywords
-      '((sequence "TODO" "IN-PROGRESS" "NEAR-COMPLETION"
+      '((sequence "STUDY" "TODO" "IN-PROGRESS" "NEAR-COMPLETION"
                   "WAITING" "REVIEW" "|" "DONE" "CANCELED")))
 
 

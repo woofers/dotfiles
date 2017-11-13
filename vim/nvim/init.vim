@@ -153,9 +153,11 @@ nnoremap ; :
 nnoremap : ;
 
 " Remap of Insert Keys
-nnoremap o i
-nnoremap i a
+" nnoremap o i
+nnoremap o a
 nnoremap a o
+nnoremap O A
+nnoremap A O
 
 " Remap Redo
 nnoremap r <C-r>

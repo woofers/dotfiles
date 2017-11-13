@@ -209,13 +209,4 @@
   (define-key evil-motion-state-map (kbd "<home>") 'evil-first-non-blank-of-visual-line)
 )
 
-;; Neotree Binds
-(with-eval-after-load 'neotree
-    (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter-vertical-split)
-    (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
-    (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
-    (evil-define-key 'normal neotree-mode-map (kbd "/C-n") 'neotree-hide)
-    (evil-define-key 'normal neotree-mode-map (kbd "/C-n") 'neotree-toggle)
-)
-
 (provide 'init-evil)
