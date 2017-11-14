@@ -2,19 +2,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. Dotfiles:</a></li>
-<li><a href="#sec-2">2. Emacs</a></li>
-<li><a href="#sec-3">3. Neovim</a></li>
-<li><a href="#sec-4">4. Mintty</a></li>
-<li><a href="#sec-5">5. Tmux</a></li>
-<li><a href="#sec-6">6. BASH and ZSH</a></li>
-<li><a href="#sec-7">7. <span class="todo TODO">TODO</span> Configure Emacs</a>
+<li><a href="#sec-1">Dotfiles:</a></li>
+<li><a href="#sec-2">Emacs</a></li>
+<li><a href="#sec-3">Neovim</a></li>
+<li><a href="#sec-4">Mintty</a></li>
+<li><a href="#sec-5">Tmux</a></li>
+<li><a href="#sec-6">BASH and ZSH</a></li>
+<li><a href="#sec-7"><span class="todo TODO">TODO</span> </a>
 <ul>
-<li>
+<li><a href="#sec-7-1"><span class="todo TODO">TODO</span> Configure Emacs</a>
 <ul>
-<li><a href="#sec-7-0-1">7.0.1. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Convert Config to Org</a></li>
-<li><a href="#sec-7-0-2">7.0.2. <span class="todo TODO">TODO</span> Configure Tab Navigation</a></li>
-<li><a href="#sec-7-0-3">7.0.3. <span class="todo TODO">TODO</span> Optimize Loading</a></li>
+<li><a href="#sec-7-1-1"><span class="todo IN_PROGRESS">IN-PROGRESS</span> Convert Config to Org</a></li>
+<li><a href="#sec-7-1-2"><span class="todo TODO">TODO</span> Configure Tab Navigation</a></li>
+<li><a href="#sec-7-1-3"><span class="todo TODO">TODO</span> Optimize Loading</a></li>
 </ul>
 </li>
 </ul>
@@ -68,10 +68,12 @@ This config contains a modified versions of both [agnoster-zsh-theme](https://gi
 LS Color are tweaked version of **dircolors.ansi-dark** from [Solarized Color Theme for GNU](https://github.com/seebi/dircolors-solarized).
 ZSH addtionaly uses [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) package.
 
-# TODO Configure Emacs<a id="sec-7" name="sec-7"></a>
+# TODO <a id="sec-7" name="sec-7"></a>
 
-### IN-PROGRESS Convert Config to Org<a id="sec-7-0-1" name="sec-7-0-1"></a>
+## TODO Configure Emacs<a id="sec-7-1" name="sec-7-1"></a>
 
-### TODO Configure Tab Navigation<a id="sec-7-0-2" name="sec-7-0-2"></a>
+### IN-PROGRESS Convert Config to Org<a id="sec-7-1-1" name="sec-7-1-1"></a>
 
-### TODO Optimize Loading<a id="sec-7-0-3" name="sec-7-0-3"></a>
+### TODO Configure Tab Navigation<a id="sec-7-1-2" name="sec-7-1-2"></a>
+
+### TODO Optimize Loading<a id="sec-7-1-3" name="sec-7-1-3"></a>
