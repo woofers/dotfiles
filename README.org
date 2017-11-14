@@ -3,13 +3,13 @@
 #+AUTHOR:	Jaxson Van Doorn
 #+EMAIL:	jaxson.vandoorn@gmail.com
 
-Custom Config and Theme files for:
-- [[https://www.gnu.org/software/emacs/][Emacs]]
-- [[https://github.com/neovim/neovim][Neovim]]
-- BASH (With [[https://github.com/banga/powerline-shell][Powerline-Shell]]),
-- ZSH (With [[https://github.com/robbyrussell/oh-my-zsh][Oh My Zsh]])
-- [[https://github.com/goreliu/wsl-terminal][wsl-terminal]] (Mintty)
-- [[https://github.com/tmux/tmux][Tmux]]
+**** Custom Config and Theme files for:
+***** [[https://www.gnu.org/software/emacs/][Emacs]]
+***** [[https://github.com/neovim/neovim][Neovim]]
+***** BASH (With [[https://github.com/banga/powerline-shell][Powerline-Shell]]),
+***** ZSH (With [[https://github.com/robbyrussell/oh-my-zsh][Oh My Zsh]])
+***** [[https://github.com/goreliu/wsl-terminal][wsl-terminal]] (Mintty)
+***** [[https://github.com/tmux/tmux][Tmux]]
 
 * Emacs
 
@@ -21,34 +21,33 @@ Custom Config and Theme files for:
 #+NAME:    Emacs Screenshot 2
 [[./screenshots/emacs2.png]]
 
-Emacs uses [[https://github.com/MaxSt/challenger-deep][challenger-deep]].
-
+My Emacs setup consits of [[https://github.com/MaxSt/challenger-deep][challenger-deep]] as a theme with a custom [[https://github.com/milkypostman/powerline][powerline]].
+Emacs setup also heavly relies on Helm
 * Neovim
 
-#+CAPTION: Neovim using airline and nerdtree
+#+CAPTION: Neovim using airline
 #+NAME:    Neovim Screenshot
 [[./screenshots/vim.png]]
 
 Neovim config uses [[https://github.com/dracula/vim][dracula-vim]].
-
 Airline theme is *light* from [[https://github.com/vim-airline/vim-airline-themes][airline-themes]].
 
 * Mintty
 
-Mintty uses [[https://github.com/dracula/mintty][dracula-mintty]].
+Mintty uses [[https://github.com/dracula/mintty][dracula-mintty]] for its color definitions.
 
 * Tmux
 #+CAPTION: Tmux using usings splits and a custom theme
 #+NAME:    Tmux Screenshot
 [[./screenshots/tmux.png]]
 
-Tmux uses a modified version of [[https://github.com/sei40kr/tmux-airline-dracula][tmux-airline-dracula]] named *wracula*.
+Tmux uses a modified version of [[https://github.com/sei40kr/tmux-airline-dracula][tmux-airline-dracula]] named *wracula* which matches *BASH* and *ZSH*.
 
 * BASH and ZSH
 #+CAPTION: ZSH using Oh My ZSH with the git and syntax plugin
 #+NAME:    ZSH Screenshot
 [[./screenshots/zsh.png]]
 
-This config contains a modified versions of both [[https://github.com/agnoster/agnoster-zsh-theme][agnoster-zsh-theme]] and [[https://gist.github.com/kruton/8345450][agnoster-bash]] dubbed **wagnoster** for *BASH* and *ZSH*.
-
+This config contains a modified versions of both [[https://github.com/agnoster/agnoster-zsh-theme][agnoster-zsh-theme]] and [[https://gist.github.com/kruton/8345450][agnoster-bash]] dubbed /wagnoster/ for *BASH* and *ZSH*.
 LS Color are tweaked version of *dircolors.ansi-dark* from [[https://github.com/seebi/dircolors-solarized][Solarized Color Theme for GNU]].
+ZSH addtionaly uses [[https://github.com/zsh-users/zsh-syntax-highlighting][zsh-syntax-highlighting]] package.
