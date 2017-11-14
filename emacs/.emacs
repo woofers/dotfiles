@@ -3,15 +3,6 @@
 ;; .emacs
 ;; Main emacs Config File
 ;;
-;;          TO-DO:
-;;
-;;          -Optimize Loading
-;;          -Magit
-;;          -Git Ignore
-;;
-;;          -Navigate by Tabs h l
-;;          -DEL Removes Tabs
-;;
 
 ;;
 ;; Plug-Ins
@@ -23,7 +14,6 @@
 
 ;; Load MELPA Repository
 (when (>= emacs-major-version 24)
-    (require 'package)
     (add-to-list
         'package-archives
         '("melpa" . "http://melpa.milkbox.net/packages/")
@@ -88,6 +78,9 @@
     :ensure t)
 
 (use-package highlight-indent-guides
+    :ensure t)
+
+(use-package pcomplete-extension
     :ensure t)
 
 (use-package imenu-list
@@ -179,6 +172,7 @@
 (setq inhibit-splash-screen t
     inhibit-startup-message t
     inhibit-startup-echo-area-message t)
+(setq initial-scratch-message nil)
 
 ;; Disable Menu and Toolbar
 (menu-bar-mode -1)
@@ -204,12 +198,18 @@
 ;; Better Compilation
 (setq compilation-scroll-output t)
 
+;; Set Default Directory
+(setq default-directory "~/")
+
 ;; Newline at End of File
 (setq require-final-newline t)
 
 ;; Disable Blinking of Window
 (setq visible-bell nil
       ring-bell-function 'ignore)
+
+;; Use Same Frame With Newly Opened File
+(setq ns-pop-up-frames nil)
 
 ;; Orange Carret
 (set-cursor-color "#fdbf82")
@@ -275,6 +275,10 @@
 (setq tab-width tab-spaces)
 (setq-default indent-tabs-mode nil)
 (setq tab-always-indent 'complete)
+
+;; Place Only One Space at the End
+;; of the Sentence
+(setq sentence-end-double-space nil)
 
 ;; (For Tabs)
 ;; (setq indent-line-function 'insert-tab)
@@ -371,7 +375,7 @@
     (switch-to-buffer-other-window "*ansi-term*")))
 
 ;; Maximize Window
-(defun maximize-frame()
+(defun windows-maximize-frame()
   "Maximizes the active frame in Windows"
   (interactive)
   ;; Send a `WM_SYSCOMMAND' message to the active frame with the
@@ -411,7 +415,7 @@
 ;;
 
 ;; Maximize Window
-(add-hook 'window-setup-hook 'maximize-frame t)
+;; (add-hook 'window-setup-hook 'windows-maximize-frame t)
 
 ;; Trim Whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -448,3 +452,12 @@
     (asm-mode))
 )
 (add-hook 'find-file-hook 'asm-hook)
+
+;; Eshell
+(add-hook 'eshell-mode-hook
+          (lambda ()
+            (eshell-cmpl-initialize)
+            (define-key eshell-mode-map [remap eshell-pcomplete] 'helm-esh-pcomplete)
+            (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history)))
+
+(diminish 'untabify-mode)

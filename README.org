@@ -3,25 +3,31 @@
 #+AUTHOR:	Jaxson Van Doorn
 #+EMAIL:	jaxson.vandoorn@gmail.com
 
-[[image-url:https://i.imgur.com/35PbDfi.png]]
-
 Custom Config and Theme files for:
-- [[https://www.gnu.org/software/emacs/][emacs]]
+- [[https://www.gnu.org/software/emacs/][Emacs]]
 - [[https://github.com/neovim/neovim][Neovim]]
 - BASH (With [[https://github.com/banga/powerline-shell][Powerline-Shell]]),
 - ZSH (With [[https://github.com/robbyrussell/oh-my-zsh][Oh My Zsh]])
 - [[https://github.com/goreliu/wsl-terminal][wsl-terminal]] (Mintty)
-- [[https://github.com/tmux/tmux][TMUX]]
+- [[https://github.com/tmux/tmux][Tmux]]
 
 * Emacs
 
-[[image-url:https://i.imgur.com/M5tCKc6.png]]
+#+CAPTION: Emacs using a custom powerline with challenger-deep
+#+NAME:    Emacs Screenshot 1
+[[./screenshots/emacs.png]]
+
+#+CAPTION: Emacs using the Helm narrowing completion framework
+#+NAME:    Emacs Screenshot 2
+[[./screenshots/emacs2.png]]
 
 Emacs uses [[https://github.com/MaxSt/challenger-deep][challenger-deep]].
 
 * Neovim
 
-https://i.imgur.com/XUmhvmd.png
+#+CAPTION: Neovim using airline and nerdtree
+#+NAME:    Neovim Screenshot
+[[./screenshots/vim.png]]
 
 Neovim config uses [[https://github.com/dracula/vim][dracula-vim]].
 
@@ -31,12 +37,17 @@ Airline theme is *light* from [[https://github.com/vim-airline/vim-airline-theme
 
 Mintty uses [[https://github.com/dracula/mintty][dracula-mintty]].
 
-* TMUX
-TMUX uses a modified version of [[https://github.com/sei40kr/tmux-airline-dracula][tmux-airline-dracula]] named *wracula*.
+* Tmux
+#+CAPTION: Tmux using usings splits and a custom theme
+#+NAME:    Tmux Screenshot
+[[./screenshots/tmux.png]]
+
+Tmux uses a modified version of [[https://github.com/sei40kr/tmux-airline-dracula][tmux-airline-dracula]] named *wracula*.
 
 * BASH and ZSH
-
-[[image-url:https://i.imgur.com/feNNd4O.png]]
+#+CAPTION: ZSH using Oh My ZSH with the git and syntax plugin
+#+NAME:    ZSH Screenshot
+[[./screenshots/zsh.png]]
 
 This config contains a modified versions of both [[https://github.com/agnoster/agnoster-zsh-theme][agnoster-zsh-theme]] and [[https://gist.github.com/kruton/8345450][agnoster-bash]] dubbed **wagnoster** for *BASH* and *ZSH*.
 

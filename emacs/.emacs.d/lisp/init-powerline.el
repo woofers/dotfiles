@@ -1,7 +1,11 @@
 
 ;;
-;; init-poerline.el
+;; init-powerline.el
 ;; Config File for Powerline
+;;
+;; Parts of Powerline Config from
+;; https://raw.githubusercontent.com/aaronbieber/dotfiles/master/configs/emacs.d/lisp/init-powerline.el'
+;; By Aaron Bieber
 ;;
 
 (use-package powerline
@@ -28,6 +32,29 @@
 (defface my-pl-segment3-inactive
   '((t (:foreground "#CEBFF3" :background "#3A2E58")))
   "Powerline third segment inactive face.")
+
+(defmacro diminish-minor-mode (filename mode &optional abbrev)
+  `(eval-after-load (symbol-name ,filename)
+     '(diminish ,mode ,abbrev)))
+
+(defmacro diminish-major-mode (mode-hook abbrev)
+  `(add-hook ,mode-hook
+             (lambda () (setq mode-name ,abbrev))))
+
+(defun cycle-powerline-separators (&optional reverse)
+  "Set Powerline separators in turn.  If REVERSE is not nil, go backwards."
+  (interactive)
+  (let* ((fn (if reverse 'reverse 'identity))
+         (separators (funcall fn '("arrow" "arrow-fade" "slant"
+                                   "chamfer" "wave" "brace" "roundstub" "zigzag"
+                                   "butt" "rounded" "contour" "curve")))
+         (found nil))
+    (while (not found)
+      (progn (setq separators (append (cdr separators) (list (car separators))))
+             (when (string= (car separators) powerline-default-separator)
+               (progn (setq powerline-default-separator (cadr separators))
+                      (setq found t)
+                      (redraw-display)))))))
 
 (defun air-powerline-default-theme ()
   "Set up my custom Powerline with Evil indicators."
@@ -85,5 +112,15 @@
 
 (setq powerline-default-separator (if (display-graphic-p) 'arrow nil))
 (air-powerline-default-theme)
+
+;; Diminish Modes
+(diminish 'auto-revert-mode)
+(diminish-minor-mode 'auto-complete 'auto-complete-mode)
+(diminish-minor-mode 'git-gutter 'git-gutter-mode)
+(diminish-minor-mode 'helm 'helm-mode)
+(diminish-minor-mode 'hi-lock 'hi-lock-mode)
+(diminish-minor-mode 'undo-tree 'undo-tree-mode)
+(diminish-minor-mode 'which-key 'which-key-mode)
+(diminish-minor-mode 'whitespace 'whitespace-mode)
 
 (provide 'init-powerline)

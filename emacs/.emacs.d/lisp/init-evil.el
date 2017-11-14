@@ -33,6 +33,7 @@
 
 ;; Enable Emulated VIM Search
 (evil-mode 1)
+(setq evil-want-abbrev-expand-on-insert-exit nil)
 (add-hook 'occur-mode-hook
           (lambda ()
             (evil-add-hjkl-bindings occur-mode-map 'emacs
