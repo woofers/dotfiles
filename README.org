@@ -3,13 +3,13 @@
 #+AUTHOR:	Jaxson Van Doorn
 #+EMAIL:	jaxson.vandoorn@gmail.com
 
-**** Custom Config and Theme files for:
-***** [[https://www.gnu.org/software/emacs/][Emacs]]
-***** [[https://github.com/neovim/neovim][Neovim]]
-***** BASH (With [[https://github.com/banga/powerline-shell][Powerline-Shell]]),
-***** ZSH (With [[https://github.com/robbyrussell/oh-my-zsh][Oh My Zsh]])
-***** [[https://github.com/goreliu/wsl-terminal][wsl-terminal]] (Mintty)
-***** [[https://github.com/tmux/tmux][Tmux]]
+* Custom Config and Theme files for:
+  - [[https://www.gnu.org/software/emacs/][Emacs]]
+  - [[https://github.com/neovim/neovim][Neovim]]
+  - [[https://github.com/goreliu/wsl-terminal][wsl-terminal]] (Mintty)
+  - [[https://github.com/tmux/tmux][Tmux]]
+  - BASH (With [[https://github.com/banga/powerline-shell][Powerline-Shell]]),
+  - ZSH (With [[https://github.com/robbyrussell/oh-my-zsh][Oh My Zsh]])
 
 * Emacs
 
@@ -21,11 +21,12 @@
 #+NAME:    Emacs Screenshot 2
 [[./screenshots/emacs2.png]]
 
-My Emacs setup consits of [[https://github.com/MaxSt/challenger-deep][challenger-deep]] as a theme with a custom [[https://github.com/milkypostman/powerline][powerline]].
-Emacs setup also heavly relies on Helm
+My Emacs setup consist of [[https://github.com/MaxSt/challenger-deep][challenger-deep]] as a theme with a custom [[https://github.com/milkypostman/powerline][Powerline]].
+Emacs setup also heavly relies on [[https://github.com/emacs-helm/helm][Helm]]
+
 * Neovim
 
-#+CAPTION: Neovim using airline
+#+CAPTION: Neovim using Airline and NERDTree
 #+NAME:    Neovim Screenshot
 [[./screenshots/vim.png]]
 
@@ -37,6 +38,7 @@ Airline theme is *light* from [[https://github.com/vim-airline/vim-airline-theme
 Mintty uses [[https://github.com/dracula/mintty][dracula-mintty]] for its color definitions.
 
 * Tmux
+
 #+CAPTION: Tmux using usings splits and a custom theme
 #+NAME:    Tmux Screenshot
 [[./screenshots/tmux.png]]
@@ -44,7 +46,8 @@ Mintty uses [[https://github.com/dracula/mintty][dracula-mintty]] for its color 
 Tmux uses a modified version of [[https://github.com/sei40kr/tmux-airline-dracula][tmux-airline-dracula]] named *wracula* which matches *BASH* and *ZSH*.
 
 * BASH and ZSH
-#+CAPTION: ZSH using Oh My ZSH with the git and syntax plugin
+
+#+CAPTION: ZSH using Oh My ZSH with the git and syntax plugins
 #+NAME:    ZSH Screenshot
 [[./screenshots/zsh.png]]
 
