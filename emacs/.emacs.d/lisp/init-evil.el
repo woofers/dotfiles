@@ -147,8 +147,11 @@
 (define-key evil-normal-state-map (kbd "C-k") 'move-text-up)
 (define-key evil-normal-state-map (kbd "C-j") 'move-text-down)
 
-
+;; Quick Switch Buffer
 (global-set-key (kbd "C-x b") 'evil-switch-to-windows-last-buffer)
+
+;; Quick Kill Buffer
+(global-set-key (kbd "C-x k") 'kill-this-buffer)
 
 ;; Key Bindings
 (with-eval-after-load 'evil-maps
@@ -182,15 +185,13 @@
         (interactive) (unindent-dwim -1)))
 
   ;; VIM like Tab Behavior
-  (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
-  (define-key evil-insert-state-map [?\e delete] (lambda () (interactive) (universal-argument) (delete-forward-char)))
-
-  ;; Unmap Ctrl N
-  (define-key evil-normal-state-map "\C-n" nil)
+  ;; (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
+  (define-key evil-insert-state-map [?\e delete] (lambda ()
+        (interactive) (universal-argument) (delete-forward-char)))
 
   ;; Start at Beginning of Text Rather Than Line
-  (define-key evil-motion-state-map "j" 'evil-next-line-first-non-blank)
-  (define-key evil-motion-state-map "k" 'evil-previous-line-first-non-blank)
+  ;; (define-key evil-motion-state-map "j" 'evil-next-line-first-non-blank)
+  ;; (define-key evil-motion-state-map "k" 'evil-previous-line-first-non-blank)
 
   ;; Navigate Splits
   (define-key evil-motion-state-map "\M-j" 'evil-window-down)
@@ -207,6 +208,7 @@
 
   ;; Home Goes to Start of Text
   (define-key evil-motion-state-map (kbd "<home>") 'evil-first-non-blank-of-visual-line)
+  (define-key evil-motion-state-map (kbd "<end>") 'evil-last-non-blank)
 )
 
 (provide 'init-evil)

@@ -62,8 +62,9 @@
 (load-file "~/.emacs.d/lisp/init-helm.el")
 (require 'init-helm)
 
-(use-package telephone-line
-    :ensure t)
+;; Powerline
+(load-file "~/.emacs.d/lisp/init-powerline.el")
+(require 'init-powerline)
 
 (use-package magit
     :ensure t)
@@ -101,9 +102,6 @@
 (use-package wttrin
     :ensure t)
 
-(use-package fireplace
-    :ensure t)
-
 (use-package ispell
     :ensure t)
 
@@ -128,7 +126,7 @@
 (load-theme 'challenger-deep t)
 
 ;; Enable Powerline in VIM Mode
-(telephone-line-evil-config)
+;;(telephone-line-evil-config)
 
 ;; Ranger
 (setq ranger-parent-depth 3)
@@ -152,7 +150,7 @@
 ;; Show Tabs
 (setq highlight-indent-guides-method 'character)
 
-;; Wheather
+;; Weather
 (setq wttrin-default-cities '("YYJ"))
 (setq wttrin-default-accept-language '("Accept-Language" . "en-US"))
 

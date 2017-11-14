@@ -3,7 +3,7 @@
 #+AUTHOR:	Jaxson Van Doorn
 #+EMAIL:	jaxson.vandoorn@gmail.com
 
-https://i.imgur.com/35PbDfi.png
+[[image-url:https://i.imgur.com/35PbDfi.png]]
 
 Custom Config and Theme files for:
 - [[https://www.gnu.org/software/emacs/][emacs]]
@@ -15,7 +15,7 @@ Custom Config and Theme files for:
 
 * Emacs
 
-https://i.imgur.com/M5tCKc6.png
+[[image-url:https://i.imgur.com/M5tCKc6.png]]
 
 Emacs uses [[https://github.com/MaxSt/challenger-deep][challenger-deep]].
 
@@ -31,12 +31,12 @@ Airline theme is *light* from [[https://github.com/vim-airline/vim-airline-theme
 
 Mintty uses [[https://github.com/dracula/mintty][dracula-mintty]].
 
-* tmux
-tmux uses a modified version of [[https://github.com/sei40kr/tmux-airline-dracula][tmux-airline-dracula]] named *wracula*.
+* TMUX
+TMUX uses a modified version of [[https://github.com/sei40kr/tmux-airline-dracula][tmux-airline-dracula]] named *wracula*.
 
 * BASH and ZSH
 
-https://i.imgur.com/feNNd4O.png
+[[image-url:https://i.imgur.com/feNNd4O.png]]
 
 This config contains a modified versions of both [[https://github.com/agnoster/agnoster-zsh-theme][agnoster-zsh-theme]] and [[https://gist.github.com/kruton/8345450][agnoster-bash]] dubbed **wagnoster** for *BASH* and *ZSH*.
 

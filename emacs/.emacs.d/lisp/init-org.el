@@ -36,6 +36,17 @@
 (setq org-todo-keywords
       '((sequence "STUDY" "TODO" "IN-PROGRESS" "NEAR-COMPLETION"
                   "WAITING" "REVIEW" "|" "DONE" "CANCELED")))
+(org-add-link-type
+ "image-url"
+ (lambda (path)
+   (let ((img (expand-file-name
+           (concat (md5 path) "." (file-name-extension path))
+           temporary-file-directory)))
+     (if (file-exists-p img)
+     (find-file img)
+       (url-copy-file path img)
+       (find-file img)))))
+
 
 
 ;; Keymaps for Agenda and Links
