@@ -5,9 +5,9 @@
 #+OPTIONS:  num:nil
 
 * Dotfiles:
-:PROPERTIES:
-:UNNUMBERED: t
-:END:
+  :PROPERTIES:
+  :UNNUMBERED: t
+  :END:
   - [[https://www.gnu.org/software/emacs/][Emacs]]
   - [[https://github.com/neovim/neovim][Neovim]]
   - [[https://github.com/goreliu/wsl-terminal][wsl-terminal]] (Mintty)
