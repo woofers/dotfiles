@@ -8,6 +8,24 @@
   lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''			 %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
   lg = !"git lg1"
 	add-commit = !git add -A && git commit
+  aa = add --all
+  amend = commit --amend
+  br = branch
+  checkout-pr = "!f() { git fetch origin pull/$1/head:pr-$1 && git checkout pr-$1; }; f"
+  cm = commit -m
+  co = checkout
+  dc = diff --cached
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  loc = !git diff --stat `git hash-object -t tree /dev/null` | tail -1 | cut -d' ' -f5
+  pr = pull-request
+  st = status -sb
+  sum = log --oneline --no-merges
+  unstage = reset HEAD
+[color]
+  ui = true
+[color "diff"]
+  meta = bold cyan
 [core]
 	excludesfile = $HOME/gitignore_global
 [merge]
@@ -16,3 +34,9 @@
 	path = nvim
 [push]
 	default = simple
+[credential]
+	helper = cache --timeout=360000
+[user]
+  name = Harry Schwartz
+  email = hello@harryrschwartz.com
+  signingkey = 25AE721B
