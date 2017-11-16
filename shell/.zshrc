@@ -66,7 +66,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $SSH_CONNECTION ]]; then
     export EDITOR='vim'
 else
-    export EDITOR='mvim'
+    export EDITOR='emacs'
 fi
 
 # Compilation flags
@@ -96,7 +96,7 @@ if [[ $(hostname -s) = Jaxson-PC* ]]; then
     export DRIVE="$HOME_DRIVE/Documents/JVD Docs/Documents/"
 fi
 if [[ $(hostname -s) = Jaxson-Debian* ]]; then
-    export HOME_DRIVE="/home/"
+    export HOME_DRIVE="/home/jaxson"
     export DRIVE="$HOME_DRIVE/Documents/Google Drive"
 fi
 export DEV="$HOME_DRIVE/Documents/Development"
@@ -127,16 +127,23 @@ alias ch="cd ~"
 alias tmux='tmux -2 -u'
 alias tmuxw='tmux new-window -n'
 
-# Start in Tmux
-if [ -z "$TMUX" ]
-then
-    tmux start-server
-    tmux new-session -d -s Workspace -n "Dev 1"
-    tmuxw "Dev 2"
-    tmuxw "School"
-    tmuxw "Extra"
-    tmux attach-session -t Workspace
-fi
+case "$(pidof tmux | wc -w)" in
+0) 
+  # Start in Tmux
+  if [ -z "$TMUX" ]
+  then
+      tmux start-server
+      tmux new-session -d -s Workspace -n "Dev 1"
+      tmuxw "Dev 2"
+      tmuxw "School"
+      tmuxw "Extra"
+      tmux attach-session -t Workspace
+  fi
+    ;;
+*)  echo "ABORT"
+    ;;
+esac
+
 
 # Sets LS Colors
 eval `dircolors ~/dircolors.ansi-darkorange`

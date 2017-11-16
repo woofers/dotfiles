@@ -75,6 +75,14 @@ ln -s "$DEV/src/Dotfiles/shell/dircolors.ansi-darkorange" "$HOME"
 rm -rf "$HOME/.config/nvim"
 ln -s "$DEV/src/Dotfiles/vim/nvim" "$HOME/.config/nvim"
 
+# Setup emacs config
+rm -rf "$HOME/.emacs.d"
+ln -s "$DEV/src/Dotfiles/emacs/.emacs.d" "$HOME/.emacs.d"
+rm -rf "$HOME/init.org"
+ln -s "$DEV/src/Dotfiles/emacs/init.org" "$HOME/init.org"
+rm -rf "$HOME/.emacs"
+ln -s "$DEV/src/Dotfiles/emacs/.emacs" "$HOME/.emacs"
+
 # Setup ranger config
 rm -rf "$HOME/.config/ranger"
 ln -s "$DEV/src/Dotfiles/ranger/" "$HOME/.config/ranger"
