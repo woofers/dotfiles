@@ -29,7 +29,7 @@ export UPDATE_ZSH_DAYS=7
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -126,23 +126,19 @@ alias cr="cd /"
 alias ch="cd ~"
 alias tmux='tmux -2 -u'
 alias tmuxw='tmux new-window -n'
+alias close='tmux kill-server; exit'
 
-case "$(pidof tmux | wc -w)" in
-0) 
-  # Start in Tmux
-  if [ -z "$TMUX" ]
-  then
-      tmux start-server
-      tmux new-session -d -s Workspace -n "Dev 1"
-      tmuxw "Dev 2"
-      tmuxw "School"
-      tmuxw "Extra"
-      tmux attach-session -t Workspace
-  fi
-    ;;
-*)  echo "ABORT"
-    ;;
-esac
+# Start in Tmux
+if [ -z "$TMUX" ]
+then
+    tmux kill-server > /dev/null
+    tmux start-server
+    tmux new-session -d -s Workspace -n "Dev 1"
+    tmuxw "Dev 2"
+    tmuxw "School"
+    tmuxw "Extra"
+    tmux attach-session -t Workspace
+fi
 
 
 # Sets LS Colors
