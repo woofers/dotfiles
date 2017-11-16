@@ -36,7 +36,3 @@
 	default = simple
 [credential]
 	helper = cache --timeout=360000
-[user]
-  name = Harry Schwartz
-  email = hello@harryrschwartz.com
-  signingkey = 25AE721B
