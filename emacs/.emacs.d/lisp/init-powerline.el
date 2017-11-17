@@ -119,6 +119,7 @@
 (diminish-minor-mode 'git-gutter 'git-gutter-mode)
 (diminish-minor-mode 'helm 'helm-mode)
 (diminish-minor-mode 'hi-lock 'hi-lock-mode)
+(diminish-minor-mode 'projectile 'projectile-mode)
 (diminish-minor-mode 'undo-tree 'undo-tree-mode)
 (diminish-minor-mode 'which-key 'which-key-mode)
 (diminish-minor-mode 'whitespace 'whitespace-mode)
