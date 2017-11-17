@@ -145,14 +145,8 @@
                                  (* (or count 1) (- 0 tab-width))))))))
 
 ;; Move Text Up and Down
-(define-key evil-normal-state-map (kbd "C-k") 'move-text-up)
 (define-key evil-normal-state-map (kbd "C-j") 'move-text-down)
-
-;; Quick Switch Buffer
-(global-set-key (kbd "C-x b") 'evil-switch-to-windows-last-buffer)
-
-;; Quick Kill Buffer
-(global-set-key (kbd "C-x k") 'kill-this-buffer)
+(define-key evil-normal-state-map (kbd "C-k") 'move-text-up)
 
 ;; Key Bindings
 (with-eval-after-load 'evil-maps

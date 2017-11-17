@@ -107,6 +107,9 @@
  (use-package omnisharp
 	 :ensure t)
 
+ (use-package gradle-mode
+	 :ensure t)
+
  (use-package markdown-mode
 	 :ensure t)
 
