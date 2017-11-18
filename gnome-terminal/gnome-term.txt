@@ -1,0 +1,28 @@
+[/]
+new-terminal-mode='window'
+schema-version=uint32 3
+theme-variant='dark'
+default-show-menubar=true
+
+[profiles:/:7ee6ec8d-1277-4bba-a508-e932940ca8ce]
+foreground-color='rgb(248,248,242)'
+visible-name='Jaxson'
+palette=['rgb(0,0,0)', 'rgb(255,85,85)', 'rgb(80,250,123)', 'rgb(241,250,140)', 'rgb(202,169,250)', 'rgb(255,121,198)', 'rgb(139,233,253)', 'rgb(191,191,191)', 'rgb(40,42,54)', 'rgb(255,110,103)', 'rgb(90,247,142)', 'rgb(244,249,157)', 'rgb(202,169,250)', 'rgb(255,146,208)', 'rgb(154,237,254)', 'rgb(230,230,230)']
+default-size-columns=100
+default-size-rows=40
+cursor-background-color='rgb(253,191,130)'
+use-system-font=false
+cursor-colors-set=true
+highlight-colors-set=true
+use-theme-colors=false
+cursor-foreground-color='rgb(40,42,54)'
+font='Meslo LG M for Powerline 10.5'
+bold-color-same-as-fg=true
+highlight-background-color='rgb(253,191,130)'
+background-color='rgb(40,42,54)'
+audible-bell=false
+highlight-foreground-color='rgb(40,42,54)'
+
+[profiles:]
+list=['7ee6ec8d-1277-4bba-a508-e932940ca8ce']
+default='7ee6ec8d-1277-4bba-a508-e932940ca8ce'

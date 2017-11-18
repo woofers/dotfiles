@@ -1,0 +1,273 @@
+
+#
+# i3 Gaps Config
+#
+# Adapted From https://github.com/ganifladi/linux/blob/master/config/i3/config
+# By Richard Rabe
+# i3 config file (v4)
+#
+
+# colors
+set_from_resource $border       color0 #bf616aFF
+set_from_resource $background   color0 #2b303bCC
+set_from_resource $text         color8 #c0c5ceFF
+set_from_resource $active       color4 #bf616aFF
+set_from_resource $inactive     color7 #c0c5ceFF
+
+set $bar-height  40
+set $border-width 0
+
+# font for window titles and bar
+font pango:DejaVu Sans Mono 8
+
+# Windows Key as Mod
+set $mod Mod4
+
+# VIM Movement
+set $left   h
+set $down   j
+set $up     k
+set $right  l
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# control focused window when follows the mouse movements
+focus_follows_mouse yes
+
+# Start Terminal
+bindsym $mod+Return exec i3-sensible-terminal -e zsh
+
+# kill focused window
+bindsym $mod+q kill
+
+# start a program launcher
+bindsym $mod+x exec --no-startup-id rofi -show combi
+
+# change focus
+bindsym $mod+$left  focus left
+bindsym $mod+$down  focus down
+bindsym $mod+$up    focus up
+bindsym $mod+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left   focus left
+bindsym $mod+Down   focus down
+bindsym $mod+Up     focus up
+bindsym $mod+Right  focus right
+
+# move focused window
+bindsym $mod+Shift+$left    move left
+bindsym $mod+Shift+$down    move down
+bindsym $mod+Shift+$up      move up
+bindsym $mod+Shift+$right   move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left     move left
+bindsym $mod+Shift+Down     move down
+bindsym $mod+Shift+Up       move up
+bindsym $mod+Shift+Right    move right
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+bindsym $mod+d focus child
+
+# set popups during fullscreen mode
+popup_during_fullscreen smart
+
+# customize workspace names
+set $WS1 "1: Task"
+set $WS2 "2: Web"
+set $WS3 "3: Chat"
+set $WS4 "4: Video"
+set $WS5 "5: "
+set $WS6 "6: "
+set $WS7 "7: "
+set $WS8 "8: "
+set $WS9 "9: "
+
+# switch to workspace
+bindsym $mod+1 workspace $WS1
+bindsym $mod+2 workspace $WS2
+bindsym $mod+3 workspace $WS3
+bindsym $mod+4 workspace $WS4
+bindsym $mod+5 workspace $WS5
+bindsym $mod+6 workspace $WS6
+bindsym $mod+7 workspace $WS7
+bindsym $mod+8 workspace $WS8
+bindsym $mod+9 workspace $WS9
+bindsym $mod+0 workspace $WS10
+
+# move focused container to workspace and follow
+bindsym $mod+Shift+1 move container to workspace $WS1; workspace $WS1
+bindsym $mod+Shift+2 move container to workspace $WS2; workspace $WS2
+bindsym $mod+Shift+3 move container to workspace $WS3; workspace $WS3
+bindsym $mod+Shift+4 move container to workspace $WS4; workspace $WS4
+bindsym $mod+Shift+5 move container to workspace $WS5; workspace $WS5
+bindsym $mod+Shift+6 move container to workspace $WS6; workspace $WS6
+bindsym $mod+Shift+7 move container to workspace $WS7; workspace $WS7
+bindsym $mod+Shift+8 move container to workspace $WS8; workspace $WS8
+bindsym $mod+Shift+9 move container to workspace $WS9; workspace $WS9
+
+# Remove Screen Saver
+exec --no-startup-id xset s off -dpms &
+
+# Remove Bell
+exec --no-startup-id xset b 0 0 0 &
+
+# Set Desktop Background
+exec --no-startup-id feh --bg-scale ~/Pictures bg.jpg
+
+# Start Blur
+exec --no-startup-id ~/.config/blurme &
+
+# Start Network
+exec --no-startup-id nm-applet &
+
+# Start Redshift
+exec --no-startup-id redshift &
+
+# Start Notifcation
+# exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
+
+# Start Compton
+exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
+# exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+# assign classes
+# assign [class="Firefox"] $WS2
+# assign [class="Chromium"] $WS2
+# assign [class="Chrome"] $WS2
+# assign [class="Vlc"] $WS4
+# assign [class="(?i)libreoffice"] $WS2
+
+# Reload Config
+bindsym $mod+Shift+c reload
+
+# Restart i3
+bindsym $mod+Shift+r restart
+
+# Log Out
+bindsym $mod+semicolon exec i3-msg exit
+
+# TITLEBAR FORMAT
+# We first set the titlebar font size to a large size to get a good padding amount.
+# We then use pango markup to force i3 to print with the desired font.
+# This gives us large titlebars with a small font. :P
+font pango:Monaco 24
+for_window [class=".*"] title_format "<span font='Monaco 10'>  > %title</span>"
+
+# BORDER
+new_window pixel $border-width
+
+# mousepad glitch fix
+hide_edge_borders both
+
+# FLOATING WINDOWS
+for_window [class="^python*"] floating enable
+for_window [class="^nexus*"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [title="Preferences$"] floating enable
+
+# toggle tile/float
+set $mode_tile Toggle tile/float: Tile (1) Float (2)
+bindsym $mod+Shift+space mode "$mode_tile"
+
+mode "$mode_tile" {
+    bindsym 1 mode "default", [class="^.*"] floating disable, [class="^.*"] border toggle
+    bindsym 2 mode "default", [class="^.*"] floating enable, [class="^.*"] border toggle, [class="^.*"] border toggle
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# Gaps
+gaps inner 60
+gaps outer 30
+
+# Simple Zoom
+bindsym $mod+minus gaps inner all plus 30, gaps outer all plus 10
+bindsym $mod+plus gaps inner all minus 30, gaps outer all minus 10
+
+# Reisze Mode
+set $mode_resize Größe verändern
+bindsym $mod+r mode "$mode_resize"
+
+mode "$mode_resize" {
+        bindsym $left   resize shrink width 10 px or 10 ppt
+        bindsym $right  resize grow width 10 px or 10 ppt
+        bindsym $down   resize grow height 10 px or 10 ppt
+        bindsym $up     resize shrink height 10 px or 10 ppt
+
+        bindsym Left    resize shrink width 20 px or 20 ppt
+        bindsym Down    resize grow height 20 px or 20 ppt
+        bindsym Up      resize shrink height 20 px or 20 ppt
+        bindsym Right   resize grow width 20 px or 20 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym q mode "default"
+}
+
+# window colors         Border      Background  Text        Indicator   Child_Border
+client.focused          $border     $background $text       $border     $border
+client.unfocused        $background $background $background $background $background
+client.urgent           $background $background $background $background $background
+client.placeholder      $background $background $background $background $background
+client.background       $background
+
+# Start i3bar to display a workspace bar
+bar {
+  i3bar_command i3bar
+  mode invisible
+  position bottom
+  height $bar-height
+  tray_padding 8
+  tray_output none
+  font pango:Monaco 12
+  strip_workspace_numbers yes
+
+  colors {
+    background $background
+    statusline $text
+    separator $background
+    #class             border   bg            text
+    focused_workspace  $active  $active       $background
+    active_workspace   $border  $background   $active
+    inactive_workspace $border  $background   $inactive
+    urgent_workspace   $border  $background   $inactive
+  }
+}
+
+# toggle i3bar
+bindsym --release $mod+s bar mode toggle
+
+# Audio
+bindsym --release XF86AudioRaiseVolume exec --no-startup-id ~/.local/bin/volume.sh up
+bindsym --release XF86AudioLowerVolume exec --no-startup-id ~/.local/bin/volume.sh down
+bindsym --release XF86AudioMute exec --no-startup-id ~/.local/bin/volume.sh mute
+
+# Srceen Brightness Controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 2
+bindsym Shift+XF86MonBrightnessUp exec xbacklight -inc 15
+bindsym XF86MonBrightnessDown exec xbacklight -dec 2
+bindsym Shift+XF86MonBrightnessDown exec xbacklight -dec 15
+
+# Redshift
+bindsym --release $mod+ctrl+r exec ~/.local/bin/red.sh
+
+# Lock Screen
+bindsym $mod+Shift+x exec ~/.local/bin/i3lock-blur
+
+# Screenshot
+bindsym --release Print exec --no-startup-id scrot /tmp/`date +%Y%m%d_%H%M%S`.png && exec notify-send 'SCROT' 'Screenshot taken (/tmp)'
