@@ -102,6 +102,7 @@ ln -s "$DEV/src/Dotfiles/compton" "$HOME/.config/compton"
 # Setup Rofi
 rm -rf "$HOME/.config/rofi"
 ln -s "$DEV/src/Dotfiles/rofi" "$HOME/.config/rofi"
+ln -s "$DEV/src/Dotfiles/rofi/challenger.theme" "/usr/share/rofi/themes/challenger.theme"
 
 # Setup X
 rm -rf "$HOME/.xsessionrc"

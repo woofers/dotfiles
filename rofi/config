@@ -10,7 +10,7 @@
 ! 1   2   3
 ! 8   0   4
 ! 7   6   5
-rofi.location: 1
+rofi.location: 0
 rofi.xoffset: 0
 rofi.yoffset: 0
 
@@ -18,21 +18,22 @@ rofi.yoffset: 0
 rofi.modi: run
 
 ! "Window width" Set from: Default
-rofi.width: 1920
+rofi.width: 900
 
 ! "Padding" Set from: Default
 rofi.padding: 30
 
 ! "Number of lines" Set from: Default
-rofi.lines: 1
+rofi.lines: 5
 rofi.line-margin: 10
 rofi.line-padding: 2
 
 ! "Font to use" Set from: Default
-rofi.font: Monaco 18
+rofi.font: Monaco 16
 
-! Color states     'bg',    'fg',    'bgalt', 'hlbg',  'hlfg'
-rofi.color-normal: #00242a34, #b7bdca, #00242a34, #00242a34, #bf616a, #3377cc
+! Color states     'bg',      'fg',    'bgalt',   'hlbg',    'hlfg'   '?'
+!rofi.color-normal: #001b182c, #b7bdca, #001b182c, #001b182c, #906cff, #906cff
 
 !                  'background', 'border', 'separator'
-rofi.color-window: #ff242a34, #ff242a34, #ff242a34
+!rofi.color-window: #ff1b182c, #ff1b182c, #ff1b182
+#include "/usr/share/rofi/themes//challenger.theme"
