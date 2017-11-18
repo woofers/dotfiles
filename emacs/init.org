@@ -379,6 +379,9 @@
   (if (eq system-type 'windows-nt)
       (set-frame-font "Meslo LG M Regular for Powerline 12" nil t)
   )
+  (if (eq system-type 'gnu/linux)
+      (set-frame-font "-bitstream-Meslo LG M for Powerline-normal-normal-normal-*-*-*-*-*-0-iso10646-1" nil t)
+  )
   #+END_SRC
 * Functions
 ** Backspace to Tab

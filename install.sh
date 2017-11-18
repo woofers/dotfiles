@@ -27,6 +27,10 @@ cd ..
 rm -rf tmux-2.6
 rm tmux-2.6.tar.gz
 
+# Install Window Management Components
+sudo apt-get install i3-gaps
+sudo apt-get install compton
+
 # Install Powerline Fonts
 git clone https://github.com/powerline/fonts.git --depth=1
 cd fonts
@@ -71,11 +75,11 @@ ln -s "$DEV/src/Dotfiles/tmux/.tmux" "$HOME"
 rm "$HOME/dircolors.ansi-darkorange"
 ln -s "$DEV/src/Dotfiles/shell/dircolors.ansi-darkorange" "$HOME"
 
-# Setup VIM config
+# Setup VIM Config
 rm -rf "$HOME/.config/nvim"
 ln -s "$DEV/src/Dotfiles/vim/nvim" "$HOME/.config/nvim"
 
-# Setup emacs config
+# Setup Emacs Config
 rm -rf "$HOME/.emacs.d"
 ln -s "$DEV/src/Dotfiles/emacs/.emacs.d" "$HOME/.emacs.d"
 rm -rf "$HOME/init.org"
@@ -83,9 +87,25 @@ ln -s "$DEV/src/Dotfiles/emacs/init.org" "$HOME/init.org"
 rm -rf "$HOME/.emacs"
 ln -s "$DEV/src/Dotfiles/emacs/.emacs" "$HOME/.emacs"
 
-# Setup ranger config
+# Setup Ranger Config
 rm -rf "$HOME/.config/ranger"
 ln -s "$DEV/src/Dotfiles/ranger/" "$HOME/.config/ranger"
+
+# Setup I3 Config
+rm -rf "$HOME/.config/i3"
+ln -s "$DEV/src/Dotfiles/i3" "$HOME/.config/i3"
+
+# Setup Compton
+rm -rf "$HOME/.config/compton"
+ln -s "$DEV/src/Dotfiles/compton" "$HOME/.config/compton"
+
+# Setup Rofi
+rm -rf "$HOME/.config/rofi"
+ln -s "$DEV/src/Dotfiles/rofi" "$HOME/.config/rofi"
+
+# Setup X
+rm -rf "$HOME/.xsessionrc"
+ln -s "$DEV/src/Dotfiles/x/.xsessionrc" "$HOME/.xsessionrc"
 
 # Install TMUX Plug-In Manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

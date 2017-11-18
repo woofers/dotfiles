@@ -1,3 +1,11 @@
+
+!
+! rofi Config Gaps
+!
+! Adapted From https://github.com/ganifladi/linux/blob/master/config/rofi/config
+! By Richard Rabe
+!
+
 ! Location
 ! 1   2   3
 ! 8   0   4
@@ -25,6 +33,6 @@ rofi.font: Monaco 18
 
 ! Color states     'bg',    'fg',    'bgalt', 'hlbg',  'hlfg'
 rofi.color-normal: #00242a34, #b7bdca, #00242a34, #00242a34, #bf616a, #3377cc
+
 !                  'background', 'border', 'separator'
 rofi.color-window: #ff242a34, #ff242a34, #ff242a34
-

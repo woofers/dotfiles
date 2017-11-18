@@ -202,7 +202,6 @@ bindsym $mod+plus gaps inner all minus 30, gaps outer all minus 10
 # Reisze Mode
 set $mode_resize Größe verändern
 bindsym $mod+r mode "$mode_resize"
-
 mode "$mode_resize" {
         bindsym $left   resize shrink width 10 px or 10 ppt
         bindsym $right  resize grow width 10 px or 10 ppt
@@ -219,7 +218,7 @@ mode "$mode_resize" {
         bindsym q mode "default"
 }
 
-# window colors         Border      Background  Text        Indicator   Child_Border
+# Window Colors         Border      Background  Text        Indicator   Child_Border
 client.focused          $border     $background $text       $border     $border
 client.unfocused        $background $background $background $background $background
 client.urgent           $background $background $background $background $background
@@ -241,6 +240,7 @@ bar {
     background $background
     statusline $text
     separator $background
+
     #class             border   bg            text
     focused_workspace  $active  $active       $background
     active_workspace   $border  $background   $active
@@ -249,8 +249,8 @@ bar {
   }
 }
 
-# toggle i3bar
-bindsym --release $mod+s bar mode toggle
+# Toggle i3bar
+# bindsym --release $mod+h bar mode toggle
 
 # Audio
 bindsym --release XF86AudioRaiseVolume exec --no-startup-id ~/.local/bin/volume.sh up
@@ -264,10 +264,10 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 2
 bindsym Shift+XF86MonBrightnessDown exec xbacklight -dec 15
 
 # Redshift
-bindsym --release $mod+ctrl+r exec ~/.local/bin/red.sh
+# bindsym --release $mod+ctrl+r exec ~/.local/bin/red.sh
 
 # Lock Screen
-bindsym $mod+Shift+x exec ~/.local/bin/i3lock-blur
+# bindsym $mod+Shift+x exec ~/.local/bin/i3lock-blur
 
 # Screenshot
 bindsym --release Print exec --no-startup-id scrot /tmp/`date +%Y%m%d_%H%M%S`.png && exec notify-send 'SCROT' 'Screenshot taken (/tmp)'
