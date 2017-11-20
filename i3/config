@@ -81,10 +81,10 @@ bindsym $mod+e layout toggle split
 popup_during_fullscreen smart
 
 # Workspace Names
-set $WS1 "1: Task "
-set $WS2 "2: Web  "
-set $WS3 "3: Chat "
-set $WS4 "4: Video"
+set $WS1 "1: "
+set $WS2 "2: "
+set $WS3 "3: "
+set $WS4 "4: "
 set $WS5 "5: "
 set $WS6 "6: "
 set $WS7 "7: "
@@ -100,9 +100,9 @@ bindsym $mod+5 workspace $WS5
 bindsym $mod+6 workspace $WS6
 bindsym $mod+7 workspace $WS7
 bindsym $mod+8 workspace $WS8
-bindsym $mod+9 workspace $WS9
-bindsym $mod+0 workspace $WS10
-bindsym $mod+d workspace $WS10
+
+# Fake Show Desktop
+bindsym $mod+d workspace $WS9
 
 # Move Current Window to Workspace
 bindsym $mod+Shift+1 move container to workspace $WS1; workspace $WS1
@@ -113,7 +113,10 @@ bindsym $mod+Shift+5 move container to workspace $WS5; workspace $WS5
 bindsym $mod+Shift+6 move container to workspace $WS6; workspace $WS6
 bindsym $mod+Shift+7 move container to workspace $WS7; workspace $WS7
 bindsym $mod+Shift+8 move container to workspace $WS8; workspace $WS8
-bindsym $mod+Shift+9 move container to workspace $WS9; workspace $WS9
+
+# Alt Tab
+bindsym Mod1+Tab workspace next
+bindsym Control+Mod1+Tab workspace prev
 
 # Remove Screen Saver
 exec --no-startup-id xset s off -dpms &
@@ -122,7 +125,7 @@ exec --no-startup-id xset s off -dpms &
 exec --no-startup-id xset b 0 0 0 &
 
 # Set Brightness
-exec --no-startup-id light -S 34
+exec --no-startup-id light -S 30
 
 # Mute Volume
 exec --no-startup-id pactl set-sink-volume 0 0%
