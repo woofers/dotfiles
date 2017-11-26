@@ -15,7 +15,7 @@ set_from_resource $active       color4 #bf616aFF
 set_from_resource $inactive     color7 #c0c5ceFF
 
 # Border Size
-set $bar-height  40
+set $bar-height  20
 set $border-width 0
 
 # Titlebar Font
@@ -162,7 +162,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+semicolon exec i3-msg exit
 
 # Titlebar
-font pango:Monaco 24
+font pango:Monaco 12
 for_window [class=".*"] title_format "<span font='Monaco 10'>  > %title</span>"
 
 # Border
@@ -177,16 +177,6 @@ for_window [class="^nexus*"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
-
-# set $mode_tile Toggle tile/float: Tile (1) Float (2)
-# bindsym $mod+Shift+space mode "$mode_tile"
-#
-# mode "$mode_tile" {
-    # bindsym 1 mode "default", [class="^.*"] floating disable, [class="^.*"] border toggle
-    # bindsym 2 mode "default", [class="^.*"] floating enable, [class="^.*"] border toggle, [class="^.*"] border toggle
-    # bindsym Return mode "default"
-    # bindsym Escape mode "default"
-# }
 
 # Gaps
 gaps inner 60
@@ -216,11 +206,12 @@ mode "$mode_resize" {
 }
 
 # Window Colors         Border      Background  Text        Indicator   Child_Border
-client.focused          $border     $background $text       $border     $border
-client.unfocused        $background $background $background $background $background
-client.urgent           $background $background $background $background $background
-client.placeholder      $background $background $background $background $background
-client.background       $background
+client.focused          color2     $background $text       $border     $border
+#client.focused          $border     $background $text       $border     $border
+#client.unfocused        $background $background $background $background $background
+#client.urgent           $background $background $background $background $background
+#client.placeholder      $background $background $background $background $background
+#client.background       $background
 
 # Start i3bar to Display a Workspace Bar
 bar {
@@ -231,7 +222,7 @@ bar {
   tray_padding 8
   tray_output none
   font pango:Monaco 12
-  strip_workspace_numbers yes
+  strip_workspace_numbers no
 
   colors {
     background $background
@@ -247,7 +238,7 @@ bar {
 }
 
 # Toggle i3bar
-# bindsym --release $mod+h bar mode toggle
+# bindsym --release $mod+b bar mode toggle
 
 # Volume Keys
 bindsym --release XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +10%

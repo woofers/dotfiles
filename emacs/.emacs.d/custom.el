@@ -31,5 +31,5 @@
  '(powerline-evil-normal-face ((t (:inherit powerline-evil-base-face :background "#ff5050"))))
  '(powerline-evil-operator-face ((t (:inherit powerline-evil-base-face :background "#6f60ff"))))
  '(powerline-evil-replace-face ((t (:inherit powerline-evil-base-face :background "#414048"))))
- '(powerline-evil-visual-face ((t (:inherit powerline-evil-base-face :background "#f39918"))))
+ '(powerline-evil-visual-face ((t (:inherit powerline-evil-base-face :background "#f39918" :foreground "#100e23"))))
  '(speck-mouse ((t (:inherit highlight)))))

@@ -64,9 +64,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-	export EDITOR='vim'
+    export EDITOR='vim'
 else
-	export EDITOR='emacs'
+    export EDITOR='emacs'
 fi
 
 # Compilation flags
@@ -92,12 +92,12 @@ export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 export HOME_DRIVE="/mnt/c/"
 export DRIVE="$HOME_DRIVE/Users/Jaxson/Google Drive/"
 if [[ $(hostname -s) = Jaxson-PC* ]]; then
-	export HOME_DRIVE="/mnt/d/"
-	export DRIVE="$HOME_DRIVE/Documents/JVD Docs/Documents/"
+    export HOME_DRIVE="/mnt/d/"
+    export DRIVE="$HOME_DRIVE/Documents/JVD Docs/Documents/"
 fi
 if [[ $(hostname -s) = Jaxson-Debian* ]]; then
-	export HOME_DRIVE="/home/jaxson"
-	export DRIVE="$HOME_DRIVE/Documents/Google Drive"
+    export HOME_DRIVE="/home/jaxson"
+    export DRIVE="$HOME_DRIVE/Documents/Google Drive"
 fi
 export DEV="$HOME_DRIVE/Documents/Development"
 export SCHOOL="$DRIVE/School/UVIC/2017"
@@ -110,14 +110,14 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # Allow Use of Windows Apps
 if [[ $(hostname -s) = Jaxson-PC* ]] || [[ $(hostname -s) = Jaxson-Thinkpad* ]]; then
-	export PATH=$PATH:/mnt/c/Windows/System32
-	alias javac="javac.exe"
-	alias java="java.exe"
-	alias emacs="emacs.exe"
-	alias cmd="cmd.exe /c"
-	alias ipconfig="cmd ipconfig"
-	alias tasklist="cmd tasklist"
-	alias taskkill="cmd taskkill /F"
+    export PATH=$PATH:/mnt/c/Windows/System32
+    alias javac="javac.exe"
+    alias java="java.exe"
+    alias emacs="emacs.exe"
+    alias cmd="cmd.exe /c"
+    alias ipconfig="cmd ipconfig"
+    alias tasklist="cmd tasklist"
+    alias taskkill="cmd taskkill /F"
 fi
 
 # Aliases
@@ -132,21 +132,23 @@ alias ch="cd ~"
 alias tmux='tmux -2 -u'
 alias tmuxw='tmux new-window -n'
 alias close='tmux kill-server; exit'
+alias gdpl='drive pull -depth -1 -ignore-name-clashes -ignore-conflict'
+alias gdpu='drive push -depth -1 -ignore-name-clashes -ignore-conflict'
 
 # Start in Tmux
 if [ -z "$TMUX" ]
 then
-	tmux kill-server > /dev/null
-	tmux start-server
-	tmux new-session -d -s Workspace -n "Dev 1"
-	tmuxw "Dev 2"
-	tmuxw "School"
-	tmuxw "Extra"
-	tmux attach-session -t Workspace
+    tmux kill-server > /dev/null
+    tmux start-server
+    tmux new-session -d -s Workspace -n "Dev 1"
+    tmuxw "Dev 2"
+    tmuxw "School"
+    tmuxw "Extra"
+    tmux attach-session -t Workspace
 fi
 
 
 # Sets LS Colors
 eval `dircolors ~/dircolors.ansi-darkorange`
 zstyle ':completion:*:default' list-colors \
-	   ${(s.:.)LS_COLORS}
+       ${(s.:.)LS_COLORS}

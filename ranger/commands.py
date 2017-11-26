@@ -4,17 +4,14 @@
 # documentation.  Do NOT add them all here, or you may end up with defunct
 # commands when upgrading ranger.
 
-# A simple command for demonstration purposes follows.
-# -----------------------------------------------------------------------------
+# You always need to import ranger.api.commands here to get the Command class:
+from ranger.api.commands import *
 
-from __future__ import (absolute_import, division, print_function)
+# A simple command for demonstration purposes follows.
+#------------------------------------------------------------------------------
 
 # You can import any python module as needed.
 import os
-
-# You always need to import ranger.api.commands here to get the Command class:
-from ranger.api.commands import Command
-
 
 # Any class that is a subclass of "Command" will be integrated into ranger as a
 # command.  Try typing ":my_edit<ENTER>" in ranger!
@@ -40,7 +37,7 @@ class my_edit(Command):
             # reference to the currently selected file.
             target_filename = self.fm.thisfile.path
 
-        # This is a generic function to print text in ranger.
+        # This is a generic function to print text in ranger.  
         self.fm.notify("Let's edit the file " + target_filename + "!")
 
         # Using bad=True in fm.notify allows you to print error messages:
@@ -55,8 +52,7 @@ class my_edit(Command):
 
     # The tab method is called when you press tab, and should return a list of
     # suggestions that the user will tab through.
-    # tabnum is 1 for <TAB> and -1 for <S-TAB> by default
-    def tab(self, tabnum):
+    def tab(self):
         # This is a generic tab-completion function that iterates through the
         # content of the current directory.
         return self._tab_directory_content()
