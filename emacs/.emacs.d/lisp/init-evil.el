@@ -199,11 +199,18 @@
   (define-key evil-motion-state-map "\M-H" 'evil-window-increase-width)
   (define-key evil-motion-state-map "\M-L" 'evil-window-decrease-width)
 
-  ;; Quick Switch Buffer
-
   ;; Home Goes to Start of Text
   (define-key evil-motion-state-map (kbd "<home>") 'evil-first-non-blank-of-visual-line)
   (define-key evil-motion-state-map (kbd "<end>") 'evil-last-non-blank)
+
+  ;; Make movement keys work like they should
+  (define-key evil-normal-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+  (define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+  (define-key evil-motion-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+  (define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+
+  ; Make horizontal movement cross lines
+  (setq-default evil-cross-lines t)
 )
 
 (provide 'init-evil)
