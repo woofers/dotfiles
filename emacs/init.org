@@ -74,63 +74,74 @@
 
 ** Load General Packages
  #+BEGIN_SRC emacs-lisp
- (use-package magit
-	 :ensure t)
+   (use-package magit
+           :ensure t)
 
- (use-package ranger
-	 :ensure t)
+   (use-package ranger
+           :ensure t)
 
- (use-package auto-complete
-	 :ensure t)
+   (use-package auto-complete
+           :ensure t)
 
- (use-package which-key
-	 :ensure t)
+   (use-package which-key
+           :ensure t)
 
- (use-package git-gutter-fringe
-	 :ensure t)
+   (use-package ranger
+           :ensure t)
 
- (use-package nlinum-relative
-	 :ensure t)
+   (use-package auto-complete
+           :ensure t)
 
- (use-package highlight
-	 :ensure t)
+   (use-package which-key
+           :ensure t)
 
- (use-package highlight-indent-guides
-	 :ensure t)
+   (use-package git-gutter-fringe
+           :ensure t)
 
- (use-package pcomplete-extension
-	 :ensure t)
+   (use-package nlinum-relative
+           :ensure t)
 
- (use-package imenu-list
-	 :ensure t)
+   (use-package highlight
+           :ensure t)
 
- (use-package omnisharp
-	 :ensure t)
+   (use-package highlight-indent-guides
+           :ensure t)
 
- (use-package gradle-mode
-	 :ensure t)
+   (use-package pcomplete-extension
+           :ensure t)
 
- (use-package markdown-mode
-	 :ensure t)
+   (use-package imenu-list
+           :ensure t)
 
- (use-package wttrin
-	 :ensure t)
+   (use-package omnisharp
+           :ensure t)
 
- (use-package w3m
-	 :ensure t)
+   (use-package gradle-mode
+           :ensure t)
 
- (use-package ispell
-	 :ensure t)
+   (use-package markdown-mode
+           :ensure t)
 
- (use-package flyspell
-	 :ensure t)
+   (use-package wttrin
+           :ensure t)
 
- (use-package flyspell-lazy
-	 :ensure t)
+   (if (eq system-type 'gnu/linux)
+       (use-package w3m
+           :ensure t)
+   )
 
- (use-package speck
-	 :ensure t)
- #+END_SRC
+   (use-package ispell
+           :ensure t)
+
+   (use-package flyspell
+           :ensure t)
+
+   (use-package flyspell-lazy
+           :ensure t)
+
+   (use-package speck
+           :ensure t)
+#+END_SRC
 
 * Settings
 ** Personal Info
