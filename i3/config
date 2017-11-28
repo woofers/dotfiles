@@ -39,6 +39,9 @@ focus_follows_mouse yes
 # Start Terminal
 bindsym $mod+Return exec i3-sensible-terminal -e zsh
 
+# Nemo
+bindsym $mod+n exec nemo --no-desktop
+
 # Quit Window
 bindsym $mod+q kill
 
