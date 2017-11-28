@@ -1,4 +1,3 @@
-#!/bin/bash
 
 # Setup Repos
 sudo apt-get install software-properties-common

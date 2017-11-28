@@ -116,6 +116,9 @@
  (use-package wttrin
 	 :ensure t)
 
+ (use-package w3m
+	 :ensure t)
+
  (use-package ispell
 	 :ensure t)
 
