@@ -122,6 +122,7 @@
 (diminish-minor-mode 'projectile 'projectile-mode)
 (diminish-minor-mode 'undo-tree 'undo-tree-mode)
 (diminish-minor-mode 'which-key 'which-key-mode)
+(diminish-minor-mode 'visual-line 'visual-line-mode)
 (diminish-minor-mode 'whitespace 'whitespace-mode)
 
 (provide 'init-powerline)
