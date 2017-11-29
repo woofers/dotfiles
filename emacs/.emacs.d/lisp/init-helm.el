@@ -4,7 +4,6 @@
 ;; Config File for Helm
 ;;
 
-;; Install Org Related Plug-Ins
 (use-package helm
     :ensure t)
 

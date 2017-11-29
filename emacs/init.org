@@ -598,8 +598,7 @@
 		 (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history)))
  #+END_SRC
 
-** Diminish Modes
+** Diminish Whitespace Mode
  #+BEGIN_SRC emacs-lisp
  (diminish 'untabify-mode)
- (diminish 'visual-line-mode)
  #+END_SRC
