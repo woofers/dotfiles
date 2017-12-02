@@ -36,6 +36,19 @@
    (require 'use-package))
  #+END_SRC
 
+** Load Directories
+ #+BEGIN_SRC emacs-lisp
+ (defun load-all-in-directory (dir)
+   "`load' all elisp libraries in directory DIR which are not already loaded."
+   (interactive "D")
+   (let ((libraries-loaded (mapcar #'file-name-sans-extension
+                                   (delq nil (mapcar #'car load-history)))))
+     (dolist (file (directory-files dir t ".+\\.elc?$"))
+       (let ((library (file-name-sans-extension file)))
+         (unless (member library libraries-loaded)
+           (load library nil t)
+           (push library libraries-loaded))))))
+ #+END_SRC
 ** Separate Custom File
  #+BEGIN_SRC emacs-lisp
  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -74,75 +87,82 @@
 
 ** Load General Packages
  #+BEGIN_SRC emacs-lisp
-   (use-package magit
-           :ensure t)
+ (use-package magit
+         :ensure t)
 
-   (use-package ranger
-           :ensure t)
+ (use-package ranger
+         :ensure t)
 
-   (use-package auto-complete
-           :ensure t)
+ (use-package auto-complete
+         :ensure t)
 
-   (use-package which-key
-           :ensure t)
+ (use-package which-key
+         :ensure t)
 
-   (use-package ranger
-           :ensure t)
+ (use-package ranger
+         :ensure t)
 
-   (use-package auto-complete
-           :ensure t)
+ (use-package auto-complete
+         :ensure t)
 
-   (use-package which-key
-           :ensure t)
+ (use-package which-key
+         :ensure t)
 
-   (use-package git-gutter-fringe
-           :ensure t)
+ (use-package git-gutter-fringe
+         :ensure t)
 
-   (use-package nlinum-relative
-           :ensure t)
+ (use-package nlinum-relative
+         :ensure t)
 
-   (use-package highlight
-           :ensure t)
+ (use-package highlight
+         :ensure t)
 
-   (use-package highlight-indent-guides
-           :ensure t)
+ (use-package highlight-indent-guides
+         :ensure t)
 
-   (use-package pcomplete-extension
-           :ensure t)
+ (use-package pcomplete-extension
+         :ensure t)
 
-   (use-package imenu-list
-           :ensure t)
+ (use-package imenu-list
+         :ensure t)
 
-   (use-package omnisharp
-           :ensure t)
+ (use-package omnisharp
+         :ensure t)
 
-   (use-package gradle-mode
-           :ensure t)
+ (use-package gradle-mode
+         :ensure t)
 
-   (use-package markdown-mode
-           :ensure t)
+ (use-package markdown-mode
+         :ensure t)
 
-   (use-package wttrin
-           :ensure t)
+ (use-package wttrin
+         :ensure t)
 
-   (if (eq system-type 'gnu/linux)
-       (use-package w3m
-           :ensure t)
-   )
+ (use-package ispell
+         :ensure t)
 
-   (use-package ispell
-           :ensure t)
+ (use-package flyspell
+         :ensure t)
 
-   (use-package flyspell
-           :ensure t)
+ (use-package flyspell-lazy
+         :ensure t)
 
-   (use-package flyspell-lazy
-           :ensure t)
+ (use-package speck
+         :ensure t)
 
-   (use-package speck
-           :ensure t)
+ (load-file "~/.emacs.d/elpa/tag/tag.el")
 #+END_SRC
+** Load GNU Packages
+ #+BEGIN_SRC emacs-lisp
+ (if (eq system-type 'gnu/linux)
+      (defvar woof 80 "Max width of lines")
+     (use-package w3m
+         :ensure t)
 
+     (org-babel-load-file "~/.emacs.d/lisp/init-mu4e.org")
+     (require 'init-mu4e)
+ )
+ #+END_SRC
 * Settings
 ** Personal Info
  #+BEGIN_SRC emacs-lisp
@@ -499,7 +519,6 @@
    (when (eq system-type 'windows-nt)
 	 (w32-send-sys-command 61488)))
  #+END_SRC
-
 * Mappings
 ** Unbind Arrow Keys
  #+BEGIN_SRC emacs-lisp
@@ -602,3 +621,15 @@
  #+BEGIN_SRC emacs-lisp
  (diminish 'untabify-mode)
  #+END_SRC
+#+BEGIN_SRC emacs-lisp
+(defun load-all-in-directory (dir)
+  "`load' all elisp libraries in directory DIR which are not already loaded."
+  (interactive "D")
+  (let ((libraries-loaded (mapcar #'file-name-sans-extension
+                                  (delq nil (mapcar #'car load-history)))))
+    (dolist (file (directory-files dir t ".+\\.elc?$"))
+      (let ((library (file-name-sans-extension file)))
+        (unless (member library libraries-loaded)
+          (load library nil t)
+          (push library libraries-loaded))))))
+#+END_SRC

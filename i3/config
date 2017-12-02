@@ -44,6 +44,7 @@ bindsym $mod+n exec nemo --no-desktop
 
 # Quit Window
 bindsym $mod+q kill
+bindsym Mod1+F4 kill
 
 # Start Rofi
 bindsym $mod+x exec --no-startup-id rofi -show combi
