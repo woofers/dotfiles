@@ -134,9 +134,6 @@
  (use-package imenu-list
          :ensure t)
 
- (use-package omnisharp
-         :ensure t)
-
  (use-package gradle-mode
          :ensure t)
 
@@ -162,6 +159,9 @@
          :ensure t)
 
  (use-package speck
+         :ensure t)
+
+ (use-package esup
          :ensure t)
 
 #+END_SRC
@@ -615,11 +615,6 @@
  #+END_SRC
 
 ** Addtional Syntax Highlighting
-*** C Sharp
- #+BEGIN_SRC emacs-lisp
- (add-hook 'csharp-mode-hook 'omnisharp-mode)
- #+END_SRC
-
 *** Assembly Mode
  #+BEGIN_SRC emacs-lisp
  (defun asm-hook ()

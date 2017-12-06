@@ -6,33 +6,29 @@
 
 ;; Install Evil Related Plug-Ins
 (use-package evil
-  :ensure t
-  :config
-  (evil-mode 1)
-  (setq evil-want-C-u-scroll t)
-
-  (use-package evil-leader
-  :ensure t
-  :config
-  (global-evil-leader-mode))
-
-  (use-package evil-surround
-  :ensure t
-  :config
-  (global-evil-surround-mode))
-
-  (use-package evil-magit
   :ensure t)
 
-  (use-package evil-org
+(use-package evil-leader
   :ensure t)
 
-  (use-package evil-indent-textobject
+(use-package evil-surround
   :ensure t)
-)
+
+;; (use-package evil-magit
+;;   :ensure t)
+;;
+;; (use-package evil-org
+;;   :ensure t)
+
+(use-package evil-indent-textobject
+  :ensure t)
+
+(global-evil-leader-mode)
+(global-evil-surround-mode)
 
 ;; Enable Emulated VIM Search
 (evil-mode 1)
+(setq evil-want-C-u-scroll t)
 (setq evil-want-abbrev-expand-on-insert-exit nil)
 (add-hook 'occur-mode-hook
           (lambda ()
