@@ -121,19 +121,20 @@ if [[ $(hostname -s) = Jaxson-PC* ]] || [[ $(hostname -s) = Jaxson-Thinkpad* ]];
 fi
 
 # Aliases
-alias vi=nvim
-alias vim=nvim
-alias del=rm
-alias dir=l
+alias l="ls -la"
+alias vi="nvim"
+alias vim="nvim"
+alias del="rm"
+alias dir="l"
 alias cb="cd .."
 alias cl="cd -"
 alias cr="cd /"
 alias ch="cd ~"
-alias tmux='tmux -2 -u'
-alias tmuxw='tmux new-window -n'
-alias close='tmux kill-server; exit'
-alias gdpl='drive pull -depth -1 -ignore-name-clashes -ignore-conflict'
-alias gdpu='drive push -depth -1 -ignore-name-clashes -ignore-conflict'
+alias tmux="tmux -2 -u"
+alias tmuxw="tmux new-window -n"
+alias close="tmux kill-server; exit"
+alias gdpl="drive pull -depth -1 -ignore-name-clashes -ignore-conflict"
+alias gdpu="drive push -depth -1 -ignore-name-clashes -ignore-conflict"
 
 # Start in Tmux
 if [ -z "$TMUX" ]

@@ -1,0 +1,11 @@
+alias l ls -la
+alias gdpu drive push -depth -1 -ignore-name-clashes -ignore-conflict
+alias gdpl drive pull -depth -1 -ignore-name-clashes -ignore-conflict
+alias ch cd ~
+alias cr cd /
+alias cl cd -
+alias cb cd ..
+alias dir l
+alias del rm"
+alias vim "nvim
+alias vi nvim

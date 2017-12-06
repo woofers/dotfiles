@@ -49,6 +49,14 @@
            (load library nil t)
            (push library libraries-loaded))))))
  #+END_SRC
+** System Type
+ #+BEGIN_SRC emacs-lisp
+ (defmacro with-system (type &rest body)
+   "Evaluate BODY if `system-type' equals TYPE."
+   (declare (indent defun))
+   `(when (eq system-type ',type)
+      ,@body))
+ #+END_SRC
 ** Separate Custom File
  #+BEGIN_SRC emacs-lisp
  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -135,6 +143,12 @@
  (use-package markdown-mode
          :ensure t)
 
+ (use-package haxe-mode
+         :ensure t)
+
+ (use-package haxe-imports
+         :ensure t)
+
  (use-package wttrin
          :ensure t)
 
@@ -150,14 +164,14 @@
  (use-package speck
          :ensure t)
 
- (load-file "~/.emacs.d/elpa/tag/tag.el")
 #+END_SRC
 ** Load GNU Packages
  #+BEGIN_SRC emacs-lisp
- (if (eq system-type 'gnu/linux)
-      (defvar woof 80 "Max width of lines")
+ (with-system gnu/linux
      (use-package w3m
          :ensure t)
+
+     (load-file "~/.emacs.d/elpa/tag/tag.el")
 
      (org-babel-load-file "~/.emacs.d/lisp/init-mu4e.org")
      (require 'init-mu4e)
