@@ -38,7 +38,7 @@ cd ..
 rm -rf fonts
 sudo apt-get install unifont
 sudo apt-get install ttf-mscorefonts-installer
-ln -s "$DEV/src/Dotfiles/fonts/.fonts.conf" "$HOME"
+ln -s "$DEV/src/Dotfiles/fonts/.fonts.conf" "$HOME/.fonts.conf"
 
 # Generate TMUX Config
 tmux
