@@ -30,12 +30,15 @@ rm tmux-2.6.tar.gz
 sudo apt-get install i3-gaps
 sudo apt-get install compton
 
-# Install Powerline Fonts
+# Install Fonts
 git clone https://github.com/powerline/fonts.git --depth=1
 cd fonts
 ./install.sh
 cd ..
 rm -rf fonts
+sudo apt-get install unifont
+sudo apt-get install ttf-mscorefonts-installer
+ln -s "$DEV/src/Dotfiles/fonts/.fonts.conf" "$HOME"
 
 # Generate TMUX Config
 tmux
@@ -87,6 +90,7 @@ rm -rf "$HOME/.emacs"
 ln -s "$DEV/src/Dotfiles/emacs/.emacs" "$HOME/.emacs"
 
 # Setup Ranger Config
+sudo apt-get install ranger
 rm -rf "$HOME/.config/ranger"
 ln -s "$DEV/src/Dotfiles/ranger/" "$HOME/.config/ranger"
 

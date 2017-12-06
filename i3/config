@@ -24,6 +24,9 @@ font pango:DejaVu Sans Mono 8
 # Windows Key as Mod
 set $mod Mod4
 
+# Alt Key as Meta
+set $alt Mod1
+
 # VIM Movement
 set $left   h
 set $down   j
@@ -44,10 +47,13 @@ bindsym $mod+n exec nemo --no-desktop
 
 # Quit Window
 bindsym $mod+q kill
-bindsym Mod1+F4 kill
+bindsym $alt+F4 kill
+bindsym $mod+F4 kill
 
 # Start Rofi
-bindsym $mod+x exec --no-startup-id rofi -show combi
+bindsym $mod+x exec --no-startup-id rofi -show combi -font "Arial Italic 15"
+bindsym $mod+r exec --no-startup-id rofi -show run -font "Arial Italic 15"
+bindsym $mod+b exec --no-startup-id rofi -show window -font "Arial Italic 15"
 
 # Change Focus
 bindsym $mod+$left  focus left
@@ -107,6 +113,7 @@ bindsym $mod+8 workspace $WS8
 
 # Fake Show Desktop
 bindsym $mod+d workspace $WS9
+bindsym $alt+d move container to workspace $WS1; workspace $WS1
 
 # Move Current Window to Workspace
 bindsym $mod+Shift+1 move container to workspace $WS1; workspace $WS1
@@ -119,8 +126,10 @@ bindsym $mod+Shift+7 move container to workspace $WS7; workspace $WS7
 bindsym $mod+Shift+8 move container to workspace $WS8; workspace $WS8
 
 # Alt Tab
-bindsym Mod1+Tab workspace next
-bindsym Control+Mod1+Tab workspace prev
+bindsym $alt+Tab workspace next
+bindsym $mod+Tab workspace next
+bindsym Control+$alt+Tab workspace prev
+bindsym Control+$mod+Tab workspace prev
 
 # Remove Screen Saver
 exec --no-startup-id xset s off -dpms &
@@ -160,7 +169,7 @@ exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
 bindsym $mod+Shift+c reload
 
 # Restart i3
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+q restart
 
 # Log Out
 bindsym $mod+semicolon exec i3-msg exit
@@ -191,8 +200,8 @@ bindsym $mod+minus gaps inner all plus 30, gaps outer all plus 10
 bindsym $mod+plus gaps inner all minus 30, gaps outer all minus 10
 
 # Reisze Mode
-set $mode_resize Größe verändern
-bindsym $mod+r mode "$mode_resize"
+set $mode_resize Resize
+bindsym $mod+Shift+r mode "$mode_resize"
 mode "$mode_resize" {
         bindsym $left   resize shrink width 10 px or 10 ppt
         bindsym $right  resize grow width 10 px or 10 ppt
@@ -206,6 +215,7 @@ mode "$mode_resize" {
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
+        bindsym Control+g mode "default"
         bindsym q mode "default"
 }
 

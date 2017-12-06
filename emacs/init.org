@@ -533,6 +533,13 @@
    (when (eq system-type 'windows-nt)
 	 (w32-send-sys-command 61488)))
  #+END_SRC
+** Maximize Window on Windows
+ #+BEGIN_SRC emacs-lisp
+ (defun git()
+   "Calls maggit-status"
+   (interactive)
+   (magit-status))
+ #+END_SRC
 * Mappings
 ** Unbind Arrow Keys
  #+BEGIN_SRC emacs-lisp

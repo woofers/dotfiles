@@ -1,11 +1,14 @@
 ! ------------------------------------------------------------------------------
 ! ROFI Color theme
 ! User: Jaxson Van Doorn
-! Copyright: Jaxson Van Doorn
+! Copyright: N/A
 ! ------------------------------------------------------------------------------
+! Inspired by Challenger Deep by MaxSt
+! https://github.com/MaxSt/challenger-deep
+!
+
 rofi.color-enabled: true
 rofi.color-window: #1b182c, #1b182c, #1b182c
 rofi.color-normal: #1b182c, #ffffff, #1b182c, #906cff, #ffffff
 rofi.color-active: #1b182c, #ffffff, #1b182c, #906cff, #ffffff
 rofi.color-urgent: #1b182c, #ff1844, #1b182c, #906cff, #ff1844
-

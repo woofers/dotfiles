@@ -15,7 +15,7 @@ rofi.xoffset: 0
 rofi.yoffset: 0
 
 ! "Enabled modi" Set from: Default
-rofi.modi: run
+!rofi.modi: run
 
 ! "Window width" Set from: Default
 rofi.width: 900
@@ -29,11 +29,10 @@ rofi.line-margin: 10
 rofi.line-padding: 2
 
 ! "Font to use" Set from: Default
-rofi.font: Monaco 16
+!rofi.font: "mono 10"
 
-! Color states     'bg',      'fg',    'bgalt',   'hlbg',    'hlfg'   '?'
-!rofi.color-normal: #001b182c, #b7bdca, #001b182c, #001b182c, #906cff, #906cff
+! Tab to Advance
+rofi.kb-row-select "Tab"
+rofi.kb-row-tab ""
 
-!                  'background', 'border', 'separator'
-!rofi.color-window: #ff1b182c, #ff1b182c, #ff1b182
 #include "/usr/share/rofi/themes//challenger.theme"
