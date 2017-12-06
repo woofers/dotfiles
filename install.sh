@@ -119,3 +119,14 @@ mkdir tag
 cd tag
 wget https://www.emacswiki.org/emacs/download/tag.el
 cd ~
+
+# Shares
+cd /mnt
+mkdir shares
+cd shares
+mkdir Woofers
+mkdir Ponton
+mkdir Downloads
+sudo mount.cifs //192.168.0.191/Woofers /mnt/shares/Woofers -o user=guest
+sudo mount.cifs //192.168.0.191/Ponton /mnt/shares/Ponton -o user=guest
+sudo mount.cifs //192.168.0.192/Downloads /mnt/shares/Downloads -o user=nick
