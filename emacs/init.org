@@ -414,6 +414,8 @@
   (setq tab-width tab-spaces)
   (setq-default indent-tabs-mode nil)
   (setq tab-always-indent 'complete)
+
+  (when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
 ;; (For Tabs)
 ;; (setq indent-line-function 'insert-tab)
 ;; (setq tab-stop-list (number-sequence 4 200 4))
@@ -430,6 +432,10 @@
   (if (eq system-type 'gnu/linux)
       (set-frame-font "-bitstream-Meslo LG M for Powerline-normal-normal-normal-*-*-*-*-*-0-iso10646-1" nil t)
   )
+  #+END_SRC
+*** Clipboard
+  #+BEGIN_SRC emacs-lisp
+  (setq save-interprogram-paste-before-kill t)
   #+END_SRC
 * Functions
 ** Backspace to Tab
@@ -466,6 +472,7 @@
 	(setq untabify-this-buffer (not (derived-mode-p 'makefile-mode)))
  (add-hook 'before-save-hook #'untabify-all))
  (add-hook 'prog-mode-hook 'untabify-mode)
+ (add-hook 'haxe-mode-hook 'untabify-mode)
  #+END_SRC
 
 ** Flyspell Uses Popup.el
@@ -584,7 +591,7 @@
 
 ** Spellcheck for Newly Opened File
  #+BEGIN_SRC emacs-lisp
- (add-hook 'find-file-hook 'speck-mode)
+ ; (add-hook 'find-file-hook 'speck-mode)
  #+END_SRC
 
 ** Camel Case in Programing Modes
