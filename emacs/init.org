@@ -131,6 +131,9 @@
  (use-package pcomplete-extension
          :ensure t)
 
+ (use-package eshell-git-prompt
+         :ensure t)
+
  (use-package imenu-list
          :ensure t)
 
@@ -370,6 +373,10 @@
 *** Use Same Frame With Newly Opened File
   #+BEGIN_SRC emacs-lisp
   (setq ns-pop-up-frames nil)
+  #+END_SRC
+*** Eshell
+  #+BEGIN_SRC emacs-lisp
+  (eshell-git-prompt-use-theme 'powerline)
   #+END_SRC
 ** Editing
 *** Newline at End of File
@@ -639,7 +646,32 @@
 		 (define-key eshell-mode-map [remap eshell-pcomplete] 'helm-esh-pcomplete)
 		 (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history)))
  #+END_SRC
+** Eshell Colors
+ #+BEGIN_SRC emacs-lisp
+ (progn (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter)
+        (setq comint-output-filter-functions (remove 'ansi-color-process-output comint-output-filter-functions)))
 
+ (progn (remove-hook 'comint-preoutput-filter-functions 'xterm-color-filter)
+        (add-to-list 'comint-output-filter-functions 'ansi-color-process-output))
+
+ (require 'eshell)
+
+ (add-hook 'eshell-mode-hook
+           (lambda ()
+             (setq xterm-color-preserve-properties t)))
+
+ (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
+ (setq eshell-output-filter-functions (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
+ #+END_SRC
+** Disable Line Highlighting Eshell
+ #+BEGIN_SRC emacs-lisp
+ (add-hook 'eshell-mode-hook (lambda ()
+      (setq-local global-hl-line-mode
+          nil)))
+ (add-hook 'term-mode-hook (lambda ()
+     (setq-local global-hl-line-mode
+                 nil)))
+ #+END_SRC
 ** Diminish Whitespace Mode
  #+BEGIN_SRC emacs-lisp
  (diminish 'untabify-mode)
