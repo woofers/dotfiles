@@ -19,7 +19,7 @@ set $bar-height  20
 set $border-width 0
 
 # Titlebar Font
-font pango:DejaVu Sans Mono 8
+font pango:System San Francisco Display 12
 
 # Windows Key as Mod
 set $mod Mod4
@@ -51,9 +51,9 @@ bindsym $alt+F4 kill
 bindsym $mod+F4 kill
 
 # Start Rofi
-bindsym $mod+x exec --no-startup-id rofi -show combi -font "Arial Italic 15"
-bindsym $mod+r exec --no-startup-id rofi -show run -font "Arial Italic 15"
-bindsym $mod+b exec --no-startup-id rofi -show window -font "Arial Italic 15"
+bindsym $mod+x exec --no-startup-id rofi -show combi  -font "System San Francisco 15"
+bindsym $mod+r exec --no-startup-id rofi -show run    -font "System San Francisco 15"
+bindsym $mod+b exec --no-startup-id rofi -show window -font "System San Francisco 15"
 
 # Change Focus
 bindsym $mod+$left  focus left
@@ -91,15 +91,15 @@ bindsym $mod+e layout toggle split
 popup_during_fullscreen smart
 
 # Workspace Names
-set $WS1 "1: "
-set $WS2 "2: "
-set $WS3 "3: "
-set $WS4 "4: "
-set $WS5 "5: "
-set $WS6 "6: "
-set $WS7 "7: "
-set $WS8 "8: "
-set $WS9 "9: "
+set $WS1 "1: "
+set $WS2 "2: "
+set $WS3 "3: "
+set $WS4 "4: "
+set $WS5 "5: "
+set $WS6 "6: "
+set $WS7 "7: "
+set $WS8 "8: "
+set $WS9 "Desktop"
 
 # Switch to Workspace
 bindsym $mod+1 workspace $WS1
@@ -159,11 +159,18 @@ exec --no-startup-id nm-applet &
 exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
 # exec_always --no-startup-id ~/.config/polybar/launch.sh
 
-# assign [class="Firefox"] $WS2
-# assign [class="Chromium"] $WS2
-# assign [class="Chrome"] $WS2
-# assign [class="Vlc"] $WS4
-# assign [class="(?i)libreoffice"] $WS2
+# Force Windows
+assign [class="Firefox"] $WS1
+assign [class="Chromium"] $WS1
+assign [class="Google-chrome"] $WS1
+assign [class="Emacs"] $WS2
+assign [class="Gnome-terminal"] $WS3
+assign [class="Nemo"] $WS4
+assign [class="Evince"] $WS5
+assign [class="(?i)libreoffice"] $WS6
+assign [class="discord"] $WS7
+assign [class="Spotify"] $WS8
+assign [class="Vlc"] $WS8
 
 # Reload Config
 bindsym $mod+Shift+c reload
@@ -175,8 +182,7 @@ bindsym $mod+Shift+q restart
 bindsym $mod+semicolon exec i3-msg exit
 
 # Titlebar
-font pango:Monaco 12
-for_window [class=".*"] title_format "<span font='Monaco 10'>  > %title</span>"
+for_window [class=".*"] title_format "<span font='System San Francisco 10'>  > %title</span>"
 
 # Border
 new_window pixel $border-width
@@ -219,40 +225,36 @@ mode "$mode_resize" {
         bindsym q mode "default"
 }
 
-# Window Colors         Border      Background  Text        Indicator   Child_Border
-client.focused          color2     $background $text       $border     $border
-#client.focused          $border     $background $text       $border     $border
-#client.unfocused        $background $background $background $background $background
-#client.urgent           $background $background $background $background $background
-#client.placeholder      $background $background $background $background $background
-#client.background       $background
+set $bg-color 	         #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
 
-# Start i3bar to Display a Workspace Bar
+# Window Colors         Border              Background          Text                 Indicator
+client.focused          $bg-color           $bg-color           $text-color          #00ff00
+client.unfocused        $inactive-bg-color  $inactive-bg-color  $inactive-text-color #00ff00
+client.focused_inactive $inactive-bg-color  $inactive-bg-color  $inactive-text-color #00ff00
+client.urgent           $urgent-bg-color    $urgent-bg-color    $text-color          #00ff00
+# client.focused          color2              $background $text   $border              $border
+
 bar {
-  i3bar_command i3bar
-  mode invisible
-  position bottom
-  height $bar-height
-  tray_padding 8
-  tray_output none
-  font pango:Monaco 12
-  strip_workspace_numbers no
+    font pango:System San Francisco Display 12
+    status_command i3blocks -c ~/.config/i3/i3blocks.conf
+	colors {
+		background $bg-color
+	    separator #757575
 
-  colors {
-    background $background
-    statusline $text
-    separator $background
-
-    # Class             Border   Bg            Text
-    focused_workspace  $active  $active       $background
-    active_workspace   $border  $background   $active
-    inactive_workspace $border  $background   $inactive
-    urgent_workspace   $border  $background   $inactive
-  }
+		#                  Border             Background         Text
+		focused_workspace  $bg-color          $bg-color          $text-color
+		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+	}
 }
 
+
 # Toggle i3bar
-# bindsym --release $mod+b bar mode toggle
+bindsym --release $mod+o bar mode toggle
 
 # Volume Keys
 bindsym --release XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +10%
@@ -273,3 +275,9 @@ bindsym $mod+Shift+semicolon exec ~/.config/lock.sh
 
 # Screenshot
 bindsym --release Print exec --no-startup-id scrot /tmp/`date +%Y%m%d_%H%M%S`.png && exec notify-send 'SCROT' 'Screenshot taken (/tmp)'
+
+# Standard Programs
+exec_always google-chrome
+exec_always emacs
+exec_always gnome-terminal
+exec_always nemo

@@ -111,6 +111,12 @@ ln -s "$DEV/src/Dotfiles/rofi/challenger.theme" "/usr/share/rofi/themes/challeng
 rm -rf "$HOME/.xsessionrc"
 ln -s "$DEV/src/Dotfiles/x/.xsessionrc" "$HOME/.xsessionrc"
 
+# Setup gtk
+rm -rf "$HOME/.gtkrc-2.0"
+ln -s "$DEV/src/Dotfiles/gtk/gtk-2.0/.gtkrc-2.0" "$HOME/.gtkrc-2.0"
+rm -rf "$HOME/.config/gtk-3.0/settings.ini"
+ln -s "$DEV/src/Dotfiles/gtk/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
+
 # Install TMUX Plug-In Manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
