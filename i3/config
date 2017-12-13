@@ -153,7 +153,7 @@ exec --no-startup-id nm-applet &
 # exec --no-startup-id redshift &
 
 # Start Notifications
-# exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
+exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 
 # Start Compton
 exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
@@ -271,7 +271,7 @@ bindsym Shift+XF86MonBrightnessDown exec light -U 15
 # bindsym --release $mod+ctrl+r exec ~/.local/bin/red.sh
 
 # Lock Screen
-bindsym $mod+Shift+semicolon exec ~/.config/lock.sh
+bindsym $mod+Shift+semicolon exec ~/.config/i3/i3lock.sh
 
 # Screenshot
 bindsym --release Print exec --no-startup-id scrot /tmp/`date +%Y%m%d_%H%M%S`.png && exec notify-send 'SCROT' 'Screenshot taken (/tmp)'

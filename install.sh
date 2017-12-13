@@ -1,16 +1,24 @@
 
-# Setup Repos
+# Manage Packages
 sudo apt-get install software-properties-common
+
+# Install Python
 sudo apt-get install python-dev python-pip python3-dev python3-pip
+sudo apt-get install python-pip
+
+# Install Neovim
 sudo add-apt-repository ppa:neovim-ppa/stable
 sudo apt-get update
-
-# Install Core Components
 sudo apt-get install neovim
-sudo apt-get install python-pip
+
+# Install Bash Powerline
 sudo pip install powerline-shell
+
+# Install ZSH and Oh My ZSH
 sudo apt install zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# Install Ctags
 sudo apt-get install exuberant-ctags
 
 # Install TMUX
@@ -19,31 +27,50 @@ sudo apt-get install libncurses5-dev libncursesw5-dev
 cd $HOME
 wget https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz
 tar -zxvf tmux-2.6.tar.gz
-cd tmux-2.6
+cd tmux-2.6https://github.com/haikarainen/light
 ./configure && make
 sudo make install
 cd ..
 rm -rf tmux-2.6
 rm tmux-2.6.tar.gz
 
+# Generate TMUX Config
+tmux
+tmux show -g | cat > ~/.tmux.conf
+exit
+
 # Install Window Management Components
 sudo apt-get install i3-gaps
+sudo apt-get install i3blocks
 sudo apt-get install compton
 
+# GTK Customizer
+sudo apt-get install lxappearance
+
+# GTK Arc Theme
+sudo apt-get install arc-theme
+
+# GTK Icon Theme
+sudo add-apt-repository ppa:papirus/papirus
+sudo apt-get update
+sudo apt-get install papirus-icon-theme
+
 # Install Fonts
+sudo apt-get install unifont
+sudo apt-get install ttf-mscorefonts-installer
 git clone https://github.com/powerline/fonts.git --depth=1
 cd fonts
 ./install.sh
 cd ..
 rm -rf fonts
-sudo apt-get install unifont
-sudo apt-get install ttf-mscorefonts-installer
 ln -s "$DEV/src/Dotfiles/fonts/.fonts.conf" "$HOME/.fonts.conf"
-
-# Generate TMUX Config
-tmux
-tmux show -g | cat > ~/.tmux.conf
-exit
+mkdir .fonts
+cd .fonts
+git clone https://github.com/supermarin/YosemiteSanFranciscoFont.git YosemiteSanFrancisco
+cd YosemiteSanFrancisco
+mv *.ttf ~/.fonts
+cd ..
+rm -rf YosemiteSanFrancisco
 
 # Export DEV Path
 export DEV="/mnt/d/Documents/Development"
@@ -111,17 +138,24 @@ ln -s "$DEV/src/Dotfiles/rofi/challenger.theme" "/usr/share/rofi/themes/challeng
 rm -rf "$HOME/.xsessionrc"
 ln -s "$DEV/src/Dotfiles/x/.xsessionrc" "$HOME/.xsessionrc"
 
-# Setup gtk
+# Setup GTK
 rm -rf "$HOME/.gtkrc-2.0"
 ln -s "$DEV/src/Dotfiles/gtk/gtk-2.0/.gtkrc-2.0" "$HOME/.gtkrc-2.0"
 rm -rf "$HOME/.config/gtk-3.0/settings.ini"
 ln -s "$DEV/src/Dotfiles/gtk/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
+
+rm -rf "$HOME/.config/dunst/dunstrc"
+mkdir dunst
+ln -s "$DEV/src/Dotfiles/dunst/dunstrc" "$HOME/.config/dunst/dunstrc"
 
 # Install TMUX Plug-In Manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Install ZSH Syntax
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+# Install Brightness
+git clone https://github.com/haikarainen/light
 
 # MP3 Tags for Emacs
 cd emacs/.emacs.d/elpa/
