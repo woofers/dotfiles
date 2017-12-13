@@ -7,13 +7,6 @@
 # i3 config file (v4)
 #
 
-# Colors
-set_from_resource $border       color0 #bf616aFF
-set_from_resource $background   color0 #2b303bCC
-set_from_resource $text         color8 #c0c5ceFF
-set_from_resource $active       color4 #bf616aFF
-set_from_resource $inactive     color7 #c0c5ceFF
-
 # Border Size
 set $bar-height  20
 set $border-width 0
@@ -51,9 +44,9 @@ bindsym $alt+F4 kill
 bindsym $mod+F4 kill
 
 # Start Rofi
-bindsym $mod+x exec --no-startup-id rofi -show combi  -font "System San Francisco 15"
-bindsym $mod+r exec --no-startup-id rofi -show run    -font "System San Francisco 15"
-bindsym $mod+b exec --no-startup-id rofi -show window -font "System San Francisco 15"
+bindsym $mod+x exec --no-startup-id rofi -show combi  -font "System San Francisco 13"
+bindsym $mod+r exec --no-startup-id rofi -show run    -font "System San Francisco 13"
+bindsym $mod+b exec --no-startup-id rofi -show window -font "System San Francisco 13"
 
 # Change Focus
 bindsym $mod+$left  focus left
@@ -182,7 +175,7 @@ bindsym $mod+Shift+q restart
 bindsym $mod+semicolon exec i3-msg exit
 
 # Titlebar
-for_window [class=".*"] title_format "<span font='System San Francisco 10'>  > %title</span>"
+# for_window [class=".*"] title_format "<span font='System San Francisco 13'>%title</span>"
 
 # Border
 new_window pixel $border-width
@@ -239,7 +232,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color    $text-color     
 # client.focused          color2              $background $text   $border              $border
 
 bar {
-    font pango:System San Francisco Display 12
+    font pango:System San Francisco Display 11
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	colors {
 		background $bg-color

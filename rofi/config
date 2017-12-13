@@ -18,18 +18,18 @@ rofi.yoffset: 0
 !rofi.modi: run
 
 ! "Window width" Set from: Default
-rofi.width: 900
+rofi.width: 1000
 
 ! "Padding" Set from: Default
 rofi.padding: 30
 
 ! "Number of lines" Set from: Default
-rofi.lines: 5
+rofi.lines: 7
 rofi.line-margin: 10
-rofi.line-padding: 2
+rofi.line-padding: 1
 
 ! "Font to use" Set from: Default
-!rofi.font: "mono 10"
+rofi.font: "System San Francisco 13"
 
 ! Tab to Advance
 rofi.kb-row-select "Tab"

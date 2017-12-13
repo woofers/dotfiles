@@ -43,6 +43,7 @@ exit
 sudo apt-get install i3-gaps
 sudo apt-get install i3blocks
 sudo apt-get install compton
+sudo apt-get install dunst
 
 # GTK Customizer
 sudo apt-get install lxappearance
@@ -144,9 +145,14 @@ ln -s "$DEV/src/Dotfiles/gtk/gtk-2.0/.gtkrc-2.0" "$HOME/.gtkrc-2.0"
 rm -rf "$HOME/.config/gtk-3.0/settings.ini"
 ln -s "$DEV/src/Dotfiles/gtk/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
 
+# Setup Dunst
 rm -rf "$HOME/.config/dunst/dunstrc"
 mkdir dunst
 ln -s "$DEV/src/Dotfiles/dunst/dunstrc" "$HOME/.config/dunst/dunstrc"
+
+# Setup Infinality
+sudo rm -rf "/etc/profile.d/infinality-settings.sh"
+sudo ln -s "$DEV/src/Dotfiles/infinality/infinality-settings.sh" "/etc/profile.d/infinality-settings.sh"
 
 # Install TMUX Plug-In Manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
