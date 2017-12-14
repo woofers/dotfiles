@@ -73,6 +73,18 @@ mv *.ttf ~/.fonts
 cd ..
 rm -rf YosemiteSanFrancisco
 
+# Install Infinality
+echo "deb http://ppa.launchpad.net/no1wantdthisname/ppa/ubuntu trusty main" | sudo tee /etc/apt/sources.list.d/infinality.list
+echo "deb-src http://ppa.launchpad.net/no1wantdthisname/ppa/ubuntu trusty main" | sudo tee -a /etc/apt/sources.list.d/infinality.list
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E985B27B
+sudo apt-get upgrade
+sudo apt-get install fontconfig-infinality
+
+# Install Math Toosl
+sudo apt-get install xournal
+sudo apt-get install kalgebra
+
+
 # Export DEV Path
 export DEV="/mnt/d/Documents/Development"
 

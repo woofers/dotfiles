@@ -8,7 +8,7 @@
 #
 
 # Border Size
-set $bar-height  20
+set $bar-height  25
 set $border-width 0
 
 # Titlebar Font
@@ -161,6 +161,8 @@ assign [class="Gnome-terminal"] $WS3
 assign [class="Nemo"] $WS4
 assign [class="Evince"] $WS5
 assign [class="(?i)libreoffice"] $WS6
+assign [class="Xournal"] $WS6
+assign [class="kalgebra"] $WS6
 assign [class="discord"] $WS7
 assign [class="Spotify"] $WS8
 assign [class="Vlc"] $WS8
