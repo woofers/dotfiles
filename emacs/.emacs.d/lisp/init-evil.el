@@ -14,9 +14,10 @@
 (use-package evil-surround
   :ensure t)
 
-;; (use-package evil-magit
-;;   :ensure t)
-;;
+;; Slow
+(use-package evil-magit
+  :ensure t)
+
 ;; (use-package evil-org
 ;;   :ensure t)
 
