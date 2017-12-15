@@ -14,6 +14,9 @@
 (use-package powerline-evil
   :ensure t)
 
+(use-package diminish
+  :ensure t)
+
 (defface my-pl-segment1-active
   '((t (:foreground "#000000" :background "#E1B61A")))
   "Powerline first segment active face.")

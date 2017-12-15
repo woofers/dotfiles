@@ -1,6 +1,8 @@
 
 # Manage Packages
 sudo apt-get install software-properties-common
+sudo apt install build-essential checkinstall
+sudo apt-get install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev dh-autoreconf
 
 # Install Python
 sudo apt-get install python-dev python-pip python3-dev python3-pip
@@ -11,8 +13,22 @@ sudo add-apt-repository ppa:neovim-ppa/stable
 sudo apt-get update
 sudo apt-get install neovim
 
+# Install Emacs
+cd ~/Downloads
+wget http://mirror.sergal.org/gnu/emacs/emacs-25.3.tar.xz
+sudo apt-get build-dep emacs24
+tar -zxvf emacs-25.3.tar.gz
+cd emacs-25.3
+./configure
+make
+sudo make install
+rm -rf emacs-25.3.tar.gz
+rm emacs-25.3.tar.gz
+
 # Install Bash Powerline
 sudo pip install powerline-shell
+
+sudo apt-get install curl
 
 # Install ZSH and Oh My ZSH
 sudo apt install zsh
@@ -27,7 +43,7 @@ sudo apt-get install libncurses5-dev libncursesw5-dev
 cd $HOME
 wget https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz
 tar -zxvf tmux-2.6.tar.gz
-cd tmux-2.6https://github.com/haikarainen/light
+cd tmux-2.6
 ./configure && make
 sudo make install
 cd ..
@@ -42,8 +58,13 @@ exit
 # Install Window Management Components
 sudo apt-get install i3-gaps
 sudo apt-get install i3blocks
+sudo apt-get install rofi
+sudo apt-get install feh
+sudo apt-get install nemo
 sudo apt-get install compton
 sudo apt-get install dunst
+sudo apt-get install mu4e
+sudo apt-get install hunspell
 
 # GTK Customizer
 sudo apt-get install lxappearance
@@ -56,9 +77,15 @@ sudo add-apt-repository ppa:papirus/papirus
 sudo apt-get update
 sudo apt-get install papirus-icon-theme
 
+# Export DEV Path
+export DEV="/mnt/d/Documents/Development"
+export DEV="$HOME/Documents/Development"
+
+
 # Install Fonts
 sudo apt-get install unifont
 sudo apt-get install ttf-mscorefonts-installer
+sudo apt-get fonts-font-awesome
 git clone https://github.com/powerline/fonts.git --depth=1
 cd fonts
 ./install.sh
@@ -77,16 +104,12 @@ rm -rf YosemiteSanFrancisco
 echo "deb http://ppa.launchpad.net/no1wantdthisname/ppa/ubuntu trusty main" | sudo tee /etc/apt/sources.list.d/infinality.list
 echo "deb-src http://ppa.launchpad.net/no1wantdthisname/ppa/ubuntu trusty main" | sudo tee -a /etc/apt/sources.list.d/infinality.list
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E985B27B
-sudo apt-get upgrade
+sudo apt-get update
 sudo apt-get install fontconfig-infinality
 
-# Install Math Toosl
+# Install Math Tools
 sudo apt-get install xournal
 sudo apt-get install kalgebra
-
-
-# Export DEV Path
-export DEV="/mnt/d/Documents/Development"
 
 # VIM Copy to Windows Copy Buffer
 sudo ln -s "$DEV/src/Dotfiles/vim/bin/win32yank.exe" "/usr/bin/win32yank"
@@ -104,8 +127,8 @@ rm -rf "$HOME/.oh-my-zsh/themes"
 ln -s "$DEV/src/Dotfiles/shell/.oh-my-zsh/themes" "$HOME/.oh-my-zsh/"
 
 # Setup Git Config
-rm "$HOME/.gitconifg"
-ln -s "$DEV/src/Dotfiles/git/.gitconifg" "$HOME/.gitconfig"
+rm "$HOME/.gitconfig"
+ln -s "$DEV/src/Dotfiles/git/.gitconfig" "$HOME/.gitconfig"
 
 # Setup TMUX Config
 rm "$HOME/.tmux.conf"
@@ -145,7 +168,7 @@ ln -s "$DEV/src/Dotfiles/compton" "$HOME/.config/compton"
 # Setup Rofi
 rm -rf "$HOME/.config/rofi"
 ln -s "$DEV/src/Dotfiles/rofi" "$HOME/.config/rofi"
-ln -s "$DEV/src/Dotfiles/rofi/challenger.theme" "/usr/share/rofi/themes/challenger.theme"
+sudo ln -s "$DEV/src/Dotfiles/rofi/challenger.theme" "/usr/share/rofi/themes/challenger.theme"
 
 # Setup X
 rm -rf "$HOME/.xsessionrc"

@@ -12,7 +12,7 @@ set $bar-height  25
 set $border-width 0
 
 # Titlebar Font
-font pango:System San Francisco Display 12
+font pango:System San Francisco Display 14
 
 # Windows Key as Mod
 set $mod Mod4
@@ -44,9 +44,9 @@ bindsym $alt+F4 kill
 bindsym $mod+F4 kill
 
 # Start Rofi
-bindsym $mod+x exec --no-startup-id rofi -show combi  -font "System San Francisco 13"
-bindsym $mod+r exec --no-startup-id rofi -show run    -font "System San Francisco 13"
-bindsym $mod+b exec --no-startup-id rofi -show window -font "System San Francisco 13"
+bindsym $mod+x exec --no-startup-id rofi -show combi  -font "System San Francisco 14"
+bindsym $mod+r exec --no-startup-id rofi -show run    -font "System San Francisco 14"
+bindsym $mod+b exec --no-startup-id rofi -show window -font "System San Francisco 14"
 
 # Change Focus
 bindsym $mod+$left  focus left
@@ -234,7 +234,6 @@ client.urgent           $urgent-bg-color    $urgent-bg-color    $text-color     
 # client.focused          color2              $background $text   $border              $border
 
 bar {
-    font pango:System San Francisco Display 11
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	colors {
 		background $bg-color
