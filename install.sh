@@ -2,11 +2,16 @@
 # Manage Packages
 sudo apt-get install software-properties-common
 sudo apt install build-essential checkinstall
-sudo apt-get install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev dh-autoreconf
+sudo apt-get install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev
+sudo apt-get install libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev
+sudo apt-get install libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev dh-autoreconf
+sudo apt-get install help2man
 
 # Install Python
 sudo apt-get install python-dev python-pip python3-dev python3-pip
-sudo apt-get install python-pip
+
+# Install Curl
+sudo apt-get install curl
 
 # Install Neovim
 sudo add-apt-repository ppa:neovim-ppa/stable
@@ -25,10 +30,12 @@ sudo make install
 rm -rf emacs-25.3.tar.gz
 rm emacs-25.3.tar.gz
 
+# Install Emacs Plug-Ins
+sudo apt-get install mu4e
+sudo apt-get install hunspell
+
 # Install Bash Powerline
 sudo pip install powerline-shell
-
-sudo apt-get install curl
 
 # Install ZSH and Oh My ZSH
 sudo apt install zsh
@@ -38,9 +45,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 sudo apt-get install exuberant-ctags
 
 # Install TMUX
+cd ~/Downloads
 sudo apt-get install libevent-dev
 sudo apt-get install libncurses5-dev libncursesw5-dev
-cd $HOME
 wget https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz
 tar -zxvf tmux-2.6.tar.gz
 cd tmux-2.6
@@ -55,16 +62,22 @@ tmux
 tmux show -g | cat > ~/.tmux.conf
 exit
 
+# Install Math Tools
+sudo apt-get install xournal
+sudo apt-get install kalgebra
+
 # Install Window Management Components
-sudo apt-get install i3-gaps
+sudo apt-get install i3lock
 sudo apt-get install i3blocks
 sudo apt-get install rofi
 sudo apt-get install feh
-sudo apt-get install nemo
 sudo apt-get install compton
 sudo apt-get install dunst
-sudo apt-get install mu4e
-sudo apt-get install hunspell
+sudo apt-get install scrot
+
+# Install File Managers
+sudo apt-get install nemo
+sudo apt-get install ranger
 
 # GTK Customizer
 sudo apt-get install lxappearance
@@ -81,8 +94,8 @@ sudo apt-get install papirus-icon-theme
 export DEV="/mnt/d/Documents/Development"
 export DEV="$HOME/Documents/Development"
 
-
 # Install Fonts
+cd ~/Downloads
 sudo apt-get install unifont
 sudo apt-get install ttf-mscorefonts-installer
 sudo apt-get fonts-font-awesome
@@ -92,6 +105,7 @@ cd fonts
 cd ..
 rm -rf fonts
 ln -s "$DEV/src/Dotfiles/fonts/.fonts.conf" "$HOME/.fonts.conf"
+cd ~
 mkdir .fonts
 cd .fonts
 git clone https://github.com/supermarin/YosemiteSanFranciscoFont.git YosemiteSanFrancisco
@@ -106,10 +120,6 @@ echo "deb-src http://ppa.launchpad.net/no1wantdthisname/ppa/ubuntu trusty main" 
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E985B27B
 sudo apt-get update
 sudo apt-get install fontconfig-infinality
-
-# Install Math Tools
-sudo apt-get install xournal
-sudo apt-get install kalgebra
 
 # VIM Copy to Windows Copy Buffer
 sudo ln -s "$DEV/src/Dotfiles/vim/bin/win32yank.exe" "/usr/bin/win32yank"
@@ -153,13 +163,16 @@ rm -rf "$HOME/.emacs"
 ln -s "$DEV/src/Dotfiles/emacs/.emacs" "$HOME/.emacs"
 
 # Setup Ranger Config
-sudo apt-get install ranger
 rm -rf "$HOME/.config/ranger"
 ln -s "$DEV/src/Dotfiles/ranger/" "$HOME/.config/ranger"
 
 # Setup I3 Config
 rm -rf "$HOME/.config/i3"
 ln -s "$DEV/src/Dotfiles/i3" "$HOME/.config/i3"
+sudo rm /usr/share/i3blocks/battery
+sudo ln -s "$DEV/src/Dotfiles/i3/scripts/battery" "/usr/share/i3blocks/battery"
+sudo rm /usr/share/i3blocks/volume
+sudo ln -s "$DEV/src/Dotfiles/i3/scripts/volume" "/usr/share/i3blocks/volume"
 
 # Setup Compton
 rm -rf "$HOME/.config/compton"
@@ -181,9 +194,10 @@ rm -rf "$HOME/.config/gtk-3.0/settings.ini"
 ln -s "$DEV/src/Dotfiles/gtk/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
 
 # Setup Dunst
-rm -rf "$HOME/.config/dunst/dunstrc"
+rm -rf "$HOME/.config/dunst/"
+cd ~/.config/
 mkdir dunst
-ln -s "$DEV/src/Dotfiles/dunst/dunstrc" "$HOME/.config/dunst/dunstrc"
+ln -s "$DEV/src/Dotfiles/dunst" "$HOME/.config/dunst"
 
 # Setup Infinality
 sudo rm -rf "/etc/profile.d/infinality-settings.sh"
@@ -197,13 +211,15 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 # Install Brightness
 git clone https://github.com/haikarainen/light
+cd light
+sudo make && sudo make install
+rm -rf light
 
 # MP3 Tags for Emacs
-cd emacs/.emacs.d/elpa/
+cd ~/.emacs.d/elpa/
 mkdir tag
 cd tag
 wget https://www.emacswiki.org/emacs/download/tag.el
-cd ~
 
 # Shares
 cd /mnt

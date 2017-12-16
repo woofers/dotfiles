@@ -26,6 +26,10 @@ set $down   j
 set $up     k
 set $right  l
 
+# Change Split Type
+bindsym $mod+bar split h
+bindsym $mod+minus split v
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -42,7 +46,9 @@ bindsym $mod+n exec nemo --no-desktop
 bindsym $mod+q kill
 bindsym $alt+F4 kill
 bindsym $mod+F4 kill
-
+bindsym $mod+shift+q focus parent,kill
+bindsym $alt+shift+F4 focus parent,kill
+bindsym $mod+shift+F4 focus parent,kill
 # Start Rofi
 bindsym $mod+x exec --no-startup-id rofi -show combi  -font "System San Francisco 14"
 bindsym $mod+r exec --no-startup-id rofi -show run    -font "System San Francisco 14"
@@ -171,7 +177,7 @@ assign [class="Vlc"] $WS8
 bindsym $mod+Shift+c reload
 
 # Restart i3
-bindsym $mod+Shift+q restart
+bindsym $mod+Shift+v restart
 
 # Log Out
 bindsym $mod+semicolon exec i3-msg exit
@@ -197,8 +203,8 @@ gaps inner 60
 gaps outer 30
 
 # Simple Zoom
-bindsym $mod+minus gaps inner all plus 30, gaps outer all plus 10
-bindsym $mod+plus gaps inner all minus 30, gaps outer all minus 10
+bindsym $mod+9 gaps inner all plus 30, gaps outer all plus 10
+bindsym $mod+0 gaps inner all minus 30, gaps outer all minus 10
 
 # Reisze Mode
 set $mode_resize Resize
@@ -234,6 +240,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color    $text-color     
 # client.focused          color2              $background $text   $border              $border
 
 bar {
+    font pango:System San Francisco Display 14
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	colors {
 		background $bg-color
