@@ -231,3 +231,22 @@ mkdir Downloads
 sudo mount.cifs //192.168.0.191/Woofers /mnt/shares/Woofers -o user=guest
 sudo mount.cifs //192.168.0.191/Ponton /mnt/shares/Ponton -o user=guest
 sudo mount.cifs //192.168.0.192/Downloads /mnt/shares/Downloads -o user=nick
+
+# Dell XPS 13 9365
+
+# Wifi
+cd ~/Downloads
+wget http://http.us.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-iwlwifi_20170823-1_all.deb
+sudo dpkg -i firmware-iwlwifi_20170823-1_all.deb
+rm -rf firmware-iwlwifi_20170823-1_all.deb
+wget https://wireless.wiki.kernel.org/_media/en/users/drivers/iwlwifi-8265-ucode-22.361476.0.tgz
+tar -xzvf iwlwifi-8265-ucode-22.361476.0.tgz
+sudo mv iwlwifi-8265-ucode-22.361476.0/iwlwifi-8265-22.ucode /lib/firmware/iwlwifi-8265-22.ucode
+rm -rf iwlwifi-8265-ucode-22.361476.0
+rm iwlwifi-8265-ucode-22.361476.0.tgz
+cd ~
+
+# Upgrade Kernal for Working Sleep
+sudo echo 'deb http://ftp.de.debian.org/debian sid main' >> /etc/apt/sources.list
+sudo apt-get update
+sudo apt-get install linux-image-4.13.0-1-amd64

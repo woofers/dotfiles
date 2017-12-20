@@ -58,9 +58,3 @@ Tmux uses a modified version of [[https://github.com/sei40kr/tmux-airline-dracul
 This config contains a modified versions of both [[https://github.com/agnoster/agnoster-zsh-theme][agnoster-zsh-theme]] and [[https://gist.github.com/kruton/8345450][agnoster-bash]] dubbed /wagnoster/ for *BASH* and *ZSH*.
 LS Color are tweaked version of *dircolors.ansi-dark* from [[https://github.com/seebi/dircolors-solarized][Solarized Color Theme for GNU]].
 ZSH addtionaly uses [[https://github.com/zsh-users/zsh-syntax-highlighting][zsh-syntax-highlighting]] package.
-
-* TODO
-** TODO Configure Emacs
-*** IN-PROGRESS Convert Config to Org
-*** TODO Configure Tab Navigation
-*** TODO Optimize Loading
