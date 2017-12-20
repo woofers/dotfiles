@@ -231,6 +231,7 @@ set $inactive-bg-color   #2f343f
 set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
+set $urgent-text-color   #313742
 
 # Window Colors         Border              Background          Text                 Indicator
 client.focused          $bg-color           $bg-color           $text-color          #00ff00
