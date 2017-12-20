@@ -20,8 +20,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(eshell-git-prompt-powerline-dir-face ((t (:background "#FF5555"))))
- '(eshell-git-prompt-powerline-not-clean-face ((t (:background "#ffaf00"))))
+ '(eshell-git-prompt-powerline-dir-face ((t (:foreground "#1b182c" :background "#FF5555"))))
+ '(eshell-git-prompt-powerline-not-clean-face ((t (:foreground "#1b182c" :background "#ffaf00"))))
+ '(eshell-git-prompt-powerline-clean-face ((t (:foreground "#1b182c" :background "#50fa7b"))))
  '(fringe ((t (:inherit default :foreground "#1b182c"))))
  '(helm-header ((t (:inherit header-line))))
  '(helm-source-header ((t (:foreground "#cbe3e7" :slant oblique :weight ultra-bold :height 1.75 :width extra-expanded :family "Arial"))))
