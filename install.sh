@@ -77,6 +77,7 @@ sudo apt-get install scrot
 
 # Install File Managers
 sudo apt-get install nemo
+sudo apt-get install nautilus
 sudo apt-get install ranger
 
 # GTK Customizer

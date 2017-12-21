@@ -40,7 +40,7 @@ focus_follows_mouse yes
 bindsym $mod+Return exec i3-sensible-terminal -e zsh
 
 # Nemo
-bindsym $mod+n exec nemo --no-desktop
+bindsym $mod+n exec nautilus
 
 # Quit Window
 bindsym $mod+q kill
@@ -165,6 +165,7 @@ assign [class="Google-chrome"] $WS1
 assign [class="Emacs"] $WS2
 assign [class="Gnome-terminal"] $WS3
 assign [class="Nemo"] $WS4
+assign [class="Nautilus"] $WS4
 assign [class="Evince"] $WS5
 assign [class="(?i)libreoffice"] $WS6
 assign [class="Xournal"] $WS6
@@ -258,6 +259,9 @@ bar {
 # Toggle i3bar
 bindsym --release $mod+o bar mode toggle
 
+bindsym --release $mod+u exec --no-startup-id xrandr -o normal
+bindsym --release $mod+m exec --no-startup-id xrandr -o left
+
 # Volume Keys
 bindsym --release XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +10%
 bindsym --release XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -10%
@@ -282,4 +286,4 @@ bindsym --release Print exec --no-startup-id scrot /tmp/`date +%Y%m%d_%H%M%S`.pn
 exec_always google-chrome
 exec_always emacs
 exec_always gnome-terminal
-exec_always nemo
+exec_always nautilus
