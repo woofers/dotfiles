@@ -176,8 +176,8 @@
 
      (load-file "~/.emacs.d/elpa/tag/tag.el")
 
-     ;; (org-babel-load-file "~/.emacs.d/lisp/init-mu4e.org")
-     ;; (require 'init-mu4e)
+     (org-babel-load-file "~/.emacs.d/lisp/init-mu4e.org")
+     (require 'init-mu4e)
  )
  #+END_SRC
 * Settings
