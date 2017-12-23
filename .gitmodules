@@ -1,0 +1,3 @@
+[submodule "wsltty/roaming/wsltty/theme"]
+	path = wsltty/roaming/wsltty/theme
+	url = https://github.com/dracula/mintty
