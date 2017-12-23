@@ -1,3 +1,10 @@
+
+#
+# --------------------------------
+# Modified Version of seebi's
+# https://github.com/seebi/dircolors-solarized/blob/master/dircolors.ansi-dark
+# --------------------------------
+#
 # Exact Solarized Dark color theme for the color GNU ls utility.
 # Designed for dircolors (GNU coreutils) 5.97
 #
