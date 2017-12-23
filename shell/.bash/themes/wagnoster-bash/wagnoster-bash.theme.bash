@@ -1,1 +1,0 @@
-wagnoster.bash
