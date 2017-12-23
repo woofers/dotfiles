@@ -136,7 +136,7 @@ if [ "$TERM" != "linux" ]; then
 fi
 
 # enables powerline theme
-export THEME=$HOME/.bash/themes/wagnoster-bash/wagnoster.bash
+export THEME=$HOME/.oh-my.zsh/themes/wagnoster.bash
 if [[ -f $THEME ]]; then
     export DEFAULT_USER=`whoami`
     source $THEME
