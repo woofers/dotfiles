@@ -7,3 +7,6 @@
 [submodule "tmux/.tmux/plugins/tmux-airline-wracula"]
 	path = tmux/.tmux/plugins/tmux-airline-wracula
 	url = https://github.com/woofers/tmux-airline-wracula
+[submodule "shell/.oh-my-zsh/themes"]
+	path = shell/.oh-my-zsh/themes
+	url = https://github.com/woofers/wagnoster-zsh-theme
