@@ -4,3 +4,6 @@
 [submodule "wsltty/roaming/wsltty/themes"]
 	path = wsltty/roaming/wsltty/themes
 	url = https://github.com/dracula/mintty
+[submodule "tmux/.tmux/plugins/tmux-airline-wracula"]
+	path = tmux/.tmux/plugins/tmux-airline-wracula
+	url = https://github.com/woofers/tmux-airline-wracula
