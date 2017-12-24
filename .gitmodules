@@ -13,3 +13,6 @@
 [submodule "rofi"]
 	path = rofi
 	url = https://github.com/woofers/challenger-deep-rofi
+[submodule "shell/dircolors-orange"]
+	path = shell/dircolors-orange
+	url = https://github.com/woofers/dircolors-orange
