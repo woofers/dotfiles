@@ -149,7 +149,7 @@ ln -s "$DEV/src/Dotfiles/tmux/.tmux" "$HOME"
 
 # Setup Directory Colors
 rm "$HOME/dircolors.ansi-darkorange"
-ln -s "$DEV/src/Dotfiles/shell/dircolors.ansi-darkorange" "$HOME"
+ln -s "$DEV/src/Dotfiles/shell/dircolors-orange/dircolors.ansi-darkorange" "$HOME"
 
 # Setup VIM Config
 rm -rf "$HOME/.config/nvim"
