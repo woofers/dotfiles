@@ -164,6 +164,10 @@ ln -s "$DEV/src/Dotfiles/emacs/init.org" "$HOME/init.org"
 rm -rf "$HOME/.emacs"
 ln -s "$DEV/src/Dotfiles/emacs/.emacs" "$HOME/.emacs"
 
+# Setup mu4e
+rm "$HOME/.mbsyncrc"
+ln -s "$DEV/src/Dotfiles/mu/.mbsyncrc" "$HOME/.mbsyncrc"
+
 # Setup Ranger Config
 rm -rf "$HOME/.config/ranger"
 ln -s "$DEV/src/Dotfiles/ranger/" "$HOME/.config/ranger"

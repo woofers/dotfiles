@@ -184,7 +184,6 @@
 ** Personal Info
  #+BEGIN_SRC emacs-lisp
  (setq user-full-name "Jaxson Van Doorn"
-	   user-mail-address "jaxson.vandoorn@gmail.com"
 	   calendar-latitude 48.6
 	   calendar-longitude -123.4
 	   calendar-location-name "Victoria, BC")
