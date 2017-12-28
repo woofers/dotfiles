@@ -6,8 +6,9 @@ sudo apt-get install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util
 sudo apt-get install libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev
 sudo apt-get install libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev dh-autoreconf
 sudo apt-get install help2man
+sudo apt-get install gnupg gnupg2
 
-# Install Python
+# Install Pytimap.gmail.comhon
 sudo apt-get install python-dev python-pip python3-dev python3-pip
 
 # Install Curl
@@ -232,6 +233,27 @@ mkdir Downloads
 sudo mount.cifs //192.168.0.191/Woofers /mnt/shares/Woofers -o user=guest
 sudo mount.cifs //192.168.0.191/Ponton /mnt/shares/Ponton -o user=guest
 sudo mount.cifs //192.168.0.192/Downloads /mnt/shares/Downloads -o user=nick
+
+# Install mbsync
+sudo apt-get install libssl-dev
+cd ~/Downloads
+cd isync
+git clone https://git.code.sf.net/p/isync/isync isync
+./autogen.sh
+./configure
+make
+sudo make install
+cd ..
+rm -rf isync
+
+# Install mu
+cd ~/Downloads
+git clone git://github.com/djcb/mu.git
+cd mu
+autoreconf -i && ./configure && make
+sudo make install
+cd ..
+rm -rf mu
 
 # Dell XPS 13 9365
 
