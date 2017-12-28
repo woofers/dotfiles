@@ -32,8 +32,29 @@ rm -rf emacs-25.3.tar.gz
 rm emacs-25.3.tar.gz
 
 # Install Emacs Plug-Ins
-sudo apt-get install mu4e
 sudo apt-get install hunspell
+
+# Install mbsync
+sudo apt-get install libssl-dev
+cd ~/Downloads
+cd isync
+git clone https://git.code.sf.net/p/isync/isync isync
+./autogen.sh
+./configure
+make
+sudo make install
+cd ..
+rm -rf isync
+
+# Install mu
+cd ~/Downloads
+sudo apt-get install gnutls-bin
+git clone git://github.com/djcb/mu.git
+cd mu
+autoreconf -i && ./configure && make
+sudo make install
+cd ..
+rm -rf mu
 
 # Install Bash Powerline
 sudo pip install powerline-shell
@@ -237,27 +258,6 @@ mkdir Downloads
 sudo mount.cifs //192.168.0.191/Woofers /mnt/shares/Woofers -o user=guest
 sudo mount.cifs //192.168.0.191/Ponton /mnt/shares/Ponton -o user=guest
 sudo mount.cifs //192.168.0.192/Downloads /mnt/shares/Downloads -o user=nick
-
-# Install mbsync
-sudo apt-get install libssl-dev
-cd ~/Downloads
-cd isync
-git clone https://git.code.sf.net/p/isync/isync isync
-./autogen.sh
-./configure
-make
-sudo make install
-cd ..
-rm -rf isync
-
-# Install mu
-cd ~/Downloads
-git clone git://github.com/djcb/mu.git
-cd mu
-autoreconf -i && ./configure && make
-sudo make install
-cd ..
-rm -rf mu
 
 # Dell XPS 13 9365
 
