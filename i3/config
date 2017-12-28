@@ -167,6 +167,7 @@ assign [class="Gnome-terminal"] $WS3
 assign [class="Nemo"] $WS4
 assign [class="Nautilus"] $WS4
 assign [class="Evince"] $WS5
+assign [class="Woofers 3d"] $WS5
 assign [class="(?i)libreoffice"] $WS6
 assign [class="Xournal"] $WS6
 assign [class="kalgebra"] $WS6
