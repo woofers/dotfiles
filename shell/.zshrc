@@ -135,6 +135,8 @@ alias tmuxw="tmux new-window -n"
 alias close="tmux kill-server; exit"
 alias gdpl="drive pull -depth -1 -ignore-name-clashes -ignore-conflict"
 alias gdpu="drive push -depth -1 -ignore-name-clashes -ignore-conflict"
+alias mupl="mu index --maildir=~/Mail/mbsync"
+alias brew="sudo apt-get"
 
 # Start in Tmux
 if [ -z "$TMUX" ]
