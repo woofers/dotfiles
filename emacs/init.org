@@ -176,8 +176,8 @@
 
      (load-file "~/.emacs.d/elpa/tag/tag.el")
 
-     ;; (org-babel-load-file "~/.emacs.d/lisp/init-mu4e.org")
-     ;; (require 'init-mu4e)
+     (org-babel-load-file "~/.emacs.d/lisp/init-mu4e.org")
+     (require 'init-mu4e)
  )
  #+END_SRC
 * Settings
@@ -547,12 +547,39 @@
    (when (eq system-type 'windows-nt)
 	 (w32-send-sys-command 61488)))
  #+END_SRC
-** Maximize Window on Windows
+* Aliases
+** Git Status
  #+BEGIN_SRC emacs-lisp
  (defun git()
    "Calls maggit-status"
    (interactive)
    (magit-status))
+ #+END_SRC
+** Git Diff
+ #+BEGIN_SRC emacs-lisp
+ (defun git-diff()
+   "Calls maggit-diff"
+   (interactive)
+   (magit-diff))
+ #+END_SRC
+** Email
+ #+BEGIN_SRC emacs-lisp
+ (defun email()
+   "Calls mu4e"
+   (interactive)
+   (mu4e))
+ #+END_SRC
+** Spell Check
+ #+BEGIN_SRC emacs-lisp
+ (defun spell()
+   "Calls speck-mode"
+   (interactive)
+   (speck-mode))
+
+ (defun spell-check()
+   "Calls speck-mode"
+   (interactive)
+   (speck-mode))
  #+END_SRC
 * Mappings
 ** Unbind Arrow Keys

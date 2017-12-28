@@ -7,26 +7,45 @@
 * Plug-Ins
 ** Load mu4e
  #+BEGIN_SRC emacs-lisp
- (load-all-in-directory "/usr/share/emacs/site-lisp/mu4e")
-;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
+ (add-to-list 'load-path  "/usr/local/share/emacs/site-lisp/mu4e")
+ (require 'mu4e)
+
+ (use-package evil-mu4e
+     :ensure t)
  #+END_SRC
 * Behavior
+** Blanket
+ #+BEGIN_SRC emacs-lisp
+   (require 'smtpmail)
+
+   (setq message-send-mail-function 'smtpmail-send-it
+         smtpmail-starttls-credentials
+         '(("smtp.gmail.com" 587 nil nil))
+         smtpmail-default-smtp-server "smtp.gmail.com"
+         smtpmail-smtp-server "smtp.gmail.com"
+;;         smtpmail-auth-credentials
+;;         (expand-file-name "~/.authinfo.gpg")
+         smtpmail-smtp-service 587
+         smtpmail-debug-info t)
+ #+END_SRC
 ** Mail Location
  #+BEGIN_SRC emacs-lisp
- (setq mu4e-maildir (expand-file-name "~/mail"))
+ (setq mu4e-maildir (expand-file-name "~/Mail/mbsync"))
+ #+END_SRC
+** Folders
+ #+BEGIN_SRC emacs-lisp
+ (setq mu4e-drafts-folder "/Drafts")
+ (setq mu4e-sent-folder   "/Sent Mail")
+ (setq mu4e-trash-folder  "/Trash")
  #+END_SRC
 ** Shortcuts
  #+BEGIN_SRC emacs-lisp
  (setq mu4e-maildir-shortcuts
-       '(("/INBOX"             . ?i)
-         ("/[Gmail].Sent Mail" . ?s)
-         ("/[Gmail].Trash"     . ?t)))
- #+END_SRC
-** Folders
- #+BEGIN_SRC emacs-lisp
- (setq mu4e-drafts-folder "/[Gmail].Drafts")
- (setq mu4e-sent-folder   "/[Gmail].Sent Mail")
- (setq mu4e-trash-folder  "/[Gmail].Trash")
+       '( ("/INBOX"               . ?i)
+          ("/Sent Items"   . ?s)
+          ("/Trash"       . ?t)
+          ("/Drafts"    . ?d)))
+
  #+END_SRC
 ** Info
  #+BEGIN_SRC emacs-lisp
@@ -40,22 +59,11 @@
  #+END_SRC
 ** Update Mail
  #+BEGIN_SRC emacs-lisp
- (setq mu4e-get-mail-command "offlineimap")
- #+END_SRC
-** Blanket
- #+BEGIN_SRC emacs-lisp
-   (require 'smtpmail)
-
-   (setq message-send-mail-function 'smtpmail-send-it
-         starttls-use-gnutls t
-         smtpmail-starttls-credentials
-         '(("smtp.gmail.com" 587 nil nil))
-         smtpmail-auth-credentials
-         (expand-file-name "~/.authinfo.gpg")
-         smtpmail-default-smtp-server "smtp.gmail.com"
-         smtpmail-smtp-server "smtp.gmail.com"
-         smtpmail-smtp-service 587
-         smtpmail-debug-info t)
+ (setq mu4e-get-mail-command "mbsync -c ~/.mbsyncrc uni"
+       mu4e-html2text-command "w3m -T text/html"
+       mu4e-update-interval 120
+       mu4e-headers-auto-update t
+       mu4e-compose-signature-auto-include nil)
  #+END_SRC
 * Functions
 * Mappings
