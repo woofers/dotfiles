@@ -1,0 +1,23 @@
+IMAPAccount uni
+Host imap.gmail.com
+User woofers1tt@gmail.com
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.emacs.d/.mbsyncpass.gpg"
+Port 993
+SSLType IMAPS
+AuthMechs Login
+
+IMAPStore uni-remote
+Account uni
+
+MaildirStore uni-local
+Path ~/Mail/mbsync
+Inbox ~/Mail/mbsync/INBOX
+
+Channel uni
+Master :uni-remote:
+Slave :uni-local:
+Patterns "Sent Items" "INBOX" "Deleted Items"
+Create Slave
+Sync All
+Expunge Both
+SyncState *
