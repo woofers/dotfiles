@@ -1,6 +1,16 @@
 
+# Sudo
+su
+apt-get install sudo
+exit
+
+# AMD Graphics
+sudo apt install firmware-linux
+sudo apt install llvm-3.9 clang-3.9
+
 # Manage Packages
 sudo apt-get install software-properties-common
+sudo apt-get install gcc
 sudo apt install build-essential checkinstall
 sudo apt-get install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev
 sudo apt-get install libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev
@@ -10,18 +20,27 @@ sudo apt-get install gnupg gnupg2
 
 # Install Pytimap.gmail.comhon
 sudo apt-get install python-dev python-pip python3-dev python3-pip
+sudo apt-get install python-apt
 
 # Install Curl
 sudo apt-get install curl
+sudo apt-get install git
 
 # Install Neovim
 sudo add-apt-repository ppa:neovim-ppa/stable
 sudo apt-get update
 sudo apt-get install neovim
 
+# Install Chrome
+cd ~/Downloads
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt-get install ./google-chrome-stable_current_amd64.deb
+rm -rf google-chrome-stable_current_amd64.deb
+cd ~
+
 # Install Emacs
 cd ~/Downloads
-wget http://mirror.sergal.org/gnu/emacs/emacs-25.3.tar.xz
+wget http://gnu.mirror.iweb.com/emacs/emacs-25.3.tar.gz
 sudo apt-get build-dep emacs24
 tar -zxvf emacs-25.3.tar.gz
 cd emacs-25.3
@@ -37,8 +56,8 @@ sudo apt-get install hunspell
 # Install mbsync
 sudo apt-get install libssl-dev
 cd ~/Downloads
-cd isync
 git clone https://git.code.sf.net/p/isync/isync isync
+cd isync
 ./autogen.sh
 ./configure
 make
@@ -49,6 +68,9 @@ rm -rf isync
 # Install mu
 cd ~/Downloads
 sudo apt-get install gnutls-bin
+sudo apt-get install gmime-2.6
+sudo apt-get install python-xapian
+sudo apt-get install libxapian-dev
 git clone git://github.com/djcb/mu.git
 cd mu
 autoreconf -i && ./configure && make
@@ -58,6 +80,7 @@ rm -rf mu
 
 # Install Bash Powerline
 sudo pip install powerline-shell
+sudo pip install soundscrape
 
 # Install ZSH and Oh My ZSH
 sudo apt install zsh
@@ -87,6 +110,18 @@ exit
 # Install Math Tools
 sudo apt-get install xournal
 sudo apt-get install kalgebra
+
+# Install i3 Gaps
+sudo apt-get install libxcb-xrm-dev
+cd ~/Downloads
+git clone https://www.github.com/Airblader/i3 i3-gaps
+cd i3-gaps
+autoreconf --force --install
+rm -rf build/
+mkdir -p build && cd build/
+../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+make
+sudo make install
 
 # Install Window Management Components
 sudo apt-get install i3lock
@@ -121,7 +156,7 @@ export DEV="$HOME/Documents/Development"
 cd ~/Downloads
 sudo apt-get install unifont
 sudo apt-get install ttf-mscorefonts-installer
-sudo apt-get fonts-font-awesome
+sudo apt-get install fonts-font-awesome
 git clone https://github.com/powerline/fonts.git --depth=1
 cd fonts
 ./install.sh
@@ -237,10 +272,13 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 # Install Brightness
+cd ~/Downloads
 git clone https://github.com/haikarainen/light
 cd light
 sudo make && sudo make install
+cd ..
 rm -rf light
+cd ~
 
 # MP3 Tags for Emacs
 cd ~/.emacs.d/elpa/
@@ -277,3 +315,5 @@ cd ~
 sudo echo 'deb http://ftp.de.debian.org/debian sid main' >> /etc/apt/sources.list
 sudo apt-get update
 sudo apt-get install linux-image-4.13.0-1-amd64
+
+dconf load /org/gnome/terminal/legacy/ < gnome-term.txt
