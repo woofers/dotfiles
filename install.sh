@@ -11,7 +11,7 @@ sudo apt install llvm-3.9 clang-3.9
 # Manage Packages
 sudo apt-get install software-properties-common
 sudo apt-get install gcc
-sudo apt install build-essential checkinstall
+sudo apt-get install build-essential checkinstall
 sudo apt-get install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev
 sudo apt-get install libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev
 sudo apt-get install libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev dh-autoreconf
@@ -42,6 +42,21 @@ cd ~
 sudo dpkg --add-architecture i386
 sudo apt update && apt upgrade
 sudo apt install steam
+
+# Install Discord
+sudo apt-get install libgconf-2-4 libappindicator1
+cd ~/Downloads
+wget https://dl.discordapp.net/apps/linux/0.0.3/discord-0.0.3.deb
+sudo apt-get install ./discord-0.0.3.deb
+rm -rf discord-0.0.3.deb
+cd ~
+
+# Install Music Players
+sudo apt-get install rhythmbox
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
+echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+sudo apt-get update
+sudo apt-get install spotify-client
 
 # Install Emacs
 cd ~/Downloads
@@ -322,4 +337,5 @@ sudo echo 'deb http://ftp.de.debian.org/debian sid main' >> /etc/apt/sources.lis
 sudo apt-get update
 sudo apt-get install linux-image-4.13.0-1-amd64
 
+# Load Terminal Config
 dconf load /org/gnome/terminal/legacy/ < gnome-term.txt
