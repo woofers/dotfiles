@@ -144,7 +144,7 @@ exec --no-startup-id light -S 30
 exec --no-startup-id pactl set-sink-volume 0 0%
 
 # Set Desktop Background
-exec --no-startup-id feh --bg-scale ~/Pictures bg.jpg
+exec --no-startup-id feh --bg-fill ~/Pictures bg.jpg
 
 # Start Network
 exec --no-startup-id nm-applet &
@@ -156,7 +156,7 @@ exec --no-startup-id nm-applet &
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 
 # Start Compton
-exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
+# exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
 # exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Force Windows Onto Specific Workspaces
