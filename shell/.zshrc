@@ -105,7 +105,7 @@ export GOROOT=/usr/local/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # Allow Use of Windows Apps
-if [[ $(hostname -s) = Jaxson-PC* ]] || [[ $(hostname -s) = Jaxson-Thinkpad* ]]; then
+if [[ $(hostname -s) = Jaxson-PC ]] || [[ $(hostname -s) = Jaxson-Thinkpad* ]]; then
 	export PATH=$PATH:/mnt/c/Windows/System32
 	alias javac="javac.exe"
 	alias java="java.exe"
@@ -129,8 +129,8 @@ alias ch="cd ~"
 alias tmux="tmux -2 -u"
 alias tmuxw="tmux new-window -n"
 alias close="tmux kill-server; exit"
-alias gdpl="drive pull -depth -1 -ignore-name-clashes -ignore-conflict"
-alias gdpu="drive push -depth -1 -ignore-name-clashes -ignore-conflict"
+alias gdpl="drive-google pull -depth -1 -ignore-name-clashes -ignore-conflict"
+alias gdpu="drive google push -depth -1 -ignore-name-clashes -ignore-conflict"
 alias mupl="mu index --maildir=~/Mail/mbsync"
 alias brew="sudo apt-get"
 

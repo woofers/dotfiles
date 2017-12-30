@@ -264,12 +264,15 @@ bar {
 # Toggle i3bar
 bindsym --release $mod+o bar mode toggle
 
+# Laptop Rotate
 bindsym --release $mod+u exec --no-startup-id xrandr -o normal
 bindsym --release $mod+m exec --no-startup-id xrandr -o left
 
 # Volume Keys
 bindsym --release XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +10%
 bindsym --release XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -10%
+bindsym --release braceright exec --no-startup-id pactl set-sink-volume 0 +10%
+bindsym --release braceleft exec --no-startup-id pactl set-sink-volume 0 -10%
 bindsym --release XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # Srceen Brightness Controls
