@@ -18,7 +18,7 @@ sudo apt-get install libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkb
 sudo apt-get install help2man
 sudo apt-get install gnupg gnupg2
 
-# Install Pytimap.gmail.comhon
+# Install Python
 sudo apt-get install python-dev python-pip python3-dev python3-pip
 sudo apt-get install python-apt
 
@@ -37,6 +37,11 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt-get install ./google-chrome-stable_current_amd64.deb
 rm -rf google-chrome-stable_current_amd64.deb
 cd ~
+
+# Install Steam
+sudo dpkg --add-architecture i386
+sudo apt update && apt upgrade
+sudo apt install steam
 
 # Install Emacs
 cd ~/Downloads
@@ -124,6 +129,7 @@ make
 sudo make install
 
 # Install Window Management Components
+sudo apt-get install dmenu
 sudo apt-get install i3lock
 sudo apt-get install i3blocks
 sudo apt-get install rofi
@@ -259,7 +265,7 @@ ln -s "$DEV/src/Dotfiles/gtk/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/settin
 rm -rf "$HOME/.config/dunst/"
 cd ~/.config/
 mkdir dunst
-ln -s "$DEV/src/Dotfiles/dunst" "$HOME/.config/dunst"
+ln -s "$DEV/src/Dotfiles/dunst" "$HOME/.config/"
 
 # Setup Infinality
 sudo rm -rf "/etc/profile.d/infinality-settings.sh"
