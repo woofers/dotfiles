@@ -17,6 +17,10 @@ sudo apt-get install libstartup-notification0-dev libxcb-randr0-dev libev-dev li
 sudo apt-get install libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev dh-autoreconf
 sudo apt-get install help2man
 sudo apt-get install gnupg gnupg2
+sudo apt-get install screenfetch
+
+# Install JDK
+sudo apt-get install default-jdk
 
 # Install Python
 sudo apt-get install python-dev python-pip python3-dev python3-pip
@@ -25,6 +29,19 @@ sudo apt-get install python-apt
 # Install Curl
 sudo apt-get install curl
 sudo apt-get install git
+
+# Install Volume Control
+sudo apt-get install pavucontrol
+
+# Install Go
+cd ~/Downloads
+wget https://storage.googleapis.com/golang/go1.9.2.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.9.2.linux-amd64.tar.gz
+rm go1.9.2.linux-amd64.tar.gz
+cd ~
+
+# Install Google Drive
+go get -u github.com/odeke-em/drive/drive-gen && drive-gen drive-google
 
 # Install Neovim
 sudo add-apt-repository ppa:neovim-ppa/stable
@@ -52,7 +69,6 @@ rm -rf discord-0.0.3.deb
 cd ~
 
 # Install Music Players
-sudo apt-get install rhythmbox
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
 echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
 sudo apt-get update
@@ -338,4 +354,5 @@ sudo apt-get update
 sudo apt-get install linux-image-4.13.0-1-amd64
 
 # Load Terminal Config
+cd $DEV/src/Dotfiles/gnome-terminal
 dconf load /org/gnome/terminal/legacy/ < gnome-term.txt
