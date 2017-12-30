@@ -95,7 +95,7 @@ set $WS1 "1: "
 set $WS2 "2: "
 set $WS3 "3: "
 set $WS4 "4: "
-set $WS5 "5: "
+set $WS5 "5: "
 set $WS6 "6: "
 set $WS7 "7: "
 set $WS8 "8: "
@@ -167,14 +167,16 @@ assign [class="Emacs"] $WS2
 assign [class="Gnome-terminal"] $WS3
 assign [class="Nemo"] $WS4
 assign [class="Nautilus"] $WS4
-assign [class="Evince"] $WS5
-assign [class="Woofers 3D"] $WS5
-assign [class="Eog"] $WS5
+assign [class="Evince"] $WS6
+assign [class="Woofers 3D"] $WS6
+assign [class="Eog"] $WS6
 assign [class="(?i)libreoffice"] $WS6
 assign [class="Xournal"] $WS6
 assign [class="kalgebra"] $WS6
+assign [class="Steam"] $WS5
 assign [class="discord"] $WS7
 assign [class="Spotify"] $WS8
+assign [class="Rhythmbox"] $WS8
 assign [class="Vlc"] $WS8
 
 # Reload Config
@@ -290,3 +292,4 @@ exec_always google-chrome
 exec_always emacs
 exec_always gnome-terminal
 exec_always nautilus
+exec_always discord
