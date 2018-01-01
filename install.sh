@@ -8,13 +8,14 @@ exit
 sudo apt install firmware-linux
 sudo apt install llvm-3.9 clang-3.9
 
-# Manage Packages
+# Core Libraries
 sudo apt-get install software-properties-common
 sudo apt-get install gcc
 sudo apt-get install build-essential checkinstall
 sudo apt-get install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev
 sudo apt-get install libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev
 sudo apt-get install libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev dh-autoreconf
+sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
 sudo apt-get install help2man
 sudo apt-get install gnupg gnupg2
 sudo apt-get install screenfetch
@@ -60,7 +61,7 @@ sudo dpkg --add-architecture i386
 sudo apt update && apt upgrade
 sudo apt install steam
 
-# Install Discord
+# Install Disrd
 sudo apt-get install libgconf-2-4 libappindicator1
 cd ~/Downloads
 wget https://dl.discordapp.net/apps/linux/0.0.3/discord-0.0.3.deb
@@ -292,6 +293,15 @@ ln -s "$DEV/src/Dotfiles/gtk/gtk-2.0/.gtkrc-2.0" "$HOME/.gtkrc-2.0"
 rm -rf "$HOME/.config/gtk-3.0/settings.ini"
 ln -s "$DEV/src/Dotfiles/gtk/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
 
+# Install Android SDK
+cd ~/Downloads
+wget https://dl.google.com/dl/android/studio/ide-zips/3.0.1.0/android-studio-ide-171.4443003-linux.zip
+unzip android-studio-ide-171.4443003-linux.zip
+sudo mv android-studio /usr/local
+sudo ln -s "/usr/local/android-studio/bin/studio.sh" "/usr/bin/androidstudio"
+rm android-studio-ide-171.4443003-linux.zip
+cd ~
+
 # Setup Dunst
 rm -rf "$HOME/.config/dunst/"
 cd ~/.config/
@@ -323,7 +333,7 @@ mkdir tag
 cd tag
 wget https://www.emacswiki.org/emacs/download/tag.el
 
-# Shares
+# SMB Shares
 cd /mnt
 mkdir shares
 cd shares
