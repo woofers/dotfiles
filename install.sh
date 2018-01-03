@@ -4,13 +4,12 @@ su
 apt-get install sudo
 exit
 
-# AMD Graphics
+# AMD Graphics Drives (Gallium 0.4, Open Driver) (R9 390X)
 sudo apt install firmware-linux
 sudo apt install llvm-3.9 clang-3.9
 
-# Core Libraries
+# Core Build Libraries
 sudo apt-get install software-properties-common
-sudo apt-get install gcc
 sudo apt-get install build-essential checkinstall
 sudo apt-get install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev
 sudo apt-get install libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev
@@ -20,6 +19,9 @@ sudo apt-get install help2man
 sudo apt-get install gnupg gnupg2
 sudo apt-get install screenfetch
 
+# Install GCC
+sudo apt-get install gcc
+
 # Install JDK
 sudo apt-get install default-jdk
 
@@ -27,12 +29,31 @@ sudo apt-get install default-jdk
 sudo apt-get install python-dev python-pip python3-dev python3-pip
 sudo apt-get install python-apt
 
-# Install Curl
+# Install Curl and Git
 sudo apt-get install curl
 sudo apt-get install git
 
+# Install Bash Powerline
+sudo pip install powerline-shell
+
+# Install ZSH and Oh My ZSH
+sudo apt install zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# Install ZSH Syntax
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
 # Install Volume Control
 sudo apt-get install pavucontrol
+
+# Install Brightness Control
+cd ~/Downloads
+git clone https://github.com/haikarainen/light
+cd light
+sudo make && sudo make install
+cd ..
+rm -rf light
+cd ~
 
 # Install Go
 cd ~/Downloads
@@ -41,13 +62,17 @@ sudo tar -C /usr/local -xzf go1.9.2.linux-amd64.tar.gz
 rm go1.9.2.linux-amd64.tar.gz
 cd ~
 
-# Install Google Drive
-go get -u github.com/odeke-em/drive/drive-gen && drive-gen drive-google
+# Install Printer Drivers
+cd ~/Downloads
+wget http://download.brother.com/welcome/dlf006893/linux-brprinter-installer-2.1.1-1.gz
+gunzip -v ~/Downloads/linux-brprinter*
+sudo bash ~/Downloads/linux-brprinter*
+rm linux-brprinter-installer-2.1.1-1
+cd ~
 
-# Install Neovim
-sudo add-apt-repository ppa:neovim-ppa/stable
-sudo apt-get update
-sudo apt-get install neovim
+# Install Math Tools
+sudo apt-get install xournal
+sudo apt-get install kalgebra
 
 # Install Chrome
 cd ~/Downloads
@@ -56,12 +81,7 @@ sudo apt-get install ./google-chrome-stable_current_amd64.deb
 rm -rf google-chrome-stable_current_amd64.deb
 cd ~
 
-# Install Steam
-sudo dpkg --add-architecture i386
-sudo apt update && apt upgrade
-sudo apt install steam
-
-# Install Disrd
+# Install Discord
 sudo apt-get install libgconf-2-4 libappindicator1
 cd ~/Downloads
 wget https://dl.discordapp.net/apps/linux/0.0.3/discord-0.0.3.deb
@@ -69,11 +89,18 @@ sudo apt-get install ./discord-0.0.3.deb
 rm -rf discord-0.0.3.deb
 cd ~
 
+# Install Steam
+sudo dpkg --add-architecture i386
+sudo apt update && apt upgrade
+sudo apt install steam
+
 # Install Music Players
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
 echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
 sudo apt-get update
 sudo apt-get install spotify-client
+sudo apt-get install rhythmbox
+sudo pip install soundscrape
 
 # Install Emacs
 cd ~/Downloads
@@ -87,7 +114,7 @@ sudo make install
 rm -rf emacs-25.3.tar.gz
 rm emacs-25.3.tar.gz
 
-# Install Emacs Plug-Ins
+# Install Emacs Spell Check
 sudo apt-get install hunspell
 
 # Install mbsync
@@ -114,14 +141,15 @@ autoreconf -i && ./configure && make
 sudo make install
 cd ..
 rm -rf mu
+cd ~
 
-# Install Bash Powerline
-sudo pip install powerline-shell
-sudo pip install soundscrape
+# Install Neovim
+sudo add-apt-repository ppa:neovim-ppa/stable
+sudo apt-get update
+sudo apt-get install neovim
 
-# Install ZSH and Oh My ZSH
-sudo apt install zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# Install Google Drive
+go get -u github.com/odeke-em/drive/drive-gen && drive-gen drive-google
 
 # Install Ctags
 sudo apt-get install exuberant-ctags
@@ -144,9 +172,18 @@ tmux
 tmux show -g | cat > ~/.tmux.conf
 exit
 
-# Install Math Tools
-sudo apt-get install xournal
-sudo apt-get install kalgebra
+# Install Android SDK
+cd ~/Downloads
+wget https://dl.google.com/dl/android/studio/ide-zips/3.0.1.0/android-studio-ide-171.4443003-linux.zip
+unzip android-studio-ide-171.4443003-linux.zip
+sudo mv android-studio /usr/local
+sudo ln -s "/usr/local/android-studio/bin/studio.sh" "/usr/bin/androidstudio"
+rm android-studio-ide-171.4443003-linux.zip
+cd ~
+
+# Install WINE
+sudo apt-get install wine
+sudo apt-get install winetricks
 
 # Install i3 Gaps
 sudo apt-get install libxcb-xrm-dev
@@ -171,7 +208,6 @@ sudo apt-get install dunst
 sudo apt-get install scrot
 
 # Install File Managers
-sudo apt-get install nemo
 sudo apt-get install nautilus
 sudo apt-get install ranger
 
@@ -187,7 +223,7 @@ sudo apt-get update
 sudo apt-get install papirus-icon-theme
 
 # Export DEV Path
-export DEV="/mnt/d/Documents/Development"
+# export DEV="/mnt/d/Documents/Development"
 export DEV="$HOME/Documents/Development"
 
 # Install Fonts
@@ -200,7 +236,6 @@ cd fonts
 ./install.sh
 cd ..
 rm -rf fonts
-ln -s "$DEV/src/Dotfiles/fonts/.fonts.conf" "$HOME/.fonts.conf"
 cd ~
 mkdir .fonts
 cd .fonts
@@ -209,6 +244,7 @@ cd YosemiteSanFrancisco
 mv *.ttf ~/.fonts
 cd ..
 rm -rf YosemiteSanFrancisco
+ln -s "$DEV/src/Dotfiles/fonts/.fonts.conf" "$HOME/.fonts.conf"
 
 # Install Infinality
 echo "deb http://ppa.launchpad.net/no1wantdthisname/ppa/ubuntu trusty main" | sudo tee /etc/apt/sources.list.d/infinality.list
@@ -216,6 +252,10 @@ echo "deb-src http://ppa.launchpad.net/no1wantdthisname/ppa/ubuntu trusty main" 
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E985B27B
 sudo apt-get update
 sudo apt-get install fontconfig-infinality
+
+# Load Terminal Config
+cd $DEV/src/Dotfiles/gnome-terminal
+dconf load /org/gnome/terminal/legacy/ < gnome-term.txt
 
 # VIM Copy to Windows Copy Buffer
 sudo ln -s "$DEV/src/Dotfiles/vim/bin/win32yank.exe" "/usr/bin/win32yank"
@@ -293,14 +333,6 @@ ln -s "$DEV/src/Dotfiles/gtk/gtk-2.0/.gtkrc-2.0" "$HOME/.gtkrc-2.0"
 rm -rf "$HOME/.config/gtk-3.0/settings.ini"
 ln -s "$DEV/src/Dotfiles/gtk/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
 
-# Install Android SDK
-cd ~/Downloads
-wget https://dl.google.com/dl/android/studio/ide-zips/3.0.1.0/android-studio-ide-171.4443003-linux.zip
-unzip android-studio-ide-171.4443003-linux.zip
-sudo mv android-studio /usr/local
-sudo ln -s "/usr/local/android-studio/bin/studio.sh" "/usr/bin/androidstudio"
-rm android-studio-ide-171.4443003-linux.zip
-cd ~
 
 # Setup Dunst
 rm -rf "$HOME/.config/dunst/"
@@ -314,18 +346,6 @@ sudo ln -s "$DEV/src/Dotfiles/infinality/infinality-settings.sh" "/etc/profile.d
 
 # Install TMUX Plug-In Manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-# Install ZSH Syntax
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-# Install Brightness
-cd ~/Downloads
-git clone https://github.com/haikarainen/light
-cd light
-sudo make && sudo make install
-cd ..
-rm -rf light
-cd ~
 
 # MP3 Tags for Emacs
 cd ~/.emacs.d/elpa/
@@ -358,11 +378,7 @@ rm -rf iwlwifi-8265-ucode-22.361476.0
 rm iwlwifi-8265-ucode-22.361476.0.tgz
 cd ~
 
-# Upgrade Kernal for Working Sleep
+# Upgrade Kernel for Working Sleep
 sudo echo 'deb http://ftp.de.debian.org/debian sid main' >> /etc/apt/sources.list
 sudo apt-get update
 sudo apt-get install linux-image-4.13.0-1-amd64
-
-# Load Terminal Config
-cd $DEV/src/Dotfiles/gnome-terminal
-dconf load /org/gnome/terminal/legacy/ < gnome-term.txt
