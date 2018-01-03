@@ -247,8 +247,10 @@ client.urgent           $urgent-bg-color    $urgent-bg-color    $text-color     
 # client.focused          color2              $background $text   $border              $border
 
 bar {
+    mode hide
     font pango:System San Francisco Display 14
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
+
 	colors {
 		background $bg-color
 	    separator #757575
@@ -259,6 +261,8 @@ bar {
 		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
 	}
 }
+#bindsym $alt bar hidden_state show
+#bindsym --release Mod1+Mod4 bar hidden_state hide
 
 
 # Toggle i3bar
@@ -271,8 +275,8 @@ bindsym --release $mod+m exec --no-startup-id xrandr -o left
 # Volume Keys
 bindsym --release XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +10%
 bindsym --release XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -10%
-bindsym --release braceright exec --no-startup-id pactl set-sink-volume 0 +10%
-bindsym --release braceleft exec --no-startup-id pactl set-sink-volume 0 -10%
+bindsym --release $mod+braceright exec --no-startup-id pactl set-sink-volume 0 +10%
+bindsym --release $mod+braceleft exec --no-startup-id pactl set-sink-volume 0 -10%
 bindsym --release XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # Srceen Brightness Controls
