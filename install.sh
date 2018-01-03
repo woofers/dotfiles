@@ -263,8 +263,6 @@ sudo ln -s "$DEV/src/Dotfiles/vim/bin/win32yank.exe" "/usr/bin/win32yank"
 # Setup BASH Config
 rm "$HOME/.bashrc"
 ln -s "$DEV/src/Dotfiles/shell/.bashrc" "$HOME/.bashrc"
-rm -rf "$HOME/.bash"
-ln -s "$DEV/src/Dotfiles/shell/.bash" "$HOME"
 
 # Setup ZSH Config
 rm "$HOME/.zshrc"
