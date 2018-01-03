@@ -347,6 +347,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # MP3 Tags for Emacs
 cd ~/.emacs.d/elpa/
+git clone https://github.com/challenger-deep-theme/emacs challenger-deep
 mkdir tag
 cd tag
 wget https://www.emacswiki.org/emacs/download/tag.el
