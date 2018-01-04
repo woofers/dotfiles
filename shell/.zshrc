@@ -29,10 +29,10 @@ export UPDATE_ZSH_DAYS=7
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -64,9 +64,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vim'
+	export EDITOR='vim'
 else
-    export EDITOR='emacs'
+	export EDITOR='emacs -nw'
 fi
 
 # Compilation flags
@@ -92,8 +92,8 @@ export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 export HOME_DRIVE="/home/jaxson"
 export DRIVE="$HOME_DRIVE/Documents/Google Drive"
 if [[ $(hostname -s) = Jaxson-PC ]]; then
-    export HOME_DRIVE="/mnt/d/"
-    export DRIVE="$HOME_DRIVE/Documents/JVD Docs/Documents/"
+	export HOME_DRIVE="/mnt/d/"
+	export DRIVE="$HOME_DRIVE/Documents/JVD Docs/Documents/"
 fi
 export DEV="$HOME_DRIVE/Documents/Development"
 export ANDROID_HOME="$DEV/lib/AndroidSDK"
@@ -107,14 +107,14 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # Allow Use of Windows Apps
 if [[ $(hostname -s) = Jaxson-PC ]] || [[ $(hostname -s) = Jaxson-Thinkpad* ]]; then
-    export PATH=$PATH:/mnt/c/Windows/System32
-    alias javac="javac.exe"
-    alias java="java.exe"
-    alias emacs="emacs.exe"
-    alias cmd="cmd.exe /c"
-    alias ipconfig="cmd ipconfig"
-    alias tasklist="cmd tasklist"
-    alias taskkill="cmd taskkill /F"
+	export PATH=$PATH:/mnt/c/Windows/System32
+	alias javac="javac.exe"
+	alias java="java.exe"
+	alias emacs="emacs.exe"
+	alias cmd="cmd.exe /c"
+	alias ipconfig="cmd ipconfig"
+	alias tasklist="cmd tasklist"
+	alias taskkill="cmd taskkill /F"
 fi
 
 # Aliases
@@ -138,13 +138,13 @@ alias brew="sudo apt-get"
 # Start in Tmux
 if [ -z "$TMUX" ]
 then
-    tmux kill-server > /dev/null
-    tmux start-server
-    tmux new-session -d -s Workspace -n "Dev 1"
-    tmuxw "Dev 2"
-    tmuxw "School"
-    tmuxw "Extra"
-    tmux attach-session -t Workspace
+	tmux kill-server > /dev/null
+	tmux start-server
+	tmux new-session -d -s Workspace -n "Dev 1"
+	tmuxw "Dev 2"
+	tmuxw "School"
+	tmuxw "Extra"
+	tmux attach-session -t Workspace
 fi
 
 
@@ -153,5 +153,6 @@ eval `dircolors ~/dircolors.ansi-darkorange`
 zstyle ':completion:*:default' list-colors \
 ${(s.:.)LS_COLORS}
 
+# Load NVM
 export NVM_DIR="/home/jaxson/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"

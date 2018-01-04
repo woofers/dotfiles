@@ -331,7 +331,6 @@ ln -s "$DEV/src/Dotfiles/gtk/gtk-2.0/.gtkrc-2.0" "$HOME/.gtkrc-2.0"
 rm -rf "$HOME/.config/gtk-3.0/settings.ini"
 ln -s "$DEV/src/Dotfiles/gtk/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
 
-
 # Setup Dunst
 rm -rf "$HOME/.config/dunst/"
 cd ~/.config/
@@ -342,12 +341,13 @@ ln -s "$DEV/src/Dotfiles/dunst" "$HOME/.config/"
 sudo rm -rf "/etc/profile.d/infinality-settings.sh"
 sudo ln -s "$DEV/src/Dotfiles/infinality/infinality-settings.sh" "/etc/profile.d/infinality-settings.sh"
 
+sudo ln -s "/usr/local/bin/Dolphin/bin/dolphin-emu" "/usr/bin/dolphin"
+
 # Install TMUX Plug-In Manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # MP3 Tags for Emacs
 cd ~/.emacs.d/elpa/
-git clone https://github.com/challenger-deep-theme/emacs challenger-deep
 mkdir tag
 cd tag
 wget https://www.emacswiki.org/emacs/download/tag.el
