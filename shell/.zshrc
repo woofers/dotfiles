@@ -90,15 +90,14 @@ export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 # Sets Environment Paths
 export HOME_DRIVE="/home/jaxson"
-export DRIVE="$HOME_DRIVE/Documents/Google Drive"
 if [[ $(hostname -s) = Jaxson-PC ]]; then
 	export HOME_DRIVE="/mnt/d/"
-	export DRIVE="$HOME_DRIVE/Documents/JVD Docs/Documents/"
 fi
+export DRIVE="$HOME_DRIVE/Documents/JVD Docs/Documents/"
 export DEV="$HOME_DRIVE/Documents/Development"
 export ANDROID_HOME="$DEV/lib/AndroidSDK"
-export SCHOOL="$DRIVE/School/UVIC/2017"
-export CSC="$DRIVE/School/UVIC/2017/CSC 115/Assignments"
+export SCHOOL="$DRIVE/School/UVIC/2018"
+export CSC="$DRIVE/School/UVIC/2018/CSC 230"
 
 # GO Path
 export GOPATH=~/.go
