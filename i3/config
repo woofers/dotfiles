@@ -159,6 +159,12 @@ exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 # exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
 # exec_always --no-startup-id ~/.config/polybar/launch.sh
 
+# Restore GNOME's settings
+exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
+
+# Fix a bug in gnome-settings-daemon: http://feeding.cloud.geek.nz/posts/creating-a-modern-tiling-desktop-environment-using-i3/
+exec --no-startup-id dconf write /org/gnome/settings-daemon/plugins/cursor/active false
+
 # Force Windows Onto Specific Workspaces
 assign [class="Firefox"] $WS1
 assign [class="Chromium"] $WS1

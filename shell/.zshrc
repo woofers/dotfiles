@@ -133,6 +133,7 @@ alias gdpl="drive-google pull -depth -1 -ignore-name-clashes -ignore-conflict"
 alias gdpu="drive-google push -depth -1 -ignore-name-clashes -ignore-conflict"
 alias mupl="mu index --maildir=~/Mail/mbsync"
 alias brew="sudo apt-get"
+alias info="screenfetch"
 
 # Start in Tmux
 if [ -z "$TMUX" ]

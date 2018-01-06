@@ -33,6 +33,9 @@ sudo apt-get install python-apt
 sudo apt-get install curl
 sudo apt-get install git
 
+# Install nfs
+sudo apt install nfs-common
+
 # Install Bash Powerline
 sudo pip install powerline-shell
 
