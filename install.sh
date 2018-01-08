@@ -33,7 +33,7 @@ sudo apt-get install python-apt
 sudo apt-get install curl
 sudo apt-get install git
 
-# Install nfs
+# Install NFS
 sudo apt install nfs-common
 
 # Install Bash Powerline
@@ -357,7 +357,7 @@ mkdir tag
 cd tag
 wget https://www.emacswiki.org/emacs/download/tag.el
 
-# SMB Shares
+# Shares
 cd /mnt
 mkdir shares
 cd shares
@@ -367,6 +367,9 @@ mkdir Downloads
 sudo mount.cifs //192.168.0.191/Woofers /mnt/shares/Woofers -o user=guest
 sudo mount.cifs //192.168.0.191/Ponton /mnt/shares/Ponton -o user=guest
 sudo mount.cifs //192.168.0.192/Downloads /mnt/shares/Downloads -o user=nick
+ln -s "/mnt/shares/Downloads" "$HOME/Media-Downloads"
+ln -s "/mnt/shares/Woofers" "$HOME/Woofers"
+ln -s "/mnt/shares/Ponton" "$HOME/Ponton"
 
 # Dell XPS 13 9365
 
