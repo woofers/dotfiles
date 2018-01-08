@@ -1,1 +1,3 @@
 //192.168.0.192/Downloads  /mnt/shares/Downloads  cifs   uid=jaxson,vers=1.0,credentials=/home/jaxson/.smbcredentials,iocharset=utf8,sec=ntlm   0       0
+192.168.0.191:/mnt/Woofers /mnt/shares/Woofers nfs rsize=8192,wsize=8192,timeo=14,intr
+192.168.0.191:/mnt/Ponton /mnt/shares/Ponton nfs rsize=8192,wsize=8192,timeo=14,intr

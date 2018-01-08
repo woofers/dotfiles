@@ -187,6 +187,8 @@ cd ~
 # Install WINE
 sudo apt-get install wine
 sudo apt-get install winetricks
+winetricks corefonts cjkfonts
+winetricks msxml6 riched20 riched30 vcrun6
 
 # Install i3 Gaps
 sudo apt-get install libxcb-xrm-dev
