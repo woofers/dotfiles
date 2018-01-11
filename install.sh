@@ -338,8 +338,6 @@ ln -s "$DEV/src/Dotfiles/gtk/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/settin
 
 # Setup Dunst
 rm -rf "$HOME/.config/dunst/"
-cd ~/.config/
-mkdir dunst
 ln -s "$DEV/src/Dotfiles/dunst" "$HOME/.config/"
 
 # Setup Infinality
