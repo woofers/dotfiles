@@ -161,9 +161,6 @@
  (use-package flyspell
          :ensure t)
 
- (use-package flyspell-lazy
-         :ensure t)
-
  (use-package speck
          :ensure t)
 
@@ -242,7 +239,7 @@
  (setq highlight-indent-guides-method 'character)
  #+END_SRC
 
-** Whether Settings
+** Wheather Settings
 *** Use Victoria Airport
   #+BEGIN_SRC emacs-lisp
   (setq wttrin-default-cities '("YYJ"))
@@ -255,6 +252,8 @@
 
 ** Spellcheck
  #+BEGIN_SRC emacs-lisp
+ (setq ispell-program-name "/usr/bin/ispell")
+
  (setq speck-engine 'Hunspell
 	 speck-hunspell-program (executable-find "hunspell")
 	 speck-hunspell-library-directory
@@ -572,10 +571,10 @@
  #+END_SRC
 ** Git Diff
  #+BEGIN_SRC emacs-lisp
- (defun git-diff()
-   "Calls maggit-diff"
-   (interactive)
-   (magit-diff))
+   (defun git-diff(rev-or-range)
+     "Calls maggit-diff"
+     (interactive)
+     (magit-diff rev-or-range))
  #+END_SRC
 ** Email
  #+BEGIN_SRC emacs-lisp
@@ -584,17 +583,30 @@
    (interactive)
    (mu4e))
  #+END_SRC
+** Wheather
+ #+BEGIN_SRC emacs-lisp
+ (defun wheather()
+   "Calls wttrin"
+   (interactive)
+   (wttrin))
+ #+END_SRC
 ** Spell Check
  #+BEGIN_SRC emacs-lisp
  (defun spell()
    "Calls speck-mode"
    (interactive)
-   (speck-mode))
+   (with-system gnu/linux
+     (flyspell-mode)
+   )
+
+   (with-system windows
+     (speck-mode)
+   ))
 
  (defun spell-check()
    "Calls speck-mode"
    (interactive)
-   (speck-mode))
+   (spell))
  #+END_SRC
 * Mappings
 ** Unbind Arrow Keys
