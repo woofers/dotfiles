@@ -389,8 +389,6 @@ cd elpa
 mkdir tag
 cd tag
 wget https://www.emacswiki.org/emacs/download/tag.el
-cd $DEV/src/Dotfiles/fstab
-sudo sh -c 'cat fstab >> /etc/fstab'
 
 # Install Emacs Theme
 git clone https://github.com/challenger-deep-theme/emacs challenger-deep
@@ -402,7 +400,8 @@ cd shares
 sudo mkdir Woofers
 sudo mkdir Ponton
 sudo mkdir Downloads
-sudo "$DEV/src/Dotfiles/fstab" >> /etc/fstab
+cd $DEV/src/Dotfiles/fstab
+sudo sh -c 'cat fstab >> /etc/fstab'
 ln -s "/mnt/shares/Downloads" "$HOME/Media-Downloads"
 ln -s "/mnt/shares/Woofers" "$HOME/Woofers"
 ln -s "/mnt/shares/Ponton" "$HOME/Ponton"
