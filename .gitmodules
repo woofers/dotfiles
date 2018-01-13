@@ -16,9 +16,6 @@
 [submodule "shell/dircolors-orange"]
 	path = shell/dircolors-orange
 	url = https://github.com/woofers/dircolors-orange
-[submodule "steam/arc"]
-	path = steam/arc
-	url = https://gitlab.com/BurningSmile/Arc-Steam-Skin
 [submodule "steam/skins"]
 	path = steam/skins
 	url = https://gitlab.com/BurningSmile/Arc-Steam-Skin
