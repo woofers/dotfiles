@@ -101,7 +101,7 @@ export CSC="$DRIVE/School/UVIC/2018/CSC 230"
 
 # GO Path
 export GOPATH=~/.go
-export GOROOT=/usr/local/go
+export GOROOT=/usr/lib/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # Allow Use of Windows Apps

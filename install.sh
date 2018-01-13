@@ -1,4 +1,7 @@
 
+# APT SOURCE LIST
+
+
 # Sudo
 su
 apt-get install sudo
@@ -14,10 +17,14 @@ sudo apt-get install build-essential checkinstall
 sudo apt-get install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev
 sudo apt-get install libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev
 sudo apt-get install libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev dh-autoreconf
-sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
 sudo apt-get install help2man
 sudo apt-get install gnupg gnupg2
 sudo apt-get install screenfetch
+
+# 32-Bit Libaries
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
 
 # Install GCC
 sudo apt-get install gcc
@@ -33,14 +40,15 @@ sudo apt-get install python-apt
 sudo apt-get install curl
 sudo apt-get install git
 
-# Install NFS
-sudo apt install nfs-common
+# Install NFS and SMB
+sudo apt-get install nfs-common
+sudo apt-get install cifs-utils
 
 # Install Bash Powerline
 sudo pip install powerline-shell
 
 # Install ZSH and Oh My ZSH
-sudo apt install zsh
+sudo apt-get install zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # Install ZSH Syntax
@@ -48,6 +56,10 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 # Install Volume Control
 sudo apt-get install pavucontrol
+
+# Install Temperature Monitoring
+sudo apt-get install lm-sensors hddtemp
+sudo apt-get install psensor
 
 # Install Brightness Control
 cd ~/Downloads
@@ -59,6 +71,8 @@ rm -rf light
 cd ~
 
 # Install Go
+sudo apt-get install golang-go
+
 cd ~/Downloads
 wget https://storage.googleapis.com/golang/go1.9.2.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go1.9.2.linux-amd64.tar.gz
@@ -78,6 +92,8 @@ sudo apt-get install xournal
 sudo apt-get install kalgebra
 
 # Install Chrome
+sudo apt-get install chrome-stable
+
 cd ~/Downloads
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt-get install ./google-chrome-stable_current_amd64.deb
@@ -87,15 +103,13 @@ cd ~
 # Install Discord
 sudo apt-get install libgconf-2-4 libappindicator1
 cd ~/Downloads
-wget https://dl.discordapp.net/apps/linux/0.0.3/discord-0.0.3.deb
-sudo apt-get install ./discord-0.0.3.deb
-rm -rf discord-0.0.3.deb
+wget https://dl.discordapp.net/apps/linux/0.0.4/discord-0.0.4.deb
+sudo apt-get install ./discord-0.0.4.deb
+rm -rf discord-0.0.4.deb
 cd ~
 
 # Install Steam
-sudo dpkg --add-architecture i386
-sudo apt update && apt upgrade
-sudo apt install steam
+sudo apt-get install steam
 
 # Install Music Players
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
@@ -106,6 +120,9 @@ sudo apt-get install rhythmbox
 sudo pip install soundscrape
 
 # Install Emacs
+wget -q -O - http://emacs.secretsauce.net/key.gpg | sudo apt-key add -
+sudo apt-get install emacs25
+
 cd ~/Downloads
 wget http://gnu.mirror.iweb.com/emacs/emacs-25.3.tar.gz
 sudo apt-get build-dep emacs24
@@ -119,6 +136,7 @@ rm emacs-25.3.tar.gz
 
 # Install Emacs Spell Check
 sudo apt-get install hunspell
+sudo apt-get install ispell
 
 # Install mbsync
 sudo apt-get install libssl-dev
@@ -138,6 +156,7 @@ sudo apt-get install gnutls-bin
 sudo apt-get install gmime-2.6
 sudo apt-get install python-xapian
 sudo apt-get install libxapian-dev
+sudo apt-get install texinfo
 git clone git://github.com/djcb/mu.git
 cd mu
 autoreconf -i && ./configure && make
@@ -147,17 +166,14 @@ rm -rf mu
 cd ~
 
 # Install Neovim
-sudo add-apt-repository ppa:neovim-ppa/stable
-sudo apt-get update
 sudo apt-get install neovim
-
-# Install Google Drive
-go get -u github.com/odeke-em/drive/drive-gen && drive-gen drive-google
 
 # Install Ctags
 sudo apt-get install exuberant-ctags
 
 # Install TMUX
+wget http://ftp.ca.debian.org/debian/pool/main/t/tmux/tmux_2.6-3_amd64.deb
+
 cd ~/Downloads
 sudo apt-get install libevent-dev
 sudo apt-get install libncurses5-dev libncursesw5-dev
@@ -185,13 +201,21 @@ rm android-studio-ide-171.4443003-linux.zip
 cd ~
 
 # Install WINE
-sudo apt-get install wine
+cd ~/Downloads
+sudo apt-get install apt-transport-https
+wget -nc https://repos.wine-staging.com/wine/Release.key
+sudo apt-key add Release.key
+sudo apt-get install winehq-staging
 sudo apt-get install winetricks
 winetricks corefonts cjkfonts
 winetricks msxml6 riched20 riched30 vcrun6
 
 # Install i3 Gaps
 sudo apt-get install libxcb-xrm-dev
+sudo apt-get install i3
+wget https://raw.githubusercontent.com/maestrogerardo/i3-gaps-deb/master/i3-gaps-deb
+./i3-gaps-deb
+
 cd ~/Downloads
 git clone https://www.github.com/Airblader/i3 i3-gaps
 cd i3-gaps
@@ -223,7 +247,11 @@ sudo apt-get install lxappearance
 sudo apt-get install arc-theme
 
 # GTK Icon Theme
-sudo add-apt-repository ppa:papirus/papirus
+sudo tee /etc/apt/sources.list.d/papirus-ppa.list << EOF
+deb http://ppa.launchpad.net/papirus/papirus/ubuntu xenial main
+EOF
+
+sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com E58A9D36647CAE7F
 sudo apt-get update
 sudo apt-get install papirus-icon-theme
 
@@ -344,27 +372,37 @@ ln -s "$DEV/src/Dotfiles/dunst" "$HOME/.config/"
 sudo rm -rf "/etc/profile.d/infinality-settings.sh"
 sudo ln -s "$DEV/src/Dotfiles/infinality/infinality-settings.sh" "/etc/profile.d/infinality-settings.sh"
 
-sudo ln -s "/usr/local/bin/Dolphin/bin/dolphin-emu" "/usr/bin/dolphin"
+# Setup Steam
+sudo rm -rf "$HOME/.steam/skins"
+sudo ln -s "$DEV/src/Dotfiles/steam/skins" "$HOME/.steam/skins"
+
+# Install Google Drive
+go get -u github.com/odeke-em/drive/drive-gen && drive-gen drive-google
 
 # Install TMUX Plug-In Manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # MP3 Tags for Emacs
-cd ~/.emacs.d/elpa/
+cd ~/.emacs.d
+mkdir elpa
+cd elpa
 mkdir tag
 cd tag
 wget https://www.emacswiki.org/emacs/download/tag.el
+cd $DEV/src/Dotfiles/fstab
+sudo sh -c 'cat fstab >> /etc/fstab'
+
+# Install Emacs Theme
+git clone https://github.com/challenger-deep-theme/emacs challenger-deep
 
 # Shares
 cd /mnt
-mkdir shares
+sudo mkdir shares
 cd shares
-mkdir Woofers
-mkdir Ponton
-mkdir Downloads
-sudo mount.cifs //192.168.0.191/Woofers /mnt/shares/Woofers -o user=guest
-sudo mount.cifs //192.168.0.191/Ponton /mnt/shares/Ponton -o user=guest
-sudo mount.cifs //192.168.0.192/Downloads /mnt/shares/Downloads -o user=nick
+sudo mkdir Woofers
+sudo mkdir Ponton
+sudo mkdir Downloads
+sudo "$DEV/src/Dotfiles/fstab" >> /etc/fstab
 ln -s "/mnt/shares/Downloads" "$HOME/Media-Downloads"
 ln -s "/mnt/shares/Woofers" "$HOME/Woofers"
 ln -s "/mnt/shares/Ponton" "$HOME/Ponton"
