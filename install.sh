@@ -76,12 +76,6 @@ cd ~
 # Install Go
 sudo apt-get install golang-go
 
-cd ~/Downloads
-wget https://storage.googleapis.com/golang/go1.9.2.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.9.2.linux-amd64.tar.gz
-rm go1.9.2.linux-amd64.tar.gz
-cd ~
-
 # Install Printer Drivers
 cd ~/Downloads
 wget http://download.brother.com/welcome/dlf006893/linux-brprinter-installer-2.1.1-1.gz
@@ -96,12 +90,6 @@ sudo apt-get install kalgebra
 
 # Install Chrome
 sudo apt-get install chrome-stable
-
-cd ~/Downloads
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt-get install ./google-chrome-stable_current_amd64.deb
-rm -rf google-chrome-stable_current_amd64.deb
-cd ~
 
 # Install Discord
 sudo apt-get install libgconf-2-4 libappindicator1
@@ -126,17 +114,6 @@ sudo pip install soundscrape
 # Install Emacs
 wget -q -O - http://emacs.secretsauce.net/key.gpg | sudo apt-key add -
 sudo apt-get install emacs25
-
-cd ~/Downloads
-wget http://gnu.mirror.iweb.com/emacs/emacs-25.3.tar.gz
-sudo apt-get build-dep emacs24
-tar -zxvf emacs-25.3.tar.gz
-cd emacs-25.3
-./configure
-make
-sudo make install
-rm -rf emacs-25.3.tar.gz
-rm emacs-25.3.tar.gz
 
 # Install Emacs Spell Check
 sudo apt-get install hunspell
@@ -179,21 +156,13 @@ sudo apt-get install neovim
 sudo apt-get install exuberant-ctags
 
 # Install TMUX
-wget http://ftp.ca.debian.org/debian/pool/main/t/tmux/tmux_2.6-3_amd64.deb
-
-cd ~/Downloads
 sudo apt-get install libevent-dev
 sudo apt-get install libncurses5-dev libncursesw5-dev
-wget https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz
-tar -zxvf tmux-2.6.tar.gz
-cd tmux-2.6
-./configure && make
-sudo make install
-cd ..
-rm -rf tmux-2.6
-rm tmux-2.6.tar.gz
-
-# Generate TMUX Config
+cd ~/Downloads
+wget http://ftp.ca.debian.org/debian/pool/main/t/tmux/tmux_2.6-3_amd64.deb
+sudo apt-get install ./tmux_2.6-3_amd64.deb
+rm -rf tmux_2.6-3_amd64.deb
+cd ~
 tmux
 tmux show -g | cat > ~/.tmux.conf
 exit
@@ -223,16 +192,6 @@ sudo apt-get install i3
 wget https://raw.githubusercontent.com/maestrogerardo/i3-gaps-deb/master/i3-gaps-deb
 ./i3-gaps-deb
 
-cd ~/Downloads
-git clone https://www.github.com/Airblader/i3 i3-gaps
-cd i3-gaps
-autoreconf --force --install
-rm -rf build/
-mkdir -p build && cd build/
-../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
-make
-sudo make install
-
 # Install Window Management Components
 sudo apt-get install dmenu
 sudo apt-get install i3lock
@@ -257,7 +216,6 @@ sudo apt-get install arc-theme
 sudo tee /etc/apt/sources.list.d/papirus-ppa.list << EOF
 deb http://ppa.launchpad.net/papirus/papirus/ubuntu xenial main
 EOF
-
 sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com E58A9D36647CAE7F
 sudo apt-get update
 sudo apt-get install papirus-icon-theme
