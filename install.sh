@@ -1,11 +1,13 @@
 
-# APT SOURCE LIST
-
-
 # Sudo
 su
 apt-get install sudo
 exit
+
+# Add Repositories
+sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak
+sudo ln -s "/etc/apt/sources.list" "$DEV/src/Dotfiles/apt/sources.list"
+sudo apt-get update
 
 # AMD Graphics Drives (Gallium 0.4, Open Driver) (R9 390X)
 sudo apt install firmware-linux
@@ -18,6 +20,7 @@ sudo apt-get install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util
 sudo apt-get install libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev
 sudo apt-get install libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev dh-autoreconf
 sudo apt-get install help2man
+sudo apt install cmake pkg-config git libao-dev libasound2-dev libavcodec-dev libavformat-dev libbluetooth-dev libenet-dev libgtk2.0-dev liblzo2-dev libminiupnpc-dev libopenal-dev libpulse-dev libreadline-dev libsfml-dev libsoil-dev libsoundtouch-dev libswscale-dev libusb-1.0-0-dev libwxbase3.0-dev libwxgtk3.0-dev libxext-dev libxrandr-dev portaudio19-dev zlib1g-dev libudev-dev libevdev-dev "libpolarssl-dev|libmbedtls-dev" libcurl4-openssl-dev libegl1-mesa-dev libpng-dev qtbase5-private-dev
 sudo apt-get install gnupg gnupg2
 sudo apt-get install screenfetch
 
@@ -117,6 +120,7 @@ echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sourc
 sudo apt-get update
 sudo apt-get install spotify-client
 sudo apt-get install rhythmbox
+sudo apt-get install puddletag
 sudo pip install soundscrape
 
 # Install Emacs
@@ -137,6 +141,9 @@ rm emacs-25.3.tar.gz
 # Install Emacs Spell Check
 sudo apt-get install hunspell
 sudo apt-get install ispell
+
+# Install LaTeX
+sudo apt-get install texlive-full
 
 # Install mbsync
 sudo apt-get install libssl-dev
@@ -375,6 +382,9 @@ sudo ln -s "$DEV/src/Dotfiles/infinality/infinality-settings.sh" "/etc/profile.d
 # Setup Steam
 sudo rm -rf "$HOME/.steam/skins"
 sudo ln -s "$DEV/src/Dotfiles/steam/skins" "$HOME/.steam/skins"
+
+# Dolphin
+sudo ln -s "/usr/local/bin/dolphin/bin/dolphin-emu" "/usr/bin/dolphin"
 
 # Install Google Drive
 go get -u github.com/odeke-em/drive/drive-gen && drive-gen drive-google

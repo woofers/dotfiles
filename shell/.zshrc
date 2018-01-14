@@ -137,6 +137,7 @@ alias info="screenfetch"
 alias mountiso="mount -t iso9660 -o loop"
 alias mountntfs="mount -t ntfs"
 alias unmount="umount"
+alias lualatex="luatex"
 
 # Start in Tmux
 if [ -z "$TMUX" ]
