@@ -320,6 +320,10 @@ rm -rf "$HOME/.config/rofi"
 ln -s "$DEV/src/Dotfiles/rofi" "$HOME/.config/rofi"
 sudo ln -s "$DEV/src/Dotfiles/rofi/challenger.theme" "/usr/share/rofi/themes/challenger.theme"
 
+# Hide Home Files
+rm -rf "$HOME/.hidden"
+ln -s "$DEV/src/Dotfiles/nemo/.hidden" "$HOME/.hidden"
+
 # Setup X
 rm -rf "$HOME/.xsessionrc"
 ln -s "$DEV/src/Dotfiles/x/.xsessionrc" "$HOME/.xsessionrc"
