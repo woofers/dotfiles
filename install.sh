@@ -185,6 +185,7 @@ sudo apt-get install winehq-staging
 sudo apt-get install winetricks
 winetricks corefonts cjkfonts
 winetricks msxml6 riched20 riched30 vcrun6
+winetricks atmlib gdiplus msxml3 msxml6 vcrun2005 vcrun2005sp1 vcrun2008 ie6 fontsmooth-rgb gecko
 
 # Install i3 Gaps
 sudo apt-get install libxcb-xrm-dev
@@ -322,6 +323,10 @@ sudo ln -s "$DEV/src/Dotfiles/rofi/challenger.theme" "/usr/share/rofi/themes/cha
 # Setup X
 rm -rf "$HOME/.xsessionrc"
 ln -s "$DEV/src/Dotfiles/x/.xsessionrc" "$HOME/.xsessionrc"
+
+# Fix AMD Screen Tearing
+sudo rm -rf "/usr/share/X11/xorg.conf.d/20-radeon.conf"
+sudo ln -s "$DEV/src/Dotfiles/x/20-radeon.conf" "/usr/share/X11/xorg.conf.d/20-radeon.conf"
 
 # Setup GTK
 rm -rf "$HOME/.gtkrc-2.0"
