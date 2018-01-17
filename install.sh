@@ -120,7 +120,7 @@ sudo apt-get install hunspell
 sudo apt-get install ispell
 
 # Install LaTeX
-sudo apt-get install texlive-full
+sudo apt-get install texlive-base
 
 # Install mbsync
 sudo apt-get install libssl-dev
