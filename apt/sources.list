@@ -19,7 +19,7 @@ deb http://deb.debian.org/debian experimental main
 deb https://dl.winehq.org/wine-builds/debian/ stretch main
 
 # Chrome
-# deb http://dl.google.com/linux/chrome/deb/ stable main
+deb http://dl.google.com/linux/chrome/deb/ stable main
 
 # Emacs
 deb [arch=amd64] http://emacs.secretsauce.net unstable main

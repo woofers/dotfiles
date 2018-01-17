@@ -10,6 +10,10 @@ sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak
 sudo ln -s "/etc/apt/sources.list" "$DEV/src/Dotfiles/apt/sources.list"
 sudo apt-get update
 
+# Upgrade Kernel for Working Sleep
+sudo apt-get update
+sudo apt-get -t experimental linux-image-4.15-0-rc8-amd64
+
 # AMD Graphics Drives (Gallium 0.4, Open Driver) (R9 390X)
 sudo apt install firmware-linux
 sudo apt install llvm-3.9 clang-3.9
@@ -21,7 +25,7 @@ sudo apt-get install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util
 sudo apt-get install libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev
 sudo apt-get install libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev dh-autoreconf
 sudo apt-get install help2man
-sudo apt install cmake pkg-config git libao-dev libasound2-dev libavcodec-dev libavformat-dev libbluetooth-dev libenet-dev libgtk2.0-dev liblzo2-dev libminiupnpc-dev libopenal-dev libpulse-dev libreadline-dev libsfml-dev libsoil-dev libsoundtouch-dev libswscale-dev libusb-1.0-0-dev libwxbase3.0-dev libwxgtk3.0-dev libxext-dev libxrandr-dev portaudio19-dev zlib1g-dev libudev-dev libevdev-dev "libpolarssl-dev|libmbedtls-dev" libcurl4-openssl-dev libegl1-mesa-dev libpng-dev qtbase5-private-dev
+sudo apt install cmake pkg-config libao-dev libasound2-dev libavcodec-dev libavformat-dev libbluetooth-dev libenet-dev libgtk2.0-dev liblzo2-dev libminiupnpc-dev libopenal-dev libpulse-dev libreadline-dev libsfml-dev libsoil-dev libsoundtouch-dev libswscale-dev libusb-1.0-0-dev libwxbase3.0-dev libwxgtk3.0-dev libxext-dev libxrandr-dev portaudio19-dev zlib1g-dev libudev-dev libevdev-dev "libpolarssl-dev|libmbedtls-dev" libcurl4-openssl-dev libegl1-mesa-dev libpng-dev qtbase5-private-dev
 sudo apt-get install gnupg gnupg2
 sudo apt-get install screenfetch
 
@@ -58,6 +62,16 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 # Install ZSH Syntax
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
+# Remove Firefox
+sudo apt-get purge firefox-esr
+
+# Install Chrome
+cd ~/Downloads
+wget https://dl-ssl.google.com/linux/linux_signing_key.pub
+sudo apt-key add linux_signing_key.pub
+sudo apt-get install google-chrome-stable
+cd ~
+
 # Install Volume Control
 sudo apt-get install pavucontrol
 
@@ -88,13 +102,6 @@ cd ~
 # Install Math Tools
 sudo apt-get install xournal
 sudo apt-get install kalgebra
-
-# Install Chrome
-cd ~/Downloads
-wget https://dl-ssl.google.com/linux/linux_signing_key.pub
-sudo apt-key add linux_signing_key.pub
-sudo apt-get install google-chrome-stable
-cd ~
 
 # Install Discord
 sudo apt-get install libgconf-2-4 libappindicator1
@@ -130,8 +137,6 @@ sudo apt-get install texlive-latex-base
 sudo apt-get install texlive-latex-extra
 sudo apt-get install texlive-fonts-recommended
 sudo apt-get install texlive-bibtex-extra texlive-binaries texlive-font-utils
-
-
 
 # Install mbsync
 sudo apt-get install libssl-dev
@@ -399,16 +404,15 @@ ln -s "/mnt/shares/Ponton" "$HOME/Ponton"
 # Wifi
 cd ~/Downloads
 wget http://http.us.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-iwlwifi_20170823-1_all.deb
-sudo dpkg -i firmware-iwlwifi_20170823-1_all.deb
+sudo apt-get install ./firmware-iwlwifi_20170823-1_all.deb
 rm -rf firmware-iwlwifi_20170823-1_all.deb
-wget https://wireless.wiki.kernel.org/_media/en/users/drivers/iwlwifi-8265-ucode-22.361476.0.tgz
-tar -xzvf iwlwifi-8265-ucode-22.361476.0.tgz
-sudo mv iwlwifi-8265-ucode-22.361476.0/iwlwifi-8265-22.ucode /lib/firmware/iwlwifi-8265-22.ucode
-rm -rf iwlwifi-8265-ucode-22.361476.0
-rm iwlwifi-8265-ucode-22.361476.0.tgz
 cd ~
 
-# Upgrade Kernel for Working Sleep
-sudo echo 'deb http://ftp.de.debian.org/debian sid main' >> /etc/apt/sources.list
-sudo apt-get update
-sudo apt-get install linux-image-4.13.0-1-amd64
+# Sleep
+# Upgrade Kernel To >= 4.15
+# In /etc/default/grub
+# Replace
+# GRUB_CMDLINE_LINUX_DEFAULT="quiet"
+# With
+# GRUB_CMDLINE_LINUX_DEFAULT="quiet splash mem_sleep_default=s2idle"
+# sudo update-grub
