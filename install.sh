@@ -344,10 +344,6 @@ ln -s "$DEV/src/Dotfiles/nemo/.hidden" "$HOME/.hidden"
 rm -rf "$HOME/.xsessionrc"
 ln -s "$DEV/src/Dotfiles/x/.xsessionrc" "$HOME/.xsessionrc"
 
-# Fix AMD Screen Tearing
-sudo rm -rf "/usr/share/X11/xorg.conf.d/20-radeon.conf"
-sudo ln -s "$DEV/src/Dotfiles/x/20-radeon.conf" "/usr/share/X11/xorg.conf.d/20-radeon.conf"
-
 # Setup GTK
 rm -rf "$HOME/.gtkrc-2.0"
 ln -s "$DEV/src/Dotfiles/gtk/gtk-2.0/.gtkrc-2.0" "$HOME/.gtkrc-2.0"
@@ -368,6 +364,10 @@ sudo ln -s "$DEV/src/Dotfiles/steam/skins" "$HOME/.steam/skins"
 
 # Dolphin
 sudo ln -s "/usr/local/bin/dolphin/bin/dolphin-emu" "/usr/bin/dolphin"
+
+# Fix AMD Screen Tearing
+sudo rm -rf "/usr/share/X11/xorg.conf.d/20-radeon.conf"
+sudo ln -s "$DEV/src/Dotfiles/x/20-radeon.conf" "/usr/share/X11/xorg.conf.d/20-radeon.conf"
 
 # Install Google Drive
 go get -u github.com/odeke-em/drive/drive-gen && drive-gen drive-google
