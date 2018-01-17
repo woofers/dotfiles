@@ -1,6 +1,7 @@
 
 # Sudo
 su
+usermod -a -G sudo jaxson
 apt-get install sudo
 exit
 
@@ -89,7 +90,11 @@ sudo apt-get install xournal
 sudo apt-get install kalgebra
 
 # Install Chrome
-sudo apt-get install chrome-stable
+cd ~/Downloads
+wget https://dl-ssl.google.com/linux/linux_signing_key.pub
+sudo apt-key add linux_signing_key.pub
+sudo apt-get install google-chrome-stable
+cd ~
 
 # Install Discord
 sudo apt-get install libgconf-2-4 libappindicator1
@@ -121,6 +126,12 @@ sudo apt-get install ispell
 
 # Install LaTeX
 sudo apt-get install texlive-base
+sudo apt-get install texlive-latex-base
+sudo apt-get install texlive-latex-extra
+sudo apt-get install texlive-fonts-recommended
+sudo apt-get install texlive-bibtex-extra texlive-binaries texlive-font-utils
+
+
 
 # Install mbsync
 sudo apt-get install libssl-dev
