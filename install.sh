@@ -375,6 +375,14 @@ go get -u github.com/odeke-em/drive/drive-gen && drive-gen drive-google
 # Install TMUX Plug-In Manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+# NPM
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+nvm install node
+nvm use node
+nvm install --lts
+nvm use --lts
+npm install -g yarn
+
 # MP3 Tags for Emacs
 cd ~/.emacs.d
 mkdir elpa
