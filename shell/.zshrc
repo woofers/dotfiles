@@ -64,9 +64,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vim'
+	export EDITOR='vim'
 else
-    export EDITOR='emacs -nw'
+	export EDITOR='emacs -nw'
 fi
 
 # Compilation flags
@@ -90,11 +90,12 @@ export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 # Java Home
 export JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk-amd64"
+export ANDROID_HOME="$DEV/lib/AndroidSDK"
 
 # Sets Environment Paths
 export HOME_DRIVE="/home/jaxson"
 if [[ $(hostname -s) = Jaxson-PC ]]; then
-    export HOME_DRIVE="/mnt/d/"
+	export HOME_DRIVE="/mnt/d/"
 fi
 export DRIVE="$HOME_DRIVE/Documents/JVD Docs/Documents/"
 export DEV="$HOME_DRIVE/Documents/Development"
@@ -109,14 +110,14 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # Allow Use of Windows Apps
 if [[ $(hostname -s) = Jaxson-PC ]] || [[ $(hostname -s) = Jaxson-Thinkpad* ]]; then
-    export PATH=$PATH:/mnt/c/Windows/System32
-    alias javac="javac.exe"
-    alias java="java.exe"
-    alias emacs="emacs.exe"
-    alias cmd="cmd.exe /c"
-    alias ipconfig="cmd ipconfig"
-    alias tasklist="cmd tasklist"
-    alias taskkill="cmd taskkill /F"
+	export PATH=$PATH:/mnt/c/Windows/System32
+	alias javac="javac.exe"
+	alias java="java.exe"
+	alias emacs="emacs.exe"
+	alias cmd="cmd.exe /c"
+	alias ipconfig="cmd ipconfig"
+	alias tasklist="cmd tasklist"
+	alias taskkill="cmd taskkill /F"
 fi
 
 # Aliases
@@ -145,13 +146,13 @@ alias lualatex="luatex"
 # Start in Tmux
 if [ -z "$TMUX" ]
 then
-    tmux kill-server > /dev/null
-    tmux start-server
-    tmux new-session -d -s Workspace -n "Dev 1"
-    tmuxw "Dev 2"
-    tmuxw "School"
-    tmuxw "Extra"
-    tmux attach-session -t Workspace
+	tmux kill-server > /dev/null
+	tmux start-server
+	tmux new-session -d -s Workspace -n "Dev 1"
+	tmuxw "Dev 2"
+	tmuxw "School"
+	tmuxw "Extra"
+	tmux attach-session -t Workspace
 fi
 
 
@@ -163,3 +164,4 @@ ${(s.:.)LS_COLORS}
 # Load NVM
 export NVM_DIR="/home/jaxson/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+

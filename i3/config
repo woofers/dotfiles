@@ -138,8 +138,11 @@ exec --no-startup-id xset s off -dpms &
 # Remove Bell
 exec --no-startup-id xset b 0 0 0 &
 
+# Correct Colors
+exec --not-startup-id xgamma -rgamma 0.94 -ggamma 0.93 -bgamma 0.98
+
 # Set Brightness
-exec --no-startup-id light -S 30
+exec --no-startup-id light -S 42
 
 # Mute Volume
 exec --no-startup-id pactl set-sink-volume 0 0%
@@ -157,7 +160,7 @@ exec --no-startup-id nm-applet &
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 
 # Start Compton
-# exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
+exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
 # exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Restore GNOME's settings
