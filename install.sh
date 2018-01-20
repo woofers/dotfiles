@@ -388,6 +388,7 @@ nvm use node
 nvm install --lts
 nvm use --lts
 npm install -g yarn
+npm install -g gh-pages
 
 # MP3 Tags for Emacs
 cd ~/.emacs.d
