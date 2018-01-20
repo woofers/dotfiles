@@ -26,11 +26,6 @@ sudo apt-get install libstartup-notification0-dev libxcb-randr0-dev libev-dev li
 sudo apt-get install libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev dh-autoreconf
 sudo apt-get install help2man
 sudo apt install cmake pkg-config libao-dev libasound2-dev libavcodec-dev libavformat-dev libbluetooth-dev libenet-dev libgtk2.0-dev liblzo2-dev libminiupnpc-dev libopenal-dev libpulse-dev libreadline-dev libsfml-dev libsoil-dev libsoundtouch-dev libswscale-dev libusb-1.0-0-dev libwxbase3.0-dev libwxgtk3.0-dev libxext-dev libxrandr-dev portaudio19-dev zlib1g-dev libudev-dev libevdev-dev "libpolarssl-dev|libmbedtls-dev" libcurl4-openssl-dev libegl1-mesa-dev libpng-dev qtbase5-private-dev
-
-sudo apt-get install libimlib2-dev
-sudo apt-get install libxcb-composite0-dev
-sudo apt-get install libpam-dev
-
 sudo apt-get install gnupg gnupg2
 sudo apt-get install screenfetch
 
@@ -222,7 +217,13 @@ sudo apt-get install rofi
 sudo apt-get install feh
 sudo apt-get install compton
 sudo apt-get install dunst
+sudo apt-get install libnotify-bin
 sudo apt-get install scrot
+
+# i3 Lock
+sudo apt-get install libimlib2-dev
+sudo apt-get install libxcb-composite0-dev
+sudo apt-get install libpam-dev
 
 # Install File Managers
 sudo apt-get install nautilus

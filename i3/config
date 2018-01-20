@@ -161,7 +161,6 @@ exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 
 # Start Compton
 exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
-# exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Restore GNOME's settings
 exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
@@ -299,10 +298,10 @@ bindsym Shift+XF86MonBrightnessDown exec light -U 15
 # bindsym --release $mod+ctrl+r exec ~/.local/bin/red.sh
 
 # Lock Screen
-bindsym $mod+Shift+semicolon exec ~/.config/i3/i3lock.sh
+bindsym $mod+Shift+semicolon exec i3lock-next "" "" 1
 
 # Screenshot
-bindsym --release Print exec --no-startup-id scrot /tmp/`date +%Y%m%d_%H%M%S`.png && exec notify-send 'SCROT' 'Screenshot taken (/tmp)'
+bindsym --release F12 exec --no-startup-id scrot /tmp/`date +%Y%m%d_%H%M%S`.png && exec notify-send 'SCROT' 'Screenshot taken (/tmp)'
 
 # Standard Programs
 exec_always google-chrome
