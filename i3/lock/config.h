@@ -43,7 +43,7 @@
  * Default 50
  *
  */
-#define THRESHOLD 50
+#define THRESHOLD 100000
 
 /* LOCK_SIZE
  * Size of the lock image, in pixels
