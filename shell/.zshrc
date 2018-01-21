@@ -64,9 +64,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-	export EDITOR='vim'
+    export EDITOR='vim'
 else
-	export EDITOR='emacs -nw'
+    export EDITOR='emacs -nw'
 fi
 
 # Compilation flags
@@ -95,7 +95,7 @@ export ANDROID_HOME="$DEV/lib/AndroidSDK"
 # Sets Environment Paths
 export HOME_DRIVE="/home/jaxson"
 if [[ $(hostname -s) = Jaxson-PC ]]; then
-	export HOME_DRIVE="/mnt/d/"
+    export HOME_DRIVE="/mnt/d/"
 fi
 export DRIVE="$HOME_DRIVE/Documents/JVD Docs/Documents/"
 export DEV="$HOME_DRIVE/Documents/Development"
@@ -110,14 +110,14 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # Allow Use of Windows Apps
 if [[ $(hostname -s) = Jaxson-PC ]] || [[ $(hostname -s) = Jaxson-Thinkpad* ]]; then
-	export PATH=$PATH:/mnt/c/Windows/System32
-	alias javac="javac.exe"
-	alias java="java.exe"
-	alias emacs="emacs.exe"
-	alias cmd="cmd.exe /c"
-	alias ipconfig="cmd ipconfig"
-	alias tasklist="cmd tasklist"
-	alias taskkill="cmd taskkill /F"
+    export PATH=$PATH:/mnt/c/Windows/System32
+    alias javac="javac.exe"
+    alias java="java.exe"
+    alias emacs="emacs.exe"
+    alias cmd="cmd.exe /c"
+    alias ipconfig="cmd ipconfig"
+    alias tasklist="cmd tasklist"
+    alias taskkill="cmd taskkill /F"
 fi
 
 # Aliases
@@ -143,16 +143,28 @@ alias mountntfs="mount -t ntfs"
 alias unmount="umount"
 alias lualatex="luatex"
 
+alias portrait="xrandr -o 1; xsetwacom set 'Wacom HID 482E Finger touch' Rotate ccw; updatebg"
+alias portraitalt="xrandr -o 3; xsetwacom set 'Wacom HID 482E Finger touch' Rotate cw; updatebg"
+alias landscape="xrandr -o 0; xsetwacom set 'Wacom HID 482E Finger touch' Rotate none; updatebg"
+alias landscapealt="xrandr -o 2; xsetwacom set 'Wacom HID 482E Finger touch' Rotate half ; updatebg"
+alias lock="i3lock-next '' '' 1"
+alias volume="pactl set-sink-volume 0"
+alias mutetoggle="pactl set-sink-mute 0 toggle"
+alias mute="pactl set-sink-mute 0 1"
+alias unmute="pactl set-sink-mute 0 0"
+alias screenshot="scrot"
+alias updatebg="feh --bg-fill ~/Pictures/bg.jpg"
+
 # Start in Tmux
 if [ -z "$TMUX" ]
 then
-	tmux kill-server > /dev/null
-	tmux start-server
-	tmux new-session -d -s Workspace -n "Dev 1"
-	tmuxw "Dev 2"
-	tmuxw "School"
-	tmuxw "Extra"
-	tmux attach-session -t Workspace
+    tmux kill-server > /dev/null
+    tmux start-server
+    tmux new-session -d -s Workspace -n "Dev 1"
+    tmuxw "Dev 2"
+    tmuxw "School"
+    tmuxw "Extra"
+    tmux attach-session -t Workspace
 fi
 
 
@@ -164,4 +176,3 @@ ${(s.:.)LS_COLORS}
 # Load NVM
 export NVM_DIR="/home/jaxson/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
