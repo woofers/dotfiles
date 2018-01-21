@@ -375,6 +375,10 @@ sudo ln -s "/usr/local/bin/dolphin/bin/dolphin-emu" "/usr/bin/dolphin"
 sudo rm -rf "/usr/share/X11/xorg.conf.d/20-radeon.conf"
 sudo ln -s "$DEV/src/Dotfiles/x/20-radeon.conf" "/usr/share/X11/xorg.conf.d/20-radeon.conf"
 
+# Fix Intel Screen Tearing
+sudo rm -rf "/usr/share/X11/xorg.conf.d/20-intel.conf"
+sudo ln -s "$DEV/src/Dotfiles/x/20-intel.conf" "/usr/share/X11/xorg.conf.d/20-intel.conf"
+
 # Install Google Drive
 go get -u github.com/odeke-em/drive/drive-gen && drive-gen drive-google
 
