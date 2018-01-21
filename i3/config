@@ -148,7 +148,7 @@ exec --no-startup-id light -S 42
 exec --no-startup-id pactl set-sink-volume 0 0%
 
 # Set Desktop Background
-exec --no-startup-id feh --bg-fill ~/Pictures bg.jpg
+exec --no-startup-id feh --bg-fill ~/Pictures/bg.jpg
 
 # Start Network
 exec --no-startup-id nm-applet &
@@ -278,27 +278,29 @@ bar {
 bindsym --release $mod+o bar mode toggle
 
 # Laptop Rotate
-bindsym --release $mod+u exec --no-startup-id xrandr -o normal
-bindsym --release $mod+m exec --no-startup-id xrandr -o left
+bindsym --release $mod+u exec --no-startup-id "xrandr -o 1; xsetwacom set 'Wacom HID 482E Finger touch' Rotate ccw; feh --bg-fill ~/Pictures/bg.jpg"
+bindsym --release $mod+m exec --no-startup-id "xrandr -o 0; xsetwacom set 'Wacom HID 482E Finger touch' Rotate none; feh --bg-fill ~/Pictures/bg.jpg"
+
 
 # Volume Keys
-bindsym --release XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +10%
-bindsym --release XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -10%
-bindsym --release $mod+braceright exec --no-startup-id pactl set-sink-volume 0 +10%
-bindsym --release $mod+braceleft exec --no-startup-id pactl set-sink-volume 0 -10%
+set $volume-increment 10%
+bindsym --release XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +$volume-increment
+bindsym --release XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -$volume-increment
 bindsym --release XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # Srceen Brightness Controls
-bindsym XF86MonBrightnessUp exec light -A 5
-bindsym Shift+XF86MonBrightnessUp exec light -A 15
-bindsym XF86MonBrightnessDown exec light -U 5
-bindsym Shift+XF86MonBrightnessDown exec light -U 15
+set $screen-increment 5
+set $screen-increment-large 15
+bindsym XF86MonBrightnessUp exec light -A $screen-increment
+bindsym Shift+XF86MonBrightnessUp exec light -A $screen-increment-large
+bindsym XF86MonBrightnessDown exec light -U $screen-increment
+bindsym Shift+XF86MonBrightnessDown exec light -U $screen-increment-large
 
 # Redshift
 # bindsym --release $mod+ctrl+r exec ~/.local/bin/red.sh
 
 # Lock Screen
-bindsym $mod+Shift+semicolon exec i3lock-next "" "" 1
+bindsym $mod+Shift+semicolon exec --no-startup-id i3lock-next '' '' 1
 
 # Screenshot
 bindsym --release F12 exec --no-startup-id scrot /tmp/`date +%Y%m%d_%H%M%S`.png && exec notify-send 'SCROT' 'Screenshot taken (/tmp)'
