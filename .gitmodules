@@ -19,3 +19,6 @@
 [submodule "steam/skins"]
 	path = steam/skins
 	url = https://gitlab.com/BurningSmile/Arc-Steam-Skin
+[submodule "i3/scripts/spotify"]
+	path = i3/scripts/spotify
+	url = https://github.com/firatakandere/i3blocks-spotify
