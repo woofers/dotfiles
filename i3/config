@@ -101,7 +101,6 @@ set $WS7 "7: "
 set $WS8 "8: "
 set $WS9 "Desktop "
 
-
 # Switch to Workspace
 bindsym $mod+1 workspace $WS1
 bindsym $mod+2 workspace $WS2
@@ -138,7 +137,7 @@ exec --no-startup-id xset s off -dpms &
 # Remove Bell
 exec --no-startup-id xset b 0 0 0 &
 
-# Correct Colors
+# Correct Colors (On Dell)
 exec --not-startup-id xgamma -rgamma 0.94 -ggamma 0.93 -bgamma 0.98
 
 # Set Brightness
@@ -184,7 +183,8 @@ assign [class="Xournal"] $WS6
 assign [class="kalgebra"] $WS6
 assign [class="Steam"] $WS5
 assign [class="discord"] $WS7
-assign [class="Spotify"] $WS8
+assign [class="(?i)Spotify"] $WS8
+for_window [class="Spotify"] move to workspace $WS8
 assign [class="Rhythmbox"] $WS8
 assign [class="Vlc"] $WS8
 
@@ -256,7 +256,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color    $text-color     
 # client.focused          color2              $background $text   $border              $border
 
 bar {
-    mode hide
+    # mode hide
     font pango:System San Francisco Display 14
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
 
@@ -270,9 +270,6 @@ bar {
 		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
 	}
 }
-#bindsym $alt bar hidden_state show
-#bindsym --release Mod1+Mod4 bar hidden_state hide
-
 
 # Toggle i3bar
 bindsym --release $mod+o bar mode toggle
