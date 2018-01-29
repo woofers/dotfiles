@@ -22,3 +22,6 @@
 [submodule "i3/scripts/spotify"]
 	path = i3/scripts/spotify
 	url = https://github.com/firatakandere/i3blocks-spotify
+[submodule "scripts/spotify-cli"]
+	path = scripts/spotify-cli
+	url = https://github.com/pwittchen/spotify-cli-linux
