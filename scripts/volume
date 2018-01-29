@@ -1,0 +1,121 @@
+#!/bin/bash
+
+#
+#
+#
+#
+
+# Get Volumes of Sink
+# Arguments: Sink of Audio Hardware
+function get_volume {
+pactl list sinks | grep '^[[:space:]]Volume:' | \
+	head -n $(( $1 + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'
+}
+
+# Get Whether of Sink
+# Arguments: Sink of Audio Hardware
+function is_muted {
+	volume=$(get_volume $1)
+	if [ $volume -ne 0 ]; then
+		echo 1
+	else
+		echo 0
+	fi
+}
+
+function send_notification {
+	volume=$(get_volume $1)
+
+	# Make the bar with the special character ─ (it's not dash -)
+	# https://en.wikipedia.org/wiki/Box-drawing_characteri
+	bar=$(seq -s "──" $(($volume / 5)) | sed 's/[0-9]//g')
+
+	# Set icon according to current volume
+	if (( $volume < 1 )); then
+		icon=~/.icons/status/audio-volume-muted-symbolic.png
+	elif (( $volume < 26 )); then
+		icon=~/.icons/status/audio-volume-low-symbolic.png
+	elif (( $volume < 76 )); then
+		icon=~/.icons/status/audio-volume-medium-symbolic.png
+	else
+		icon=~/.icons/status/audio-volume-high-symbolic.png
+	fi
+
+	# Play Pop Sound
+	paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+
+	# Send Notification
+	notify-send -i $icon -t 2 -u normal "VOLUME" "	  $bar"
+}
+
+# Default Values
+direction=${1:-"togglemute"}
+amount=${2:-5%}
+track=${3:-all}
+notify=${4:-1}
+time=1
+
+# Calulates Amount Based Off of Direction
+if [ "$direction" == "up" ]; then
+	amount=+$amount;
+elif [ "$direction" == "down" ]; then
+	amount=-$amount;
+fi
+
+# Mute
+if [ "$direction" == "mute" ]; then
+	if [ "$track" == "all" ]; then
+		for sink in `pacmd list-sinks | grep 'index:' | cut -b12-`
+		do
+			pactl set-sink-mute $sink 1 > /dev/null
+		done
+	else
+		pactl set-sink-mute $track 1 > /dev/null
+	fi
+# Unmute
+elif [ "$direction" == "unmute" ]; then
+	if [ "$track" == "all" ]; then
+		for sink in `pacmd list-sinks | grep 'index:' | cut -b12-`
+		do
+			pactl set-sink-mute $sink 0 > /dev/null
+		done
+	else
+		pactl set-sink-mute $track 0 > /dev/null
+	fi
+# Toggle Mute
+elif [ "$direction" == "togglemute" ]; then
+	if [ "$track" == "all" ]; then
+		for sink in `pacmd list-sinks | grep 'index:' | cut -b12-`
+		do
+			pactl set-sink-mute $sink toggle > /dev/null
+		done
+	else
+		pactl set-sink-mute $track toggle > /dev/null
+	fi
+# Change Volume
+else
+	if [ "$track" == "all" ]; then
+		for sink in `pacmd list-sinks | grep 'index:' | cut -b12-`
+		do
+		  pactl set-sink-volume $sink $amount > /dev/null
+		done
+	else
+		pactl set-sink-volume $track $amount > /dev/null
+	fi
+fi
+
+# If User is Chaning All Sinks Mute Test is
+# Performed on Sink 0
+if [ "$track" == "all" ]; then
+	track=0
+fi
+muted=$(is_muted $track)
+
+# Display Different Notification Based on Action
+if [ $notify -eq 1 ]; then
+	if [ $muted -eq 1 ]; then
+		send_notification
+	else
+		notify-send -t 2 -u normal "VOLUME" "Muted"
+	fi
+fi

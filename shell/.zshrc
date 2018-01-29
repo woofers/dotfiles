@@ -141,21 +141,16 @@ alias info="screenfetch"
 alias mountiso="mount -t iso9660 -o loop"
 alias mountntfs="mount -t ntfs"
 alias unmount="umount"
-alias lualatex="luatex"
 
+# Screen Rotate
 alias portrait="xrandr -o 1; xsetwacom set 'Wacom HID 482E Finger touch' Rotate ccw; updatebg"
 alias portraitalt="xrandr -o 3; xsetwacom set 'Wacom HID 482E Finger touch' Rotate cw; updatebg"
 alias landscape="xrandr -o 0; xsetwacom set 'Wacom HID 482E Finger touch' Rotate none; updatebg"
 alias landscapealt="xrandr -o 2; xsetwacom set 'Wacom HID 482E Finger touch' Rotate half ; updatebg"
-alias lock="i3lock-next '' '' 1"
-alias volume="pactl set-sink-volume 0"
-alias mutetoggle="pactl set-sink-mute 0 toggle"
-alias mute="pactl set-sink-mute 0 1"
-alias unmute="pactl set-sink-mute 0 0"
+
+# Screenshot
 alias screenshot="scrot"
 alias updatebg="feh --bg-fill ~/Pictures/bg.jpg"
-alias pause="dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause >> /dev/null"
-alias play="dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Play >> /dev/null"
 
 # Start in Tmux
 if [ -z "$TMUX" ]

@@ -54,6 +54,7 @@ bindsym $mod+shift+F4 focus parent,kill
 bindsym $mod+x exec --no-startup-id rofi -show combi  -font "System San Francisco 14"
 bindsym $mod+r exec --no-startup-id rofi -show run    -font "System San Francisco 14"
 bindsym $mod+b exec --no-startup-id rofi -show window -font "System San Francisco 14"
+bindsym $mod+slash exec --no-startup-id "echo '' | rofi -dmenu -p 'Search:' -font 'System San Francisco 14' | xargs -I{} xdg-open https://www.google.de/search?q={}"
 
 # Change Focus
 bindsym $mod+$left  focus left
@@ -144,7 +145,7 @@ exec --not-startup-id xgamma -rgamma 0.94 -ggamma 0.93 -bgamma 0.98
 exec --no-startup-id light -S 42
 
 # Mute Volume
-exec --no-startup-id pactl set-sink-volume 0 0%
+exec --no-startup-id volume mute
 
 # Set Desktop Background
 exec --no-startup-id feh --bg-fill ~/Pictures/bg.jpg
@@ -278,12 +279,14 @@ bindsym --release $mod+o bar mode toggle
 bindsym --release $mod+u exec --no-startup-id "xrandr -o 1; xsetwacom set 'Wacom HID 482E Finger touch' Rotate ccw; feh --bg-fill ~/Pictures/bg.jpg"
 bindsym --release $mod+m exec --no-startup-id "xrandr -o 0; xsetwacom set 'Wacom HID 482E Finger touch' Rotate none; feh --bg-fill ~/Pictures/bg.jpg"
 
+# Spotify
+bindsym --release $mod+space exec --no-startup-id "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause >> /dev/null"
 
 # Volume Keys
 set $volume-increment 10%
-bindsym --release XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +$volume-increment
-bindsym --release XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -$volume-increment
-bindsym --release XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym --release XF86AudioRaiseVolume exec --no-startup-id volume up $volume-increment
+bindsym --release XF86AudioLowerVolume exec --no-startup-id volume down $volume-increment
+bindsym --release XF86AudioMute exec --no-startup-id volume togglemute
 
 # Srceen Brightness Controls
 set $screen-increment 5
@@ -297,7 +300,7 @@ bindsym Shift+XF86MonBrightnessDown exec light -U $screen-increment-large
 # bindsym --release $mod+ctrl+r exec ~/.local/bin/red.sh
 
 # Lock Screen
-bindsym $mod+Shift+semicolon exec --no-startup-id i3lock-next '' '' 1
+bindsym $mod+Shift+semicolon exec --no-startup-id lock
 
 # Screenshot
 bindsym --release F12 exec --no-startup-id scrot /tmp/`date +%Y%m%d_%H%M%S`.png && exec notify-send 'SCROT' 'Screenshot taken (/tmp)'

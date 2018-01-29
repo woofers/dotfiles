@@ -329,9 +329,9 @@ ln -s "$DEV/src/Dotfiles/ranger/" "$HOME/.config/ranger"
 rm -rf "$HOME/.config/i3"
 ln -s "$DEV/src/Dotfiles/i3" "$HOME/.config/i3"
 sudo rm /usr/share/i3blocks/battery
-sudo ln -s "$DEV/src/Dotfiles/i3/scripts/battery" "/usr/share/i3blocks/battery"
+sudo ln -s "$DEV/src/Dotfiles/i3/scripts/i3blocks/battery" "/usr/share/i3blocks/battery"
 sudo rm /usr/share/i3blocks/volume
-sudo ln -s "$DEV/src/Dotfiles/i3/scripts/volume" "/usr/share/i3blocks/volume"
+sudo ln -s "$DEV/src/Dotfiles/i3/scripts/i3blocks/volume" "/usr/share/i3blocks/volume"
 
 # Setup Compton
 rm -rf "$HOME/.config/compton"
@@ -341,6 +341,9 @@ ln -s "$DEV/src/Dotfiles/compton" "$HOME/.config/compton"
 rm -rf "$HOME/.config/rofi"
 ln -s "$DEV/src/Dotfiles/rofi" "$HOME/.config/rofi"
 sudo ln -s "$DEV/src/Dotfiles/rofi/challenger.theme" "/usr/share/rofi/themes/challenger.theme"
+
+# Scripts
+sudo ln -s $DEV/src/Dotfiles/scripts/* /usr/bin/
 
 # Hide Home Files
 rm -rf "$HOME/.hidden"
