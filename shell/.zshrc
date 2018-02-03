@@ -142,24 +142,17 @@ alias mountiso="mount -t iso9660 -o loop"
 alias mountntfs="mount -t ntfs"
 alias unmount="umount"
 
-# Screen Rotate
-alias portrait="xrandr -o 1; xsetwacom set 'Wacom HID 482E Finger touch' Rotate ccw; updatebg"
-alias portraitalt="xrandr -o 3; xsetwacom set 'Wacom HID 482E Finger touch' Rotate cw; updatebg"
-alias landscape="xrandr -o 0; xsetwacom set 'Wacom HID 482E Finger touch' Rotate none; updatebg"
-alias landscapealt="xrandr -o 2; xsetwacom set 'Wacom HID 482E Finger touch' Rotate half ; updatebg"
-
 # Screenshot
 alias screenshot="scrot"
-alias updatebg="feh --bg-fill ~/Pictures/bg.jpg"
 
 # Start in Tmux
 if [ -z "$TMUX" ]
 then
-    tmux kill-server > /dev/null
     tmux start-server
-    tmux new-session -d -s Workspace -n "Dev 1"
-    tmuxw "Dev 2"
-    tmuxw "School"
+    tmux new-session -d -s Workspace -n "APT"
+    tmuxw "Git"
+    tmuxw "Development"
+    tmuxw "Shcool"
     tmuxw "Extra"
     tmux attach-session -t Workspace
 fi
@@ -171,5 +164,5 @@ zstyle ':completion:*:default' list-colors \
 ${(s.:.)LS_COLORS}
 
 # Load NVM
-export NVM_DIR="/home/jaxson/.nvm"
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"

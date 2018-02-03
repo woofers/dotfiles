@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Execute Commands on Startup Only on my Dell Laptop
+if [[ $(hostname -s) = Jaxson-Debian ]]; then
+
+    # Calibrate Monitor
+    xgamma -rgamma 0.94 -ggamma 0.93 -bgamma 0.98
+
+    # Start Compton
+    compton -b --config ~/.config/compton/compton.conf
+fi
