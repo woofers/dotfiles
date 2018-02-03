@@ -1,0 +1,5 @@
+#!/bin/bash
+
+path=${1:-"/tmp/`date +%Y%m%d_%H%M%S`.png"}
+
+scrot /tmp/`date +%Y%m%d_%H%M%S`.png && exec notify-send 'SCROT' 'Screenshot taken (/tmp)'

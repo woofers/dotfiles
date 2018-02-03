@@ -300,7 +300,7 @@ bindsym Shift+XF86MonBrightnessDown exec light -U $screen-increment-large
 bindsym $mod+Shift+semicolon exec --no-startup-id lock
 
 # Screenshot
-bindsym --release F12 exec --no-startup-id scrot /tmp/`date +%Y%m%d_%H%M%S`.png && exec notify-send 'SCROT' 'Screenshot taken (/tmp)'
+bindsym --release F12 exec --no-startup-id screenshot
 
 # Standard Programs
 exec_always google-chrome
