@@ -1,0 +1,28 @@
+#!/bin/bash
+
+function getRotation {
+    xrandr -q --verbose | grep HDMI-0 | cut -b39-44
+}
+
+function rotateTouch {
+    xsetwacom set "$touch" Rotate $1 > /dev/null
+}
+
+
+direction=${1:-"landscape"}
+touch=("Wacom HID 482E Finger touch")
+
+if [ "$direction" == "portrait" ]; then
+    xrandr -o 1
+    rotateTouch ccw
+elif [ "$direction" == "portraitalt" ]; then
+    xrandr -o 3
+    rotateTouch cw
+elif [ "$direction" == "landscape" ]; then
+    xrandr -o 0
+    rotateTouch none
+elif [ "$direction" == "landscapealt" ]; then
+    xrandr -o 2
+    rotateTouch half
+fi
+updatebackground
