@@ -145,7 +145,7 @@ exec --no-startup-id light -S 42
 exec --no-startup-id volume mute
 
 # Set Desktop Background
-exec --no-startup-id feh --bg-fill ~/Pictures/bg.jpg
+exec --no-startup-id updatebackground
 
 # Start Network
 exec --no-startup-id nm-applet &
