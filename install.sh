@@ -202,10 +202,6 @@ sudo ln -s "/usr/local/fbx-conv/libfbxsdk.so" "/usr/lib64/libfbxsdk.so"
 rm fbx-conv.zip
 cd ~
 
- ./fbx-conv-lin64
-
-cd ~
-
 # Install WINE
 cd ~/Downloads
 sudo apt-get install apt-transport-https
