@@ -88,9 +88,10 @@ fi
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
-# Java Home
+# Development Paths
 export JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk-amd64"
 export ANDROID_HOME="$DEV/lib/AndroidSDK"
+export LD_LIBRARY_PATH="/usr/lib64"
 
 # Sets Environment Paths
 export HOME_DRIVE="/home/jaxson"
