@@ -221,6 +221,21 @@ sudo apt-get install i3
 wget https://raw.githubusercontent.com/maestrogerardo/i3-gaps-deb/master/i3-gaps-deb
 ./i3-gaps-deb
 
+# Install i3 Lock
+cd ~/Downloads
+git clone https://github.com/PandorasFox/i3lock-color
+cd i3lock-color
+git tag -f "git-$(git rev-parse --short HEAD)"
+autoreconf -i && ./configure && make
+cd ..
+rm -rf i3lock-color
+git clone https://github.com/owenthewizard/i3lock-next
+cd i3lock-next
+rm src/config.h
+cp $DEV/src/Dotfiles/i3/lock/config.h src/config.h
+make
+sudo make install
+
 # Install Window Management Components
 sudo apt-get install dmenu
 sudo apt-get install i3lock
