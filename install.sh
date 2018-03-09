@@ -7,12 +7,12 @@ exit
 
 # Add Repositories
 sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak
-sudo ln -s "/etc/apt/sources.list" "$DEV/src/Dotfiles/apt/sources.list"
+sudo ln -s "$DEV/src/Dotfiles/apt/sources.list" "/etc/apt/sources.list"
 sudo apt-get update
 
 # Upgrade Kernel for Working Sleep
 sudo apt-get update
-sudo apt-get -t experimental linux-image-4.15-0-rc8-amd64
+sudo apt-get -t experimental install linux-image-4.15-0-rc8-amd64
 
 # AMD Graphics Drives (Gallium 0.4, Open Driver) (R9 390X)
 sudo apt install firmware-linux
@@ -254,7 +254,6 @@ sudo apt-get update
 sudo apt-get install papirus-icon-theme
 
 # Export DEV Path
-# export DEV="/mnt/d/Documents/Development"
 export DEV="$HOME/Documents/Development"
 
 # Install Fonts
