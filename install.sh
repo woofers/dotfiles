@@ -69,6 +69,7 @@ sudo apt-get purge firefox-esr
 cd ~/Downloads
 wget https://dl-ssl.google.com/linux/linux_signing_key.pub
 sudo apt-key add linux_signing_key.pub
+sudo apt-get update
 sudo apt-get install google-chrome-stable
 cd ~
 
@@ -125,6 +126,7 @@ sudo pip install soundscrape
 
 # Install Emacs
 wget -q -O - http://emacs.secretsauce.net/key.gpg | sudo apt-key add -
+sudo apt-get update
 sudo apt-get install emacs25
 
 # Install Emacs Spell Check
