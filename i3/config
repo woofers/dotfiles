@@ -196,7 +196,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+v restart
 
 # Log Out
-bindsym $mod+semicolon exec i3-msg exit
+bindsym $mod+semicolon exec kill -9 -1
 
 # Titlebar
 # for_window [class=".*"] title_format "<span font='System San Francisco 13'>%title</span>"
@@ -312,3 +312,14 @@ exec_always gnome-terminal
 exec_always nautilus
 exec_always discord
 exec_always steam -silent
+
+# i3 on Gnome
+exec --no-startup-id dbus-send \
+	--session \
+	--print-reply=literal \
+	--dest=org.gnome.SessionManager \
+	"/org/gnome/SessionManager" \
+	org.gnome.SessionManager.RegisterClient \
+	"string:i3" \
+	"string:$DESKTOP_AUTOSTART_ID"
+
