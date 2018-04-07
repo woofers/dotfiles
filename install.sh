@@ -194,14 +194,9 @@ sudo ln -s "/usr/local/android-studio/bin/studio.sh" "/usr/bin/androidstudio"
 rm android-studio-ide-171.4443003-linux.zip
 cd ~
 
-# Install FBX Conv
+# Install libgdx-tool
 cd ~/Downloads
-wget http://libgdx.badlogicgames.com/fbx-conv/fbx-conv.zip
-unzip fbx-conv.zip -d fbx-conv
-sudo mv fbx-conv /usr/local
-sudo ln -s "/usr/local/fbx-conv/fbx-conv-lin64" "/usr/bin/fbx-conv"
-sudo ln -s "/usr/local/fbx-conv/libfbxsdk.so" "/usr/lib64/libfbxsdk.so"
-rm fbx-conv.zip
+sudo wget -O - https://raw.githubusercontent.com/woofers/libgdx-tools-installer/master/install.sh | sudo bash
 cd ~
 
 # Install WINE
