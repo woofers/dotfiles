@@ -16,7 +16,7 @@ Windows Subsystems for Linux in Mintty when I absolutely must use windows for de
 
 Most config files are symlinked using ~install.sh~.
 
-*Warning:* The installation script provided is very specific to my needs and does some *dangerous stuff* such as upgrading the kernel and configuring graphics drivers.
+*Warning:* The installation script provided is very specific to my needs and does some *dangerous stuff* such as upgrading the kernel, appending to the file system table and configuring graphics drivers.
 All commands in ~install.sh~ as a whole is likely to break/overwrite something in a existing Linux install.  I only use ~install.sh~ to configure fresh Linux installs.
 Make sure you understand what each files does before you use it.  Use at your own risk!
 
@@ -62,9 +62,12 @@ I don't recommend that anyone copy and install this whole config (See warning). 
 
 I highly suggest that you cherry pick the elements you want into your own config and build your own config.
 
-While this can be intimidating it will result in a system configured better to your needs.  I hope that this repo will provide a good example of the extreme tweakbilty of Linux.
+While this can be intimidating it will result in a system configured better to your needs.  I hope that this repo will provide a good example of the extreme tweakabilty of Linux.
 
-* Emacs
+The ~script~ provides many useful shell scripts for adjusting volume and screen rotation.
+
+** Screenshots
+*** Emacs
 
 #+CAPTION: Emacs using a custom powerline with challenger-deep
 #+NAME:    Emacs Screenshot 1
@@ -77,7 +80,7 @@ While this can be intimidating it will result in a system configured better to y
 My Emacs setup consist of [[https://github.com/MaxSt/challenger-deep][challenger-deep]] as a theme with a custom [[https://github.com/milkypostman/powerline][Powerline]].
 Emacs setup also heavly relies on [[https://github.com/emacs-helm/helm][Helm]]
 
-* Neovim
+*** Neovim
 
 #+CAPTION: Neovim using Airline and NERDTree
 #+NAME:    Neovim Screenshot
@@ -86,11 +89,11 @@ Emacs setup also heavly relies on [[https://github.com/emacs-helm/helm][Helm]]
 Neovim config uses [[https://github.com/dracula/vim][dracula-vim]].
 Airline theme is *light* from [[https://github.com/vim-airline/vim-airline-themes][airline-themes]].
 
-* Mintty
+*** Mintty
 
 Mintty uses [[https://github.com/dracula/mintty][dracula-mintty]] for its color definitions.
 
-* Tmux
+*** Tmux
 
 #+CAPTION: Tmux using usings splits and a custom theme
 #+NAME:    Tmux Screenshot
@@ -98,7 +101,7 @@ Mintty uses [[https://github.com/dracula/mintty][dracula-mintty]] for its color 
 
 Tmux uses a modified version of [[https://github.com/sei40kr/tmux-airline-dracula][tmux-airline-dracula]] named *wracula* which matches *BASH* and *ZSH*.
 
-* BASH and ZSH
+*** BASH and ZSH
 
 #+CAPTION: ZSH using Oh My ZSH with the git and syntax plugins
 #+NAME:    ZSH Screenshot
