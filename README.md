@@ -10,13 +10,17 @@
 </ul>
 </li>
 <li><a href="#sec-1-2">Usage</a></li>
+<li><a href="#sec-1-3">Screenshots</a>
+<ul>
+<li><a href="#sec-1-3-1">Emacs</a></li>
+<li><a href="#sec-1-3-2">Neovim</a></li>
+<li><a href="#sec-1-3-3">Mintty</a></li>
+<li><a href="#sec-1-3-4">Tmux</a></li>
+<li><a href="#sec-1-3-5">BASH and ZSH</a></li>
 </ul>
 </li>
-<li><a href="#sec-2">Emacs</a></li>
-<li><a href="#sec-3">Neovim</a></li>
-<li><a href="#sec-4">Mintty</a></li>
-<li><a href="#sec-5">Tmux</a></li>
-<li><a href="#sec-6">BASH and ZSH</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -35,7 +39,7 @@ Windows Subsystems for Linux in Mintty when I absolutely must use windows for de
 
 Most config files are symlinked using `install.sh`.
 
-**Warning:** The installation script provided is very specific to my needs and does some **dangerous stuff** such as upgrading the kernel and configuring graphics drivers.
+**Warning:** The installation script provided is very specific to my needs and does some **dangerous stuff** such as upgrading the kernel, appending to the file system table and configuring graphics drivers.
 All commands in `install.sh` as a whole is likely to break/overwrite something in a existing Linux install.  I only use `install.sh` to configure fresh Linux installs.
 Make sure you understand what each files does before you use it.  Use at your own risk!
 
@@ -81,9 +85,13 @@ I don't recommend that anyone copy and install this whole config (See warning). 
 
 I highly suggest that you cherry pick the elements you want into your own config and build your own config.
 
-While this can be intimidating it will result in a system configured better to your needs.  I hope that this repo will provide a good example of the extreme tweakbilty of Linux.
+While this can be intimidating it will result in a system configured better to your needs.  I hope that this repo will provide a good example of the extreme tweakabilty of Linux.
 
-# Emacs<a id="sec-2" name="sec-2"></a>
+The `script` provides many useful shell scripts for adjusting volume and screen rotation.
+
+## Screenshots<a id="sec-1-3" name="sec-1-3"></a>
+
+### Emacs<a id="sec-1-3-1" name="sec-1-3-1"></a>
 
 ![img](./screenshots/emacs.png "Emacs using a custom powerline with challenger-deep")
 
@@ -92,24 +100,24 @@ While this can be intimidating it will result in a system configured better to y
 My Emacs setup consist of [challenger-deep](https://github.com/MaxSt/challenger-deep) as a theme with a custom [Powerline](https://github.com/milkypostman/powerline).
 Emacs setup also heavly relies on [Helm](https://github.com/emacs-helm/helm)
 
-# Neovim<a id="sec-3" name="sec-3"></a>
+### Neovim<a id="sec-1-3-2" name="sec-1-3-2"></a>
 
 ![img](./screenshots/vim.png "Neovim using Airline and NERDTree")
 
 Neovim config uses [dracula-vim](https://github.com/dracula/vim).
 Airline theme is **light** from [airline-themes](https://github.com/vim-airline/vim-airline-themes).
 
-# Mintty<a id="sec-4" name="sec-4"></a>
+### Mintty<a id="sec-1-3-3" name="sec-1-3-3"></a>
 
 Mintty uses [dracula-mintty](https://github.com/dracula/mintty) for its color definitions.
 
-# Tmux<a id="sec-5" name="sec-5"></a>
+### Tmux<a id="sec-1-3-4" name="sec-1-3-4"></a>
 
 ![img](./screenshots/tmux.png "Tmux using usings splits and a custom theme")
 
 Tmux uses a modified version of [tmux-airline-dracula](https://github.com/sei40kr/tmux-airline-dracula) named **wracula** which matches **BASH** and **ZSH**.
 
-# BASH and ZSH<a id="sec-6" name="sec-6"></a>
+### BASH and ZSH<a id="sec-1-3-5" name="sec-1-3-5"></a>
 
 ![img](./screenshots/zsh.png "ZSH using Oh My ZSH with the git and syntax plugins")
 
