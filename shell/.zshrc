@@ -78,16 +78,26 @@ export JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk-amd64"
 export ANDROID_HOME="$DEV/lib/AndroidSDK"
 export LD_LIBRARY_PATH="/usr/lib64"
 
-# Sets Environment Paths
+# Linux Environment Paths
 export HOME_DRIVE="/home/jaxson"
+
+# Windows Subsystem Drive Path
 if [[ $(hostname -s) = Jaxson-PC ]]; then
     export HOME_DRIVE="/mnt/d/"
 fi
+
+# More Paths
 export DRIVE="$HOME_DRIVE/Documents/JVD Docs/Documents/"
 export DEV="$HOME_DRIVE/Documents/Development"
 export ANDROID_HOME="$DEV/lib/AndroidSDK"
 export SCHOOL="$DRIVE/School/UVIC/2018"
 export CSC="$DRIVE/School/UVIC/2018/CSC 230"
+
+# Even Shorter Home Folders Switching
+export DOCUMENTS="$HOME/Documents"
+export DOWNLOADS="$HOME/Downloads"
+export PICTURES="$HOME/Pictures"
+export MUSIC="$HOME/Music"
 
 # GO Path
 export GOPATH=~/.go
@@ -106,24 +116,41 @@ if [[ $(hostname -s) = Jaxson-PC ]] || [[ $(hostname -s) = Jaxson-Thinkpad* ]]; 
     alias taskkill="cmd taskkill /F"
 fi
 
-# Aliases
+## Aliases
+
+# Quick LS
 alias l="ls -la"
+
+# Use Neovim
 alias vi="nvim"
 alias vim="nvim"
+
+# Fake DOS Style Commands
 alias del="rm"
 alias dir="l"
+
+# Shorter Directory Switching
 alias cb="cd .."
 alias cl="cd -"
 alias cr="cd /"
 alias ch="cd ~"
+
+# Tmux
 alias tmux="tmux -2 -u"
 alias tmuxw="tmux new-window -n"
 alias close="tmux kill-server; exit"
+
+# Google Drive
 alias gdpl="drive-google pull -depth -1 -ignore-name-clashes -ignore-conflict"
 alias gdpu="drive-google push -depth -1 -ignore-name-clashes -ignore-conflict"
+
+# Mu
 alias mupl="mu index --maildir=~/Mail/mbsync"
-alias brew="sudo apt-get"
+
+# Info
 alias info="screenfetch"
+
+# Better Mounting
 alias mountiso="mount -t iso9660 -o loop"
 alias mountntfs="mount -t ntfs"
 alias unmount="umount"
