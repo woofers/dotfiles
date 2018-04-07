@@ -47,7 +47,7 @@ Make sure you understand what each files does before you use it.  Use at your ow
 
 I currently run Debian 9 with GNOME as its super pretty, user-friendly and light.
 
-For my main window manager I use i3 for easier mouse-less navigation and nice tilling, ensuring no wasted screen real easte.  Specifically I use the i3-gaps fork whichs makes things a little less cramped.
+For my main window manager I use i3 for easier mouse-less navigation and nice tilling, ensuring no wasted screen real estate.  Specifically I use the i3-gaps fork whichs makes things a little less cramped.
 
 For window composting I use Compton to provide nice shadows and transparency.
 
@@ -57,7 +57,7 @@ For a file manger I use Nautilus with Papirus icons (Looks like MacOS).  I was u
 
 To keep most apps looking fresh I use the Arc GTK theme which is the best dark theme I have ever come across.
 
-For better Linux fonts I use Infinality to mimic MacOS font styling.  I also use the System San Francisco font as my standard font which looks beatufull when browsing the web.
+For better Linux fonts I use Infinality to mimic MacOS font styling.  I also use the System San Francisco font as my standard font which looks beautifull when browsing the web.
 
 My notifications are delivered through dunst making each notification customizable and non-intrusive.
 
@@ -86,8 +86,6 @@ I don't recommend that anyone copy and install this whole config (See warning). 
 I highly suggest that you cherry pick the elements you want into your own config and build your own config.
 
 While this can be intimidating it will result in a system configured better to your needs.  I hope that this repo will provide a good example of the extreme tweakabilty of Linux.
-
-The `script` provides many useful shell scripts for adjusting volume and screen rotation.
 
 ## Screenshots<a id="sec-1-3" name="sec-1-3"></a>
 
