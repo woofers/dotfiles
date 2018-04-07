@@ -142,5 +142,7 @@ if [[ -f $THEME ]]; then
     source $THEME
 fi
 
+source $HOME/.aliases
+
 # Sets LS Colors
 eval `dircolors ~/dircolors.ansi-darkorange`
