@@ -318,6 +318,8 @@ rm "$HOME/.zshrc"
 ln -s "$DEV/src/Dotfiles/shell/.zshrc" "$HOME/.zshrc"
 rm -rf "$HOME/.oh-my-zsh/themes"
 ln -s "$DEV/src/Dotfiles/shell/.oh-my-zsh/themes" "$HOME/.oh-my-zsh/"
+rm "$HOME/.aliases"
+ln -s "$DEV/src/Dotfiles/shell/.aliases" "$HOME/.aliases"
 
 # Setup Git Config
 rm "$HOME/.gitconfig"
