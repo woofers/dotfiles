@@ -27,6 +27,7 @@
 ;; Keymaps
 (define-key helm-map (kbd "S-SPC") 'helm-toggle-visible-mark)
 (define-key helm-find-files-map (kbd "C-b") 'helm-find-files-up-one-level)
+(define-key helm-find-files-map (kbd "C-f") 'helm-find-files-down-last-level)
 
 ;; Helm on Meta X
 (global-set-key (kbd "M-x") #'helm-M-x)

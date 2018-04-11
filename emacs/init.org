@@ -95,16 +95,8 @@
 
 ** Load General Packages
  #+BEGIN_SRC emacs-lisp
+
  (use-package magit
-         :ensure t)
-
- (use-package ranger
-         :ensure t)
-
- (use-package auto-complete
-         :ensure t)
-
- (use-package which-key
          :ensure t)
 
  (use-package ranger
@@ -144,6 +136,9 @@
          :ensure t)
 
  (use-package web-mode
+         :ensure t)
+
+ (use-package json-mode
          :ensure t)
 
  (use-package haxe-mode
