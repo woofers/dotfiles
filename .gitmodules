@@ -25,3 +25,6 @@
 [submodule "scripts/spotify-cli"]
 	path = scripts/spotify-cli
 	url = https://github.com/pwittchen/spotify-cli-linux
+[submodule "emacs/.emacs.d/non-elpa/challenger-deep"]
+	path = emacs/.emacs.d/non-elpa/challenger-deep
+	url = https://github.com/challenger-deep-theme/emacs

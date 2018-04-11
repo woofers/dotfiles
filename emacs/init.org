@@ -186,7 +186,7 @@
 
 ** Load Theme
  #+BEGIN_SRC emacs-lisp
- (add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/challenger-deep")
+ (add-to-list 'custom-theme-load-path "~/.emacs.d/non-elpa/challenger-deep")
  (load-theme 'challenger-deep t)
  #+END_SRC
 
@@ -419,9 +419,6 @@
   (setq tab-always-indent 'complete)
 
   (when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
-;; (For Tabs)
-;; (setq indent-line-function 'insert-tab)
-;; (setq tab-stop-list (number-sequence 4 200 4))
   #+END_SRC
 *** Place Only One Space at the End of a Sentance
   #+BEGIN_SRC emacs-lisp
@@ -438,7 +435,7 @@
   #+END_SRC
 *** Clipboard
   #+BEGIN_SRC emacs-lisp
-  (setq save-interprogram-paste-before-kill t)
+  (setq save-interprogram-paste-before-kill nil)
   #+END_SRC
 * Functions
 ** Backspace to Tab
@@ -511,29 +508,7 @@
 	 (cadr (assoc (popup-menu* menu :scroll-bar t) base-menu))))
  #+END_SRC
 
-** Run Bash
- #+BEGIN_SRC emacs-lisp
-(defun run-bash ()
-	  (interactive)
-	  (let ((shell-file-name "C:\\Program Files\\Git\\bin\\bash.exe"))
-	  (shell "*bash*")))
- #+END_SRC
-
-** Vist Ansi Term
- #+BEGIN_SRC emacs-lisp
- (defun visit-term-buffer ()
-   "Create or visit a terminal buffer."
-   (interactive)
-   (setenv "SHELL", "C:/Program Files/Git/bin/bash.exe")
-   (if (not (get-buffer "*ansi-term*"))
-	   (progn
-		 (split-window-sensibly (selected-window))
-		 (other-window 1)
-		 (ansi-term (getenv "SHELL")))
-	 (switch-to-buffer-other-window "*ansi-term*")))
- #+END_SRC
-
-** Maximize Window on Windows
+** Maximize Window
  #+BEGIN_SRC emacs-lisp
  (defun windows-maximize-frame()
    "Maximizes the active frame in Windows"
@@ -566,9 +541,11 @@
  #+END_SRC
 ** Git Diff
  #+BEGIN_SRC emacs-lisp
-   (defun git-diff(rev-or-range)
+   (defun git-diff(&optional rev-or-range)
      "Calls maggit-diff"
      (interactive)
+     (if (equal rev-or-range nil)
+       (setq rev-or-range "master"))
      (magit-diff rev-or-range))
  #+END_SRC
 ** Email
@@ -580,10 +557,10 @@
  #+END_SRC
 ** Wheather
  #+BEGIN_SRC emacs-lisp
- (defun wheather()
+ (defun wheather(city)
    "Calls wttrin"
    (interactive)
-   (wttrin))
+   (wttrin city))
  #+END_SRC
 ** Spell Check
  #+BEGIN_SRC emacs-lisp
@@ -597,29 +574,8 @@
    (with-system windows
      (speck-mode)
    ))
-
- (defun spell-check()
-   "Calls speck-mode"
-   (interactive)
-   (spell))
  #+END_SRC
 * Mappings
-** Unbind Arrow Keys
- #+BEGIN_SRC emacs-lisp
- ;; (global-unset-key (kbd "<left>"))
- ;; (global-unset-key (kbd "<right>"))
- ;; (global-unset-key (kbd "<up>"))
- ;; (global-unset-key (kbd "<down>"))
- ;; (global-unset-key (kbd "<C-left>"))
- ;; (global-unset-key (kbd "<C-right>"))
- ;; (global-unset-key (kbd "<C-up>"))
- ;; (global-unset-key (kbd "<C-down>"))
- ;; (global-unset-key (kbd "<M-left>"))
- ;; (global-unset-key (kbd "<M-right>"))
- ;; (global-unset-key (kbd "<M-up>"))
- ;; (global-unset-key (kbd "<M-down>"))
- #+END_SRC
-
 ** Map Backspace Tab
  #+BEGIN_SRC emacs-lisp
  (global-set-key [backspace] 'backspace-whitespace-to-tab-stop)
@@ -630,10 +586,6 @@
  (global-set-key (kbd "C-s") 'save-buffer)
  #+END_SRC
 
-** Run Bash
- #+BEGIN_SRC emacs-lisp
- (global-set-key (kbd "C-c t") 'run-bash)
- #+END_SRC
 * Hooks
 ** Delte Trailing Whitespace on Save
  #+BEGIN_SRC emacs-lisp
@@ -647,9 +599,8 @@
 
 ** Spellcheck for Newly Opened File
  #+BEGIN_SRC emacs-lisp
- ; (add-hook 'find-file-hook 'speck-mode)
+ (add-hook 'find-file-hook 'speck-mode)
  #+END_SRC
-
 ** Camel Case in Programing Modes
  #+BEGIN_SRC emacs-lisp
  (add-hook 'prog-mode-hook 'subword-mode)
@@ -725,15 +676,3 @@
  #+BEGIN_SRC emacs-lisp
  (diminish 'untabify-mode)
  #+END_SRC
-#+BEGIN_SRC emacs-lisp
-(defun load-all-in-directory (dir)
-  "`load' all elisp libraries in directory DIR which are not already loaded."
-  (interactive "D")
-  (let ((libraries-loaded (mapcar #'file-name-sans-extension
-                                  (delq nil (mapcar #'car load-history)))))
-    (dolist (file (directory-files dir t ".+\\.elc?$"))
-      (let ((library (file-name-sans-extension file)))
-        (unless (member library libraries-loaded)
-          (load library nil t)
-          (push library libraries-loaded))))))
-#+END_SRC
