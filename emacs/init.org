@@ -169,7 +169,7 @@
      (use-package w3m
          :ensure t)
 
-     (load-file "~/.emacs.d/elpa/tag/tag.el")
+     (load-file "~/.emacs.d/non-elpa/tag/tag.el")
 
      (org-babel-load-file "~/.emacs.d/lisp/init-mu4e.org")
      (require 'init-mu4e)
