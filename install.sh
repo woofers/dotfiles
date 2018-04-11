@@ -427,17 +427,6 @@ nvm use --lts
 npm install -g yarn
 npm install -g gh-pages
 
-# MP3 Tags for Emacs
-cd ~/.emacs.d
-mkdir elpa
-cd elpa
-mkdir tag
-cd tag
-wget https://www.emacswiki.org/emacs/download/tag.el
-
-# Install Emacs Theme
-git clone https://github.com/challenger-deep-theme/emacs challenger-deep
-
 # Shares
 cd /mnt
 sudo mkdir shares
