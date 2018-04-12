@@ -2,7 +2,7 @@
 
 ## Description
 
-**Custom config files for better work-flow on Linux**
+**Custom config files for better workflow on Linux**
 
 Here all my dotfiles which I use on both my desktop and my school laptop.
 
