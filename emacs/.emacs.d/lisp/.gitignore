@@ -1,2 +1,3 @@
 init-org.el
+init-evil.el
 init-mu4e.el
