@@ -71,7 +71,7 @@
 
 ** Load Evil Packages
  #+BEGIN_SRC emacs-lisp
- (load-file "~/.emacs.d/lisp/init-evil.el")
+ (org-babel-load-file "~/.emacs.d/lisp/init-evil.org")
  (require 'init-evil)
  #+END_SRC
 
