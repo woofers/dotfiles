@@ -638,6 +638,15 @@
  (add-hook 'find-file-hook 'asm-hook)
  #+END_SRC
 
+*** Pico-8 Mode
+ #+BEGIN_SRC emacs-lisp
+ (defun pico-hook ()
+   (when (string= (file-name-extension buffer-file-name) "p8")
+	 (lua-mode))
+ )
+ (add-hook 'find-file-hook 'pico-hook)
+ #+END_SRC
+
 ** Eshell Completion
  #+BEGIN_SRC emacs-lisp
  (add-hook 'eshell-mode-hook
