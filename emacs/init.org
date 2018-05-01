@@ -105,6 +105,9 @@
  (use-package company
          :ensure t)
 
+ (use-package company-lua
+         :ensure t)
+
  (use-package which-key
          :ensure t)
 
