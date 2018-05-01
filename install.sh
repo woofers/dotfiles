@@ -320,6 +320,8 @@ rm -rf "$HOME/.oh-my-zsh/themes"
 ln -s "$DEV/src/Dotfiles/shell/.oh-my-zsh/themes" "$HOME/.oh-my-zsh/"
 rm "$HOME/.aliases"
 ln -s "$DEV/src/Dotfiles/shell/.aliases" "$HOME/.aliases"
+rm "$HOME/.emacs.d/eshell/alias"
+ln -s "$DEV/src/Dotfiles/shell/.aliases" "$HOME/.emacs.d/eshell/alias"
 
 # Setup Git Config
 rm "$HOME/.gitconfig"
