@@ -232,7 +232,7 @@
  (setq highlight-indent-guides-method 'character)
  #+END_SRC
 
-** Wheather Settings
+** Weather Settings
 *** Use Victoria Airport
   #+BEGIN_SRC emacs-lisp
   (setq wttrin-default-cities '("YYJ"))
