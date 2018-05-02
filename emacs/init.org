@@ -585,7 +585,7 @@
  #+END_SRC
 
 * Hooks
-** Delte Trailing Whitespace on Save
+** Delete Trailing Whitespace on Save
  #+BEGIN_SRC emacs-lisp
  (add-hook 'before-save-hook 'delete-trailing-whitespace)
  #+END_SRC
