@@ -159,8 +159,7 @@
  (use-package flyspell
          :ensure t)
 
- (use-package speck
-         :ensure t)
+ (load-file "~/.emacs.d/non-elpa/speck/speck.el")
 
  (use-package esup
          :ensure t)
