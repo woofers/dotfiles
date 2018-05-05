@@ -3,6 +3,7 @@
 #+AUTHOR:	Jaxson Van Doorn
 #+EMAIL:	jaxson.vandoorn@gmail.com
 #+OPTIONS:  num:nil
+
 * Plug-Ins
 ** Install Evil Mode
  #+BEGIN_SRC emacs-lisp
@@ -34,7 +35,7 @@
  #+END_SRC
 ** Enable Evil Leader
  #+BEGIN_SRC emacs-lisp
-   (global-evil-leader-mode)
+ (global-evil-leader-mode)
  #+END_SRC
 ** Enable Evil Surround
  #+BEGIN_SRC emacs-lisp
@@ -259,7 +260,7 @@
   (define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
   #+END_SRC
 
-*** Make horizontal movement cross lines
+*** Make Horizontal Movement Cross Lines
   #+BEGIN_SRC emacs-lisp
   (setq-default evil-cross-lines t)
   #+END_SRC
