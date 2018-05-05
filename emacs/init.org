@@ -343,18 +343,18 @@
   #+END_SRC
 *** Allow Custom Themes
   #+BEGIN_SRC emacs-lisp
-    (setq custom-safe-themes t)
+  (setq custom-safe-themes t)
   #+END_SRC
 *** Set Title Bar
   #+BEGIN_SRC emacs-lisp
-  (setq frame-title-format "%b - emacs")
+  (setq frame-title-format "%b - Emacs")
   #+END_SRC
 *** Highlight Current Line
   #+BEGIN_SRC emacs-lisp
   (global-hl-line-mode 1)
   #+END_SRC
 *** Relative Line Numbers
-**** Change Update Fequency
+**** Change Update Frequency
    #+BEGIN_SRC emacs-lisp
    (setq nlinum-relative-redisplay-delay 0.018)
    #+END_SRC
