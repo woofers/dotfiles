@@ -406,6 +406,9 @@ sudo ln -s "$DEV/src/Dotfiles/steam/skins" "$HOME/.steam/skins"
 # Dolphin
 sudo ln -s "/usr/local/bin/dolphin/bin/dolphin-emu" "/usr/bin/dolphin"
 
+# Spotify cli
+sudo ln -s "$DEV/src/Dotfiles/script/spotify-cli/spotify-cli" "/usr/bin/spotify-cli"
+
 # Fix AMD Screen Tearing
 sudo rm -rf "/usr/share/X11/xorg.conf.d/20-radeon.conf"
 sudo ln -s "$DEV/src/Dotfiles/x/20-radeon.conf" "/usr/share/X11/xorg.conf.d/20-radeon.conf"
