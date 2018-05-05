@@ -51,4 +51,8 @@
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 (global-set-key (kbd "C-x C-k") 'kill-buffer)
 
+;; Eshell
+(global-set-key (kbd "C-x C-e") 'eshell)
+(global-set-key (kbd "C-x e") 'new-eshell)
+
 (provide 'init-helm)
