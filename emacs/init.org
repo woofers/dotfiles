@@ -337,10 +337,6 @@
   (setq whitespace-style '(face lines-tail))
   (setq-default fill-column max-line-width)
   #+END_SRC
-*** Default Split Mode is Vertical
-  #+BEGIN_SRC emacs-lisp
-  (setq split-width-threshold nil)
-  #+END_SRC
 *** Allow Custom Themes
   #+BEGIN_SRC emacs-lisp
   (setq custom-safe-themes t)
@@ -428,6 +424,12 @@
   (if (eq system-type 'gnu/linux)
       (set-frame-font "-bitstream-Meslo LG M for Powerline-normal-normal-normal-*-*-*-*-*-0-iso10646-1" nil t)
   )
+  #+END_SRC
+*** Default Split is Vertical
+  #+BEGIN_SRC emacs-lisp
+  (setq split-width-threshold nil)
+  (setq split-width-threshold 0)
+  (setq split-height-threshold nil)
   #+END_SRC
 *** Clipboard
   #+BEGIN_SRC emacs-lisp
