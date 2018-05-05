@@ -10,11 +10,10 @@
  (require 'package)
 
  (when (>= emacs-major-version 24)
-	 (add-to-list
-		 'package-archives
-		 '("melpa" . "http://melpa.milkbox.net/packages/")
-		 t)
-	 )
+   (add-to-list
+    'package-archives
+    '("melpa" . "http://melpa.milkbox.net/packages/")
+    t))
  #+END_SRC
 
 ** Disable Plug-Ins at Startup
