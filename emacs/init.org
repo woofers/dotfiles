@@ -573,11 +573,15 @@
    "Calls speck-mode"
    (interactive)
    (with-system gnu/linux
-     (flyspell-mode)
+     (if flyspell-mode
+       (flyspell-mode -1)
+       (flyspell-mode 1))
    )
 
    (with-system windows
-     (speck-mode)
+     (if speck-mode
+       (speck-mode -1)
+       (speck-mode 1))
    ))
  #+END_SRC
 * Mappings
@@ -604,7 +608,7 @@
 
 ** Spellcheck for Newly Opened File
  #+BEGIN_SRC emacs-lisp
- (add-hook 'find-file-hook 'speck-mode)
+ (add-hook 'find-file-hook 'spell)
  #+END_SRC
 ** Auto Complete
  #+BEGIN_SRC emacs-lisp
@@ -637,7 +641,7 @@
  (add-hook 'find-file-hook 'git-gutter-mode)
  #+END_SRC
 
-** Addtional Syntax Highlighting
+** Additional Syntax Highlighting
 *** Assembly Mode
  #+BEGIN_SRC emacs-lisp
  (defun asm-hook ()
