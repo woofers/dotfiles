@@ -84,6 +84,16 @@ I highly suggest that you cherry pick the elements you want into your own config
 While this can be intimidating it will result in a system configured better to your needs.  I hope that this repo will provide a good example of the extreme tweakabilty of Linux.
 
 ** Screenshots
+*** i3wm
+
+#+CAPTION: i3wm1
+#+NAME:    i3wm Screenshot 1
+[[./screenshots/emacs.png]]
+
+#+CAPTION: i3wm2
+#+NAME:    i3wm Screenshot 2
+[[./screenshots/emacs2.png]]
+
 *** Emacs
 
 #+CAPTION: Emacs using a custom powerline with challenger-deep

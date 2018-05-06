@@ -81,6 +81,12 @@ While this can be intimidating it will result in a system configured better to y
 
 ## Screenshots
 
+### i3wm
+
+![img](./screenshots/emacs.png "i3wm1")
+
+![img](./screenshots/emacs2.png "i3wm2")
+
 ### Emacs
 
 ![img](./screenshots/emacs.png "Emacs using a custom powerline with challenger-deep")
