@@ -194,8 +194,10 @@
 ** Only Paste Yanked Text
  #+BEGIN_SRC emacs-lisp
  (define-key evil-normal-state-map "p" 'evil-paste-after-from-0)
+ (define-key evil-normal-state-map "P" 'evil-paste-before-from-0)
  (define-key evil-normal-state-map "d" 'evil-delete-from-0)
  (global-set-key (kbd "<S-insert>") 'evil-paste-before-from-0)
+ (global-set-key (kbd "M-p") 'x-clipboard-yank)
  #+END_SRC
 ** On Evil Maps Load
  #+BEGIN_SRC emacs-lisp
