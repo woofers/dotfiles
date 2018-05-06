@@ -170,6 +170,21 @@
                                   (and (< indent-amount 0) indent-amount)
                                   (* (or count 1) (- 0 tab-width))))))))
  #+END_SRC
+** Only Paste Yanks
+ #+BEGIN_SRC emacs-lisp
+ (defun evil-paste-before-from-0 ()
+   (interactive)
+   (let ((evil-this-register ?0))
+     (call-interactively 'evil-paste-before)))
+ (defun evil-paste-after-from-0 ()
+   (interactive)
+   (let ((evil-this-register ?0))
+     (call-interactively 'evil-paste-after)))
+ (defun evil-delete-from-0 ()
+   (interactive)
+   (let ((evil-this-register ?0))
+     (call-interactively 'evil-delete)))
+ #+END_SRC
 * Mappings
 ** Move Text Up and Down
  #+BEGIN_SRC emacs-lisp
@@ -179,6 +194,8 @@
 ** Only Paste Yanked Text
  #+BEGIN_SRC emacs-lisp
  (define-key evil-normal-state-map "p" 'evil-paste-after-from-0)
+ (define-key evil-normal-state-map "d" 'evil-delete-from-0)
+ (global-set-key (kbd "<S-insert>") 'evil-paste-before-from-0)
  #+END_SRC
 ** On Evil Maps Load
  #+BEGIN_SRC emacs-lisp
