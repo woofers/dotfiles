@@ -39,6 +39,10 @@
 ;; Imenu
 (global-set-key (kbd "C-x C-r") 'imenu)
 
+;; Git
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x C-g") 'magit-diff)
+
 ;; Ranger
 (global-set-key (kbd "C-x C-d") 'ranger)
 (global-set-key (kbd "C-x d") 'deer)
