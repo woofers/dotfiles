@@ -120,6 +120,7 @@
 (diminish 'auto-revert-mode)
 (diminish-minor-mode 'auto-complete 'auto-complete-mode)
 (diminish-minor-mode 'company 'company-mode)
+(diminish-minor-mode 'flyspell 'flyspell-mode)
 (diminish-minor-mode 'git-gutter 'git-gutter-mode)
 (diminish-minor-mode 'helm 'helm-mode)
 (diminish-minor-mode 'hi-lock 'hi-lock-mode)
