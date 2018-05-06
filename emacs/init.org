@@ -262,7 +262,7 @@
  #+END_SRC
 ** Git Diff
  #+BEGIN_SRC emacs-lisp
- (setq magit-diff-arguments '("--stat" "--no-ext-diff" "--ignore-space-change"))
+ (setq magit-diff-arguments '("--stat" "--no-ext-diff" "--ignore-all-space" "--ignore-space-change"))
  #+END_SRC
 * Behavior
 ** Startup
