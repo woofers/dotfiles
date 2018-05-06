@@ -88,11 +88,11 @@ While this can be intimidating it will result in a system configured better to y
 
 #+CAPTION: i3wm1
 #+NAME:    i3wm Screenshot 1
-[[./screenshots/emacs.png]]
+[[./screenshots/i3-1.png]]
 
 #+CAPTION: i3wm2
 #+NAME:    i3wm Screenshot 2
-[[./screenshots/emacs2.png]]
+[[./screenshots/i3-2.png]]
 
 *** Emacs
 
