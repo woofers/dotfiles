@@ -176,7 +176,10 @@
  (define-key evil-normal-state-map (kbd "C-j") 'move-text-down)
  (define-key evil-normal-state-map (kbd "C-k") 'move-text-up)
  #+END_SRC
-
+** Only Paste Yanked Text
+ #+BEGIN_SRC emacs-lisp
+ (define-key evil-normal-state-map "p" 'evil-paste-after-from-0)
+ #+END_SRC
 ** On Evil Maps Load
  #+BEGIN_SRC emacs-lisp
  (with-eval-after-load 'evil-maps

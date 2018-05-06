@@ -435,6 +435,7 @@
   #+BEGIN_SRC emacs-lisp
   (setq save-interprogram-paste-before-kill nil)
   #+END_SRC
+
 * Functions
 ** Backspace to Tab
  #+BEGIN_SRC emacs-lisp
@@ -536,6 +537,13 @@
    (interactive)
    (eshell ""))
  #+END_SRC
+** Only Paste Yanks
+ #+BEGIN_SRC emacs-lisp
+ (defun evil-paste-after-from-0 ()
+   (interactive)
+   (let ((evil-this-register ?0))
+     (call-interactively 'evil-paste-after)))
+ #+END_SRC
 * Aliases
 ** Git Status
  #+BEGIN_SRC emacs-lisp
@@ -594,7 +602,10 @@
  #+BEGIN_SRC emacs-lisp
  (global-set-key (kbd "C-s") 'save-buffer)
  #+END_SRC
-
+** Paste X System Text
+ #+BEGIN_SRC emacs-lisp
+ (global-set-key (kbd "<S-insert>") 'x-clipboard-yank)
+ #+END_SRC
 * Hooks
 ** Delete Trailing Whitespace on Save
  #+BEGIN_SRC emacs-lisp
