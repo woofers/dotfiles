@@ -12,4 +12,9 @@ if [[ $(hostname -s) = Jaxson-Debian ]]; then
     # Mute
     volume mute
     volume set 0%
+
+    slack
+
+    # Start Tomcat
+    sudo service tomcat8 start
 fi
