@@ -39,7 +39,7 @@ focus_follows_mouse yes
 # Start Terminal
 bindsym $mod+Return exec i3-sensible-terminal -e zsh
 
-# Nemo
+# Nautilus
 bindsym $mod+n exec nautilus
 
 # Quit Window
@@ -177,6 +177,7 @@ assign [class="Steam"] $WS5
 assign [class="Blender"] $WS5
 assign [class="Evince"] $WS6
 assign [class="Mysql-workbench-bin"] $WS6
+assign [class="Postman"] $WS6
 assign [class="Woofers 3D"] $WS6
 assign [class="Eog"] $WS6
 assign [class="(?i)libreoffice"] $WS6
