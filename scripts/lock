@@ -1,19 +1,19 @@
 #!/bin/bash
 
 function song {
-	spotify=$(spotify-cli --status)
-	if [ "$spotify" == "" ]; then
-		echo 0
-	else
-		echo 1
-	fi
+    spotify=$(spotify-cli --status)
+    if [ "$spotify" == "" ]; then
+        echo 0
+    else
+        echo 1
+    fi
 }
 
 song=$(song)
 if [ $song -eq 1 ]; then
-	spotify-cli --pause
+    #spotify-cli --pause
 fi
 i3lock-next '' '' 1
 if [ $song -eq 1 ]; then
-	spotify-cli --play
+    #spotify-cli --play
 fi
