@@ -176,12 +176,14 @@ assign [class="Nautilus"] $WS4
 assign [class="Steam"] $WS5
 assign [class="Blender"] $WS5
 assign [class="Evince"] $WS6
+assign [class="Mysql-workbench-bin"] $WS6
 assign [class="Woofers 3D"] $WS6
 assign [class="Eog"] $WS6
 assign [class="(?i)libreoffice"] $WS6
 assign [class="Xournal"] $WS6
 assign [class="kalgebra"] $WS6
 assign [class="discord"] $WS7
+assign [class="Slack"] $WS7
 assign [class="Evolution"] $WS7
 assign [class="(?i)Spotify"] $WS8
 assign [class="Auryo"] $WS8
@@ -322,4 +324,3 @@ exec --no-startup-id dbus-send \
 	org.gnome.SessionManager.RegisterClient \
 	"string:i3" \
 	"string:$DESKTOP_AUTOSTART_ID"
-
