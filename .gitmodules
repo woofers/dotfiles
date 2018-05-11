@@ -28,3 +28,6 @@
 [submodule "emacs/.emacs.d/non-elpa/challenger-deep"]
 	path = emacs/.emacs.d/non-elpa/challenger-deep
 	url = https://github.com/challenger-deep-theme/emacs
+[submodule "emacs/.emacs.d/non-elpa/origami"]
+	path = emacs/.emacs.d/non-elpa/origami
+	url = https://github.com/gregsexton/origami.el
