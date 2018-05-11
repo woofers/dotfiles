@@ -202,6 +202,8 @@
  (define-key evil-normal-state-map "d" 'evil-delete-from-0)
  (global-set-key (kbd "<S-insert>") 'evil-paste-before-from-0-move)
  (global-set-key (kbd "M-p") 'clipboard-yank)
+ (define-key eshell-mode-map (kbd "M-p") 'clipboard-yank)
+ (define-key evil-normal-state-local-map (kbd "M-p") 'clipboard-yank)
  #+END_SRC
 ** On Evil Maps Load
  #+BEGIN_SRC emacs-lisp
