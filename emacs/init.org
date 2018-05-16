@@ -164,7 +164,9 @@
  (use-package eclim
          :ensure t)
 
- (load-file "~/.emacs.d/non-elpa/speck/speck.el")
+ (add-to-list 'load-path (expand-file-name "~/.emacs.d/non-elpa/speck"))
+
+ (require 'speck)
 
  (add-to-list 'load-path (expand-file-name "~/.emacs.d/non-elpa/origami"))
 
