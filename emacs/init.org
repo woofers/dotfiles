@@ -164,9 +164,6 @@
  (use-package eclim
          :ensure t)
 
- (use-package company-emas-eclim
-         :ensure t)
-
  (load-file "~/.emacs.d/non-elpa/speck/speck.el")
 
  (add-to-list 'load-path (expand-file-name "~/.emacs.d/non-elpa/origami"))
