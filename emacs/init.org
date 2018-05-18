@@ -341,7 +341,7 @@
   #+END_SRC
 *** Highlight Lines Over Width Limit
   #+BEGIN_SRC emacs-lisp
-  (defvar max-line-width 80 "Max width of lines")
+  (defvar max-line-width 140 "Max width of lines")
   (setq whitespace-line-column max-line-width)
   (setq whitespace-style '(face lines-tail))
   (setq-default fill-column max-line-width)
