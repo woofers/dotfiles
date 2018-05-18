@@ -161,9 +161,6 @@
  (use-package esup
          :ensure t)
 
- (use-package eclim
-         :ensure t)
-
  (add-to-list 'load-path (expand-file-name "~/.emacs.d/non-elpa/speck"))
 
  (require 'speck)
