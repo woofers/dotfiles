@@ -220,8 +220,10 @@ sudo apt-get install gnome-session-flashback
 # Install i3 Gaps
 sudo apt-get install libxcb-xrm-dev
 sudo apt-get install i3
+cd ~/Downloads/
 wget https://raw.githubusercontent.com/maestrogerardo/i3-gaps-deb/master/i3-gaps-deb
 ./i3-gaps-deb
+cd ~
 
 # Install i3 Lock
 cd ~/Downloads
