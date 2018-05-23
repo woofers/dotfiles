@@ -76,6 +76,16 @@ bindsym $mod+Shift+Down		move down
 bindsym $mod+Shift+Up		move up
 bindsym $mod+Shift+Right	move right
 
+# Move Windows Across Monitors
+bindsym $mod+Shift+$left	move workspace to output left
+bindsym $mod+Shift+$down	move workspace to output down
+bindsym $mod+Shift+$up		move workspace to output up
+bindsym $mod+Shift+$right	move workspace to output right
+bindsym $mod+Shift+Left		move workspace to output left
+bindsym $mod+Shift+Down		move workspace to output down
+bindsym $mod+Shift+Up		move workspace to output up
+bindsym $mod+Shift+Right	move workspace to output righ
+
 # Fullscreen Window
 bindsym $mod+f fullscreen toggle
 
