@@ -6,6 +6,11 @@ if [[ $(hostname -s) = Jaxson-Debian ]]; then
     # Calibrate Monitor
     xgamma -rgamma 0.94 -ggamma 0.93 -bgamma 0.98
 
+    # Setup Second Display
+    xrandr --setprovideroutputsource 1 0
+    xrandr --auto --output DVI-I-1-1 --mode 2560x1080 --left-of eDP-1
+    DISPLAY=:0.0 feh --bg-scale ~/Pictures/bg.jpg
+
     # Start Compton
     compton -b --config ~/.config/compton/compton.conf
 
