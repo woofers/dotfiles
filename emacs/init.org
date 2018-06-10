@@ -96,70 +96,73 @@
  #+BEGIN_SRC emacs-lisp
 
  (use-package magit
-         :ensure t)
+     :ensure t)
 
  (use-package ranger
-         :ensure t)
+     :ensure t)
 
  (use-package company
-         :ensure t)
+     :ensure t)
 
  (use-package company-lua
-         :ensure t)
+     :ensure t)
 
  (use-package which-key
-         :ensure t)
+     :ensure t)
 
  (use-package git-gutter-fringe
-         :ensure t)
+     :ensure t)
 
  (use-package nlinum-relative
-         :ensure t)
+     :ensure t)
 
  (use-package highlight
-         :ensure t)
+     :ensure t)
 
  (use-package highlight-indent-guides
-         :ensure t)
+     :ensure t)
 
  (use-package pcomplete-extension
-         :ensure t)
+     :ensure t)
 
  (use-package eshell-git-prompt
-         :ensure t)
+     :ensure t)
 
  (use-package imenu-list
-         :ensure t)
+     :ensure t)
 
  (use-package gradle-mode
-         :ensure t)
+     :ensure t)
+
+ (use-package groovy-mode
+     :ensure t)
 
  (use-package markdown-mode
-         :ensure t)
+     :ensure t)
 
  (use-package web-mode
-         :ensure t)
+     :ensure t)
 
  (use-package json-mode
-         :ensure t)
+     :ensure t)
 
  (use-package haxe-mode
-         :ensure t)
+     :ensure t)
 
  (use-package haxe-imports
-         :ensure t)
+     :ensure t)
 
  (use-package wttrin
-         :ensure t)
+     :ensure t)
 
  (use-package ispell
-         :ensure t)
+     :ensure t)
 
  (use-package flyspell
-         :ensure t)
+     :ensure t)
 
  (use-package esup
-         :ensure t)
+     :ensure t)
 
  (add-to-list 'load-path (expand-file-name "~/.emacs.d/non-elpa/speck"))
 
