@@ -619,14 +619,14 @@
 ** Spell Check
  #+BEGIN_SRC emacs-lisp
  (defun spell()
-   "Calls speck-mode"
+   "Calls speck on Windows and
+    flyspell on GNU/Linux"
    (interactive)
    (with-system gnu/linux
      (if flyspell-mode
        (flyspell-mode -1)
        (flyspell-mode 1))
    )
-
    (with-system windows
      (if speck-mode
        (speck-mode -1)
