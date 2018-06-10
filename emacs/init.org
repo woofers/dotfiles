@@ -273,6 +273,11 @@
  #+BEGIN_SRC emacs-lisp
  (setq magit-diff-arguments '("--stat" "--no-ext-diff" "--ignore-all-space" "--ignore-space-change"))
  #+END_SRC
+** Gradlew Mode
+ #+BEGIN_SRC emacs-lisp
+  (setq gradle-gradlew-executable "./gradlew")
+  (setq gradle-use-gradlew t)
+ #+END_SRC
 * Behavior
 ** Startup
 *** Disable Splash Screen
@@ -548,6 +553,38 @@
    (interactive)
    (eshell ""))
  #+END_SRC
+** Gradle
+*** Task Execute
+  #+BEGIN_SRC emacs-lisp
+  (defun gradle-execute-subproject (project task)
+    "Executes a Gradle subproject with a given task"
+    (interactive "sSubproject: \nsTask: ")
+    (if (s-blank? project)
+      (setq arg task)
+      (setq arg (concat (concat project ":") task)))
+    (gradle-execute arg))
+  #+END_SRC
+*** Task Run
+  #+BEGIN_SRC emacs-lisp
+  (defun gradle-run-subproject (project)
+    "Runs a Gradle task"
+    (interactive "sSubproject: ")
+    (gradle-execute-subproject project "run"))
+  #+END_SRC
+*** List Tasks
+  #+BEGIN_SRC emacs-lisp
+  (defun gradle-tasks (project)
+    "List Gradle tasks"
+    (interactive "sSubproject: ")
+    (gradle-execute-subproject project "task"))
+  #+END_SRC
+*** Desktop Run
+  #+BEGIN_SRC emacs-lisp
+  (defun gradle-desktop-run ()
+    "Runs a desktop Gradle task"
+    (interactive)
+    (gradle-run-subproject "desktop"))
+  #+END_SRC
 * Aliases
 ** Git Status
  #+BEGIN_SRC emacs-lisp
