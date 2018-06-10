@@ -340,7 +340,6 @@
   (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
   (setq-default left-fringe-width nil)
   (setq-default indicate-empty-lines t)
-  (setq-default indent-tabs-mode nil)
   #+END_SRC
 *** Highlight Lines Over Width Limit
   #+BEGIN_SRC emacs-lisp
