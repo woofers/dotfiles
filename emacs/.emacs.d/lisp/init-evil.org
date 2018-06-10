@@ -263,6 +263,8 @@
   #+BEGIN_SRC emacs-lisp
   (define-key evil-insert-state-map [?\e delete] (lambda ()
         (interactive) (universal-argument) (delete-forward-char)))
+
+  (define-key evil-insert-state-map (kbd "<tab>") 'tab-to-tab-stop)
   #+END_SRC
 
 *** Navigate Splits
