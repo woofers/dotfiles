@@ -586,22 +586,23 @@
     (gradle-run-subproject "desktop"))
   #+END_SRC
 * Aliases
-** Git Status
- #+BEGIN_SRC emacs-lisp
- (defun git()
-   "Calls maggit-status"
-   (interactive)
-   (magit-status))
- #+END_SRC
-** Git Diff
- #+BEGIN_SRC emacs-lisp
-   (defun git-diff(&optional rev-or-range)
-     "Calls maggit-diff"
-     (interactive)
-     (if (equal rev-or-range nil)
-       (setq rev-or-range "master"))
-     (magit-diff rev-or-range))
- #+END_SRC
+** Git
+*** Status
+  #+BEGIN_SRC emacs-lisp
+  (defun git()
+    "Calls maggit-status"
+    (interactive)
+    (magit-status))
+  #+END_SRC
+*** Diff
+  #+BEGIN_SRC emacs-lisp
+  (defun git-diff(&optional rev-or-range)
+    "Calls maggit-diff"
+    (interactive)
+    (if (equal rev-or-range nil)
+      (setq rev-or-range "master"))
+    (magit-diff rev-or-range))
+  #+END_SRC
 ** Email
  #+BEGIN_SRC emacs-lisp
  (defun email()
