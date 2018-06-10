@@ -421,7 +421,7 @@
   (setq-default indent-tabs-mode nil)
   (setq tab-always-indent 'complete)
 
-  (when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
+  (when (fboundp 'electric-indent-mode) (electric-indent-mode 1))
   #+END_SRC
 *** Place Only One Space at the End of a Sentence
   #+BEGIN_SRC emacs-lisp
