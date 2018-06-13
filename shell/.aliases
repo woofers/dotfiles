@@ -4,7 +4,7 @@ export JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk-amd64"
 export JRE_HOME="$JAVA_HOME/jre"
 export ANDROID_HOME="$DEV/lib/AndroidSDK"
 export LD_LIBRARY_PATH="/usr/lib64"
-export CATALINA_HOME="/opt/tomcat8"
+export CATALINA_HOME="/opt/tomcat"
 
 # Linux Environment Paths
 export HOME_DRIVE="/home/jaxson"
