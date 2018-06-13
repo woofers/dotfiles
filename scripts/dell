@@ -8,8 +8,7 @@ if [[ $(hostname -s) = Jaxson-Debian ]]; then
 
     # Setup Second Display
     xrandr --setprovideroutputsource 1 0
-#    xrandr --auto --output DVI-I-1-1 --mode 1280x1024 --left-of eDP-1
-    xrandr --auto --output DVI-I-2-2 --mode 1920x1080 --left-of eDP-1
+    xrandr --auto --output DVI-I-1-1 --mode 1920x1080 --left-of eDP-1
     DISPLAY=:0.0 feh --bg-scale ~/Pictures/bg.jpg
 
     # Start Compton
