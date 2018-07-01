@@ -15,8 +15,8 @@ if [[ $(hostname -s) = Jaxson-PC ]]; then
 fi
 
 # More Paths
-export DRIVE="$HOME_DRIVE/Documents/JVD Docs/Documents/"
-export DEV="$HOME_DRIVE/Documents/Development"
+export DRIVE="$HOME/Documents/JVD Docs/Documents/"
+export DEV="$HOME/Documents/Development"
 export ANDROID_HOME="$DEV/lib/AndroidSDK"
 export SCHOOL="$DRIVE/School/UVIC/2018"
 export CSC="$DRIVE/School/UVIC/2018/CSC 230"
