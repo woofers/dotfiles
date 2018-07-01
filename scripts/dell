@@ -22,4 +22,9 @@ if [[ $(hostname -s) = Jaxson-Debian ]]; then
 
     # Start Tomcat
     sudo service tomcat start
+elif [[ $(whoami) = jaxson-work ]]; then
+    slack
+else
+    discord
+    steam
 fi
