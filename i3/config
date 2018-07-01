@@ -323,8 +323,6 @@ exec_always google-chrome
 exec_always emacs
 exec_always gnome-terminal
 exec_always nautilus
-exec_always discord
-exec_always steam -silent
 
 # i3 on Gnome
 exec --no-startup-id dbus-send \
