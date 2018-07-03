@@ -1,6 +1,6 @@
 
 # Development Paths
-export JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk-amd64"
+export JAVA_HOME="/usr/lib/jvm/jdk1.7.0_80"
 export JRE_HOME="$JAVA_HOME/jre"
 export ANDROID_HOME="$DEV/lib/AndroidSDK"
 export LD_LIBRARY_PATH="/usr/lib64"
