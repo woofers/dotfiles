@@ -135,7 +135,7 @@ sudo apt-get install puddletag
 sudo pip install soundscrape
 
 # Install Spotify cli Interface
-pip install spotify-cli-linux
+sudo pip install spotify-cli-linux
 
 # Install Emacs
 wget -q -O - http://emacs.secretsauce.net/key.gpg | sudo apt-key add -
