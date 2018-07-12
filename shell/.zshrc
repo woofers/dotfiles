@@ -92,3 +92,6 @@ fi
 eval `dircolors ~/dircolors.ansi-darkorange`
 zstyle ':completion:*:default' list-colors \
 ${(s.:.)LS_COLORS}
+
+# Enable fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

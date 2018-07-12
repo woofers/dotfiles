@@ -68,6 +68,10 @@ git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM
 # Install ag
 sudo apt-get install silversearcher-ag
 
+# Install fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
 # Remove Firefox
 sudo apt-get purge firefox-esr
 
