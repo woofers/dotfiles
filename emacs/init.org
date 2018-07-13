@@ -149,6 +149,9 @@
  (use-package haxe-mode
      :ensure t)
 
+ (use-package ledger-mode
+     :ensure t)
+
  (use-package haxe-imports
      :ensure t)
 
