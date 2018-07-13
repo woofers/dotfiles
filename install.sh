@@ -72,6 +72,9 @@ sudo apt-get install silversearcher-ag
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
+# Install ledger
+sudo apt-get install ledger
+
 # Remove Firefox
 sudo apt-get purge firefox-esr
 
