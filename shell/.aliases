@@ -5,6 +5,9 @@ export JRE_HOME="$JAVA_HOME/jre"
 export ANDROID_HOME="$DEV/lib/AndroidSDK"
 export LD_LIBRARY_PATH="/usr/lib64"
 
+# GPG Key
+export GPG_TTY=$(tty)
+
 # Tomcat Path
 export CATALINA_HOME="/opt/tomcat"
 export PATH=$PATH:$CATALINA_HOME/bin
