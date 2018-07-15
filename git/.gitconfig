@@ -1,6 +1,5 @@
-# This is Git's per-user configuration file.
+
 [user]
-# Please adapt and uncomment the following lines:
   name = Jaxson Van Doorn
   email = woofers1tt@gmail.com
   signingkey = 5D282D7F60EC5579
