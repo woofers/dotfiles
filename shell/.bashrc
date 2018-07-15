@@ -147,4 +147,5 @@ source $HOME/.aliases
 # Sets LS Colors
 eval `dircolors ~/dircolors.ansi-darkorange`
 
+# Enable fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
