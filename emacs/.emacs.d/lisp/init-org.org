@@ -30,6 +30,11 @@
  #+BEGIN_SRC emacs-lisp
  (require 'ox-confluence)
  #+END_SRC
+** Use Org Ref
+ #+BEGIN_SRC emacs-lisp
+ (use-package org-ref
+     :ensure t)
+ #+END_SRC
 * Behavior
 ** Show Agenda in Full Window
  #+BEGIN_SRC emacs-lisp
@@ -112,8 +117,10 @@
 ** Use XeLaTeX
  #+BEGIN_SRC emacs-lisp
  (setq org-latex-pdf-process
-  '("xelatex -interaction nonstopmode %f"
-     "xelatex -interaction nonstopmode %f"))
+   '("xelatex -interaction nonstopmode -output-directory %o %f"
+	 "bibtex %b"
+	 "xelatex -interaction nonstopmode -output-directory %o %f"
+	 "xelatex -interaction nonstopmode -output-directory %o %f"))
  #+END_SRC
 * Functions
 ** Mark as Done and Archive
