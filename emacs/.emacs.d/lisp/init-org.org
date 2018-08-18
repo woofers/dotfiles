@@ -53,7 +53,7 @@
 
 ** Set Org Agenda Folder
  #+BEGIN_SRC emacs-lisp
- (setq org-agenda-files '("~/Documents/JVD Docs/Documents/To Do.org"))
+ (setq org-agenda-files '("~/Documents/JVD Docs/Todo/To Do.org"))
  #+END_SRC
 
 ** Change Org Ellipsis
