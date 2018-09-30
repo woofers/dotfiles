@@ -30,6 +30,10 @@
  #+BEGIN_SRC emacs-lisp
  (require 'ox-confluence)
  #+END_SRC
+** Use Extra Org Exporters
+ #+BEGIN_SRC emacs-lisp
+ (require 'ox-extra)
+ #+END_SRC
 ** Use Org Ref
  #+BEGIN_SRC emacs-lisp
  (use-package org-ref
@@ -121,6 +125,10 @@
 	 "bibtex %b"
 	 "xelatex -interaction nonstopmode -output-directory %o %f"
 	 "xelatex -interaction nonstopmode -output-directory %o %f"))
+ #+END_SRC
+** Support Ignore Tag
+ #+BEGIN_SRC emacs-lisp
+ (ox-extras-activate '(ignore-headlines))
  #+END_SRC
 * Functions
 ** Mark as Done and Archive
