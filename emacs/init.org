@@ -660,7 +660,10 @@
  #+BEGIN_SRC emacs-lisp
  (add-hook 'prog-mode-hook 'whitespace-mode)
  #+END_SRC
-
+** Enable Flyspell for Commit Messages
+ #+BEGIN_SRC emacs-lisp
+ (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
+ #+END_SRC
 ** Spellcheck for Newly Opened File
  #+BEGIN_SRC emacs-lisp
  (add-hook 'find-file-hook 'spell)
