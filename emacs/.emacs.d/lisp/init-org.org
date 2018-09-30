@@ -34,6 +34,10 @@
  #+BEGIN_SRC emacs-lisp
  (require 'ox-extra)
  #+END_SRC
+** Use Dot Org Babel
+ #+BEGIN_SRC emacs-lisp
+ (require 'ob-dot)
+ #+END_SRC
 ** Use Org Ref
  #+BEGIN_SRC emacs-lisp
  (use-package org-ref
