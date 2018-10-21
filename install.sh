@@ -72,9 +72,6 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 # Install ledger
 sudo apt-get install ledger
 
-# Remove Firefox
-sudo apt-get purge firefox-esr
-
 # Install Chrome
 sudo apt-get install google-chrome-stable
 
