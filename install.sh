@@ -121,7 +121,6 @@ sudo apt-get install steam
 
 # Install Music Players
 sudo apt-get install spotify-client
-sudo apt-get install rhythmbox
 sudo apt-get install puddletag
 sudo pip install soundscrape
 
