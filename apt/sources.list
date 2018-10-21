@@ -1,27 +1,16 @@
 
 # Debian Stretch
-deb http://ftp.ca.debian.org/debian/ stretch main contrib non-free
-deb-src http://ftp.ca.debian.org/debian/ stretch main contrib non-free
+deb http://ftp.ca.debian.org/debian/ stretch main non-free
+deb-src http://ftp.ca.debian.org/debian/ stretch main non-free
 deb http://security.debian.org/debian-security stretch/updates main contrib non-free
 deb-src http://security.debian.org/debian-security stretch/updates main contrib non-free
 
-# Debian Stretch Updates,
+# Debian Stretch Updates
 deb http://ftp.ca.debian.org/debian/ stretch-updates main contrib non-free
 deb-src http://ftp.ca.debian.org/debian/ stretch-updates main contrib non-free
-deb http://ftp.debian.org/debian stretch-backports main
-
-# Experimental
-deb http://deb.debian.org/debian experimental main
-
-# Debian Sid
-# deb http://ftp.de.debian.org/debian sid main
 
 # Wine
-deb https://dl.winehq.org/wine-builds/debian/ stretch main
+# deb https://dl.winehq.org/wine-builds/debian/ stretch main
 
 # Chrome
 # deb http://dl.google.com/linux/chrome/deb/ stable main
-
-# Emacs
-deb [arch=amd64] http://emacs.secretsauce.net unstable main
-deb-src [arch=amd64] http://emacs.secretsauce.net unstable main

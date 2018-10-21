@@ -5,10 +5,7 @@ usermod -a -G sudo jaxson
 apt-get install sudo
 exit
 
-# Add Repositories
-sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak
-sudo ln -s "$DEV/src/Dotfiles/apt/sources.list" "/etc/apt/sources.list"
-sudo apt-get update
+apt/keys.sh
 
 # Upgrade Kernel for Working Sleep
 sudo apt-get update
@@ -79,12 +76,7 @@ sudo apt-get install ledger
 sudo apt-get purge firefox-esr
 
 # Install Chrome
-cd ~/Downloads
-wget https://dl-ssl.google.com/linux/linux_signing_key.pub
-sudo apt-key add linux_signing_key.pub
-sudo apt-get update
 sudo apt-get install google-chrome-stable
-cd ~
 
 # Install Volume Control
 sudo apt-get install pavucontrol
@@ -129,9 +121,6 @@ cd ~
 sudo apt-get install steam
 
 # Install Music Players
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
-echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-sudo apt-get update
 sudo apt-get install spotify-client
 sudo apt-get install rhythmbox
 sudo apt-get install puddletag
