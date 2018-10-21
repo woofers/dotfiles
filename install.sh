@@ -96,9 +96,10 @@ sudo apt-get install golang-go
 
 # Install Printer Drivers
 cd ~/Downloads
-wget http://download.brother.com/welcome/dlf006893/linux-brprinter-installer-2.1.1-1.gz
+wget https://download.brother.com/welcome/dlf006893/linux-brprinter-installer-2.2.1-1.gz
 gunzip -v ~/Downloads/linux-brprinter*
-sudo bash ~/Downloads/linux-brprinter*
+chmod a+x ./linux-brprinter-installer-2.2.1-1
+sudo ./linux-brprinter-installer-2.2.1-1
 rm linux-brprinter-installer-2.1.1-1
 cd ~
 
@@ -109,9 +110,10 @@ sudo apt-get install kalgebra
 # Install Discord
 sudo apt-get install libgconf-2-4 libappindicator1
 cd ~/Downloads
-wget https://dl.discordapp.net/apps/linux/0.0.4/discord-0.0.4.deb
-sudo apt-get install ./discord-0.0.4.deb
-rm -rf discord-0.0.4.deb
+DISCORD_VERSION=0.0.5
+wget https://dl.discordapp.net/apps/linux/$DISCORD_VERSION/discord-$DISCORD_VERSION.deb
+sudo apt-get install ./discord-$DISCORD_VERSION.deb
+rm -rf discord-$DISCORD_VERSION.deb
 cd ~
 
 # Install Steam
@@ -179,21 +181,18 @@ sudo apt-get install exuberant-ctags
 sudo apt-get install libevent-dev
 sudo apt-get install libncurses5-dev libncursesw5-dev
 cd ~/Downloads
-wget http://ftp.ca.debian.org/debian/pool/main/t/tmux/tmux_2.6-3_amd64.deb
-sudo apt-get install ./tmux_2.6-3_amd64.deb
-rm -rf tmux_2.6-3_amd64.deb
-cd ~
-tmux
-tmux show -g | cat > ~/.tmux.conf
-exit
+TMUX_VERSION=2.6.3
+wget http://ftp.ca.debian.org/debian/pool/main/t/tmux/tmux_$TMUX_VERSION_amd64.deb
+sudo apt-get install ./tmux_$TMUX_VERSION_amd64.deb
+rm -rf tmux_$TMUX_VERSION_amd64.deb
 
 # Install Android SDK
 cd ~/Downloads
-wget https://dl.google.com/dl/android/studio/ide-zips/3.0.1.0/android-studio-ide-171.4443003-linux.zip
-unzip android-studio-ide-171.4443003-linux.zip
+wget https://dl.google.com/dl/android/studio/ide-zips/3.2.1.0/android-studio-ide-181.5056338-linux.zip
+unzip android-studio-ide-181.5056338-linux.zip
 sudo mv android-studio /usr/local
 sudo ln -s "/usr/local/android-studio/bin/studio.sh" "/usr/bin/androidstudio"
-rm android-studio-ide-171.4443003-linux.zip
+rm android-studio-ide-181.5056338-linux.zip
 cd ~
 
 # Install libgdx-tool
