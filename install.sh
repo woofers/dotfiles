@@ -319,8 +319,6 @@ rm -rf "$HOME/.oh-my-zsh/themes"
 ln -s "$DEV/src/Dotfiles/shell/.oh-my-zsh/themes" "$HOME/.oh-my-zsh/"
 rm "$HOME/.aliases"
 ln -s "$DEV/src/Dotfiles/shell/.aliases" "$HOME/.aliases"
-rm "$HOME/.emacs.d/eshell/alias"
-ln -s "$DEV/src/Dotfiles/shell/.aliases" "$HOME/.emacs.d/eshell/alias"
 
 # Setup Git Config
 rm "$HOME/.gitconfig"
@@ -347,6 +345,8 @@ rm -rf "$HOME/init.org"
 ln -s "$DEV/src/Dotfiles/emacs/init.org" "$HOME/init.org"
 rm -rf "$HOME/.emacs"
 ln -s "$DEV/src/Dotfiles/emacs/.emacs" "$HOME/.emacs"
+rm "$HOME/.emacs.d/eshell/alias"
+ln -s "$DEV/src/Dotfiles/shell/.aliases" "$HOME/.emacs.d/eshell/alias"
 
 # Setup mu4e
 rm "$HOME/.mbsyncrc"
