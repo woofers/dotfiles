@@ -457,7 +457,10 @@
   #+BEGIN_SRC emacs-lisp
   (setq save-interprogram-paste-before-kill nil)
   #+END_SRC
-
+*** Match Braces
+  #+BEGIN_SRC emacs-lisp
+  (show-paren-mode)
+  #+END_SRC
 * Functions
 ** Backspace to Tab
  #+BEGIN_SRC emacs-lisp
