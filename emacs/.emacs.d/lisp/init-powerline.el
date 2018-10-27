@@ -129,5 +129,7 @@
 (diminish-minor-mode 'undo-tree 'undo-tree-mode)
 (diminish-minor-mode 'which-key 'which-key-mode)
 (diminish-minor-mode 'whitespace 'whitespace-mode)
+(diminish-minor-mode 'highlight-indent-guides 'highlight-indent-guides-mode)
+(diminish-minor-mode 'eldoc 'eldoc-mode)
 
 (provide 'init-powerline)
