@@ -64,10 +64,13 @@ alias del="rm"
 alias dir="l"
 
 # Shorter Directory Switching
-alias cb="cd .."
+function cd_up() {
+  cd $(printf "%0.s../" $(seq 1 $1 ));
+}
 alias cl="cd -"
 alias cr="cd /"
 alias ch="cd ~"
+alias 'cb'='cd_up'
 
 # Tmux
 alias tmux="tmux -2 -u"
