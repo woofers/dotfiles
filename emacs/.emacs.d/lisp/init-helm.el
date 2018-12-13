@@ -24,6 +24,8 @@
 (projectile-mode 1)
 (helm-projectile-on)
 
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
 ;; Keymaps
 (define-key helm-map (kbd "S-SPC") 'helm-toggle-visible-mark)
 (define-key helm-find-files-map (kbd "C-b") 'helm-find-files-up-one-level)
