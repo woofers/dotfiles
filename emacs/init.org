@@ -128,6 +128,9 @@
  (use-package eshell-git-prompt
      :ensure t)
 
+ (use-package eterm-256color
+     :ensure t)
+
  (use-package imenu-list
      :ensure t)
 
@@ -756,6 +759,10 @@
 
  (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
  (setq eshell-output-filter-functions (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
+ #+END_SRC
+** Terminal Mode 256 Colors
+ #+BEGIN_SRC emacs-lisp
+ (add-hook 'term-mode-hook #'eterm-256color-mode)
  #+END_SRC
 ** Disable Line Highlighting Eshell
  #+BEGIN_SRC emacs-lisp
