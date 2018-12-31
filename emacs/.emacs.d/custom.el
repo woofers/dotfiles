@@ -15,6 +15,10 @@
  '(package-selected-packages
    (quote
     (web-mode evil-mu4e speck flyspell-lazy wttrin gradle-mode pcomplete-extension highlight-indent-guides highlight nlinum-relative auto-complete ranger diminish powerline ox-twbs evil-magit evil eshell-git-prompt multi-term esup haxe-imports haxe-mode helm-projectile projectile ox-beamer ox-md w3m pdf-tools fireplace imenu-list highlight-escape-sequences markdown-mode git-gutter-fringe org-bullets org-plus-contrib evil-jumper which-key use-package telephone-line smart-tabs-mode powerline-evil neotree magit load-dir highlight-symbol helm evil-tabs evil-surround evil-leader evil-indent-textobject))))
+ '(xterm-color-names
+   ["#000000" "#FF5555" "#50FA7B" "#F1FA8C" "#CAA9FA" "#FF79C6" "#8BE9FD" "#BFBFBF"])
+ '(xterm-color-names-bright
+   ["#282A36" "#FF6E67" "#5AF78E" "#F4F99D" "#CAA9FA" "#FF92D0" "#9AEDFE" "#E6E6E6"])
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
