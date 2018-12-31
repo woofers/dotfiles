@@ -43,7 +43,7 @@ export GOROOT=/usr/lib/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # Allow Use of Windows Apps
-if [[ $(hostname -s) = Jaxson-PC ]] || [[ $(hostname -s) = Jaxson-Thinkpad* ]]; then
+if [[ $(hostname -s) = Jaxson-Thinkpad* ]]; then
     export PATH=$PATH:/mnt/c/Windows/System32
     alias javac="javac.exe"
     alias java="java.exe"
