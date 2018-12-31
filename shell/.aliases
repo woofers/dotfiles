@@ -12,6 +12,10 @@ export GPG_TTY=$(tty)
 export CATALINA_HOME="/opt/tomcat"
 export PATH=$PATH:$CATALINA_HOME/bin
 
+# Lua
+export LUA_HOME="$HOME/.luarocks"
+export PATH=$PATH:$LUA_HOME/bin
+
 # Linux Environment Paths
 export HOME_DRIVE="/home/jaxson"
 
