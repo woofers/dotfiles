@@ -420,9 +420,6 @@ sudo ln -s "$DEV/src/Dotfiles/x/20-intel.conf" "/usr/share/X11/xorg.conf.d/20-in
 # Install Google Drive
 go get -u github.com/odeke-em/drive/drive-gen && drive-gen drive-google
 
-# Install TMUX Plug-In Manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
 # NPM
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 nvm install node
