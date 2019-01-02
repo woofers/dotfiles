@@ -161,6 +161,9 @@ exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 # Start Dell Hook
 exec --no-startup-id dell
 
+# Set i3bar Workspace Icons Dynamically
+exec --no-startup-id ~/.config/i3/i3scripts/autoname_workspaces.py &
+
 # Restore GNOME's settings
 exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
 

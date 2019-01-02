@@ -34,3 +34,6 @@
 [submodule "tmux/.tmux/plugins/tpm"]
 	path = tmux/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "i3/i3scripts"]
+	path = i3/i3scripts
+	url = https://github.com/woofers/i3scripts
