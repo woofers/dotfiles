@@ -12,7 +12,8 @@ set $bar-height  25
 set $border-width 0
 
 # Titlebar Font
-font pango:System San Francisco Display 14
+set $font-size 14
+font pango:System San Francisco Display $font-size
 
 # Windows Key as Mod
 set $mod Mod4
@@ -94,10 +95,6 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# Change Focus
-# bindsym $mod+a focus parent
-# bindsym $mod+s focus child
-
 # Allow Pop-Ups in Fullscreen
 popup_during_fullscreen smart
 
@@ -149,7 +146,8 @@ exec --no-startup-id xset s off -dpms &
 exec --no-startup-id xset b 0 0 0 &
 
 # Set Brightness
-exec --no-startup-id light -S 42
+set $brightness 42
+exec --no-startup-id light -S $brightness
 
 # Mute Volume
 exec --no-startup-id volume mute
@@ -160,9 +158,6 @@ exec --no-startup-id updatebackground
 # Start Network
 exec --no-startup-id nm-applet &
 
-# Start Redshift
-# exec --no-startup-id redshift &
-
 # Start Notifications
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 
@@ -172,7 +167,8 @@ exec --no-startup-id dell
 # Restore GNOME's settings
 exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
 
-# Fix a bug in gnome-settings-daemon: http://feeding.cloud.geek.nz/posts/creating-a-modern-tiling-desktop-environment-using-i3/
+# Fix a bug in gnome-settings-daemon
+# http://feeding.cloud.geek.nz/posts/creating-a-modern-tiling-desktop-environment-using-i3/
 exec --no-startup-id dconf write /org/gnome/settings-daemon/plugins/cursor/active false
 
 # Force Windows Onto Specific Workspaces
@@ -211,9 +207,6 @@ bindsym $mod+Shift+v restart
 # Log Out
 bindsym $mod+semicolon exec kill -9 -1
 
-# Titlebar
-# for_window [class=".*"] title_format "<span font='System San Francisco 13'>%title</span>"
-
 # Border
 new_window pixel $border-width
 
@@ -239,20 +232,22 @@ bindsym $mod+0 gaps inner all minus 30, gaps outer all minus 10
 set $mode_resize Resize
 bindsym $mod+Shift+r mode "$mode_resize"
 mode "$mode_resize" {
-		bindsym $left	resize shrink width 10 px or 10 ppt
-		bindsym $right	resize grow width 10 px or 10 ppt
-		bindsym $down	resize grow height 10 px or 10 ppt
-		bindsym $up		resize shrink height 10 px or 10 ppt
+    set $small 10
+    bindsym $left	resize shrink width $small px or $small ppt
+    bindsym $right	resize grow width $small px or $small ppt
+    bindsym $down	resize grow height $small px or $small ppt
+    bindsym $up		resize shrink height $small px or $small ppt
 
-		bindsym Left	resize shrink width 20 px or 20 ppt
-		bindsym Down	resize grow height 20 px or 20 ppt
-		bindsym Up		resize shrink height 20 px or 20 ppt
-		bindsym Right	resize grow width 20 px or 20 ppt
+    set $large 20
+    bindsym Left	resize shrink width $large px or $large ppt
+    bindsym Down	resize grow height $large px or $large ppt
+    bindsym Up		resize shrink height $large px or $large ppt
+    bindsym Right	resize grow width $large px or $large ppt
 
-		bindsym Return mode "default"
-		bindsym Escape mode "default"
-		bindsym Control+g mode "default"
-		bindsym q mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym Control+g mode "default"
+    bindsym q mode "default"
 }
 
 set $bg-color			 #2f343f
@@ -261,27 +256,27 @@ set $text-color			 #f3f4f5
 set $inactive-text-color #676E7D
 set $urgent-bg-color	 #E53935
 set $urgent-text-color	 #313742
+set $indicator           #00FF00
+set $separator           #757575
 
 # Window Colors			Border				Background			Text				 Indicator
-client.focused			$bg-color			$bg-color			$text-color			 #00ff00
-client.unfocused		$inactive-bg-color	$inactive-bg-color	$inactive-text-color #00ff00
-client.focused_inactive $inactive-bg-color	$inactive-bg-color	$inactive-text-color #00ff00
-client.urgent			$urgent-bg-color	$urgent-bg-color	$text-color			 #00ff00
-# client.focused		  color2			  $background $text   $border			   $border
+client.focused			$bg-color			$bg-color			$text-color			 $indicator
+client.unfocused		$inactive-bg-color	$inactive-bg-color	$inactive-text-color $indicator
+client.focused_inactive $inactive-bg-color	$inactive-bg-color	$inactive-text-color $indicator
+client.urgent			$urgent-bg-color	$urgent-bg-color	$text-color			 $indicator
 
 bar {
-	# mode hide
-	font pango:System San Francisco Display 14
+	font pango:System San Francisco Display $font-size
 	status_command i3blocks -c ~/.config/i3/i3blocks.conf
 
 	colors {
 		background $bg-color
-		separator #757575
+		separator $separator
 
-		#				   Border			  Background		 Text
-		focused_workspace  $bg-color		  $bg-color			 $text-color
-		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-		urgent_workspace   $urgent-bg-color   $urgent-bg-color	 $text-color
+		# Workspace Colors   Border			    Background		     Text
+		focused_workspace    $bg-color		    $bg-color			 $text-color
+		inactive_workspace   $inactive-bg-color $inactive-bg-color   $inactive-text-color
+		urgent_workspace     $urgent-bg-color   $urgent-bg-color	 $text-color
 	}
 }
 
@@ -308,9 +303,6 @@ bindsym XF86MonBrightnessUp exec light -A $screen-increment
 bindsym Shift+XF86MonBrightnessUp exec light -A $screen-increment-large
 bindsym XF86MonBrightnessDown exec light -U $screen-increment
 bindsym Shift+XF86MonBrightnessDown exec light -U $screen-increment-large
-
-# Redshift
-# bindsym --release $mod+ctrl+r exec ~/.local/bin/red.sh
 
 # Lock Screen
 bindsym $mod+Shift+semicolon exec --no-startup-id lock
