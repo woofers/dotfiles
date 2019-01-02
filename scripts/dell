@@ -13,15 +13,7 @@ if [[ $(hostname -s) = Jaxson-Debian ]]; then
 
     # Start Compton
     compton -b --config ~/.config/compton/compton.conf
-
-    # Mute
     volume mute
-    volume set 0%
-
-    slack
-
-    # Start Tomcat
-    sudo service tomcat start
 elif [[ $(whoami) = jaxson-work ]]; then
     slack
 else
