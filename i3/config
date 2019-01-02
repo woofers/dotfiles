@@ -149,9 +149,6 @@ exec --no-startup-id xset b 0 0 0 &
 set $brightness 42
 exec --no-startup-id light -S $brightness
 
-# Mute Volume
-exec --no-startup-id volume mute
-
 # Set Desktop Background
 exec --no-startup-id updatebackground
 
