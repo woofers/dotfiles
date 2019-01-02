@@ -20,7 +20,7 @@ export PATH=$PATH:$LUA_HOME/bin
 export HOME_DRIVE="/home/jaxson"
 
 # Windows Subsystem Drive Path
-if [[ $(hostname -s) = Jaxson-PC ]]; then
+if [[ $(hostname -s) = Jaxson-Thinkpad ]]; then
     export HOME_DRIVE="/mnt/d/"
 fi
 
