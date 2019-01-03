@@ -223,6 +223,10 @@ wget https://raw.githubusercontent.com/maestrogerardo/i3-gaps-deb/master/i3-gaps
 ./i3-gaps-deb
 cd ~
 
+# Required for i3 dynamic icons script
+pip3 install i3ipc
+pip3 install fontawesome
+
 # Install i3 Lock
 cd ~/Downloads
 git clone https://github.com/PandorasFox/i3lock-color
