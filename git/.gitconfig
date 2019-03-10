@@ -14,6 +14,7 @@
   br = branch
   checkout-pr = "!f() { git fetch origin pull/$1/head:pr-$1 && git checkout pr-$1; }; f"
   cm = commit -m
+  cp = cherry-pick
   co = checkout
   dc = diff --cached
   ds = diff --staged
