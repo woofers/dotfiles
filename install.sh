@@ -336,8 +336,8 @@ rm -rf "$HOME/.tmux"
 ln -s "$DEV/src/Dotfiles/tmux/.tmux" "$HOME"
 
 # Setup Directory Colors
-rm "$HOME/dircolors.ansi-darkorange"
-ln -s "$DEV/src/Dotfiles/shell/dircolors-orange/dircolors.ansi-darkorange" "$HOME"
+rm "$HOME/dircolors.challenger-deep"
+ln -s "$DEV/src/Dotfiles/shell/dircolors-orange/dircolors.challenger-deep" "$HOME"
 
 # Setup VIM Config
 rm -rf "$HOME/.config/nvim"

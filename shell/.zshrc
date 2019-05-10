@@ -85,7 +85,7 @@ fi
 
 
 # Sets LS Colors
-eval `dircolors ~/dircolors.ansi-darkorange`
+eval `dircolors ~/dircolors.challenger-deep`
 zstyle ':completion:*:default' list-colors \
 ${(s.:.)LS_COLORS}
 
