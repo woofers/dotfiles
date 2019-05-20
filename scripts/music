@@ -7,13 +7,9 @@ function show_help {
   echo ""
   echo "options: "
   echo "  --status      show current song"
+  echo "  --i3status    show current song with color and icon"
   echo "  --playpause   toggle play status of current song"
   echo "  --help        show help"
-}
-
-function color {
-  echo ""
-  echo $1
 }
 
 function play_pause {
@@ -120,15 +116,24 @@ SPOTIFY_PLAYING=$(is_playing "spotify")
 
 ARG=$1
 
-function print_icon {
-  if [ "$RHYTHMBOX_RUNNING" == 0 ] && [ "$RHYTHMBOX_ACTIVE" == 0 ] && ([ "$SPOTIFY_PLAYING" != 0 ] || [ "$RHYTHMBOX_PLAYING" == 0 ]); then
-    echo -n $RHYTHMBOX_STATUS
-  elif [ "$SPOTIFY_RUNNING" == 0 ]; then
-    echo -n ""
-  else
-    exit 0
+function color {
+  if [ "$ARG" == "--i3status" ]; then
+    echo ""
+    echo $1
   fi
-  echo -n "         "
+}
+
+function print_icon {
+  if [ "$ARG" == "--i3status" ]; then
+    if [ "$RHYTHMBOX_RUNNING" == 0 ] && [ "$RHYTHMBOX_ACTIVE" == 0 ] && ([ "$SPOTIFY_PLAYING" != 0 ] || [ "$RHYTHMBOX_PLAYING" == 0 ]); then
+      echo -n $RHYTHMBOX_STATUS
+    elif [ "$SPOTIFY_RUNNING" == 0 ]; then
+      echo -n ""
+    else
+      exit 0
+    fi
+    echo -n "         "
+  fi
 }
 
 if [ -z "$ARG" ] || [ "$ARG" == "--help" ]; then
@@ -136,7 +141,7 @@ if [ -z "$ARG" ] || [ "$ARG" == "--help" ]; then
   exit 0
 fi
 
-if [ "$ARG" == "--status" ]; then
+if [ "$ARG" == "--status" ] || [ "$ARG" == "--i3status" ]; then
   print_icon
   if [ "$RHYTHMBOX_RUNNING" == 0 ] && [ "$RHYTHMBOX_ACTIVE" == 0 ] && ([ "$SPOTIFY_PLAYING" != 0 ] || [ "$RHYTHMBOX_PLAYING" == 0 ]); then
     echo $(playing "rhythmbox")
