@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+function color {
+  echo ""
+  echo $1
+}
+
 function play_pause {
   PLAYER=$1
   if [ "$PLAYER" == 'rhythmbox' ]; then
@@ -113,8 +118,10 @@ echo -n "         "
 if [ "$ARG" = "--status" ]; then
   if [ "$RHYTHMBOX_RUNNING" == 0 ] && [ "$RHYTHMBOX_ACTIVE" == 0 ] && ([ "$SPOTIFY_PLAYING" != 0 ] || [ "$RHYTHMBOX_PLAYING" == 0 ]); then
     echo $(playing "rhythmbox")
+    color "#feb206"
   else
     echo $(playing "spotify")
+    color "#1db954"
   fi
 elif [ "$ARG" = "--playpause" ]; then
   if [ "$RHYTHMBOX_RUNNING" == 0 ] || [ "$RHYTHMBOX_ACTIVE" == 0 ] && [ "$SPOTIFY_PLAYING" != 0 ]; then
