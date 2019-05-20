@@ -37,7 +37,7 @@ function status {
 
 function is_playing {
   STATUS=$(status $1)
-  if [ "$STATUS" == "▶" ]; then
+  if [ "$STATUS" == "" ]; then
     echo 0
   else
     echo 1
@@ -80,9 +80,9 @@ function rhythmbox_status {
     if [ "$OUT" == "$STOPED" ]; then
       echo ''
     elif [ "$OUT" == "$PLAYING" ]; then
-      echo '▶'
+      echo ''
     elif [ "$OUT" == "$PAUSED" ]; then
-      echo '▮▮'
+      echo ''
     fi
   fi
 }
@@ -93,13 +93,16 @@ function spotify_status {
   STATUS=$?
   if [ "$STATUS" != 0 ]; then
     echo ''
+  elif [ "$OUT" == "▶" ]; then
+    echo ''
   else
-    echo $OUT
+    echo ''
   fi
 }
 
 RHYTHMBOX_RUNNING=$(is_running "rhythmbox")
 RHYTHMBOX_ACTIVE=$(is_active "rhythmbox")
+RHYTHMBOX_STATUS=$(status "rhythmbox")
 RHYTHMBOX_PLAYING=$(is_playing "rhythmbox")
 SPOTIFY_RUNNING=$(is_running "spotify")
 SPOTIFY_PLAYING=$(is_playing "spotify")
@@ -107,7 +110,7 @@ SPOTIFY_PLAYING=$(is_playing "spotify")
 ARG=$1
 
 if [ "$RHYTHMBOX_RUNNING" == 0 ] && [ "$RHYTHMBOX_ACTIVE" == 0 ] && ([ "$SPOTIFY_PLAYING" != 0 ] || [ "$RHYTHMBOX_PLAYING" == 0 ]); then
-  echo -n ""
+  echo -n $RHYTHMBOX_STATUS
 elif [ "$SPOTIFY_RUNNING" == 0 ]; then
   echo -n ""
 else
