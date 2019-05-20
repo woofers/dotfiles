@@ -1,0 +1,125 @@
+#!/usr/bin/env bash
+
+function play_pause {
+  PLAYER=$1
+  if [ "$PLAYER" == 'rhythmbox' ]; then
+    rhythmbox-client --play-pause
+  else
+    spotifycli --playpause
+  fi
+}
+
+function playing {
+  PLAYER=$1
+  if [ "$PLAYER" == 'rhythmbox' ]; then
+    STATUS=$(rhythmbox-client --print-playing)
+  else
+    STATUS=$(spotifycli --status 2> /dev/null)
+  fi
+  echo $STATUS
+}
+
+
+function status {
+  PLAYER=$1
+  if [ "$PLAYER" == 'rhythmbox' ]; then
+    STATUS=$(rhythmbox_status)
+  else
+    STATUS=$(spotify_status)
+  fi
+  echo $STATUS
+}
+
+function is_playing {
+  STATUS=$(status $1)
+  if [ "$STATUS" == "▶" ]; then
+    echo 0
+  else
+    echo 1
+  fi
+}
+
+function is_running {
+  STATUS=$(status $1)
+  if [ "$STATUS" == "" ]; then
+    echo 1
+  else
+    echo 0
+  fi
+}
+
+function is_active {
+  STATUS=$(status $1)
+  if [ "$STATUS" == "" ] || [ "$STATUS" == "" ]; then
+    echo 1
+  else
+    echo 0
+  fi
+}
+
+function rhythmbox_status {
+  STOPED="(<'Stopped'>,)"
+  PLAYING="(<'Playing'>,)"
+  PAUSED="(<'Paused'>,)"
+  # From https://askubuntu.com/questions/793647/how-to-determine-from-the-command-line-whether-rhythmbox-is-playing
+  OUT=$(gdbus call \
+       --session \
+       --dest org.mpris.MediaPlayer2.rhythmbox \
+       --object-path /org/mpris/MediaPlayer2 \
+       --method org.freedesktop.DBus.Properties.Get \
+           org.mpris.MediaPlayer2.Player PlaybackStatus 2> /dev/null)
+  STATUS=$?
+  if [ "$STATUS" != 0 ]; then
+    echo ''
+  else
+    if [ "$OUT" == "$STOPED" ]; then
+      echo ''
+    elif [ "$OUT" == "$PLAYING" ]; then
+      echo '▶'
+    elif [ "$OUT" == "$PAUSED" ]; then
+      echo '▮▮'
+    fi
+  fi
+}
+
+function spotify_status {
+  CLOSED='Spotify is off '
+  OUT=$(spotifycli --playbackstatus 2> /dev/null)
+  STATUS=$?
+  if [ "$STATUS" != 0 ]; then
+    echo ''
+  else
+    echo $OUT
+  fi
+}
+
+RHYTHMBOX_RUNNING=$(is_running "rhythmbox")
+RHYTHMBOX_ACTIVE=$(is_active "rhythmbox")
+RHYTHMBOX_PLAYING=$(is_playing "rhythmbox")
+SPOTIFY_RUNNING=$(is_running "spotify")
+SPOTIFY_PLAYING=$(is_playing "spotify")
+
+ARG=$1
+
+if [ "$RHYTHMBOX_RUNNING" == 0 ] && [ "$RHYTHMBOX_ACTIVE" == 0 ] && ([ "$SPOTIFY_PLAYING" != 0 ] || [ "$RHYTHMBOX_PLAYING" == 0 ]); then
+  echo -n ""
+elif [ "$SPOTIFY_RUNNING" == 0 ]; then
+  echo -n ""
+else
+  exit 0
+fi
+echo -n "         "
+
+if [ "$ARG" = "--status" ]; then
+  if [ "$RHYTHMBOX_RUNNING" == 0 ] && [ "$RHYTHMBOX_ACTIVE" == 0 ] && ([ "$SPOTIFY_PLAYING" != 0 ] || [ "$RHYTHMBOX_PLAYING" == 0 ]); then
+    echo $(playing "rhythmbox")
+  else
+    echo $(playing "spotify")
+  fi
+elif [ "$ARG" = "--playpause" ]; then
+  if [ "$RHYTHMBOX_RUNNING" == 0 ] || [ "$RHYTHMBOX_ACTIVE" == 0 ] && [ "$SPOTIFY_PLAYING" != 0 ]; then
+    play_pause "rhythmbox"
+  else
+    play_pause "spotify"
+  fi
+fi

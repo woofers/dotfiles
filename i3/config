@@ -288,7 +288,7 @@ bindsym --release $mod+u exec --no-startup-id "rotate portrait"
 bindsym --release $mod+m exec --no-startup-id "rotate landscape"
 
 # Spotify
-bindsym --release $mod+space exec --no-startup-id "spotifycli --playpause >> /dev/null"
+bindsym --release $mod+space exec --no-startup-id "music --playpause"
 
 # Volume Keys
 set $volume-increment 10%
