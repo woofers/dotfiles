@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+STATUS=$(emacsclient -e '(org-clock-status)' 2> /dev/null)
+
+if [ "$?" == 0 ]; then
+  VALUE=$(echo $STATUS | awk -v FS="(\"|\")" '{print $2}')
+  echo "${VALUE:1:${#VALUE}}"
+fi
