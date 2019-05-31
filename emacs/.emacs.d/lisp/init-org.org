@@ -143,7 +143,20 @@
      (org-todo 'done)
      (org-archive-subtree))
  #+END_SRC
+** Org Clock Status
+#+BEGIN_SRC emacs-lisp
+(defun org-clock-is-running ()
+  (let ((drawer (org-clock-into-drawer))
+    (clock (cons org-clock-marker org-clock-start-time)))
+    (marker-buffer (car clock)))
+)
 
+(defun org-clock-status ()
+  (if (org-clock-is-running)
+    (org-clock-get-clock-string)
+    (error "No clock running"))
+)
+#+END_SRC
 * Mappings
 ** Org Link
  #+BEGIN_SRC emacs-lisp
