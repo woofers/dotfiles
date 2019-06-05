@@ -21,11 +21,6 @@
  (setq package-enable-at-startup nil)
  #+END_SRC
 
-** Initialize Packages
- #+BEGIN_SRC emacs-lisp
- (package-initialize)
- #+END_SRC
-
 ** Install Packages on Initial Install
  #+BEGIN_SRC emacs-lisp
  (unless (package-installed-p 'use-package)
