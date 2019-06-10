@@ -12,7 +12,7 @@
  '(org-agenda-files (quote ("~/Documents/JVD Docs/To-Do/To Do.org")))
  '(package-selected-packages
    (quote
-    (web-mode evil-mu4e speck flyspell-lazy wttrin gradle-mode pcomplete-extension highlight-indent-guides highlight nlinum-relative auto-complete ranger diminish powerline ox-twbs evil-magit evil eshell-git-prompt multi-term esup haxe-imports haxe-mode helm-projectile projectile ox-beamer ox-md w3m pdf-tools fireplace imenu-list highlight-escape-sequences markdown-mode git-gutter-fringe org-bullets org-plus-contrib evil-jumper which-key use-package telephone-line smart-tabs-mode powerline-evil neotree magit load-dir highlight-symbol helm evil-tabs evil-surround evil-leader evil-indent-textobject))))
+    (json-mode moonscript groovy-mode eterm-256color company-lua company org-ref evil-ledger web-mode evil-mu4e speck flyspell-lazy wttrin gradle-mode pcomplete-extension highlight-indent-guides highlight nlinum-relative auto-complete ranger diminish powerline ox-twbs evil-magit evil eshell-git-prompt multi-term esup haxe-imports haxe-mode helm-projectile projectile ox-beamer ox-md w3m pdf-tools fireplace imenu-list highlight-escape-sequences markdown-mode git-gutter-fringe org-bullets org-plus-contrib evil-jumper which-key use-package telephone-line smart-tabs-mode powerline-evil neotree magit load-dir highlight-symbol helm evil-tabs evil-surround evil-leader evil-indent-textobject))))
  '(xterm-color-names
    ["#000000" "#FF5555" "#50FA7B" "#F1FA8C" "#CAA9FA" "#FF79C6" "#8BE9FD" "#BFBFBF"])
  '(xterm-color-names-bright
