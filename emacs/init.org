@@ -21,11 +21,6 @@
  (setq package-enable-at-startup nil)
  #+END_SRC
 
-** Initialize Packages
- #+BEGIN_SRC emacs-lisp
- (package-initialize)
- #+END_SRC
-
 ** Install Packages on Initial Install
  #+BEGIN_SRC emacs-lisp
  (unless (package-installed-p 'use-package)
@@ -685,17 +680,6 @@
  )))
  #+END_SRC
 
-** Enable JSX for Web-Mode
- #+BEGIN_SRC emacs-lisp
- (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
- #+END_SRC
-** Enable Web-Mode
- #+BEGIN_SRC emacs-lisp
- (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
- (add-to-list 'auto-mode-alist '("\\.[s]css?\\'" . web-mode))
- (add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))
- #+END_SRC
-
 ** Show Git Changes in Gutter
  #+BEGIN_SRC emacs-lisp
  (add-hook 'find-file-hook 'git-gutter-mode)
@@ -730,20 +714,11 @@
  #+END_SRC
 ** Eshell Colors
  #+BEGIN_SRC emacs-lisp
- (progn (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter)
-        (setq comint-output-filter-functions (remove 'ansi-color-process-output comint-output-filter-functions)))
-
- (progn (remove-hook 'comint-preoutput-filter-functions 'xterm-color-filter)
-        (add-to-list 'comint-output-filter-functions 'ansi-color-process-output))
-
  (require 'eshell)
 
  (add-hook 'eshell-mode-hook
            (lambda ()
              (setq xterm-color-preserve-properties t)))
-
- (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
- (setq eshell-output-filter-functions (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
  #+END_SRC
 ** Terminal Mode 256 Colors
  #+BEGIN_SRC emacs-lisp
