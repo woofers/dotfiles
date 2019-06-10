@@ -262,21 +262,6 @@
 ** Spellcheck
  #+BEGIN_SRC emacs-lisp
  (setq ispell-program-name "/usr/bin/ispell")
-
- (setq speck-engine 'Hunspell
-	 speck-hunspell-program (executable-find "hunspell")
-	 speck-hunspell-library-directory
-	 (if (eq system-type 'windows-nt)
-		 ""
-		 (expand-file-name "share/hunspell/"
-						 (file-name-directory
-							 (directory-file-name
-							 (file-name-directory speck-hunspell-program)))))
-	 speck-hunspell-default-dictionary-name "en"
-	 speck-hunspell-dictionary-alist '(("en" . "en_US"))
-	 speck-hunspell-language-options '(("en" utf-8 nil nil))
-	 speck-hunspell-coding-system 'utf-8)
- (speck-mode 1)
  #+END_SRC
 ** Git Diff
  #+BEGIN_SRC emacs-lisp
