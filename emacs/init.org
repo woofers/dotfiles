@@ -138,6 +138,9 @@
  (use-package markdown-mode
      :ensure t)
 
+ (use-package typescript-mode
+     :ensure t)
+
  (use-package moonscript
      :ensure t)
 
@@ -701,6 +704,14 @@
  (add-hook 'find-file-hook 'pico-hook)
  #+END_SRC
 
+*** Typescript Mode
+ #+BEGIN_SRC emacs-lisp
+ (defun typescript-hook ()
+   (when (string= (file-name-extension buffer-file-name) "ts")
+     (typescript-mode))
+ )
+ (add-hook 'find-file-hook 'typescript-hook)
+ #+END_SRC
 ** Eshell Completion
  #+BEGIN_SRC emacs-lisp
  (add-hook 'eshell-mode-hook
