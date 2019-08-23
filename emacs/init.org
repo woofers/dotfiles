@@ -141,6 +141,9 @@
  (use-package typescript-mode
      :ensure t)
 
+ (use-package yaml-mode
+     :ensure t)
+
  (use-package moonscript
      :ensure t)
 
@@ -711,6 +714,10 @@
      (typescript-mode))
  )
  (add-hook 'find-file-hook 'typescript-hook)
+ #+END_SRC
+*** YAML Mode
+ #+BEGIN_SRC emacs-lisp
+ (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
  #+END_SRC
 ** Eshell Completion
  #+BEGIN_SRC emacs-lisp
