@@ -1,8 +1,8 @@
 
-#+TITLE:	Emacs Configuration
-#+AUTHOR:	Jaxson Van Doorn
-#+EMAIL:	jaxson.vandoorn@gmail.com
-#+OPTIONS:	num:nil
+#+TITLE:    Emacs Configuration
+#+AUTHOR:   Jaxson Van Doorn
+#+EMAIL:    jaxson.vandoorn@gmail.com
+#+OPTIONS:  num:nil
 
 * Plug-Ins
 ** Load Package.el and MELPA Repository
@@ -60,7 +60,7 @@
 ** Allow File Loading
  #+BEGIN_SRC emacs-lisp
  (use-package load-dir
-	 :ensure t)
+     :ensure t)
  #+END_SRC
 
 ** Load Evil Packages
@@ -196,9 +196,9 @@
 ** Personal Info
  #+BEGIN_SRC emacs-lisp
  (setq user-full-name "Jaxson Van Doorn"
-	   calendar-latitude 48.6
-	   calendar-longitude -123.4
-	   calendar-location-name "Victoria, BC")
+       calendar-latitude 48.6
+       calendar-longitude -123.4
+       calendar-location-name "Victoria, BC")
  #+END_SRC
 
 ** Load Theme
@@ -275,8 +275,8 @@
 *** Disable Splash Screen
   #+BEGIN_SRC emacs-lisp
   (setq inhibit-splash-screen t
-	  inhibit-startup-message t
-	  inhibit-startup-echo-area-message t)
+      inhibit-startup-message t
+      inhibit-startup-echo-area-message t)
   #+END_SRC
 
 *** Open Blank Scratch
@@ -301,13 +301,13 @@
 *** Hide Scroll Bar
   #+BEGIN_SRC emacs-lisp
   (when (boundp 'scroll-bar-mode)
-	  (scroll-bar-mode -1))
+      (scroll-bar-mode -1))
   #+END_SRC
 *** Better Scrolling
   #+BEGIN_SRC emacs-lisp
   (setq scroll-margin 0
-		scroll-conservatively 100000
-		scroll-preserve-screen-position 1)
+        scroll-conservatively 100000
+        scroll-preserve-screen-position 1)
   #+END_SRC
 *** Powerline Info
   #+BEGIN_SRC emacs-lisp
@@ -326,7 +326,7 @@
 *** Disables Visual and Audio "Bell"
   #+BEGIN_SRC emacs-lisp
   (setq visible-bell nil
-		ring-bell-function 'ignore)
+        ring-bell-function 'ignore)
   #+END_SRC
 *** Orange Carret
   #+BEGIN_SRC emacs-lisp
@@ -392,22 +392,22 @@
    #+BEGIN_SRC emacs-lisp
    (defvar backup-directory (concat user-emacs-directory "backups"))
    (if (not (file-exists-p backup-directory))
-	   (make-directory backup-directory t))
+       (make-directory backup-directory t))
    (setq backup-directory-alist `(("." . ,backup-directory)))
    #+END_SRC
 **** Auto-Save Frequency and Other Settings
    #+BEGIN_SRC emacs-lisp
-   (setq make-backup-files t			   ; Backup on Save
-		 backup-by-copying t			   ; Do not Clutter Symlinks
-		 version-control t				   ; Add Version Number
-		 delete-old-versions t			   ; Delete Old Backup File
-		 delete-by-moving-to-trash t	   ; Permanat Delete
-		 kept-old-versions 3			   ; Oldest Versions
-		 kept-new-versions 3			   ; Newest Versions
-		 auto-save-default t			   ; Auto-Save on Buffer Switch
-		 auto-save-timeout 60			   ; Number of Second Between Auto-Saves
-		 auto-save-interval 200			   ; Number of Characters
-										   ; Typed Between Auto-Save
+   (setq make-backup-files t               ; Backup on Save
+         backup-by-copying t               ; Do not Clutter Symlinks
+         version-control t                 ; Add Version Number
+         delete-old-versions t             ; Delete Old Backup File
+         delete-by-moving-to-trash t       ; Permanat Delete
+         kept-old-versions 3               ; Oldest Versions
+         kept-new-versions 3               ; Newest Versions
+         auto-save-default t               ; Auto-Save on Buffer Switch
+         auto-save-timeout 60              ; Number of Second Between Auto-Saves
+         auto-save-interval 200            ; Number of Characters
+                                           ; Typed Between Auto-Save
    )
    #+END_SRC
 *** Indentation
@@ -454,32 +454,32 @@
    "Delete whitespace backwards to the next tab-stop, otherwise delete one character."
    (interactive)
    (if (or indent-tabs-mode
-		   (region-active-p)
-		   (save-excursion
-			 (> (point) (progn (back-to-indentation)
-							   (point)))))
-	   (call-interactively 'backward-delete-char-untabify)
-	 (let ((movement (% (current-column) tab-spaces))
-		   (p (point)))
-	   (when (= movement 0) (setq movement tab-spaces))
-	   ;; Account for edge case near beginning of buffer
-	   (setq movement (min (- p 1) movement))
-	   (save-match-data
-		 (if (string-match "[^\t ]*\\([\t ]+\\)$" (buffer-substring-no-properties (- p movement) p))
-			 (backward-delete-char (- (match-end 1) (match-beginning 1)))
-		   (call-interactively 'backward-delete-char))))))
+           (region-active-p)
+           (save-excursion
+             (> (point) (progn (back-to-indentation)
+                               (point)))))
+       (call-interactively 'backward-delete-char-untabify)
+     (let ((movement (% (current-column) tab-spaces))
+           (p (point)))
+       (when (= movement 0) (setq movement tab-spaces))
+       ;; Account for edge case near beginning of buffer
+       (setq movement (min (- p 1) movement))
+       (save-match-data
+         (if (string-match "[^\t ]*\\([\t ]+\\)$" (buffer-substring-no-properties (- p movement) p))
+             (backward-delete-char (- (match-end 1) (match-beginning 1)))
+           (call-interactively 'backward-delete-char))))))
  #+END_SRC
 
 ** Untabify Whole Buffer
  #+BEGIN_SRC emacs-lisp
  (defvar untabify-this-buffer)
   (defun untabify-all()
-	"Untabify the current buffer, unless `untabify-this-buffer' is nil."
-	(and untabify-this-buffer (untabify (point-min) (point-max))))
+    "Untabify the current buffer, unless `untabify-this-buffer' is nil."
+    (and untabify-this-buffer (untabify (point-min) (point-max))))
   (define-minor-mode untabify-mode
-	"Untabify buffer on save." nil " untab" nil
-	(make-variable-buffer-local 'untabify-this-buffer)
-	(setq untabify-this-buffer (not (derived-mode-p 'makefile-mode)))
+    "Untabify buffer on save." nil " untab" nil
+    (make-variable-buffer-local 'untabify-this-buffer)
+    (setq untabify-this-buffer (not (derived-mode-p 'makefile-mode)))
  (add-hook 'before-save-hook #'untabify-all))
  (add-hook 'prog-mode-hook 'untabify-mode)
  (add-hook 'haxe-mode-hook 'untabify-mode)
@@ -491,31 +491,31 @@
    "A textual flyspell popup menu."
    (require 'popup)
    (let* ((corrects (if flyspell-sort-corrections
-						(sort (car (cdr (cdr poss))) 'string<)
-					  (car (cdr (cdr poss)))))
-		  (cor-menu (if (consp corrects)
-						(mapcar (lambda (correct)
-								  (list correct correct))
-								corrects)
-					  '()))
-		  (affix (car (cdr (cdr (cdr poss)))))
-		  show-affix-info
-		  (base-menu  (let ((save (if (and (consp affix) show-affix-info)
-									  (list
-									   (list (concat "Save affix: " (car affix))
-											 'save)
-									   '("Accept (session)" session)
-									   '("Accept (buffer)" buffer))
-									'(("Save word" save)
-									  ("Accept (session)" session)
-									  ("Accept (buffer)" buffer)))))
-						(if (consp cor-menu)
-							(append cor-menu (cons "" save))
-						  save)))
-		  (menu (mapcar
-				 (lambda (arg) (if (consp arg) (car arg) arg))
-				 base-menu)))
-	 (cadr (assoc (popup-menu* menu :scroll-bar t) base-menu))))
+                        (sort (car (cdr (cdr poss))) 'string<)
+                      (car (cdr (cdr poss)))))
+          (cor-menu (if (consp corrects)
+                        (mapcar (lambda (correct)
+                                  (list correct correct))
+                                corrects)
+                      '()))
+          (affix (car (cdr (cdr (cdr poss)))))
+          show-affix-info
+          (base-menu  (let ((save (if (and (consp affix) show-affix-info)
+                                      (list
+                                       (list (concat "Save affix: " (car affix))
+                                             'save)
+                                       '("Accept (session)" session)
+                                       '("Accept (buffer)" buffer))
+                                    '(("Save word" save)
+                                      ("Accept (session)" session)
+                                      ("Accept (buffer)" buffer)))))
+                        (if (consp cor-menu)
+                            (append cor-menu (cons "" save))
+                          save)))
+          (menu (mapcar
+                 (lambda (arg) (if (consp arg) (car arg) arg))
+                 base-menu)))
+     (cadr (assoc (popup-menu* menu :scroll-bar t) base-menu))))
  #+END_SRC
 
 ** Maximize Window
@@ -526,7 +526,7 @@
    ;; Send a `WM_SYSCOMMAND' message to the active frame with the
    ;; `SC_MAXIMIZE' parameter.
    (when (eq system-type 'windows-nt)
-	 (w32-send-sys-command 61488)))
+     (w32-send-sys-command 61488)))
  #+END_SRC
 ** Edit as Root
  #+BEGIN_SRC emacs-lisp
@@ -679,7 +679,7 @@
 ** Highlight Escape Characters in Programing Modes
  #+BEGIN_SRC emacs-lisp
  (add-hook 'prog-mode-hook '(lambda ()
-	 (highlight-regexp "%[[:alpha:]]\\|\\\\[[:alpha:]]" font-lock-keyword-face
+     (highlight-regexp "%[[:alpha:]]\\|\\\\[[:alpha:]]" font-lock-keyword-face
  )))
  #+END_SRC
 
@@ -693,7 +693,7 @@
  #+BEGIN_SRC emacs-lisp
  (defun asm-hook ()
    (when (string= (file-name-extension buffer-file-name) "pep")
-	 (asm-mode))
+     (asm-mode))
  )
  (add-hook 'find-file-hook 'asm-hook)
  #+END_SRC
@@ -702,11 +702,10 @@
  #+BEGIN_SRC emacs-lisp
  (defun pico-hook ()
    (when (string= (file-name-extension buffer-file-name) "p8")
-	 (lua-mode))
+     (lua-mode))
  )
  (add-hook 'find-file-hook 'pico-hook)
  #+END_SRC
-
 *** Typescript Mode
  #+BEGIN_SRC emacs-lisp
  (defun typescript-hook ()
@@ -722,10 +721,10 @@
 ** Eshell Completion
  #+BEGIN_SRC emacs-lisp
  (add-hook 'eshell-mode-hook
-	 (lambda ()
-		 (eshell-cmpl-initialize)
-		 (define-key eshell-mode-map [remap eshell-pcomplete] 'helm-esh-pcomplete)
-		 (define-key eshell-mode-map (kbd "M-h") 'helm-eshell-history)))
+     (lambda ()
+         (eshell-cmpl-initialize)
+         (define-key eshell-mode-map [remap eshell-pcomplete] 'helm-esh-pcomplete)
+         (define-key eshell-mode-map (kbd "M-h") 'helm-eshell-history)))
  #+END_SRC
 ** Eshell Colors
  #+BEGIN_SRC emacs-lisp
