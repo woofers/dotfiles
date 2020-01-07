@@ -159,6 +159,9 @@
  (use-package ledger-mode
      :ensure t)
 
+ (use-package sml-mode
+     :ensure t)
+
  (use-package haxe-imports
      :ensure t)
 
