@@ -29,8 +29,7 @@ fi
 export DRIVE="$HOME/Documents/JVD Docs/Documents/"
 export DEV="$HOME/Documents/Development"
 export ANDROID_HOME="$DEV/lib/AndroidSDK"
-export SCHOOL="$DRIVE/School/UVIC/2019/Fall"
-export CSC="$DRIVE/School/UVIC/2020/CSC 226"
+export SCHOOL="$DRIVE/School/UVIC/2020/Spring"
 
 # Even Shorter Home Folders Switching
 export DOCUMENTS="$HOME/Documents"
