@@ -720,6 +720,8 @@
  (defun typescript-hook ()
    (when (string= (file-name-extension buffer-file-name) "ts")
      (typescript-mode))
+   (when (string= (file-name-extension buffer-file-name) "tsx")
+     (typescript-mode))
  )
  (add-hook 'find-file-hook 'typescript-hook)
  #+END_SRC
