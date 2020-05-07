@@ -219,6 +219,7 @@ for_window [class="^nexus*"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
+for_window [class="pico8"] floating disable
 
 # Gaps
 gaps inner 60
