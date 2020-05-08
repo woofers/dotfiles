@@ -241,10 +241,21 @@ sudo apt-get install i3lock
 sudo apt-get install i3blocks
 sudo apt-get install rofi
 sudo apt-get install feh
-sudo apt-get install compton
 sudo apt-get install dunst
 sudo apt-get install libnotify-bin
 sudo apt-get install scrot
+
+# Picom
+sudo apt-get isntall ibxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-xinerama0-dev libxcb-glx0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev  libpcre2-dev  libevdev-dev uthash-dev libev-dev libx11-xcb-dev libev-libevent-dev libev4
+cd ~/Downloads
+git clone https://github.com/yshui/picom
+cd picom
+git submodule update --init --recursive
+meson --buildtype=release . build
+ninja -C build
+sudo ninja -C build install
+cd ..
+rm -rf picom
 
 # i3 Lock
 sudo apt-get install libimlib2-dev
@@ -363,8 +374,8 @@ sudo rm /usr/share/i3blocks/volume
 sudo ln -s "$DEV/src/Dotfiles/i3/scripts/i3blocks/volume" "/usr/share/i3blocks/volume"
 
 # Setup Compton
-rm -rf "$HOME/.config/compton"
-ln -s "$DEV/src/Dotfiles/compton" "$HOME/.config/compton"
+rm -rf "$HOME/.config/picom"
+ln -s "$DEV/src/Dotfiles/picom" "$HOME/.config/picom"
 
 # Setup Rofi
 rm -rf "$HOME/.config/rofi"
