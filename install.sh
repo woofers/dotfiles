@@ -177,11 +177,7 @@ sudo apt-get install exuberant-ctags
 # Install TMUX
 sudo apt-get install libevent-dev
 sudo apt-get install libncurses5-dev libncursesw5-dev
-cd ~/Downloads
-TMUX_VERSION=2.6.3
-wget http://ftp.ca.debian.org/debian/pool/main/t/tmux/tmux_$TMUX_VERSION_amd64.deb
-sudo apt-get install ./tmux_$TMUX_VERSION_amd64.deb
-rm -rf tmux_$TMUX_VERSION_amd64.deb
+sudo apt-get install tmux
 
 # Install Android SDK
 cd ~/Downloads
