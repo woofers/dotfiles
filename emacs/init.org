@@ -195,9 +195,6 @@
 ** Load GNU Packages
  #+BEGIN_SRC emacs-lisp
  (with-system gnu/linux
-     (use-package w3m
-         :ensure t)
-
      (load-file "~/.emacs.d/non-elpa/tag/tag.el")
  )
  #+END_SRC
