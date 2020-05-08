@@ -1,0 +1,7 @@
+emacs/.emacs.d/eshell/alias
+emacs/.emacs.d/projectile-bookmarks.eld
+emacs/.emacs.d/transient/
+tmux/.tmux/plugins/tmux-airline-wracula/
+tmux/.tmux/plugins/tmux-sensible/
+tmux/.tmux/plugins/tmux-yank/
+vim/nvim/plugins/
