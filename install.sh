@@ -107,7 +107,7 @@ sudo apt-get install kalgebra
 # Install Discord
 sudo apt-get install libgconf-2-4 libappindicator1
 cd ~/Downloads
-DISCORD_VERSION=0.0.5
+DISCORD_VERSION=0.0.10
 wget https://dl.discordapp.net/apps/linux/$DISCORD_VERSION/discord-$DISCORD_VERSION.deb
 sudo apt-get install ./discord-$DISCORD_VERSION.deb
 rm -rf discord-$DISCORD_VERSION.deb
