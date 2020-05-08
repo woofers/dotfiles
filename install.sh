@@ -49,9 +49,6 @@ sudo apt-get install git
 sudo apt-get install nfs-common
 sudo apt-get install cifs-utils
 
-# Install Bash Powerline
-sudo pip install powerline-shell
-
 # Install ZSH and Oh My ZSH
 sudo apt-get install zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
