@@ -41,4 +41,4 @@
 [credential]
 	helper = cache --timeout=360000
 [commit]
-	gpgsign = true
+	gpgsign = false
