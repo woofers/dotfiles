@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+STATUS=$(emacsclient -e " (with-current-buffer (window-buffer (selected-window)) (symbol-value 'evil-mode-line-tag))" 2> /dev/null)
+
+if [ "$?" == 0 ] && [ "$STATUS" != "nil" ]; then
+  VALUE=$(echo $STATUS | awk -v FS="(\"|\")" '{print $2}')
+  STATE="${VALUE:1:${#VALUE}}"
+  if [ $STATE == "<N>" ]; then
+    echo "normal"
+  elif [ $STATE == "<I>" ]; then
+    echo "insert"
+  elif [ $STATE == "<V>" ]; then
+    echo "visual"
+  elif [ $STATE == "<Vl>" ]; then
+    echo "visual-line"
+  elif [ $STATE == "<Vb>" ]; then
+    echo "visual-block"
+  elif [ $STATE == "<O>" ]; then
+    echo "operator"
+  else
+    echo "none"
+  fi
+else
+  echo "none"
+fi
