@@ -33,6 +33,7 @@
 
 ;; Helm on Meta X
 (global-set-key (kbd "M-x") #'helm-M-x)
+(global-set-key (kbd "<menu>") #'helm-M-x)
 
 ;; Helm Find Files
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
