@@ -394,6 +394,10 @@
   (setq vc-follow-symlinks t)
   #+END_SRC
 *** Better Auto-Save and Auto-Backup
+**** Remove Lockfiles
+   #+BEGIN_SRC emacs-lisp
+   (setq create-lockfiles nil)
+   #+END_SRC
 **** Move Backup Directory
    #+BEGIN_SRC emacs-lisp
    (defvar backup-directory (concat user-emacs-directory "backups"))
