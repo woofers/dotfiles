@@ -171,6 +171,9 @@ cd ~
 # Install Neovim
 sudo apt-get install neovim
 
+# Control numlock
+sudo apt-get install numlockx
+
 # Install Ctags
 sudo apt-get install exuberant-ctags
 

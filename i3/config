@@ -139,8 +139,11 @@ bindsym $mod+Tab workspace prev
 bindsym Control+$alt+Tab workspace prev
 bindsym Control+$mod+Tab workspace next
 
-# Remove Screen Saver
+# Eanble numlock
 exec --no-startup-id xset s off -dpms &
+
+# Remove Screen Saver
+exec --no-startup-id numlockx on
 
 # Remove Bell
 exec --no-startup-id xset b 0 0 0 &
