@@ -12,7 +12,12 @@ export GPG_TTY=$(tty)
 export CATALINA_HOME="/opt/tomcat"
 export PATH=$PATH:$CATALINA_HOME/bin
 
+# Gradle
+export PATH=$PATH:/opt/gradle/gradle-6.6.1/bin
+
+# Texlive
 export PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH
+
 # Lua
 export LUA_HOME="$HOME/.luarocks"
 export PATH=$PATH:$LUA_HOME/bin
