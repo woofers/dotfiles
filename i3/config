@@ -298,8 +298,6 @@ bindsym Shift+XF86MonBrightnessDown exec light -U $screen-increment-large
 # Lock Screen
 bindsym $mod+Shift+semicolon exec --no-startup-id lock
 
-# Screenshot
-bindsym --release F12 exec --no-startup-id screenshot
 
 # Standard Programs
 exec_always google-chrome
