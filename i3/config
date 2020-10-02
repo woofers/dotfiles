@@ -16,7 +16,7 @@ set $font-size 14
 font pango:System San Francisco Display $font-size
 
 # Windows Key as Mod
-set $mod Mod4
+set $mod Mod1
 
 # Alt Key as Meta
 set $alt Mod1
