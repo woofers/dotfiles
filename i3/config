@@ -56,10 +56,6 @@ bindsym $mod+b exec --no-startup-id rofi -show window -font "System San Francisc
 bindsym $mod+slash exec --no-startup-id "echo '' | rofi -dmenu -p 'Search:' -font 'System San Francisco 14' | xargs -I{} xdg-open https://www.google.de/search?q={}"
 
 # Change Focus
-bindsym $mod+$left	focus left
-bindsym $mod+$down	focus down
-bindsym $mod+$up	focus up
-bindsym $mod+$right focus right
 bindsym $mod+Left	focus left
 bindsym $mod+Down	focus down
 bindsym $mod+Up		focus up
