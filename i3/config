@@ -50,7 +50,7 @@ bindsym $mod+shift+q focus parent,kill
 bindsym $mod+shift+F4 focus parent,kill
 
 # Start Rofi
-bindsym $mod+x exec --no-startup-id rofi -show combi  -font "System San Francisco 14"
+bindsym $mod+w exec --no-startup-id rofi -show combi  -font "System San Francisco 14"
 bindsym $mod+r exec --no-startup-id rofi -show run	  -font "System San Francisco 14"
 bindsym $mod+b exec --no-startup-id rofi -show window -font "System San Francisco 14"
 bindsym $mod+slash exec --no-startup-id "echo '' | rofi -dmenu -p 'Search:' -font 'System San Francisco 14' | xargs -I{} xdg-open https://www.google.de/search?q={}"
@@ -80,7 +80,6 @@ bindsym $mod+f fullscreen toggle
 
 # Change Container Layout
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # Allow Pop-Ups in Fullscreen
