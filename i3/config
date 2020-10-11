@@ -15,21 +15,14 @@ set $border-width 0
 set $font-size 14
 font pango:System San Francisco Display $font-size
 
-# Windows Key as Mod
+# Alt Key as Mod
 set $mod Mod1
-
-# Alt Key as Meta
-set $alt Mod1
 
 # VIM Movement
 set $left	h
 set $down	j
 set $up		k
 set $right	l
-
-# Change Split Type
-bindsym $mod+bar split h
-bindsym $mod+minus split v
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -50,7 +43,7 @@ bindsym $mod+shift+q focus parent,kill
 bindsym $mod+shift+F4 focus parent,kill
 
 # Start Rofi
-bindsym $mod+w exec --no-startup-id rofi -show combi  -font "System San Francisco 14"
+bindsym $mod+d exec --no-startup-id rofi -show combi  -font "System San Francisco 14"
 bindsym $mod+r exec --no-startup-id rofi -show run	  -font "System San Francisco 14"
 bindsym $mod+b exec --no-startup-id rofi -show window -font "System San Francisco 14"
 bindsym $mod+slash exec --no-startup-id "echo '' | rofi -dmenu -p 'Search:' -font 'System San Francisco 14' | xargs -I{} xdg-open https://www.google.de/search?q={}"
@@ -103,7 +96,7 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 
 # Fake Show Desktop
-bindsym $mod+d workspace number 9
+bindsym $mod+c workspace number 9
 
 # Move Current Window to Workspace
 bindsym $mod+Shift+1 move container to workspace number 1; workspace number 1
@@ -292,7 +285,6 @@ bindsym Shift+XF86MonBrightnessDown exec light -U $screen-increment-large
 
 # Lock Screen
 bindsym $mod+Shift+semicolon exec --no-startup-id lock
-
 
 # Standard Programs
 exec_always google-chrome
