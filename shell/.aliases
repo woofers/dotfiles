@@ -36,7 +36,7 @@ fi
 export DRIVE="$HOME/Documents/JVD Docs/Documents/"
 export DEV="$HOME/Documents/Development"
 export ANDROID_HOME="$DEV/lib/AndroidSDK"
-export SCHOOL="$DRIVE/School/UVIC/2020/Fall"
+export SCHOOL="$DRIVE/School/UVIC/2021/Spring"
 
 # Even Shorter Home Folders Switching
 export DOCUMENTS="$HOME/Documents"
