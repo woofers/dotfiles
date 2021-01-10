@@ -4,6 +4,8 @@ export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
 export JRE_HOME="$JAVA_HOME/jre"
 export ANDROID_HOME="$DEV/lib/AndroidSDK"
 export LD_LIBRARY_PATH="/usr/lib64"
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+export LD_RUN_PATH=/usr/local/lib
 
 # GPG Key
 export GPG_TTY=$(tty)
