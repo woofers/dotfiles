@@ -30,9 +30,6 @@ floating_modifier $mod
 # Control Focused Window When Follows the Mouse Movements
 focus_follows_mouse yes
 
-# Start Terminal
-bindsym $mod+Return exec i3-sensible-terminal -e zsh
-
 # Nautilus
 bindsym $mod+n exec nautilus
 
