@@ -19,7 +19,7 @@ cursor-foreground-color='rgb(40,42,54)'
 font='Meslo LG M for Powerline 10.5'
 bold-color-same-as-fg=true
 highlight-background-color='rgb(253,191,130)'
-background-color='rgb(40,42,54)'
+background-color='rgb(27,24,44)'
 audible-bell=false
 highlight-foreground-color='rgb(40,42,54)'
 
