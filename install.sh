@@ -276,11 +276,6 @@ sudo apt-get install lxappearance
 sudo apt-get install arc-theme
 
 # GTK Icon Theme
-sudo tee /etc/apt/sources.list.d/papirus-ppa.list << EOF
-deb http://ppa.launchpad.net/papirus/papirus/ubuntu xenial main
-EOF
-sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com E58A9D36647CAE7F
-sudo apt-get update
 sudo apt-get install papirus-icon-theme
 
 # Export DEV Path
