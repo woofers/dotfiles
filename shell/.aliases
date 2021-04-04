@@ -24,6 +24,9 @@ export PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH
 export LUA_HOME="$HOME/.luarocks"
 export PATH=$PATH:$LUA_HOME/bin
 
+# Python path
+export PATH=$PATH:$HOME/.local/bin
+
 # Linux Environment Paths
 export HOME_DRIVE="/home/jaxson"
 
