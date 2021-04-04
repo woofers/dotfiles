@@ -1,4 +1,3 @@
-(package-initialize)
 
 (setq vc-follow-symlinks t)
 

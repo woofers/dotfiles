@@ -8,12 +8,8 @@
 ** Load Package.el and MELPA Repository
  #+BEGIN_SRC emacs-lisp
  (require 'package)
-
- (when (>= emacs-major-version 24)
-   (add-to-list
-    'package-archives
-    '("melpa" . "http://melpa.milkbox.net/packages/")
-    t))
+ (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+ (package-initialize)
  #+END_SRC
 
 ** Disable Plug-Ins at Startup

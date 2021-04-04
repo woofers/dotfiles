@@ -7,8 +7,13 @@
 * Plug-Ins
 ** Install Evil Mode
  #+BEGIN_SRC emacs-lisp
- (use-package evil
-   :ensure t)
+(use-package evil
+  :ensure t
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+  :config
+  (evil-mode 1))
  #+END_SRC
 
 ** Install Evil Plugins
@@ -24,8 +29,11 @@
  #+END_SRC
 ** Install Evil Magit
  #+BEGIN_SRC emacs-lisp
- (use-package evil-magit
-   :ensure t)
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init))
  #+END_SRC
 ** Install Evil Ledger
  #+BEGIN_SRC emacs-lisp
@@ -33,10 +41,6 @@
    :ensure t)
  #+END_SRC
 * Behavior
-** Enable Evil
- #+BEGIN_SRC emacs-lisp
- (evil-mode 1)
- #+END_SRC
 ** Enable Evil Leader
  #+BEGIN_SRC emacs-lisp
  (global-evil-leader-mode)
