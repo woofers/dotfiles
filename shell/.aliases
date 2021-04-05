@@ -49,7 +49,7 @@ export MUSIC="$HOME/Music"
 
 # GO Path
 export GOPATH=~/.go
-export GOROOT=/usr/lib/go
+export GOROOT=/usr/local/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # Allow Use of Windows Apps
@@ -96,8 +96,8 @@ alias tmuxw="tmux new-window -n"
 alias close="tmux kill-server; exit"
 
 # Google Drive
-alias gdpl="drive-google pull -depth -1 -ignore-name-clashes -ignore-conflict"
-alias gdpu="drive-google push -depth -1 -ignore-name-clashes -ignore-conflict"
+alias gdpl="drive pull -depth -1 -ignore-name-clashes -ignore-conflict"
+alias gdpu="drive push -depth -1 -ignore-name-clashes -ignore-conflict"
 
 # Mu
 alias mupl="mu index --maildir=~/Mail/mbsync"
