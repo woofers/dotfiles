@@ -20,6 +20,9 @@ export PATH=$PATH:/opt/gradle/gradle-6.6.1/bin
 # Texlive
 export PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH
 
+# Node
+export PATH=$PATH:$NVM_BIN
+
 # Lua
 export LUA_HOME="$HOME/.luarocks"
 export PATH=$PATH:$LUA_HOME/bin
@@ -115,4 +118,5 @@ alias screenshot="scrot"
 
 # Load NVM
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"	# This loads nvm bash_completion
