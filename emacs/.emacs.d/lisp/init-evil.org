@@ -308,7 +308,10 @@
   #+BEGIN_SRC emacs-lisp
   (setq-default evil-cross-lines t)
   #+END_SRC
-
+*** Mac
+  #+BEGIN_SRC emacs-lisp
+  (setq mac-command-modifier 'control)
+  #+END_SRC
 ** End of On Load
  #+BEGIN_SRC emacs-lisp
  )

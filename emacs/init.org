@@ -183,9 +183,6 @@
 
  (require 'speck)
 
- (add-to-list 'load-path (expand-file-name "~/.emacs.d/non-elpa/origami"))
-
- (require 'origami)
 
 #+END_SRC
 ** Load GNU Packages
@@ -261,7 +258,7 @@
 
 ** Spellcheck
  #+BEGIN_SRC emacs-lisp
- (setq ispell-program-name "/usr/bin/ispell")
+ (setq ispell-program-name "/usr/local/bin/ispell")
  #+END_SRC
 ** Git Diff
  #+BEGIN_SRC emacs-lisp
@@ -633,7 +630,13 @@
      (if speck-mode
        (speck-mode -1)
        (speck-mode 1))
-   ))
+   )
+   (with-system darwin
+     (if flyspell-mode
+       (flyspell-mode -1)
+       (flyspell-mode 1))
+   )
+ )
  #+END_SRC
 * Mappings
 ** Map Backspace Tab
