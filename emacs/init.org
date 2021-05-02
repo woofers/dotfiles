@@ -684,7 +684,10 @@
  #+BEGIN_SRC emacs-lisp
  (add-hook 'find-file-hook 'highlight-indent-guides-mode)
  #+END_SRC
-
+** MacOS Freeze
+  #+BEGIN_SRC emacs-lisp
+  (setq x-wait-for-event-timeout nil)
+  #+END_SRC
 ** Highlight Escape Characters in Programing Modes
  #+BEGIN_SRC emacs-lisp
  (add-hook 'prog-mode-hook '(lambda ()
