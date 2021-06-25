@@ -390,6 +390,8 @@ ln -s "$DEV/src/Dotfiles/nemo/.hidden" "$HOME/.hidden"
 # Setup X
 rm -rf "$HOME/.xsessionrc"
 ln -s "$DEV/src/Dotfiles/x/.xsessionrc" "$HOME/.xsessionrc"
+rm -rf "$HOME/.Xresources"
+ln -s "$DEV/src/Dotfiles/x/.Xresources" "$HOME/.Xresources"
 
 # Setup GTK
 rm -rf "$HOME/.gtkrc-2.0"
