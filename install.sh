@@ -107,7 +107,7 @@ sudo apt-get install kalgebra
 # Install Discord
 sudo apt-get install libgconf-2-4 libappindicator1
 cd ~/Downloads
-DISCORD_VERSION=0.0.14
+DISCORD_VERSION=0.0.15
 wget https://dl.discordapp.net/apps/linux/$DISCORD_VERSION/discord-$DISCORD_VERSION.deb
 sudo apt-get install ./discord-$DISCORD_VERSION.deb
 rm -rf discord-$DISCORD_VERSION.deb
@@ -140,6 +140,7 @@ sudo apt-get install texlive-latex-extra
 sudo apt-get install texlive-fonts-recommended
 sudo apt-get install texlive-science
 sudo apt-get install texlive-bibtex-extra texlive-binaries texlive-font-utils
+sudo apt-get install texlive-fonts-extra
 
 # Install mbsync
 sudo apt-get install libssl-dev
@@ -300,6 +301,16 @@ mv *.ttf ~/.fonts
 cd ..
 rm -rf YosemiteSanFrancisco
 ln -s "$DEV/src/Dotfiles/fonts/.fonts.conf" "$HOME/.fonts.conf"
+
+# Font Awesome 5
+cd ~/Downloads
+FONTAWESOME_VERSION=5.15.4
+curl https://use.fontawesome.com/releases/v$FONTAWESOME_VERSION/fontawesome-free-$FONTAWESOME_VERSION-desktop.zip --output fa.zip
+unzip fa.zip
+cd fontawesome-free-$FONTAWESOME_VERSION-desktop/otfs
+mv *.otf fonts/
+cd -
+rm -rf fontawesome-free-$FONTAWESOME_VERSION-desktop
 
 # Install Infinality
 echo "deb http://ppa.launchpad.net/no1wantdthisname/ppa/ubuntu trusty main" | sudo tee /etc/apt/sources.list.d/infinality.list

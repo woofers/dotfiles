@@ -13,7 +13,7 @@ set $border-width 0
 
 # Titlebar Font
 set $font-size 14
-font pango:System San Francisco Display $font-size
+font pango:System San Francisco Display,  FontAwesome5Free, FontAwesome5Brands $font-size
 
 # Alt Key as Mod
 set $mod Mod1
