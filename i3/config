@@ -40,9 +40,9 @@ bindsym $mod+shift+q focus parent,kill
 bindsym $mod+shift+F4 focus parent,kill
 
 # Start Rofi
-bindsym $mod+d exec --no-startup-id rofi -show combi  -font "System San Francisco 14"
-bindsym $mod+r exec --no-startup-id rofi -show run	  -font "System San Francisco 14"
-bindsym $mod+b exec --no-startup-id rofi -show window -font "System San Francisco 14"
+bindsym $mod+d exec --no-startup-id rofi -run-command '/bin/bash -c -i {cmd}' -show combi  -font "System San Francisco 14"
+bindsym $mod+r exec --no-startup-id rofi -run-command '/bin/bash -c -i {cmd}' -show run -font "System San Francisco 14"
+bindsym $mod+b exec --no-startup-id rofi -run-command '/bin/bash -c -i {cmd}' -show window -font "System San Francisco 14"
 bindsym $mod+slash exec --no-startup-id "echo '' | rofi -dmenu -p 'Search:' -font 'System San Francisco 14' | xargs -I{} xdg-open https://www.google.de/search?q={}"
 
 # Change Focus
