@@ -712,6 +712,14 @@
  )
  (add-hook 'find-file-hook 'pico-hook)
  #+END_SRC
+*** JavaScript Mode
+ #+BEGIN_SRC emacs-lisp
+ (defun mjs-hook ()
+   (when (string= (file-name-extension buffer-file-name) "mjs")
+     (javascript-mode))
+ )
+ (add-hook 'find-file-hook 'mjs-hook)
+ #+END_SRC
 *** Typescript Mode
  #+BEGIN_SRC emacs-lisp
  (defun typescript-hook ()
