@@ -69,7 +69,9 @@ export EDITOR='vim'
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
-source $HOME/.aliases
+alias tmux="tmux -2 -u"
+alias tmuxw="tmux new-window -n"
+alias close="tmux kill-server; exit"
 
 # Start in Tmux
 if [ -z "$TMUX" ]
@@ -89,10 +91,21 @@ eval `dircolors ~/dircolors.challenger-deep`
 zstyle ':completion:*:default' list-colors \
 ${(s.:.)LS_COLORS}
 
+export DEV="$HOME/Documents/Development"
+
 # Enable fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 bindkey '\e[1~' beginning-of-line
 bindkey '\e[2~' overwrite-mode
 bindkey '\e[3~' delete-char
 bindkey '\e[4~' end-of-line
+
+# Shorter Directory Switching
+function cd_up() {
+  cd $(printf "%0.s../" $(seq 1 $1 ));
+}
+alias cl="cd -"
+alias cr="cd /"
+alias ch="cd ~"
+alias 'cb'='cd_up'

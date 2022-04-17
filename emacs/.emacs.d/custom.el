@@ -28,6 +28,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :extend nil :stipple nil :background "#1b182c" :foreground "#cbe3e7" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "PfEd" :family "Meslo LG M for Powerline"))))
  '(eshell-git-prompt-powerline-clean-face ((t (:foreground "#1b182c" :background "#50fa7b"))))
  '(eshell-git-prompt-powerline-dir-face ((t (:foreground "#1b182c" :background "#FF5555"))))
  '(eshell-git-prompt-powerline-not-clean-face ((t (:foreground "#1b182c" :background "#ffaf00"))))
