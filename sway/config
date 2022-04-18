@@ -39,7 +39,8 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+#set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu dmenu_path | wofi --show drun -i | xargs swaymsg exec --
 #set $menu $dmenu_path | wofi --dmenu | xargs swaymsg exec --
 
 ### Output configuration
@@ -95,6 +96,9 @@ output DP-1 mode 2560x1140@164.879Hz position 2560,0
 
     # Start your launcher
     bindsym $mod+d exec $menu
+    bindsym $mod+r exec $menu
+    bindsym $mod+b exec $menu
+    bindsym $mod+slash exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -107,7 +111,7 @@ output DP-1 mode 2560x1140@164.879Hz position 2560,0
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 #
 # Moving around:
 #
@@ -146,6 +150,10 @@ output DP-1 mode 2560x1140@164.879Hz position 2560,0
     bindsym $mod+8 workspace number 8
     #bindsym $mod+9 workspace number 9
     #bindsym $mod+0 workspace number 10
+
+    # Fake Show Desktop
+    bindsym $mod+c workspace number 9
+
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace number 1
     bindsym $mod+Shift+2 move container to workspace number 2
@@ -157,6 +165,9 @@ output DP-1 mode 2560x1140@164.879Hz position 2560,0
     bindsym $mod+Shift+8 move container to workspace number 8
     bindsym $mod+Shift+9 move container to workspace number 9
     bindsym $mod+Shift+0 move container to workspace number 10
+
+    bindsym $mod+Tab workspace next
+    bindsym $mod+grave workspace prev
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 #
@@ -165,12 +176,12 @@ output DP-1 mode 2560x1140@164.879Hz position 2560,0
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
+    # bindsym $mod+b splith
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
+    # bindsym $mod+a layout tabbed
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
@@ -184,6 +195,8 @@ output DP-1 mode 2560x1140@164.879Hz position 2560,0
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+
+    bindsym $mod+n exec thunar
 #
 # Scratchpad:
 #
@@ -196,30 +209,38 @@ output DP-1 mode 2560x1140@164.879Hz position 2560,0
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
+
+   # Log Out
+   bindsym $mod+semicolon exec swaymsg exit
+
+   # Toggle i3bar
+   bindsym --release $mod+o bar mode toggle
+
 #
 # Resizing containers:
 #
-mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
 
-    # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+# Reisze Mode
+set $mode_resize Resize
+bindsym $mod+Shift+r mode "$mode_resize"
+mode "$mode_resize" {
+    set $small 10
+    bindsym $left	resize shrink width $small px or $small ppt
+    bindsym $right	resize grow width $small px or $small ppt
+    bindsym $down	resize grow height $small px or $small ppt
+    bindsym $up		resize shrink height $small px or $small ppt
 
-    # Return to default mode
+    set $large 20
+    bindsym Left	resize shrink width $large px or $large ppt
+    bindsym Down	resize grow height $large px or $large ppt
+    bindsym Up		resize shrink height $large px or $large ppt
+    bindsym Right	resize grow width $large px or $large ppt
+
     bindsym Return mode "default"
     bindsym Escape mode "default"
+    bindsym Control+g mode "default"
+    bindsym q mode "default"
 }
-bindsym $mod+r mode "resize"
 
 set $bg-color			 #2f343f
 set $inactive-bg-color	 #2f343f
@@ -245,7 +266,7 @@ bar {
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
+    status_command while date +'%A, %B %d, %Y %I:%M %p'; do sleep 1; done
 
 	colors {
 		background $bg-color
