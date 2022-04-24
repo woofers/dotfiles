@@ -39,9 +39,7 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-#set $menu dmenu_path | dmenu | xargs swaymsg exec --
 set $menu dmenu_path | wofi --show drun -i | xargs swaymsg exec --
-#set $menu $dmenu_path | wofi --dmenu | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -58,12 +56,17 @@ output DP-1 mode 2560x1140@164.879Hz position 2560,0
 
 
 ### Idle configuration
+exec swayidle -w \
+  timeout 600 'swaymsg "output * dpms off"' \
+  resume 'swaymsg "output * dpms on"'
+
 #
 # Example configuration:
 #
 # exec swayidle -w \
 #          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+#          timeout 600 'swaymsg "output * dpms off"' \
+#          resume 'swaymsg "output * dpms on"' \
 #          before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -88,6 +91,9 @@ output DP-1 mode 2560x1140@164.879Hz position 2560,0
 #
 # Basics:
 #
+
+    bindsym --release $mod+space exec --no-startup-id "music --playpause"
+
     # Start a terminal
     bindsym $mod+Return exec $term
 
@@ -149,10 +155,20 @@ output DP-1 mode 2560x1140@164.879Hz position 2560,0
     bindsym $mod+7 workspace number 7
     bindsym $mod+8 workspace number 8
     #bindsym $mod+9 workspace number 9
-    #bindsym $mod+0 workspace number 10
 
     # Fake Show Desktop
-    bindsym $mod+c workspace number 9
+    bindsym $mod+c workspace number 10
+
+    workspace 1 output DP-2
+    workspace 2 output DP-2
+    workspace 3 output DP-2
+    workspace 4 output DP-2
+    workspace 5 output DP-2
+    workspace 6 output DP-1
+    workspace 7 output DP-1
+    workspace 8 output DP-1
+    workspace 9 output DP-1
+    workspace 10 output DP-2
 
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace number 1
@@ -263,10 +279,11 @@ client.urgent			$urgent-bg-color	$urgent-bg-color	$text-color			 $indicator
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position bottom
+    pango_markup enabled
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%A, %B %d, %Y %I:%M %p'; do sleep 1; done
+    status_command while ~/.config/sway/sway-bar.sh; do sleep 1; done
 
 	colors {
 		background $bg-color
@@ -279,8 +296,9 @@ bar {
 	}
 }
 
+
 hide_edge_borders both
 
 include @sysconfdir@/sway/config.d/*
 
-output * bg $HOME/Pictures/bg.png fill
+output * bg $HOME/Pictures/bg.jpg fill
