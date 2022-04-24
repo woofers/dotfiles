@@ -7,7 +7,8 @@ function show_help {
   echo ""
   echo "options: "
   echo "  --status      show current song"
-  echo "  --i3status    show current song with color and icon"
+  echo "  --i3status    show current song with color and icon for i3"
+  echo "  --swaystatus  show current song with color and icon for sway"
   echo "  --playpause   toggle play status of current song"
   echo "  --help        show help"
 }
@@ -123,8 +124,21 @@ function color {
   fi
 }
 
+
+function tag_start {
+  if [ "$ARG" == "--swaystatus" ]; then
+    echo "<span foreground=\"$1\">"
+  fi
+}
+
+function tag_end {
+  if [ "$ARG" == "--swaystatus" ]; then
+    echo "</span>"
+  fi
+}
+
 function print_icon {
-  if [ "$ARG" == "--i3status" ]; then
+  if [ "$ARG" == "--i3status" ] || [ "$ARG" == "--swaystatus" ]; then
     if [ "$RHYTHMBOX_RUNNING" == 0 ] && [ "$RHYTHMBOX_ACTIVE" == 0 ] && ([ "$SPOTIFY_PLAYING" != 0 ] || [ "$RHYTHMBOX_PLAYING" == 0 ]); then
       echo -n $RHYTHMBOX_STATUS
     elif [ "$SPOTIFY_RUNNING" == 0 ]; then
@@ -132,7 +146,11 @@ function print_icon {
     else
       exit 0
     fi
-    echo -n "         "
+    if [ "$ARG" == "--i3status" ]; then
+      echo -n "         "
+    else
+      echo -n "    "
+    fi
   fi
 }
 
@@ -141,15 +159,21 @@ if [ -z "$ARG" ] || [ "$ARG" == "--help" ]; then
   exit 0
 fi
 
-if [ "$ARG" == "--status" ] || [ "$ARG" == "--i3status" ]; then
+if [ "$ARG" == "--status" ] || [ "$ARG" == "--i3status" ] || [ "$ARG" == "--swaystatus" ]; then
+  if [ "$RHYTHMBOX_RUNNING" == 0 ] && [ "$RHYTHMBOX_ACTIVE" == 0 ] && ([ "$SPOTIFY_PLAYING" != 0 ] || [ "$RHYTHMBOX_PLAYING" == 0 ]); then
+    tag_start "#feb206"
+  else
+    tag_start "#1db954"
+  fi
   print_icon
   if [ "$RHYTHMBOX_RUNNING" == 0 ] && [ "$RHYTHMBOX_ACTIVE" == 0 ] && ([ "$SPOTIFY_PLAYING" != 0 ] || [ "$RHYTHMBOX_PLAYING" == 0 ]); then
-    echo $(playing "rhythmbox")
+    echo $(playing "rhythmbox" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g; s/'"'"'/\&#39;/g')
     color "#feb206"
   else
-    echo $(playing "spotify")
+    echo $(playing "spotify" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g; s/'"'"'/\&#39;/g')
     color "#1db954"
   fi
+  tag_end
 elif [ "$ARG" == "--playpause" ]; then
  if [ "$RHYTHMBOX_RUNNING" == 0 ] || [ "$RHYTHMBOX_ACTIVE" == 0 ] && [ "$SPOTIFY_PLAYING" != 0 ]; then
     play_pause "rhythmbox"
