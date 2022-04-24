@@ -37,3 +37,6 @@
 [submodule "i3/i3scripts"]
 	path = i3/i3scripts
 	url = https://github.com/woofers/i3scripts
+[submodule "sddm/themes/dark-arch-sddm"]
+	path = sddm/themes/dark-arch-sddm
+	url = https://github.com/simonesestito/dark-arch-sddm
