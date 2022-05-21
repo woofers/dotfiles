@@ -171,16 +171,14 @@ exec swayidle -w \
     workspace 10 output DP-2
 
     # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
+    bindsym $mod+Shift+1 move container to workspace number 1; workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2; workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3; workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4; workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5; workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6; workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7; workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8; workspace number 8
 
     bindsym $mod+Tab workspace next
     bindsym $mod+grave workspace prev
@@ -232,6 +230,19 @@ exec swayidle -w \
    # Toggle i3bar
    bindsym --release $mod+o bar mode toggle
 
+# Force Windows Onto Specific Workspaces
+assign [app_id="firefox"] number 1
+assign [class="Chromium"] number 1
+assign [class="Google-chrome"] number 1
+assign [app_id="Emacs"] number 2
+assign [app_id="Alacritty"] number 3
+assign [app_id="thunar"] number 4
+assign [app_id="org.pwmt.zathura"] number 6
+assign [class="discord"] number 7
+assign [class="(?i)Spotify"] number 8
+for_window [class="Spotify"] move to workspace number 8
+assign [app_id="rhythmbox"] number 8
+
 #
 # Resizing containers:
 #
@@ -272,6 +283,7 @@ client.focused			$bg-color			$bg-color			$text-color			 $indicator
 client.unfocused		$inactive-bg-color	$inactive-bg-color	$inactive-text-color $indicator
 client.focused_inactive $inactive-bg-color	$inactive-bg-color	$inactive-text-color $indicator
 client.urgent			$urgent-bg-color	$urgent-bg-color	$text-color			 $indicator
+
 
 #
 # Status Bar:
