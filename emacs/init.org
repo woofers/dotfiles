@@ -430,10 +430,16 @@
 *** Font
   #+BEGIN_SRC emacs-lisp
   (if (eq system-type 'windows-nt)
-      (set-frame-font "Meslo LG M Regular for Powerline 10" nil t)
+    (set-frame-font "Meslo LG M Regular for Powerline 10" nil t)
   )
   (if (eq system-type 'gnu/linux)
-      (set-frame-font "-PfEd-Meslo LG M for Powerline-normal-normal-normal-*-*-*-*-*-0-iso10646-1" nil t)
+    (set-frame-font "-PfEd-Meslo LG M for Powerline-normal-normal-normal-*-*-*-*-*-0-iso10646-1" nil t)
+  )
+  (if (eq system-type 'darwin)
+    (set-frame-font "-*-Meslo LG M for Powerline-normal-normal-normal-*-*-*-*-*-p-0-iso10646-1" nil t)
+  )
+  (if (eq system-type 'darwin)
+    (set-face-attribute 'default nil :height 160)
   )
   #+END_SRC
 *** Default Split is Vertical
