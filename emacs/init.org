@@ -258,7 +258,12 @@
 
 ** Spellcheck
  #+BEGIN_SRC emacs-lisp
- (setq ispell-program-name "/usr/local/bin/ispell")
+  (if (eq system-type 'gnu/linux)
+    (setq ispell-program-name "/usr/local/bin/ispell")
+  )
+  (if (eq system-type 'darwin)
+    (setq ispell-program-name "/opt/homebrew/bin/aspell")
+  )
  #+END_SRC
 ** Git Diff
  #+BEGIN_SRC emacs-lisp
