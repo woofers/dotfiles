@@ -1,2 +1,2 @@
 #!/bin/bash
-grim -g "$(slurp)" "$HOME/Photos/$(date '+%y%m%d_%H-%M-%S').png"
+grim -g "$(slurp)" "$HOME/Pictures/$(date '+%y%m%d_%H-%M-%S').png"

@@ -264,7 +264,12 @@
 
 ** Spellcheck
  #+BEGIN_SRC emacs-lisp
- (setq ispell-program-name "/usr/bin/ispell")
+  (if (eq system-type 'gnu/linux)
+    (setq ispell-program-name "/usr/bin/ispell")
+  )
+  (if (eq system-type 'darwin)
+    (setq ispell-program-name "/opt/homebrew/bin/aspell")
+  )
  #+END_SRC
 ** Git Diff
  #+BEGIN_SRC emacs-lisp
@@ -440,6 +445,19 @@
   )
   (if (eq system-type 'gnu/linux)
       (set-frame-font "-PfEd-Meslo LG M for Powerline-normal-normal-normal-*-*-*-*-*-0-iso10646-1" nil t)
+  )
+  (if (eq system-type 'darwin)
+    (set-frame-font "-*-Meslo LG M for Powerline-normal-normal-normal-*-*-*-*-*-p-0-iso10646-1" nil t)
+  )
+  (if (eq system-type 'darwin)
+    (set-face-attribute 'default nil :height 160)
+  )
+  #+END_SRC
+
+** MacOS Freeze
+  #+BEGIN_SRC emacs-lisp
+  (if (eq system-type 'darwin)
+    (setq x-wait-for-event-timeout nil)
   )
   #+END_SRC
 *** Default Split is Vertical
@@ -636,7 +654,14 @@
      (if speck-mode
        (speck-mode -1)
        (speck-mode 1))
-   ))
+
+   )
+   (with-system darwin
+     (if flyspell-mode
+       (flyspell-mode -1)
+       (flyspell-mode 1))
+   )
+ )
  #+END_SRC
 * Mappings
 ** Map Backspace Tab
