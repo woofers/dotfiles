@@ -1,5 +1,5 @@
 
 
-192.168.0.192:/Downloads /mnt/shares/Downloads nfs rsize=8192,wsize=8192,timeo=14,intr
-192.168.0.191:/mnt/Woofers /mnt/shares/Woofers nfs rsize=8192,wsize=8192,timeo=14,intr
-192.168.0.191:/mnt/Ponton /mnt/shares/Ponton nfs rsize=8192,wsize=8192,timeo=14,intr
+192.168.0.46:/Downloads /mnt/shares/Downloads nfs rsize=8192,wsize=8192,timeo=14,intr
+192.168.0.163:/mnt/Woofers /mnt/shares/Woofers nfs rsize=8192,wsize=8192,timeo=14,intr
+192.168.0.163:/mnt/Ponton /mnt/shares/Ponton nfs rsize=8192,wsize=8192,timeo=14,intr

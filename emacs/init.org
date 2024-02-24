@@ -110,6 +110,9 @@
  (use-package highlight
      :ensure t)
 
+ (use-package tide
+     :ensure t)
+
  (use-package highlight-indent-guides
      :ensure t)
 
