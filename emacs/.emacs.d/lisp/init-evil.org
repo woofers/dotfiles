@@ -251,6 +251,13 @@
           (fset 'flyspell-emacs-popup 'flyspell-emacs-popup-textual)))
    )
 
+   (with-system darwin
+     (define-key evil-normal-state-map "r" #'flyspell-correct-word-before-point)
+     (eval-after-load "flyspell"
+       '(progn
+          (fset 'flyspell-emacs-popup 'flyspell-emacs-popup-textual)))
+   )
+
    (with-system windows
      (define-key evil-normal-state-map "r" 'speck-popup-menu-at-point)
    )
@@ -307,6 +314,13 @@
 *** Make Horizontal Movement Cross Lines
   #+BEGIN_SRC emacs-lisp
   (setq-default evil-cross-lines t)
+  #+END_SRC
+
+*** Mac
+  #+BEGIN_SRC emacs-lisp
+  (if (eq system-type 'darwin)
+    (setq mac-command-modifier 'control)
+  )
   #+END_SRC
 
 ** End of On Load

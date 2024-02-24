@@ -80,7 +80,7 @@ then
     tmux new-session -d -s Workspace -n "APT"
     tmuxw "Git"
     tmuxw "Development"
-    tmuxw "Shcool"
+    tmuxw "Aux"
     tmuxw "Extra"
     tmux attach-session -t Workspace
 fi
